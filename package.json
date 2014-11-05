@@ -1,0 +1,27 @@
+{
+  "name": "priceCacheCalendar",
+  "version": "1.0.0",
+  "description": "my another very own function",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd tests && mocha *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raabbajam/priceCacheCalendar.git"
+  },
+  "author": "Muhammad Abdul Jabbaar <muhammadabduljabbaar@gmail.com> (http://mabdulj.jasaprogrammer.com/)",
+  "license": "mit",
+  "bugs": {
+    "url": "https://github.com/raabbajam/priceCacheCalendar/issues"
+  },
+  "homepage": "https://github.com/raabbajam/priceCacheCalendar",
+  "devDependencies": {
+    "chai": "^1.9.2"
+  },
+  "dependencies": {
+    "cheerio": "^0.17.0",
+    "moment": "^2.8.3",
+    "underscore": "^1.7.0"
+  }
+}
