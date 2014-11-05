@@ -101,6 +101,9 @@ function run () {
 	return _this.getAllCaches(routes)
 		.then(_this.mergeCache.bind(_this))
 		.then(_this.insertAllLowest.bind(_this))
+		.then(function (res) {
+			return _this._scrape;
+		})
 }
 var BasePrototype = {
 	init: init,
