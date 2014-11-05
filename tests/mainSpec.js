@@ -24,7 +24,7 @@ describe('Price Generator', function () {
 		var garuda = new Garuda(mockBody, mockDataGaruda);
 		garuda.run()
 			.then(function (res) {
-				console.log('res',res);
+				// console.log('res',res);
 				fs.writeFileSync('./li2.html', garuda._scrape);
 				next();
 			})

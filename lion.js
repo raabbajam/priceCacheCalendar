@@ -53,11 +53,13 @@ function mergeCache (){
 		function getRow (i) {
 			return $('tr[id^=RM' + dir + '_C' + i +']');
 		};
+		var realRoute = _this._dt.ori.toLowerCase() + _this._dt.dst.toLowerCase();
 		var rowId = 0;
 		var row = getRow(rowId);
 		if (!row)
 			return false;
 		do {
+			var lowestPriceRows = [];
 			row.each(function (i, tr) {
 				var rm = $('td[id^=RM]', tr).html();
 				if (!rm)
@@ -90,7 +92,16 @@ function mergeCache (){
 					if(!!cachePrice && !$('.rp', span).length)
 						span.append('<span class="rp">rplion'+cachePrice+'rplion</span>');
 				});
+				lowestPriceRows.push(lowestPrices[currentRoute]);
 			});
+			// if there is more than one flight in on one row 
+			if (row.length > 1 && lowestPriceRows.length > 1) {
+				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
+				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
+					lowestPrices[realRoute] = lowestPriceRow;
+					// console.log(lowestPrices[realRoute], lowestPriceRow);
+				}
+			}
 			rowId++;
 			row = getRow(rowId);
 		} while (row.length);
