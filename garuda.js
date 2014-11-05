@@ -2,10 +2,9 @@ var Base = require('./Base');
 
 function init (dt, scrape) {
 	this._super('garuda');
-	for(var prop in dt){
-		dt[prop] = dt[prop].toLowerCase()
-	}
 	this._dt = dt;
+	this._dt.ori = this._dt.ori.toLowerCase();
+	this._dt.dst = this._dt.dst.toLowerCase();
 	this._scrape = scrape;
 };
 function getAllRoutes () {

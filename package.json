@@ -4,7 +4,7 @@
   "description": "my another very own function",
   "main": "index.js",
   "scripts": {
-    "test": "cd tests && mocha *.js"
+    "test": "cd tests && mocha --reporter nyan mainSpec.js"
   },
   "repository": {
     "type": "git",
