@@ -1,4 +1,5 @@
 var expect = require('chai').expect;
+var fs = require('fs');
 var moment = require('moment');
 var _ = require('lodash');
 var Base = require('../Base');
@@ -42,7 +43,7 @@ describe('Base', function () {
 		});
 		it('should return an array cheapest class', function (next) {
 			var flightClasses = child.getAllCheapest(rows);
-			// console.log(flightClasses);
+			console.log(flightClasses);
 			expect(Object.keys(flightClasses).length).to.gt(0);
 			next();
 		});
@@ -77,7 +78,7 @@ describe('Base', function () {
 				});
 		});
 	});
-	describe('generateData', function() {
+	describe('generateData, scrapeLostData, scrapeAllLostData', function() {
 		this.timeout(60000 * 2);
 		{//init
 			var Child = Base.extend({
@@ -132,23 +133,49 @@ describe('Base', function () {
 				}, done);
 		})
 	});
-	/*describe('mergeCachePrices', function() {
+	describe('mergeCachePrices', function() {
 		var cachePrices = {"subcgk": {"ga": {"v": {"adult": 975203, "child": 975203, "infant": 102903, "basic": 882003 } }, "id": {"y": {"adult": 1418704, "child": 1418704, "infant": 157004, "basic": 1326704 } } } }
 		var Child = Base.extend({
 			mergeCachePrices: function (json) {
-				var mergedJson = ;
-				var depFlights = json.departure;
-				depFlights.map
-				var ret = json.return;
+				var _json = _.cloneDeep(json);
+				var depFlights = _json.departure.flights;
+				var _this = this;
+				_json.departure.flights = _json.departure.flights.map(function (rowAll) {
+					return rowAll.map(function (row) {
+						var rute = row.origin + row.destination;
+						var flight = 'ga';
+						rute = rute.toLowerCase();
+						var cheapestSeat = _.findLast(row.seats, function (seat) {
+							return seat.available !== "L" && seat.available > 0;
+						})
+						var cheapestClass = cheapestSeat.class.toLowerCase();
+						row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
+						if (row.cheapest){
+							row.cheapest.class = cheapestSeat.class;
+							row.cheapest.available = cheapestSeat.available;
+						}
+						return row;
+					})
+				})
+				// console.log(_json.departure.flights);
+				// var ret = _json.return;
+				return _json;
 			}
 		})
 		var child = new Child('garuda', {cachePrices: cachePrices});
-		var json =  fs.readFileSync('./gacp.json', 'utf8');
+		var json =  JSON.parse(fs.readFileSync('./bacp.json', 'utf8'));
 		it('should merge json data with cheapest', function (done) {
 			var mergedJson = child.mergeCachePrices(json);
-			expect(mergeJson).to.exist;
-			fs.writeFileSync('./gacp2.json', JSON.stringify(mergedJson,null, 4));
+			expect(mergedJson).to.exist;
+			fs.writeFileSync('./bacp2.json', JSON.stringify(mergedJson,null, 4));
 			done();
 		});
-	});*/
+	});
+	describe('prepareRows', function() {
+		it('should error on calling function that doesn\'t implemented', function (done) {
+			var base = new Base();
+			expect(base.prepareRows).to.throw(/prepareRows/);
+			done();
+		});
+	});
 });

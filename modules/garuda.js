@@ -1,5 +1,10 @@
 var Base = require('../Base');
-
+var moment = require('moment');
+var debug = require('debug')('raabbajam:priceCacheCalendar:garuda');
+var _ = require('lodash');
+var db = require('../libs/db');
+var priceScrapers = require('priceScraper');
+var GarudaPriceScrapers = priceScrapers.garuda;
 function init (dt, scrape) {
 	this._super('garuda');
 	this._dt = dt;
@@ -11,8 +16,8 @@ function getAllRoutes () {
 	var _this = this;
 	var dep = this._scrape.departure;
 	var ret = this._scrape.return;
-	// console.log(this._scrape);
-	// console.log(ret);
+	// debug(this._scrape);
+	// debug(ret);
 	var routes = [];
 	function looper (route) {
 		var rows = route.flights;
@@ -78,7 +83,7 @@ function mergeCache (){
 				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
 				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
 					lowestPrices[realRoute] = lowestPriceRow;
-					// console.log(lowestPrices[realRoute], lowestPriceRow);
+					// debug(lowestPrices[realRoute], lowestPriceRow);
 				}
 			}
 			return _row;
@@ -90,10 +95,124 @@ function mergeCache (){
 		_this._scrape.return = looper(ret, _this);
 	return lowestPrices;
 };
+/**
+ * return an array of object with ori, dst, class and flight property
+ * @param  {Object} row Row object
+ * @return {Array}     An array of object with ori, dst, class and flight property
+ */
+function getCheapestInRow (rowAll) {
+	// debug('rowAll',rowAll );
+	var outs = [];
+	rowAll.forEach(function (row) {
+		var out = {
+			ori: row.origin,
+			dst: row.destination,
+			// flight: row.flightCode
+			flight: 'ga'
+		}
+		var seats = row.seats;
+		for (var i = seats.length - 1; i >= 0; i--) {
+			if (seats[i].available !== "L" && +seats[i].available > 0) {
+				out.class = seats[i].class;
+				break;
+			}
+		};
+		// debug(out);
+		outs.push(out);
+	})
+	return outs;
+}
+/**
+ * Generate data to scrape from id
+ * @param  {String} id String id from database
+ * @return {Object}    Object data for scrape
+ */
+function generateData (id) {
+	var _airline = this.airline;
+	return {
+		ori       : id.substr(0,3),
+		dst       : id.substr(3,3),
+		airline   : _airline,
+		action    : 'price',
+		flightCode: 'ga',
+		classCode : id.substr(-1,1),
+		dep_radio : id.substr(-1,1) + '1',
+		dep_date  : moment().add(1, 'M').format('DD+MM+YYYY'),
+		user      : 'IANTONI.JKTGI229T'
+	}
+}
+/**
+ * Scrape lost data
+ * @param  {String} id Data generated id to scrape
+ * @return {Object}    Return cache data after scrape it
+ */
+function scrapeLostData (id) {
+	debug('scrapeLostData',id);
+	var dt = this.generateData(id);
+    var urlAirbinder = 'http://128.199.251.75:9098/price';
+    var urlPluto = 'http://pluto.dev/0/price/garuda';
+    var options = {
+      scrape: urlAirbinder,
+      dt: dt,
+      airline: this.airline,
+    };
+    var garudaPriceScrapers = new GarudaPriceScrapers(options);
+    return garudaPriceScrapers.run().catch(function (err) {debug('garudaPriceScrapers',err);});
+}
+/**
+ * Merge json data with cheapest data from db
+ * @param  {Object} json JSON formatted of scraped data
+ * @return {Object}      JSON formatted of scraped data already merged with cache data
+ */
+function mergeCachePrices (json) {
+	var _json = _.cloneDeep(json);
+	var depFlights = _json.departure.flights;
+	var _this = this;
+	debug('_this.cachePrices',_this.cachePrices);
+	_json.departure.flights = _json.departure.flights.map(function (rowAll) {
+		return rowAll.map(function (row) {
+			var rute = row.origin + row.destination;
+			var flight = 'ga';
+			rute = rute.toLowerCase();
+			var cheapestSeat = _.findLast(row.seats, function (seat) {
+				return seat.available !== "L" && seat.available > 0;
+			})
+			var cheapestClass = cheapestSeat.class.toLowerCase();
+			row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
+			if (row.cheapest){
+				row.cheapest.class = cheapestSeat.class;
+				row.cheapest.available = cheapestSeat.available;
+			}
+			return row;
+		})
+	})
+	// debug(_json.departure.flights);
+	// var ret = _json.return;
+	return _json;
+}
+/**
+ * Preparing rows to be looped on process
+ * @param  {Object} json JSON formatted data from scraping
+ * @return {Object}      Array of rows to be looped for getAkkCheaoest function
+ */
+function prepareRows (json) {
+	var _json = _.cloneDeep(json);
+	var rows = [];
+	rows = rows.concat(_json.departure.flights);
+	// debug('rows',_json.departure.flights);
+	if (!!_json.return)
+		rows = rows.concat(_json.return.flights);
+	return rows;
+}
 var GarudaPrototype = {
-	init        : init,
-	getAllRoutes: getAllRoutes,
-	mergeCache  : mergeCache
+	init            : init,
+	getAllRoutes    : getAllRoutes,
+	mergeCache      : mergeCache,
+	getCheapestInRow: getCheapestInRow,
+	generateData    : generateData,
+	scrapeLostData  : scrapeLostData,
+	mergeCachePrices: mergeCachePrices,
+	prepareRows     : prepareRows,
 };
 var Garuda = Base.extend(GarudaPrototype);
 module.exports = Garuda;

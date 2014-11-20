@@ -2,6 +2,8 @@ priceCacheCalendar
 ==================
 
 my another very own function
+Run on flight request, take scrape data, filled it with cache data, check cheapest available, add it to calendar cache, find cheapest seat per row, get it's prices (notice the 's' as in plural, 4 prices -- adult, child, infant, basic) from db or scrape it if necessary, adding it to as cheppest seat in row data per row.
+
 ### init(airline, _db)
 
 Intiailizing

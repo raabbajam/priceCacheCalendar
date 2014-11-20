@@ -1,0 +1,1485 @@
+{
+    "info": " CGK SOEKARNO HATTA.ID          8 FR 28NOV  CGK SOEKARNO HATTA.ID          8 FR 28NOV ",
+    "departure": {
+        "date": "28 November, 2014",
+        "flights": [
+            [
+                {
+                    "flightCode": "GA 303",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "05:25",
+                    "arrive": "07:00",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 975203,
+                        "child": 975203,
+                        "infant": 102903,
+                        "basic": 882003,
+                        "class": "V",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 305",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "06:15",
+                    "arrive": "07:50",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 975203,
+                        "child": 975203,
+                        "infant": 102903,
+                        "basic": 882003,
+                        "class": "V",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 307",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "07:50",
+                    "arrive": "09:25",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 975203,
+                        "child": 975203,
+                        "infant": 102903,
+                        "basic": 882003,
+                        "class": "V",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 449",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "08:25",
+                    "arrive": "10:00",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "4",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 1113803,
+                        "child": 1113803,
+                        "infant": 116103,
+                        "basic": 1008003,
+                        "class": "T",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 309",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "08:50",
+                    "arrive": "10:25",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 975203,
+                        "child": 975203,
+                        "infant": 102903,
+                        "basic": 882003,
+                        "class": "V",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 311",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "10:10",
+                    "arrive": "11:45",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "L",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 975203,
+                        "child": 975203,
+                        "infant": 102903,
+                        "basic": 882003,
+                        "class": "V",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 313",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "11:10",
+                    "arrive": "12:45",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        },
+                        {
+                            "class": "S",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "H",
+                            "available": "9",
+                            "price": 698010
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 315",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "12:30",
+                    "arrive": "14:05",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 1113803,
+                        "child": 1113803,
+                        "infant": 116103,
+                        "basic": 1008003,
+                        "class": "T",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 317",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "13:30",
+                    "arrive": "15:05",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 1252403,
+                        "child": 1252403,
+                        "infant": 130403,
+                        "basic": 1134003,
+                        "class": "Q",
+                        "available": "9"
+                    }
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 319",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "14:50",
+                    "arrive": "16:25",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ],
+                    "cheapest": {
+                        "adult": 975203,
+                        "child": 975203,
+                        "infant": 102903,
+                        "basic": 882003,
+                        "class": "V",
+                        "available": "9"
+                    }
+                }
+            ]
+        ]
+    },
+    "return": {
+        "date": "28NOV",
+        "flights": [
+            [
+                {
+                    "flightCode": "GA 303",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "05:25",
+                    "arrive": "07:00",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 305",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "06:15",
+                    "arrive": "07:50",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 307",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "07:50",
+                    "arrive": "09:25",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 449",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "08:25",
+                    "arrive": "10:00",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "4",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 309",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "08:50",
+                    "arrive": "10:25",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 311",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "10:10",
+                    "arrive": "11:45",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "L",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 313",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "11:10",
+                    "arrive": "12:45",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        },
+                        {
+                            "class": "S",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "H",
+                            "available": "9",
+                            "price": 698010
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 315",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "12:30",
+                    "arrive": "14:05",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 317",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "13:30",
+                    "arrive": "15:05",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "flightCode": "GA 319",
+                    "origin": "SUB",
+                    "destination": "CGK",
+                    "depart": "14:50",
+                    "arrive": "16:25",
+                    "seats": [
+                        {
+                            "class": "J",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "C",
+                            "available": "9",
+                            "price": 3967200
+                        },
+                        {
+                            "class": "D",
+                            "available": "2",
+                            "price": 3771410
+                        },
+                        {
+                            "class": "Y",
+                            "available": "9",
+                            "price": 1542800
+                        },
+                        {
+                            "class": "B",
+                            "available": "9",
+                            "price": 1505410
+                        },
+                        {
+                            "class": "M",
+                            "available": "9",
+                            "price": 1468010
+                        },
+                        {
+                            "class": "K",
+                            "available": "9",
+                            "price": 1430610
+                        },
+                        {
+                            "class": "N",
+                            "available": "9",
+                            "price": 0
+                        },
+                        {
+                            "class": "Q",
+                            "available": "9",
+                            "price": 1248010
+                        },
+                        {
+                            "class": "G",
+                            "available": "L",
+                            "price": 0
+                        },
+                        {
+                            "class": "T",
+                            "available": "9",
+                            "price": 1109410
+                        },
+                        {
+                            "class": "V",
+                            "available": "9",
+                            "price": 975200
+                        }
+                    ]
+                }
+            ]
+        ]
+    }
+}

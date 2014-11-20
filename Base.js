@@ -5,6 +5,7 @@ var _           = require('underscore');
 var dateFormats = ['DD+MM+YYYY','DD+MMM+YYYY','DD MM YYYY','DD MMM YYYY'];
 var airlines    = {"airasia": 1, "citilink": 2, "garuda": 3, "lion": 4, "sriwijaya": 5, "xpress": 6};
 var db          = require('./libs/db');
+var debug = require('debug')('raabbajam:priceCacheCalendar:base');
 _.mixin(require('underscore.deep'));
 /**
  * Intiailizing
@@ -68,12 +69,12 @@ function getCache (ori, dst) {
 		var _ori = ori && ori.toLowerCase() || _this._dt.ori;
 		var _dst = dst && dst.toLowerCase() || _this._dt.dst;
 		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", }, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
-		// console.log(JSON.stringify(query, null, 2));
+		// debug(JSON.stringify(query, null, 2));
 		_this.db.search('pluto', 'price', query, function (err, res) {
 			if (err)
 				return reject(err)
 			res = JSON.parse(res);
-			// console.log(JSON.stringify(res, null, 2));
+			// debug(JSON.stringify(res, null, 2));
 			var flightList = {};
 			res.aggregations.groupFlight.buckets.forEach(function (flight) {
 				var classList = {};
@@ -97,7 +98,7 @@ function getAllCaches (routes) {
 	var _this = this;
 	var promises = [];
 	routes.forEach(function (route) {
-		// console.log(route);
+		// debug(route);
 		promises.push(_this.getCache(route.substr(0,3), route.substr(3,3)));
 	});
 	return Promise.all(promises);
@@ -126,7 +127,7 @@ function insertAllLowest (res) {
 		promises.push(_this.insertLowest(data));
 	});
 	return Promise.all(promises, function (res) {
-		console.log(res);
+		debug(res);
 	});
 };
 /**
@@ -140,13 +141,13 @@ function insertLowest (data) {
 		_this.db.get('pluto', 'calendar', data.id, function (err, res) {
 			var res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
-			console.log(oldPrice, _price, data);
+			debug(oldPrice, _price, data);
 			if ( oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this._airline)) {
 				resolve(false);
 			} else {
 				data.price = _price;
 				_this.db.index('pluto', 'calendar', data, function (err, res) {
-					console.log('found lower price, inserting to calendar...', res)
+					debug('found lower price, inserting to calendar...', res)
 					resolve(res);
 				});
 			}
@@ -170,7 +171,7 @@ function run () {
 			return _this._scrape;
 		})
 		.catch(function (err) {
-			console.log('Error priceCacheCalendar: ' + err);
+			debug('Error priceCacheCalendar: ' + err);
 			return _this._scrape;
 		})
 }
@@ -180,7 +181,9 @@ function run () {
  * @return {Array}     An array of object with ori, dst, class and flight property
  */
 function getCheapestInRow (row) {
-	//implement on child
+	var message = arguments.callee.name + ': ' + "You should implement this on your child";
+	debug(message);
+	throw new Error(message);
 }
 /**
  * return an array cheapest class
@@ -190,6 +193,7 @@ function getCheapestInRow (row) {
 function getAllCheapest (rows) {
 	var _this = this;
 	var flightClasses = {}
+	// debug('rows', rows);
 	rows.forEach(function (row) {
 		var cheapests = _this.getCheapestInRow(row);
 		cheapests.forEach(function (cheapest) {
@@ -214,7 +218,7 @@ function getAllCheapest (rows) {
  */
 function generateId (data) {
 	var id = data.origin + data.destination + data.airline + data.flight + data.class;
-	// console.log(id);
+	// debug(id);
 	return id.toLowerCase();
 }
 /**
@@ -226,16 +230,17 @@ function getCachePrices (ids) {
 	return new Promise(function (resolve, reject) {
 		if (!(ids instanceof Array))
 			ids = [ids];
-		// console.log(ids);
+		// debug(ids);
 		_this.db.multiget(_this.index, _this.type, ids, function (err, res) {
 			if (err)
 				return reject(err)
 			try {res = JSON.parse(res)} catch(err) { return reject(err)}
+			// debug(res);
 			if (!res.docs)
 				return reject(new Error('No cache found'));
 			var docs = res.docs;
 			var losts = [];
-			// console.log(JSON.stringify(docs, null, 2));
+			// debug(JSON.stringify(docs, null, 2));
 			docs.forEach(function (doc) {
 				if (!doc.found)
 					return losts.push(doc)
@@ -243,7 +248,7 @@ function getCachePrices (ids) {
 			if (losts.length === 0)
 				return resolve(_this.docsToCachePrices(docs));
 			var err = new Error('Some are lost.');
-			losts.map(function (lost) {
+			losts = losts.map(function (lost) {
 				return lost._id;
 			})
 			err.losts = losts;
@@ -260,6 +265,7 @@ function getCachePrices (ids) {
  * @return {Object}      Promise with losts and founds
  */
 function getAllCachePrices (data) {
+	// debug('getAllCachePrices');
 	var ids = [];
 	var _airline = this.airline;
 	_.each(data, function (value, key) {
@@ -280,7 +286,9 @@ function getAllCachePrices (data) {
  * @return {Object}    Object data for scrape
  */
 function generateData (id) {
-	// implement on child
+	var message = arguments.callee.name + ': ' + "You should implement this on your child";
+	debug(message);
+	throw new Error(message);
 }
 /**
  * Scrape lost data
@@ -288,7 +296,9 @@ function generateData (id) {
  * @return {Object}    Return cache data after scrape it
  */
 function scrapeLostData (id) {
-	//implement on child
+	var message = arguments.callee.name + ': ' + "You should implement this on your child";
+	debug(message);
+	throw new Error(message);
 }
 /**
  * Scrape all losts data
@@ -297,9 +307,27 @@ function scrapeLostData (id) {
  */
 function scrapeAllLostData (data) {
 	var _this = this;
-	return data.reduce(function (sequence, id) {
-		return sequence.then(_this.scrapeLostData.bind(_this, id))
+	var results = [];
+	debug('scrapeAllLostData');
+	var steps = data.reduce(function (sequence, id) {
+		debug('sequence',id);
+		return sequence.then(function () {
+			return _this.scrapeLostData(id)
+				.then(function (res) {
+					results.push(res);
+				})
+		})
 	}, Promise.resolve());
+	return new Promise(function (resolve, reject) {
+		steps
+			.then(function () {
+				return resolve(results)
+			})
+			.catch(function (err) {
+				debug('scrapeAllLostData',err);
+				reject(err);
+			})
+	})
 }
 /**
  * Saving cached docs from db to global object cachePrices
@@ -323,8 +351,51 @@ function docsToCachePrices (docs) {
 	})
 	return _cachePrices
 }
+/**
+ * Merge json data with cheapest data from db
+ * @param  {Object} json JSON formatted of scraped data
+ * @return {Object}      JSON formatted of scraped data already merged with cache data
+ */
 function mergeCachePrices (json) {
-	//implemented on child
+	var message = arguments.callee.name + ': ' + "You should implement this on your child";
+	debug(message);
+	throw new Error(message);
+}
+/**
+ * Preparing rows to be looped on process
+ * @param  {Object} json JSON formatted data from scraping
+ * @return {Object}      Array of rows to be looped for getAkkCheaoest function
+ */
+function prepareRows (json) {
+	var message = arguments.callee.name + ': ' + "You should implement this on your child";
+	debug(message);
+	throw new Error(message);
+}
+function merge (json) {
+	var _this = this;
+	var rows = _this.prepareRows(json);
+	// debug('json',json);
+	var aoCheapest = _this.getAllCheapest(rows);
+	debug('aoCheapest', aoCheapest);
+	return _this.getAllCachePrices(aoCheapest)
+		.catch(function (err) {
+			debug('err.losts', err.losts);
+			return _this.scrapeAllLostData(err.losts)
+				.then(function (res) {
+					debug('getAllCachePrices', res);
+					return _this.getAllCachePrices(aoCheapest)
+				}, function (err) {
+					debug('_this.scrapeAllLostData', err)
+				});
+		})
+		.then(function (res) {
+			debug('BRO!!');
+			return _this.mergeCachePrices(json);
+		})
+		.catch(function (err) {
+			debug(err);
+			throw err;
+		});
 }
 var BasePrototype = {
 	init             : init,
@@ -342,6 +413,8 @@ var BasePrototype = {
 	getAllCachePrices: getAllCachePrices,
 	scrapeAllLostData: scrapeAllLostData,
 	docsToCachePrices: docsToCachePrices,
+	prepareRows      : prepareRows,
+	merge            : merge,
 };
 var Base = Class.extend(BasePrototype);
 module.exports = Base;
