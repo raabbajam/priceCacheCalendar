@@ -18,6 +18,19 @@ Intiailizing
 
 
 
+### setOptions() 
+
+setting options, using one arguments: an object with key-value pair,
+or two arguments, with the first as key and second as value
+
+
+
+### setOption() 
+
+alias for setOptions
+
+
+
 ### getAllRoutes() 
 
 Loop the scrape data and get all routes
@@ -77,6 +90,101 @@ saved data in db and replace it if necessary
 
 **Returns**: `String`, Scrape data that already looped and merged with cache data, and checking for
 cheapest available seat price in beetwen
+
+
+### getCheapestInRow(row) 
+
+return an array of object with ori, dst, class and flight property
+
+**Parameters**
+
+**row**: `Object`, Row object
+
+**Returns**: `Array`, An array of object with ori, dst, class and flight property
+
+
+### getAllCheapest(rows) 
+
+return an array cheapest class
+
+**Parameters**
+
+**rows**: `Array`, Array of row
+
+**Returns**: `Object`, return an array cheapest class, by rute by flight
+
+
+### generateId(data) 
+
+internal function used when saving data to db
+
+**Parameters**
+
+**data**: `Object`, Save to db
+
+**Returns**: `string`, id for db
+
+
+### getCachePrices() 
+
+Get cache data from db
+
+**Returns**: `Object`, Data price for current dt
+
+
+### getAllCachePrices(data) 
+
+getting all cache based on cheapest flight data
+
+**Parameters**
+
+**data**: `Object`, Cheapest flight data
+
+**Returns**: `Object`, Promise with losts and founds
+
+
+### generateData(id) 
+
+Generate data to scrape from id
+
+**Parameters**
+
+**id**: `String`, String id from database
+
+**Returns**: `Object`, Object data for scrape
+
+
+### scrapeLostData(id) 
+
+Scrape lost data
+
+**Parameters**
+
+**id**: `String`, Data generated id to scrape
+
+**Returns**: `Object`, Return cache data after scrape it
+
+
+### scrapeAllLostData(data) 
+
+Scrape all losts data
+
+**Parameters**
+
+**data**: `Array`, Array of ids
+
+**Returns**: `Object`, Return last data, after this finish all cache are scraped
+
+
+### docsToCachePrices(docs) 
+
+Saving cached docs from db to global object cachePrices
+
+**Parameters**
+
+**docs**: `Object`, Data from database
+
+**Returns**: `Object`, Global object cachePrices
 
 
 

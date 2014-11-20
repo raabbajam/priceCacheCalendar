@@ -1,8 +1,224 @@
+cache found { adult: 698003, child: 698003, infant: 74303, basic: 630003 }
+cache found { adult: 975203, child: 975203, infant: 102903, basic: 882003 }
+{
+  "pdgcgk": 1836510,
+  "cgksub": 698000,
+  "pdgsub": 2534510
+}
+{ pdgcgk: { ga: { c: 3819810, d: 2854010, y: 1836510 } },
+  cgksub: 
+   { ga: 
+      { h: 698000,
+        n: 1391000,
+        q: 1252400,
+        c: 3962810,
+        d: 3771410,
+        t: 1113810,
+        y: 1538410 } } }
+1455504 1836513 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'cgk',
+  price: 1836513,
+  airline: 'garuda',
+  id: 'pdgcgk1415034000' }
+566704 698003 { date: 1415034000000,
+  origin: 'cgk',
+  destination: 'sub',
+  price: 698003,
+  airline: 'garuda',
+  id: 'cgksub1415034000' }
+2022204 2534513 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'sub',
+  price: 2534513,
+  airline: 'garuda',
+  id: 'pdgsub1415034000' }
+{ pdgsub: {} }
+[ 'pdgcgk', 'cgksub', 'pdgbth', 'bthsub' ]
+{ pdgcgk: { jt: { y: 1455500 } },
+  pdgbth: {},
+  bthsub: {},
+  cgksub: 
+   { jt: 
+      { b: 852700,
+        m: 643700,
+        n: 610700,
+        q: 566700,
+        s: 918700,
+        a: 1149700,
+        i: 1580000,
+        l: 687700,
+        y: 1221200 },
+     id: { d: 1528700, i: 1143700 } } }
+{
+  "pdgcgk": 1455500,
+  "cgksub": 566700,
+  "pdgsub": 2022200,
+  "pdgbth": 0,
+  "bthsub": 0
+}
+{ pdgbth: {},
+  pdgcgk: { jt: { y: 1455500 } },
+  cgksub: 
+   { jt: 
+      { b: 852700,
+        m: 643700,
+        n: 610700,
+        q: 566700,
+        s: 918700,
+        a: 1149700,
+        i: 1580000,
+        l: 687700,
+        y: 1221200 },
+     id: { d: 1528700, i: 1143700 } },
+  bthsub: {} }
+1455504 1455504 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'cgk',
+  price: 1455504,
+  airline: 'lion',
+  id: 'pdgcgk1415034000' }
+2022204 2022204 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'sub',
+  price: 2022204,
+  airline: 'lion',
+  id: 'pdgsub1415034000' }
+566704 566704 { date: 1415034000000,
+  origin: 'cgk',
+  destination: 'sub',
+  price: 566704,
+  airline: 'lion',
+  id: 'cgksub1415034000' }
+1455504 1455504 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'cgk',
+  price: 1455504,
+  airline: 'lion',
+  id: 'pdgcgk1415034000' }
+566704 566704 { date: 1415034000000,
+  origin: 'cgk',
+  destination: 'sub',
+  price: 566704,
+  airline: 'lion',
+  id: 'cgksub1415034000' }
+2022204 2022204 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'sub',
+  price: 2022204,
+  airline: 'lion',
+  id: 'pdgsub1415034000' }
+1455504 1836513 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'cgk',
+  price: 1836513,
+  airline: 'garuda',
+  id: 'pdgcgk1415034000' }
+566704 698003 { date: 1415034000000,
+  origin: 'cgk',
+  destination: 'sub',
+  price: 698003,
+  airline: 'garuda',
+  id: 'cgksub1415034000' }
+2022204 2534513 { date: 1415034000000,
+  origin: 'pdg',
+  destination: 'sub',
+  price: 2534513,
+  airline: 'garuda',
+  id: 'pdgsub1415034000' }
 # TOC
+   - [Base](#base)
+     - [getCheapestInRow, getAllCheapest](#base-getcheapestinrow-getallcheapest)
+     - [getCachePrices, getAllCachePrices](#base-getcacheprices-getallcacheprices)
+     - [generateData](#base-generatedata)
    - [Price Generator for Garuda](#price-generator-for-garuda)
    - [Price Generator for Lion](#price-generator-for-lion)
    - [Price Generator](#price-generator)
 <a name=""></a>
+ 
+<a name="base"></a>
+# Base
+<a name="base-getcheapestinrow-getallcheapest"></a>
+## getCheapestInRow, getAllCheapest
+should return an array of object with ori, dst, class and flight property.
+
+```js
+var cheapest = child.getCheapestInRow(row);
+expect(cheapest.length).to.eq(1);
+expect(cheapest[0].class).to.eq("N");
+next();
+```
+
+should return an array cheapest class.
+
+```js
+var flightClasses = child.getAllCheapest(rows);
+// console.log(flightClasses);
+expect(Object.keys(flightClasses).length).to.gt(0);
+next();
+```
+
+<a name="base-getcacheprices-getallcacheprices"></a>
+## getCachePrices, getAllCachePrices
+should get all cache based on cheapest flight data -- found.
+
+```js
+base.getAllCachePrices(dataFound)
+	.then(function (res) {
+		// console.log(JSON.stringify(res, null, 2));
+		expect(res).to.exist;
+		// console.log('base.cachePrices', base.cachePrices);
+		next();
+	}, function (err) {
+		console.log(err.losts);
+		expect(err.losts).to.exists;
+		next(err);
+	});
+```
+
+should get all cache based on cheapest flight data -- lost.
+
+```js
+base.getAllCachePrices(dataLost)
+	.then(function (res) {
+		expect(res).to.exist;
+		next();
+	}, function (err) {
+		console.log(err.losts);
+		expect(err.losts).to.exists;
+		next();
+	});
+```
+
+<a name="base-generatedata"></a>
+## generateData
+should generate data to scrape.
+
+```js
+var data = child.generateData(id);
+expect(data.ori).to.exist;
+done();
+```
+
+should scrape data based on not cached file -- one id.
+
+```js
+child.scrapeLostData(id)
+	.then(function (res) {
+		console.log(res);
+		expect(res).to.exist;
+	}, done);
+```
+
+should scrape data based on not cached file -- array of ids.
+
+```js
+child.scrapeAllLostData(losts)
+	.then(function (res) {
+		console.log(res);
+		expect(res).to.exist;
+	}, done);
+```
 
 <a name="price-generator-for-garuda"></a>
 # Price Generator for Garuda
