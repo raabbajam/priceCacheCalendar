@@ -4,7 +4,9 @@
   "description": "my another very own function",
   "main": "index.js",
   "scripts": {
-    "test": "cd tests && mocha --reporter nyan mainSpec.js"
+    "test": "cd tests && DEBUG=*-mocha mocha *Spec.js -R spec",
+    "docs": "jsdox --output documentations *.js",
+    "testdocs": "cd tests && mocha *Spec.js -R markdown > ../TEST.md"
   },
   "repository": {
     "type": "git",

@@ -65,8 +65,7 @@ describe('Price Generator for Lion', function () {
 			.then(lion.mergeCache.bind(lion))
 			.then(lion.insertAllLowest.bind(lion))
 			.then(function (res) {
-				// console.log(res);
-				fs.writeFileSync('./li2.html', res);
+				fs.writeFileSync('./li2.html', lion._scrape);
 				next();
 			})
 			.catch(function (err) {

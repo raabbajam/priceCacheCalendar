@@ -1,4 +1,4 @@
-var Base = require('./Base');
+var Base = require('../Base');
 
 function init (dt, scrape) {
 	this._super('garuda');
@@ -51,18 +51,18 @@ function mergeCache (){
 				// not cache
 				if (!_this.cache[currentRoute])
 					return flight;
-				var flightCode = 'ga';	
+				var flightCode = 'ga';
 				flight.seats = flight.seats.map(function (seat) {
-					seat.price = (_cache[currentRoute] && 
+					seat.price = (_cache[currentRoute] &&
 								_cache[currentRoute][flightCode] &&
 								_cache[currentRoute][flightCode][seat.class.toLowerCase()]) || 0;
 					// update lowest price
-					// if seat still available 
-					// and, 
+					// if seat still available
+					// and,
 					// 	either lowest price for this route still 0
 					//  	or
-					//  	seat price cheaper than lowest price 
-					//  	but not zero					 	
+					//  	seat price cheaper than lowest price
+					//  	but not zero
 					if(!!seat.available //seat still available
 						&& (!lowestPrices[currentRoute] //lowest still 0
 						 || (lowestPrices[currentRoute] > seat.price && !!seat.price))){ //seat price cheaper but not zero
@@ -73,7 +73,7 @@ function mergeCache (){
 				lowestPriceRows.push(lowestPrices[currentRoute]);
 				return flight;
 			});
-			// if there is more than one flight in on one row 
+			// if there is more than one flight in on one row
 			if (row.length > 1 && lowestPriceRows.length > 1) {
 				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
 				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
@@ -88,12 +88,12 @@ function mergeCache (){
 	_this._scrape.departure = looper(dep, _this);
 	if(ret)
 		_this._scrape.return = looper(ret, _this);
-	return lowestPrices;	
+	return lowestPrices;
 };
 var GarudaPrototype = {
-	init: init,
+	init        : init,
 	getAllRoutes: getAllRoutes,
-	mergeCache: mergeCache
+	mergeCache  : mergeCache
 };
 var Garuda = Base.extend(GarudaPrototype);
 module.exports = Garuda;

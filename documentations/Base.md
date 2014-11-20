@@ -1,8 +1,12 @@
-priceCacheCalendar
-==================
+# Global
 
-my another very own function
-### init(airline, _db)
+
+
+
+
+* * *
+
+### init(airline, _db) 
 
 Intiailizing
 
@@ -14,14 +18,14 @@ Intiailizing
 
 
 
-### getAllRoutes()
+### getAllRoutes() 
 
 Loop the scrape data and get all routes
 
 **Returns**: `Array`, Array of string paired routes of origin and destination
 
 
-### getCache(ori, dst)
+### getCache(ori, dst) 
 
 Get all cache price data of specified origin and destination
 
@@ -34,7 +38,7 @@ Get all cache price data of specified origin and destination
 **Returns**: `Object`, Data cache price
 
 
-### getAllCaches(routes)
+### getAllCaches(routes) 
 
 Get all cache from an array of routes
 
@@ -45,7 +49,7 @@ Get all cache from an array of routes
 **Returns**: `Object`, Data cache price
 
 
-### insertAllLowest(res)
+### insertAllLowest(res) 
 
 Inserting data cache price from an array of results
 
@@ -55,7 +59,7 @@ Inserting data cache price from an array of results
 
 
 
-### insertLowest(data)
+### insertLowest(data) 
 
 Inserting data cache price to db
 
@@ -65,7 +69,7 @@ Inserting data cache price to db
 
 
 
-### run()
+### run() 
 
 Getting all routes by looping scrape data, and getting all cache specified by all routes
 merge data cache with scrape data, getting lowest price from disting routes, compare it with

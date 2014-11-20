@@ -1,4 +1,4 @@
-var Base = require('./Base');
+var Base = require('../Base');
 var cheerio = require('cheerio');
 function init (dt, scrape) {
 	this._super('lion');
@@ -73,17 +73,17 @@ function mergeCache (){
 					var span = $(radio).parent();
 					var available = $('label', span).text();
 					var classCode = span.attr('title').substr(0,1).toLowerCase();
-					var cachePrice = (_cache[currentRoute] && 
+					var cachePrice = (_cache[currentRoute] &&
 								_cache[currentRoute][flightCode] &&
 								_cache[currentRoute][flightCode][classCode]) || 0;
 					cachePrice = Math.round(cachePrice / 10) * 10;
 					// update lowest price
-					// if seat still available 
-					// and, 
+					// if seat still available
+					// and,
 					// 	either lowest price for this route still 0
 					//  	or
-					//  	seat price cheaper than lowest price 
-					//  	but not zero					 	
+					//  	seat price cheaper than lowest price
+					//  	but not zero
 					if(!!available //seat still available
 						&& (!lowestPrices[currentRoute] //lowest still 0
 						|| (lowestPrices[currentRoute] > cachePrice && !!cachePrice))) //seat price cheaper but not zero
@@ -94,7 +94,7 @@ function mergeCache (){
 				});
 				lowestPriceRows.push(lowestPrices[currentRoute]);
 			});
-			// if there is more than one flight in on one row 
+			// if there is more than one flight in on one row
 			if (row.length > 1 && lowestPriceRows.length > 1) {
 				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
 				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
@@ -109,7 +109,7 @@ function mergeCache (){
 	looper(0);
 	looper(1);
 	this._scrape ='<body>' + $('body').html() + '</body>';
-	return lowestPrices; 
+	return lowestPrices;
 };
 var LionPrototype = {
 	init: init,

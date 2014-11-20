@@ -1,25 +1,35 @@
-var Class = require('./Class');
+var Class = require('./libs/Class');
 var Promise = require('promise');
 var moment = require('moment');
 var dateFormats = ['DD+MM+YYYY','DD+MMM+YYYY','DD MM YYYY','DD MMM YYYY'];
-var ElasticSearchClient = require('elasticsearchclient');
-var db = new ElasticSearchClient({
-    host: 'folbek.me',
-    port: 9200
-});
 var airlines = {"airasia": 1, "citilink": 2, "garuda": 3, "lion": 4, "sriwijaya": 5, "xpress": 6};
-
-function init (airline) {
+var db = require('./libs/db');
+/**
+ * Intiailizing
+ * @param  {String} airline Airline's name
+ * @param  {Object} _db     Database model
+ */
+function init (airline, _db) {
 	this.name = this.airline = airline;
 	this._kode = airlines[airline];
-	this.db = db;
+	this.db = _db || db;
 	this.cache = {};
 };
-function getAllRoutes () {	
+/**
+ * Loop the scrape data and get all routes
+ * @return {Array} Array of string paired routes of origin and destination
+ */
+function getAllRoutes () {
 };
+/**
+ * Get all cache price data of specified origin and destination
+ * @param  {String} ori Origin route
+ * @param  {String} dst Destination route
+ * @return {Object}     Data cache price
+ */
 function getCache (ori, dst) {
 	var _this = this;
-	return new Promise(function (resolve, reject) {	
+	return new Promise(function (resolve, reject) {
 		var _ori = ori && ori.toLowerCase() || _this._dt.ori;
 		var _dst = dst && dst.toLowerCase() || _this._dt.dst;
 		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", }, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
@@ -43,6 +53,11 @@ function getCache (ori, dst) {
 		});
 	});
 };
+/**
+ * Get all cache from an array of routes
+ * @param  {Array} routes Routes of origin and destination cities
+ * @return {Object}        Data cache price
+ */
 function getAllCaches (routes) {
 	var _this = this;
 	var promises = [];
@@ -52,6 +67,10 @@ function getAllCaches (routes) {
 	});
 	return Promise.all(promises);
 };
+/**
+ * Inserting data cache price from an array of results
+ * @param  {Object} res Array of object containing data of lowest price available
+ */
 function insertAllLowest (res) {
 	var promises = [];
 	var _this = this;
@@ -75,6 +94,10 @@ function insertAllLowest (res) {
 		console.log(res);
 	});
 };
+/**
+ * Inserting data cache price to db
+ * @param  {Object} data Cache price data from scrape
+ */
 function insertLowest (data) {
 	var _this = this;
 	var _price = data.price;
@@ -92,9 +115,16 @@ function insertLowest (data) {
 					resolve(res);
 				});
 			}
-		});		
+		});
 	});
 };
+/**
+ * Getting all routes by looping scrape data, and getting all cache specified by all routes
+ * merge data cache with scrape data, getting lowest price from disting routes, compare it with
+ * saved data in db and replace it if necessary
+ * @return {String} Scrape data that already looped and merged with cache data, and checking for
+ * cheapest available seat price in beetwen
+ */
 function run () {
 	var _this = this;
 	var routes = _this.getAllRoutes();
@@ -102,6 +132,10 @@ function run () {
 		.then(_this.mergeCache.bind(_this))
 		.then(_this.insertAllLowest.bind(_this))
 		.then(function (res) {
+			return _this._scrape;
+		})
+		.catch(function (err) {
+			console.log('Error priceCacheCalendar: ' + err);
 			return _this._scrape;
 		})
 }
