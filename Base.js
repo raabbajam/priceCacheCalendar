@@ -16,12 +16,13 @@ function init (airline, args) {
 	this.name = this.airline = airline;
 	this._kode = airlines[airline];
 	this.setOptions(args);
-};
+}
 /**
  * setting options, using one arguments: an object with key-value pair,
  * or two arguments, with the first as key and second as value
  */
 function setOptions() {
+	var key, value;
 	if (arguments.length === 1) {
 		var args = arguments[0];
 		var defaults = {
@@ -30,17 +31,17 @@ function setOptions() {
 			db: db,
 			cache: {},
 			cachePrices: {},
-		}
+		};
 		var options = _.deepExtend(defaults, args);
-		for (var key in defaults) {
-			var value = options[key];
+		for (key in defaults) {
+			value = options[key];
 			this[key] = value;
 			if (typeof this[key] === 'string')
 				this[key] = this[key].toLowerCase();
 		}
 	} else {
-		var key = arguments[0];
-		var value = arguments[1];
+		key = arguments[0];
+		value = arguments[1];
 		this[key] = value;
 	}
 	return this;
@@ -56,7 +57,7 @@ function setOption() {
  * @return {Array} Array of string paired routes of origin and destination
  */
 function getAllRoutes () {
-};
+}
 /**
  * Get all cache price data of specified origin and destination
  * @param  {String} ori Origin route
@@ -69,12 +70,12 @@ function getCache (ori, dst) {
 		var _ori = ori && ori.toLowerCase() || _this._dt.ori;
 		var _dst = dst && dst.toLowerCase() || _this._dt.dst;
 		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", }, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
-		// debug(JSON.stringify(query, null, 2));
+		debug(JSON.stringify(query, null, 2));
 		_this.db.search('pluto', 'price', query, function (err, res) {
 			if (err)
-				return reject(err)
+				return reject(err);
 			res = JSON.parse(res);
-			// debug(JSON.stringify(res, null, 2));
+			debug(JSON.stringify(res, null, 2));
 			var flightList = {};
 			res.aggregations.groupFlight.buckets.forEach(function (flight) {
 				var classList = {};
@@ -88,58 +89,58 @@ function getCache (ori, dst) {
 			resolve();
 		});
 	});
-};
+}
 /**
  * Get all cache from an array of routes
  * @param  {Array} routes Routes of origin and destination cities
  * @return {Object}        Data cache price
  */
 function getAllCaches (routes) {
-	var _this = this;
+	var _this    = this;
 	var promises = [];
 	routes.forEach(function (route) {
-		// debug(route);
+		debug(route);
 		promises.push(_this.getCache(route.substr(0,3), route.substr(3,3)));
 	});
 	return Promise.all(promises);
-};
+}
 /**
  * Inserting data cache price from an array of results
  * @param  {Object} res Array of object containing data of lowest price available
  */
 function insertAllLowest (res) {
 	var promises = [];
-	var _this = this;
-	var _dt = _this._dt
-	var _date = moment(_dt.dep_date, dateFormats).unix() * 1000;
+	var _this    = this;
+	var _dt      = _this._dt;
+	var _date    = moment(_dt.dep_date, dateFormats).unix() * 1000;
 	Object.keys(res).forEach(function (prop, i) {
 		if (!res[prop])
 			return true;
 		var _price = parseInt(res[prop], 10) + _this._kode;
-		var data  = {
-			date: _date,
-			origin: prop.substr(0, 3),
+		var data   = {
+			date       : _date,
+			origin     : prop.substr(0, 3),
 			destination: prop.substr(3, 3),
-			price: _price,
-			airline: _this.airline
-		}
+			price      : _price,
+			airline    : _this.airline
+		};
 		data.id = data.origin + data.destination + data.date / 1000;
 		promises.push(_this.insertLowest(data));
 	});
 	return Promise.all(promises, function (res) {
 		debug(res);
 	});
-};
+}
 /**
  * Inserting data cache price to db
  * @param  {Object} data Cache price data from scrape
  */
 function insertLowest (data) {
-	var _this = this;
+	var _this  = this;
 	var _price = data.price;
 	return new Promise(function (resolve, reject) {
 		_this.db.get('pluto', 'calendar', data.id, function (err, res) {
-			var res = JSON.parse(res);
+			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
 			debug(oldPrice, _price, data);
 			if ( oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this._airline)) {
@@ -147,13 +148,13 @@ function insertLowest (data) {
 			} else {
 				data.price = _price;
 				_this.db.index('pluto', 'calendar', data, function (err, res) {
-					debug('found lower price, inserting to calendar...', res)
+					debug('found lower price, inserting to calendar...', res);
 					resolve(res);
 				});
 			}
 		});
 	});
-};
+}
 /**
  * Getting all routes by looping scrape data, and getting all cache specified by all routes
  * merge data cache with scrape data, getting lowest price from disting routes, compare it with
@@ -173,7 +174,7 @@ function run () {
 		.catch(function (err) {
 			debug('Error priceCacheCalendar: ' + err);
 			return _this._scrape;
-		})
+		});
 }
 /**
  * return an array of object with ori, dst, class and flight property
@@ -192,8 +193,8 @@ function getCheapestInRow (row) {
  */
 function getAllCheapest (rows) {
 	var _this = this;
-	var flightClasses = {}
-	// debug('rows', rows);
+	var flightClasses = {};
+	debug('rows', rows);
 	rows.forEach(function (row) {
 		var cheapests = _this.getCheapestInRow(row);
 		cheapests.forEach(function (cheapest) {
@@ -208,7 +209,7 @@ function getAllCheapest (rows) {
 			if (flightClasses[rute][flight].indexOf(_class) === -1)
 				flightClasses[rute][flight].push(_class);
 		});
-	})
+	});
 	return flightClasses;
 }
 /**
@@ -218,7 +219,7 @@ function getAllCheapest (rows) {
  */
 function generateId (data) {
 	var id = data.origin + data.destination + data.airline + data.flight + data.class;
-	// debug(id);
+	debug(id);
 	return id.toLowerCase();
 }
 /**
@@ -230,27 +231,27 @@ function getCachePrices (ids) {
 	return new Promise(function (resolve, reject) {
 		if (!(ids instanceof Array))
 			ids = [ids];
-		// debug(ids);
+		debug(ids);
 		_this.db.multiget(_this.index, _this.type, ids, function (err, res) {
 			if (err)
-				return reject(err)
-			try {res = JSON.parse(res)} catch(err) { return reject(err)}
-			// debug(res);
+				return reject(err);
+			try {res = JSON.parse(res);} catch(error) { return reject(error);}
+			debug(res);
 			if (!res.docs)
 				return reject(new Error('No cache found'));
 			var docs = res.docs;
 			var losts = [];
-			// debug(JSON.stringify(docs, null, 2));
+			debug(JSON.stringify(docs, null, 2));
 			docs.forEach(function (doc) {
 				if (!doc.found)
-					return losts.push(doc)
-			})
+					return losts.push(doc);
+			});
 			if (losts.length === 0)
 				return resolve(_this.docsToCachePrices(docs));
-			var err = new Error('Some are lost.');
+			err = new Error('Some are lost.');
 			losts = losts.map(function (lost) {
 				return lost._id;
-			})
+			});
 			err.losts = losts;
 			return reject(err);
 		});
@@ -265,7 +266,7 @@ function getCachePrices (ids) {
  * @return {Object}      Promise with losts and founds
  */
 function getAllCachePrices (data) {
-	// debug('getAllCachePrices');
+	debug('getAllCachePrices');
 	var ids = [];
 	var _airline = this.airline;
 	_.each(data, function (value, key) {
@@ -275,7 +276,7 @@ function getAllCachePrices (data) {
 			_value.forEach(function (_class) {
 				var id = _rute + _airline + _flight + _class;
 				ids.push(id.toLowerCase());
-			})
+			});
 		});
 	});
 	return this.getCachePrices(ids);
@@ -315,19 +316,19 @@ function scrapeAllLostData (data) {
 			return _this.scrapeLostData(id)
 				.then(function (res) {
 					results.push(res);
-				})
-		})
+				});
+		});
 	}, Promise.resolve());
 	return new Promise(function (resolve, reject) {
 		steps
 			.then(function () {
-				return resolve(results)
+				return resolve(results);
 			})
 			.catch(function (err) {
 				debug('scrapeAllLostData',err);
 				reject(err);
-			})
-	})
+			});
+	});
 }
 /**
  * Saving cached docs from db to global object cachePrices
@@ -348,8 +349,8 @@ function docsToCachePrices (docs) {
 		if(!_cachePrices[rute][flight])
 			_cachePrices[rute][flight] = {};
 		_cachePrices[rute][flight][_class] = source.prices;
-	})
-	return _cachePrices
+	});
+	return _cachePrices;
 }
 /**
  * Merge json data with cheapest data from db
@@ -374,7 +375,7 @@ function prepareRows (json) {
 function merge (json) {
 	var _this = this;
 	var rows = _this.prepareRows(json);
-	// debug('json',json);
+	debug('json',json);
 	var aoCheapest = _this.getAllCheapest(rows);
 	debug('aoCheapest', aoCheapest);
 	return _this.getAllCachePrices(aoCheapest)
@@ -383,9 +384,10 @@ function merge (json) {
 			return _this.scrapeAllLostData(err.losts)
 				.then(function (res) {
 					debug('getAllCachePrices', res);
-					return _this.getAllCachePrices(aoCheapest)
+					return _this.getAllCachePrices(aoCheapest);
 				}, function (err) {
-					debug('_this.scrapeAllLostData', err)
+					debug('_this.scrapeAllLostData', err);
+					throw err;
 				});
 		})
 		.then(function (res) {
@@ -394,7 +396,7 @@ function merge (json) {
 		})
 		.catch(function (err) {
 			debug(err);
-			throw err;
+			return json;
 		});
 }
 var BasePrototype = {

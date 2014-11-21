@@ -84,8 +84,8 @@ describe('Cache prices for Garuda', function() {
 				.then(function (res) {
 					// debug(res);
 					fs.writeFileSync('./gacp2.json', JSON.stringify(res,null, 4));
-					done()
-				}, done)
+					done();
+				}, done);
 		});
 	});
 });

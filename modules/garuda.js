@@ -11,7 +11,7 @@ function init (dt, scrape) {
 	this._dt.ori = this._dt.ori.toLowerCase();
 	this._dt.dst = this._dt.dst.toLowerCase();
 	this._scrape = scrape;
-};
+}
 function getAllRoutes () {
 	var _this = this;
 	var dep = this._scrape.departure;
@@ -26,9 +26,8 @@ function getAllRoutes () {
 				var ori = flight.origin.toLowerCase();
 				var dst = flight.destination.toLowerCase();
 				var currentRoute = ori + dst;
-				if (routes.indexOf(currentRoute) === -1){
-					routes.push(currentRoute)
-				}
+				if (routes.indexOf(currentRoute) === -1)
+					routes.push(currentRoute);
 			});
 		});
 	}
@@ -36,7 +35,7 @@ function getAllRoutes () {
 	if(ret)
 		looper(ret);
 	return routes;
-};
+}
 function mergeCache (){
 	var _this = this;
 	var _cache = _this.cache;
@@ -44,7 +43,7 @@ function mergeCache (){
 	var ret = _this._scrape.return;
 	var lowestPrices = {};
 	function looper (route, _this) {
-		var realRoute = _this._dt.ori.toLowerCase() + _this._dt.dst.toLowerCase()
+		var realRoute = _this._dt.ori.toLowerCase() + _this._dt.dst.toLowerCase();
 		var rows = route.flights;
 		route.flights = rows.map(function (row) {
 			var lowestPriceRows = [];
@@ -68,9 +67,7 @@ function mergeCache (){
 					//  	or
 					//  	seat price cheaper than lowest price
 					//  	but not zero
-					if(!!seat.available //seat still available
-						&& (!lowestPrices[currentRoute] //lowest still 0
-						 || (lowestPrices[currentRoute] > seat.price && !!seat.price))){ //seat price cheaper but not zero
+					if(!!seat.available && (!lowestPrices[currentRoute] || (lowestPrices[currentRoute] > seat.price && !!seat.price))){ //seat price cheaper but not zero
 						lowestPrices[currentRoute] = seat.price;
 					}
 					return seat;
@@ -80,7 +77,7 @@ function mergeCache (){
 			});
 			// if there is more than one flight in on one row
 			if (row.length > 1 && lowestPriceRows.length > 1) {
-				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
+				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price;}, 0);
 				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
 					lowestPrices[realRoute] = lowestPriceRow;
 					// debug(lowestPrices[realRoute], lowestPriceRow);
@@ -94,7 +91,7 @@ function mergeCache (){
 	if(ret)
 		_this._scrape.return = looper(ret, _this);
 	return lowestPrices;
-};
+}
 /**
  * return an array of object with ori, dst, class and flight property
  * @param  {Object} row Row object
@@ -109,17 +106,17 @@ function getCheapestInRow (rowAll) {
 			dst: row.destination,
 			// flight: row.flightCode
 			flight: 'ga'
-		}
+		};
 		var seats = row.seats;
 		for (var i = seats.length - 1; i >= 0; i--) {
-			if (seats[i].available !== "L" && +seats[i].available > 0) {
+			if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available > 0) {
 				out.class = seats[i].class;
 				break;
 			}
-		};
+		}
 		// debug(out);
 		outs.push(out);
-	})
+	});
 	return outs;
 }
 /**
@@ -138,8 +135,9 @@ function generateData (id) {
 		classCode : id.substr(-1,1),
 		dep_radio : id.substr(-1,1) + '1',
 		dep_date  : moment().add(1, 'M').format('DD+MM+YYYY'),
-		user      : 'IANTONI.JKTGI229T'
-	}
+		user      : 'IANTONI.JKTGI229T',
+		priceScraper: false
+	};
 }
 /**
  * Scrape lost data
@@ -176,7 +174,7 @@ function mergeCachePrices (json) {
 			rute = rute.toLowerCase();
 			var cheapestSeat = _.findLast(row.seats, function (seat) {
 				return seat.available !== "L" && seat.available > 0;
-			})
+			});
 			var cheapestClass = cheapestSeat.class.toLowerCase();
 			row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
 			if (row.cheapest){
@@ -184,8 +182,8 @@ function mergeCachePrices (json) {
 				row.cheapest.available = cheapestSeat.available;
 			}
 			return row;
-		})
-	})
+		});
+	});
 	// debug(_json.departure.flights);
 	// var ret = _json.return;
 	return _json;
