@@ -1,8 +1,12 @@
 var garuda = require('./modules/garuda');
 var lion = require('./modules/lion');
+var citilink = require('./modules/citilink');
+var sriwijaya = require('./modules/sriwijaya');
 var airlines = {
 	garuda: garuda,
-	lion: lion
+	lion: lion,
+	citilink: citilink,
+	sriwijaya: sriwijaya,
 }
 /**
  * Main function that returning function on init

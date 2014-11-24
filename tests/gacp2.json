@@ -932,7 +932,11 @@
                             "available": "9",
                             "price": 0
                         }
-                    ]
+                    ],
+                    "cheapest": {
+                        "class": "Full",
+                        "available": 0
+                    }
                 }
             ]
         ]

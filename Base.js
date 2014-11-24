@@ -1,19 +1,19 @@
 var Class       = require('./libs/Class');
 var Promise     = require('promise');
 var moment      = require('moment');
-var _           = require('underscore');
+var _           = require('lodash');
 var dateFormats = ['DD+MM+YYYY','DD+MMM+YYYY','DD MM YYYY','DD MMM YYYY'];
 var airlines    = {"airasia": 1, "citilink": 2, "garuda": 3, "lion": 4, "sriwijaya": 5, "xpress": 6};
 var db          = require('./libs/db');
-var debug = require('debug')('raabbajam:priceCacheCalendar:base');
-_.mixin(require('underscore.deep'));
+var debug       = require('debug')('raabbajam:priceCacheCalendar:base');
+// _.mixin(require('underscore.deep'));
 /**
  * Intiailizing
  * @param  {String} airline Airline's name
  * @param  {Object} _db     Database model
  */
 function init (airline, args) {
-	this.name = this.airline = airline;
+	this.name  = this.airline = airline;
 	this._kode = airlines[airline];
 	this.setOptions(args);
 }
@@ -26,13 +26,13 @@ function setOptions() {
 	if (arguments.length === 1) {
 		var args = arguments[0];
 		var defaults = {
-			index: 'pluto',
-			type: 'price',
-			db: db,
-			cache: {},
+			index      : 'pluto',
+			type       : 'price',
+			db         : db,
+			cache      : {},
 			cachePrices: {},
 		};
-		var options = _.deepExtend(defaults, args);
+		var options = _.merge({}, defaults, args);
 		for (key in defaults) {
 			value = options[key];
 			this[key] = value;
@@ -40,7 +40,7 @@ function setOptions() {
 				this[key] = this[key].toLowerCase();
 		}
 	} else {
-		key = arguments[0];
+		key   = arguments[0];
 		value = arguments[1];
 		this[key] = value;
 	}
@@ -67,8 +67,8 @@ function getAllRoutes () {
 function getCache (ori, dst) {
 	var _this = this;
 	return new Promise(function (resolve, reject) {
-		var _ori = ori && ori.toLowerCase() || _this._dt.ori;
-		var _dst = dst && dst.toLowerCase() || _this._dt.dst;
+		var _ori  = ori && ori.toLowerCase() || _this._dt.ori;
+		var _dst  = dst && dst.toLowerCase() || _this._dt.dst;
 		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", }, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
 		debug(JSON.stringify(query, null, 2));
 		_this.db.search('pluto', 'price', query, function (err, res) {
@@ -84,7 +84,7 @@ function getCache (ori, dst) {
 				});
 				flightList[flight.key] = classList;
 			});
-			var currentRoute = _ori + _dst;
+			var currentRoute          = _ori + _dst;
 			_this.cache[currentRoute] = flightList;
 			resolve();
 		});
@@ -163,7 +163,7 @@ function insertLowest (data) {
  * cheapest available seat price in beetwen
  */
 function run () {
-	var _this = this;
+	var _this  = this;
 	var routes = _this.getAllRoutes();
 	return _this.getAllCaches(routes)
 		.then(_this.mergeCache.bind(_this))
@@ -194,11 +194,16 @@ function getCheapestInRow (row) {
 function getAllCheapest (rows) {
 	var _this = this;
 	var flightClasses = {};
-	debug('rows', rows);
-	rows.forEach(function (row) {
+	// debug('rows', rows);
+	_.each(rows, function (row) {
 		var cheapests = _this.getCheapestInRow(row);
 		cheapests.forEach(function (cheapest) {
-			var rute = cheapest.ori + cheapest.dst;
+			var _transit = '';
+			for (var i = 1; i <= 3; i++) {
+				if (cheapest['transit' + i])
+					_transit += cheapest['transit' + i];
+			};
+			var rute   = cheapest.ori + _transit + cheapest.dst;
 			var flight = cheapest.flight.toLowerCase();
 			var _class = cheapest.class.toLowerCase();
 			rute = rute.toLowerCase();
@@ -218,7 +223,13 @@ function getAllCheapest (rows) {
  * @return {string}      id for db
  */
 function generateId (data) {
-	var id = data.origin + data.destination + data.airline + data.flight + data.class;
+	var id = data.origin + '_' + data.destination + '_' + data.airline + '_' + data.flight + '_' + data.class;
+	if (data.transit1)
+		id +=  '_' + data.transit1;
+	if (data.transit2)
+		id +=  '_' + data.transit2;
+	if (data.transit3)
+		id +=  '_' + data.transit3;
 	debug(id);
 	return id.toLowerCase();
 }
@@ -231,7 +242,7 @@ function getCachePrices (ids) {
 	return new Promise(function (resolve, reject) {
 		if (!(ids instanceof Array))
 			ids = [ids];
-		debug(ids);
+		debug('ids',ids);
 		_this.db.multiget(_this.index, _this.type, ids, function (err, res) {
 			if (err)
 				return reject(err);
@@ -239,16 +250,16 @@ function getCachePrices (ids) {
 			debug(res);
 			if (!res.docs)
 				return reject(new Error('No cache found'));
-			var docs = res.docs;
+			var docs  = res.docs;
 			var losts = [];
-			debug(JSON.stringify(docs, null, 2));
+			// debug(JSON.stringify(docs, null, 2));
 			docs.forEach(function (doc) {
 				if (!doc.found)
 					return losts.push(doc);
 			});
 			if (losts.length === 0)
 				return resolve(_this.docsToCachePrices(docs));
-			err = new Error('Some are lost.');
+			err   = new Error('Some are lost.');
 			losts = losts.map(function (lost) {
 				return lost._id;
 			});
@@ -274,7 +285,12 @@ function getAllCachePrices (data) {
 		_.each(value, function (_value, _key) {
 			var _flight = _key;
 			_value.forEach(function (_class) {
-				var id = _rute + _airline + _flight + _class;
+				// debug('_rute',_rute)
+				var rute = _rute.match(/.../g);
+				// debug('rute',rute)
+				var _id = [rute.shift(), rute.pop(), _airline, _flight, _class].concat(rute);
+				var id = _id.join('_');
+				// debug('id',id)
 				ids.push(id.toLowerCase());
 			});
 		});
@@ -307,7 +323,7 @@ function scrapeLostData (id) {
  * @return {Object}      Return last data, after this finish all cache are scraped
  */
 function scrapeAllLostData (data) {
-	var _this = this;
+	var _this   = this;
 	var results = [];
 	debug('scrapeAllLostData');
 	var steps = data.reduce(function (sequence, id) {
@@ -325,7 +341,7 @@ function scrapeAllLostData (data) {
 				return resolve(results);
 			})
 			.catch(function (err) {
-				debug('scrapeAllLostData',err);
+				debug('scrapeAllLostData',err.stack);
 				reject(err);
 			});
 	});
@@ -336,13 +352,17 @@ function scrapeAllLostData (data) {
  * @return {Object}      Global object cachePrices
  */
 function docsToCachePrices (docs) {
-	var _this = this;
+	var _this        = this;
 	var _cachePrices = _this.cachePrices;
 	docs.forEach(function (doc) {
 		var source = doc._source;
 		var flight = source.flight.toLowerCase();
 		var _class = source.class.toLowerCase();
-		var rute = source.origin + source.destination;
+		var rute   = source.origin;
+		for (var i = 1; i <= 3; i++){
+			rute += source['transit' + i] || '';
+		}
+		rute += source.destination;
 		rute = rute.toLowerCase();
 		if (!_this.cachePrices[rute])
 			_cachePrices[rute] = {};
@@ -374,8 +394,8 @@ function prepareRows (json) {
 }
 function merge (json) {
 	var _this = this;
-	var rows = _this.prepareRows(json);
-	debug('json',json);
+	var rows  = _this.prepareRows(json);
+	// debug('json',json);
 	var aoCheapest = _this.getAllCheapest(rows);
 	debug('aoCheapest', aoCheapest);
 	return _this.getAllCachePrices(aoCheapest)

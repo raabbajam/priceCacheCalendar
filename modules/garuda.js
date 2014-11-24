@@ -126,18 +126,23 @@ function getCheapestInRow (rowAll) {
  */
 function generateData (id) {
 	var _airline = this.airline;
-	return {
-		ori       : id.substr(0,3),
-		dst       : id.substr(3,3),
-		airline   : _airline,
-		action    : 'price',
-		flightCode: 'ga',
-		classCode : id.substr(-1,1),
-		dep_radio : id.substr(-1,1) + '1',
-		dep_date  : moment().add(1, 'M').format('DD+MM+YYYY'),
-		user      : 'IANTONI.JKTGI229T',
+	var _id = id.split('_');
+	var data = {
+		ori         : _id[0],
+		dst         : _id[1],
+		airline     : _id[2],
+		flightCode  : _id[3],
+		classCode   : _id[4],
+		dep_radio   : _id[4] + '1',
+		dep_date    : moment().add(1, 'M').format('DD+MM+YYYY'),
+		action      : 'price',
+		user        : 'IANTONI.JKTGI229T',
 		priceScraper: false
 	};
+	for (var i = 5, j = 1, ln = _id.length; i < ln; i++, j++) {
+		data['transit' + j] = _id[i];
+	}
+	return data;
 }
 /**
  * Scrape lost data
@@ -180,6 +185,11 @@ function mergeCachePrices (json) {
 			if (row.cheapest){
 				row.cheapest.class = cheapestSeat.class;
 				row.cheapest.available = cheapestSeat.available;
+			} else {
+				row.cheapest = {
+					class: 'Full',
+					available: 0,
+				}
 			}
 			return row;
 		});

@@ -1,13 +1,13 @@
 var Base    = require('../Base');
 var moment = require('moment');
-var debug       = require('debug')('raabbajam:priceCacheCalendar:lion');
+var debug       = require('debug')('raabbajam:priceCacheCalendar:citilink');
 var _ = require('lodash');
 var db = require('../libs/db');
 var priceScrapers = require('priceScraper');
-var LionPriceScrapers = priceScrapers.lion;
+var CitilinkPriceScrapers = priceScrapers.citilink;
 var cheerio = require('cheerio');
 function init (dt, scrape, args) {
-	this._super('lion', args);
+	this._super('citilink', args);
 	for(var prop in dt){
 		dt[prop] = dt[prop].toLowerCase()
 	}
@@ -96,7 +96,7 @@ function mergeCache (){
 						lowestPrices[currentRoute] = cachePrice;
 					// if in 'span' there is no '.rp' class and cachePrice is not zero
 					if(!!cachePrice && !$('.rp', span).length)
-						span.append('<span class="rp">rplion'+cachePrice+'rplion</span>');
+						span.append('<span class="rp">rpciti'+cachePrice+'rpciti</span>');
 				});
 				lowestPriceRows.push(lowestPrices[currentRoute]);
 			});
@@ -125,30 +125,29 @@ function mergeCache (){
 function getCheapestInRow (row) {
 	// debug('rowAll',row );
 	var outs = [];
-	// _.each(rowAll,function (row, key) {
-		// debug('getCheapestInRow row', row)
-		var rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
-		var flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
-		var out = {
-			ori: rute.substr(0, 3),
-			dst: rute.substr(3, 3),
-			// flight: row.flightCode
-			flight: flight,
-		};
-		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
-		_.forEachRight(aClass, function (_class) {
-			var matchAvailable;
-			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && (matchAvailable = row[_class].match(/(\d)+<\/label>/)).length > 1){
-				if (+matchAvailable[1] > 0) {
-					out.class = _class;
-					return false;
-				}
-			}
-		})
-		// debug(out);
-		if (!!out.class)
-			outs.push(out);
-	// });
+	var rutes = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
+	debug('rutes',rutes);
+	var flight = row.flight.substr(0,2) || '';
+	var out = {
+		ori: rutes.shift(),
+		dst: rutes.pop(),
+		// flight: row.flightCode
+		flight: flight,
+	};
+	rutes.forEach(function (rute, i) {
+		out['transit' + (i + 1)] = rute;
+	})
+	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
+	_.forEachRight(aClass, function (_class) {
+		var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
+		if (matchAvailable > 0){
+			out.class = _class;
+			return false;
+		}
+	})
+	// debug(out);
+	if (!!out.class)
+		outs.push(out);
 	return outs;
 }
 /**
@@ -171,9 +170,9 @@ function generateData (id) {
 		dep_date      : this._dt.dep_date,
 		// dep_date      : moment().add(1, 'M').format('DD+MMM+YYYY'),
 		rute: 'OW',
-		dep_radio     : 'XX_XX_XX_XX',
+		dep_radio  : '1Fare6',
 		action        : 'price',
-		user          : 'ndebomitra',
+		user          : 'mitrabook',
 		priceScraper: false
 	};
 	for (var i = 5, j = 1, ln = _id.length; i < ln; i++, j++) {
@@ -189,15 +188,16 @@ function generateData (id) {
 function scrapeLostData (id) {
 	debug('scrapeLostData',id);
 	var dt = this.generateData(id);
-	var urlAirbinder = 'http://128.199.251.75:2/price';
-	var urlPluto = 'http://pluto.dev/0/price/lion';
+	var urlAirbinder = 'http://128.199.251.75:4/price';
+	var urlPluto = 'http://pluto.dev/0/price/citilink';
+	debug('dt',dt)
 	var options = {
 		scrape: urlAirbinder,
 		dt: dt,
-		airline: 'lion'
+		airline: 'citilink'
 	};
-    var lionPriceScrapers = new LionPriceScrapers(options);
-    return lionPriceScrapers.run().catch(function (err) {debug('lionPriceScrapers',err);});
+    var citiPriceScrapers = new CitilinkPriceScrapers(options);
+    return citiPriceScrapers.run().catch(function (err) {debug('citiPriceScrapers',err);});
 }
 /**
  * Merge json data with cheapest data from db
@@ -213,27 +213,27 @@ function mergeCachePrices (json) {
 		// debug('rowAll',rowAll)
 		// return _.mapValues(rowAll, function (row) {
 			// debug('row',row)
-			var rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
-			var flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
+			var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
+			var flight = row.flight.substr(0,2) || '';
 			rute = rute.toLowerCase();
 			flight = flight.toLowerCase();
-			var aClass = Object.keys(row).filter(function(b){return b.length === 1})
+			var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 			_.forEachRight(aClass, function (_class) {
-				var matchAvailable;
-				if (!!row[_class] && row[_class].indexOf('disabled') === -1 && (matchAvailable = row[_class].match(/(\d)+<\/label>/)).length > 1){
-					if (+matchAvailable[1] > 0) {
+				var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
+				if (matchAvailable > 0){
+					try{
 						row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
-						if (!!row.cheapest) {
-							row.cheapest.class = _class.toLowerCase();
-							row.cheapest.available = +matchAvailable[1];
-						} else {
-							row.cheapest = {
-								class: 'Full',
-								available: 0
-							}
+					} catch (e){debug(e)}
+					if (!!row.cheapest) {
+						row.cheapest.class = _class.toLowerCase();
+						row.cheapest.available = +matchAvailable[1];
+					} else {
+						row.cheapest = {
+							class: 'Full',
+							available: 0
 						}
-						return false;
 					}
+					return false;
 				}
 			});
 			// debug('mergeCachePrices row', row)
@@ -258,7 +258,7 @@ function prepareRows (json) {
 		rows = rows.concat(_.values(_json.ret_table));
 	return rows;
 }
-var LionPrototype = {
+var CitilinkPrototype = {
 	init            : init,
 	getAllRoutes    : getAllRoutes,
 	mergeCache      : mergeCache,
@@ -268,5 +268,5 @@ var LionPrototype = {
 	mergeCachePrices: mergeCachePrices,
 	prepareRows     : prepareRows,
 };
-var Lion = Base.extend(LionPrototype);
-module.exports = Lion;
+var Citilink = Base.extend(CitilinkPrototype);
+module.exports = Citilink;
