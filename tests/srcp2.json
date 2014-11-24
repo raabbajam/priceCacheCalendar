@@ -1,0 +1,181 @@
+[
+    {
+        "ret_table": [],
+        "dep_table": {
+            "0": {
+                "code_flight": {
+                    "1": "SJ 021",
+                    "2": "SJ 256"
+                },
+                "depart": {
+                    "1": "PDG 13:50",
+                    "2": "CGK 18:35"
+                },
+                "arrive": {
+                    "1": "CGK 15:35",
+                    "2": "SUB 19:50"
+                },
+                "stop": {},
+                "O": [
+                    "<span class=\"classLetterCode\">O</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131358,2617385:O:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">883</span>"
+                ],
+                "U": [
+                    "<span class=\"classLetterCode\">U</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131357,2617370:U:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">993</span>"
+                ],
+                "X": [
+                    "<span class=\"classLetterCode\">X</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131362,2617376:X:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,092</span>"
+                ],
+                "E": [
+                    "<span class=\"classLetterCode\">E</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131351,2617384:E:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,202</span>"
+                ],
+                "G": [
+                    "<span class=\"classLetterCode\">G</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131344,2617380:G:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,323</span>"
+                ],
+                "V": [
+                    "<span class=\"classLetterCode\">V</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131343,2617383:V:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,444</span>"
+                ],
+                "T": [
+                    "<span class=\"classLetterCode\">T</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131350,2617372:T:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">1,554</span>"
+                ],
+                "Q": [
+                    "<span class=\"classLetterCode\">Q</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131342,2617375:Q:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">1,664</span>"
+                ],
+                "N": [
+                    "<span class=\"classLetterCode\">N</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131341,2617389:N:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">1,818</span>"
+                ],
+                "M": [
+                    "<span class=\"classLetterCode\">M</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131349,2617373:M:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">1,972</span>"
+                ],
+                "L": [
+                    "<span class=\"classLetterCode\">L</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131356,2617382:L:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,093</span>"
+                ],
+                "K": [
+                    "<span class=\"classLetterCode\">K</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131361,2617371:K:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,170</span>"
+                ],
+                "H": [
+                    "<span class=\"classLetterCode\">H</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131355,2617379:H:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,346</span>"
+                ],
+                "B": [
+                    "<span class=\"classLetterCode\">B</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131360,2617388:B:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,379</span>"
+                ],
+                "W": [
+                    "<span class=\"classLetterCode\">W</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131354,2617374:W:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,544</span>"
+                ],
+                "S": [
+                    "<span class=\"classLetterCode\">S</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131359,2617387:S:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,599</span>"
+                ],
+                "Y": [
+                    "<span class=\"classLetterCode\">Y</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131347,2617369:Y:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,610</span>"
+                ],
+                "I": [
+                    "<span class=\"classLetterCode\">I</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131346,2617386:I:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">2,940</span>"
+                ],
+                "D": [
+                    "<span class=\"classLetterCode\">D</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131352,2617368:D:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">3,380</span>"
+                ],
+                "C": [
+                    "<span class=\"classLetterCode\">C (WL)</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131348,2617381:C:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">4,370</span>"
+                ],
+                "detailFlight": {
+                    "1": "Padang, Minangkabau, Departure 13:50LT\r\n\t\tJakarta, Soekarno Hatta International Airport,  Arrival 15:35LT\r\n\t\tAC Type : 734 Y & C Config\t\t\r\n\r\n\t\tJakarta, Soekarno Hatta International Airport, Departure 18:35LT\r\n\t\tSurabaya, Juanda,  Arrival 19:50LT\r\n\t\tAC Type : 734 Y & C Config"
+                },
+                "cheapest": {
+                    "adult": 1554705,
+                    "child": 1554705,
+                    "infant": 146405,
+                    "basic": 1240005,
+                    "class": "t",
+                    "available": 9
+                }
+            },
+            "1": {
+                "code_flight": {
+                    "1": "SJ 021",
+                    "2": "SJ 234"
+                },
+                "depart": {
+                    "1": "PDG 13:50",
+                    "2": "CGK 18:30"
+                },
+                "arrive": {
+                    "1": "CGK 15:35",
+                    "2": "SUB 21:00"
+                },
+                "stop": {
+                    "1": "1Stops"
+                },
+                "O": [
+                    "<span class=\"classLetterCode\">O</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131358,2510025:O:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">883</span>"
+                ],
+                "U": [
+                    "<span class=\"classLetterCode\">U</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131357,2510024:U:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">993</span>"
+                ],
+                "X": [
+                    "<span class=\"classLetterCode\">X</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131362,2510029:X:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,092</span>"
+                ],
+                "E": [
+                    "<span class=\"classLetterCode\">E</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131351,2510018:E:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,202</span>"
+                ],
+                "G": [
+                    "<span class=\"classLetterCode\">G</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131344,2510011:G:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,323</span>"
+                ],
+                "V": [
+                    "<span class=\"classLetterCode\">V</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131343,2510010:V:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,444</span>"
+                ],
+                "T": [
+                    "<span class=\"classLetterCode\">T</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131350,2510017:T:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,554</span>"
+                ],
+                "Q": [
+                    "<span class=\"classLetterCode\">Q</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131342,2510009:Q:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">1,664</span>"
+                ],
+                "N": [
+                    "<span class=\"classLetterCode\">N</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131341,2510008:N:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(3)</span><span class=\"avcellFare\">1,818</span>"
+                ],
+                "M": [
+                    "<span class=\"classLetterCode\">M</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131349,2510016:M:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(6)</span><span class=\"avcellFare\">1,972</span>"
+                ],
+                "L": [
+                    "<span class=\"classLetterCode\">L</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131356,2510023:L:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,093</span>"
+                ],
+                "K": [
+                    "<span class=\"classLetterCode\">K</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131361,2510028:K:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,170</span>"
+                ],
+                "H": [
+                    "<span class=\"classLetterCode\">H</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131355,2510022:H:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,346</span>"
+                ],
+                "B": [
+                    "<span class=\"classLetterCode\">B</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131360,2510027:B:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,379</span>"
+                ],
+                "W": [
+                    "<span class=\"classLetterCode\">W</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131354,2510021:W:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,544</span>"
+                ],
+                "S": [
+                    "<span class=\"classLetterCode\">S</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131359,2510026:S:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,599</span>"
+                ],
+                "Y": [
+                    "<span class=\"classLetterCode\">Y</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131347,2510014:Y:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(9)</span><span class=\"avcellFare\">2,610</span>"
+                ],
+                "I": [
+                    "<span class=\"classLetterCode\">I</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131346,2510013:I:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">2,940</span>"
+                ],
+                "D": [
+                    "<span class=\"classLetterCode\">D</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" disabled=\"disabled\" type=\"radio\" value=\"131352,2510019:D:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">3,380</span>"
+                ],
+                "C": [
+                    "<span class=\"classLetterCode\">C (WL)</span><input class=\"avcellRadio\" name=\"radioFrom\" id=\"radioFrom\" type=\"radio\" value=\"131348,2510015:C:C\" onclick=\"getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)\"><span class=\"availNumCode\">(0)</span><span class=\"avcellFare\">4,370</span>"
+                ],
+                "detailFlight": {
+                    "1": "Padang, Minangkabau, Departure 13:50LT\r\n\t\tJakarta, Soekarno Hatta International Airport,  Arrival 15:35LT\r\n\t\tAC Type : 734 Y & C Config\t\t\r\n\r\n\t\t\tJakarta, Soekarno Hatta International Airport, Departure 18:30LT\r\n\t\t\t\r\n\t\t\tYogyakarta, Adi Sucipto,  Arrival 19:40LT\t\t\t\t, Departure 20:10LT\t\t\t\r\n\t\t\t\r\n\t\t\tSurabaya, Juanda,  Arrival 21:00LT\t\t\t\r\n\t\tAC Type : 735 Y & C CONFIG"
+                },
+                "cheapest": {
+                    "adult": 1818705,
+                    "child": 1818705,
+                    "infant": 172805,
+                    "basic": 1480005,
+                    "class": "n",
+                    "available": 3
+                }
+            }
+        }
+    }
+]

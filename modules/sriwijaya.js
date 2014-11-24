@@ -1,13 +1,13 @@
 var Base    = require('../Base');
 var moment = require('moment');
-var debug       = require('debug')('raabbajam:priceCacheCalendar:citilink');
+var debug       = require('debug')('raabbajam:priceCacheCalendar:sriwijaya');
 var _ = require('lodash');
 var db = require('../libs/db');
 var priceScrapers = require('priceScraper');
-var CitilinkPriceScrapers = priceScrapers.citilink;
+var SriwijayaPriceScrapers = priceScrapers.sriwijaya;
 var cheerio = require('cheerio');
 function init (dt, scrape, args) {
-	this._super('citilink', args);
+	this._super('sriwijaya', args);
 	for(var prop in dt){
 		dt[prop] = dt[prop].toLowerCase()
 	}
@@ -125,22 +125,23 @@ function mergeCache (){
 function getCheapestInRow (row) {
 	// debug('rowAll',row );
 	var outs = [];
-	var rutes = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
-	debug('rutes',rutes);
-	var flight = row.flight.substr(0,2) || '';
+	var rutes = _.values(row.depart);
+	rutes.push(_.values(row.arrive).pop());
+	rutes = rutes.map(function (rute) {return rute.substr(0,3); })
+	// debug('rutes',rutes);
+	var flight = _.values(row.code_flight)[0].replace(/\s/g , '+');
 	var out = {
 		ori: rutes.shift(),
 		dst: rutes.pop(),
-		// flight: row.flightCode
 		flight: flight,
 	};
 	rutes.forEach(function (rute, i) {
 		out['transit' + (i + 1)] = rute;
 	})
-	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
-	_.forEachRight(aClass, function (_class) {
-		var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
-		if (matchAvailable > 0){
+	var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
+	_.forEach(aClass, function (_class) {
+		var matchAvailable;
+		if(row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
 			out.class = _class;
 			return false;
 		}
@@ -157,23 +158,23 @@ function getCheapestInRow (row) {
  */
 function generateData (id) {
 	var _id = id.split('_');
+	// var rutes = _id[3];
 	var cek_instant_id = _id[3] + '_' + _id[4];
 	cek_instant_id = cek_instant_id.toUpperCase();
 	var data = {
-		ori           : _id[0],
-		dst           : _id[1],
+		ori           : _id[0].toUpperCase(),
+		dst           : _id[1].toUpperCase(),
 		airline       : _id[2],
 		flightCode    : _id[3],
 		classCode     : _id[4],
 		cek_instant   : 1,
 		cek_instant_id: cek_instant_id,
+		dep_radio     : cek_instant_id,
 		dep_date      : this._dt.dep_date,
-		// dep_date      : moment().add(1, 'M').format('DD+MMM+YYYY'),
-		rute: 'OW',
-		dep_radio  : '1Fare6',
+		rute          : 'OW',
 		action        : 'price',
-		user          : 'mitrabook',
-		priceScraper: false
+		user          : 'DEPAG0101',
+		priceScraper  : false
 	};
 	for (var i = 5, j = 1, ln = _id.length; i < ln; i++, j++) {
 		data['transit' + j] = _id[i];
@@ -188,16 +189,15 @@ function generateData (id) {
 function scrapeLostData (id) {
 	debug('scrapeLostData',id);
 	var dt = this.generateData(id);
-	var urlAirbinder = 'http://128.199.251.75:4/price';
-	var urlPluto = 'http://pluto.dev/0/price/citilink';
-	debug('dt',dt)
+	var urlAirbinder = 'http://128.199.251.75:9019/price';
+	var urlPluto = 'http://pluto.dev/0/price/sriwijaya';
 	var options = {
 		scrape: urlAirbinder,
 		dt: dt,
-		airline: 'citilink'
+		airline: 'sriwijaya'
 	};
-    var citilinkPriceScrapers = new CitilinkPriceScrapers(options);
-    return citilinkPriceScrapers.run().catch(function (err) {debug('citilinkPriceScrapers',err);});
+    var sriwijayaPriceScrapers = new SriwijayaPriceScrapers(options);
+    return sriwijayaPriceScrapers.run().catch(function (err) {debug('sriwijayaPriceScrapers',err);});
 }
 /**
  * Merge json data with cheapest data from db
@@ -210,35 +210,31 @@ function mergeCachePrices (json) {
 	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
-		// debug('rowAll',rowAll)
-		// return _.mapValues(rowAll, function (row) {
-			// debug('row',row)
-			var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
-			var flight = row.flight.substr(0,2) || '';
-			rute = rute.toLowerCase();
-			flight = flight.toLowerCase();
-			var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
-			_.forEachRight(aClass, function (_class) {
-				var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
-				if (matchAvailable > 0){
-					try{
-						row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
-					} catch (e){debug(e)}
-					if (!!row.cheapest) {
-						row.cheapest.class = _class.toLowerCase();
-						row.cheapest.available = +matchAvailable[1];
-					} else {
-						row.cheapest = {
-							class: 'Full',
-							available: 0
-						}
-					}
-					return false;
+		// debug('row',row)
+		var rutes = _.values(row.depart);
+		rutes.push(_.values(row.arrive).pop());
+		rutes = rutes.map(function (rute) {return rute.substr(0,3); });
+		var rute = rutes.join('').toLowerCase();
+		debug('rute',rute);
+		var flight = _.values(row.code_flight)[0].toLowerCase().replace(/\s/g , '+');;
+		var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
+		_.forEach(aClass, function (_class) {
+			var matchAvailable;
+			if(row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+				try {
+					row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
+				} catch (e) {debug(e);}
+				if (!!row.cheapest) {
+					row.cheapest.class = _class.toLowerCase();
+					row.cheapest.available = matchAvailable;
+				} else {
+					row.cheapest = {class: 'Full', available: 0 };
 				}
-			});
-			// debug('mergeCachePrices row', row)
-			return row;
-		// });
+				return false;
+			}
+		});
+		// debug('mergeCachePrices row', row)
+		return row;
 	});
 	// debug(_json.dep_table);
 	// var ret = _json.return;
@@ -258,7 +254,7 @@ function prepareRows (json) {
 		rows = rows.concat(_.values(_json.ret_table));
 	return rows;
 }
-var CitilinkPrototype = {
+var SriwijayaPrototype = {
 	init            : init,
 	getAllRoutes    : getAllRoutes,
 	mergeCache      : mergeCache,
@@ -268,5 +264,5 @@ var CitilinkPrototype = {
 	mergeCachePrices: mergeCachePrices,
 	prepareRows     : prepareRows,
 };
-var Citilink = Base.extend(CitilinkPrototype);
-module.exports = Citilink;
+var Sriwijaya = Base.extend(SriwijayaPrototype);
+module.exports = Sriwijaya;
