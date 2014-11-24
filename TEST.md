@@ -2,12 +2,20 @@
    - [Base](#base)
      - [getCheapestInRow, getAllCheapest](#base-getcheapestinrow-getallcheapest)
      - [getCachePrices, getAllCachePrices](#base-getcacheprices-getallcacheprices)
-     - [generateData](#base-generatedata)
-   - [Price Generator for Garuda](#price-generator-for-garuda)
-   - [Price Generator for Lion](#price-generator-for-lion)
+     - [generateData, scrapeLostData, scrapeAllLostData](#base-generatedata-scrapelostdata-scrapealllostdata)
+     - [mergeCachePrices](#base-mergecacheprices)
+     - [prepareRows](#base-preparerows)
+   - [Cache prices for Citilink](#cache-prices-for-citilink)
+     - [merge](#cache-prices-for-citilink-merge)
+   - [Cache prices for Garuda](#cache-prices-for-garuda)
+     - [merge](#cache-prices-for-garuda-merge)
+   - [Cache prices for Lion](#cache-prices-for-lion)
+     - [merge](#cache-prices-for-lion-merge)
    - [Price Generator](#price-generator)
+   - [Cache prices for Sriwijaya](#cache-prices-for-sriwijaya)
+     - [merge](#cache-prices-for-sriwijaya-merge)
 <a name=""></a>
-
+ 
 <a name="base"></a>
 # Base
 <a name="base-getcheapestinrow-getallcheapest"></a>
@@ -25,7 +33,7 @@ should return an array cheapest class.
 
 ```js
 var flightClasses = child.getAllCheapest(rows);
-// console.log(flightClasses);
+debug(flightClasses);
 expect(Object.keys(flightClasses).length).to.gt(0);
 next();
 ```
@@ -37,13 +45,13 @@ should get all cache based on cheapest flight data -- found.
 ```js
 base.getAllCachePrices(dataFound)
 	.then(function (res) {
-		// console.log(JSON.stringify(res, null, 2));
-		expect(res).to.exist;
-		// console.log('base.cachePrices', base.cachePrices);
+		// debug(JSON.stringify(res, null, 2));
+		expect(res).to.exists;
+		// debug('base.cachePrices', base.cachePrices);
 		next();
 	}, function (err) {
-		console.log(err.losts);
-		expect(err.losts).to.exists;
+		// debug(err.losts);
+		expect(err.losts).to.exist;
 		next(err);
 	});
 ```
@@ -56,14 +64,14 @@ base.getAllCachePrices(dataLost)
 		expect(res).to.exist;
 		next();
 	}, function (err) {
-		console.log(err.losts);
+		// debug(err.losts);
 		expect(err.losts).to.exists;
 		next();
 	});
 ```
 
-<a name="base-generatedata"></a>
-## generateData
+<a name="base-generatedata-scrapelostdata-scrapealllostdata"></a>
+## generateData, scrapeLostData, scrapeAllLostData
 should generate data to scrape.
 
 ```js
@@ -77,8 +85,9 @@ should scrape data based on not cached file -- one id.
 ```js
 child.scrapeLostData(id)
 	.then(function (res) {
-		console.log(res);
+		// debug(res);
 		expect(res).to.exist;
+		done();
 	}, done);
 ```
 
@@ -87,181 +96,82 @@ should scrape data based on not cached file -- array of ids.
 ```js
 child.scrapeAllLostData(losts)
 	.then(function (res) {
-		console.log(res);
+		// debug(res);
 		expect(res).to.exist;
+		done();
 	}, done);
 ```
 
-<a name="price-generator-for-garuda"></a>
-# Price Generator for Garuda
-should extend base.
+<a name="base-mergecacheprices"></a>
+## mergeCachePrices
+should merge json data with cheapest.
 
 ```js
-var garuda = new Garuda(mockBody, mockDataGaruda);
-expect(garuda.name).to.equal('garuda');
-next();
+var mergedJson = child.mergeCachePrices(json);
+expect(mergedJson).to.exist;
+fs.writeFileSync('./bacp2.json', JSON.stringify(mergedJson,null, 4));
+done();
 ```
 
-should return cache.
+<a name="base-preparerows"></a>
+## prepareRows
+should error on calling function that doesn't implemented.
 
 ```js
-var garuda = new Garuda(mockBody, mockDataGaruda);
-garuda.getCache()
-	.then(function () {
-		expect(garuda.cache[mockBody.ori.toLowerCase()+mockBody.dst.toLowerCase()]).to.exist;
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
+var base = new Base();
+expect(base.prepareRows).to.throw(/prepareRows/);
+done();
 ```
 
-should loop get all routes.
+<a name="cache-prices-for-citilink"></a>
+# Cache prices for Citilink
+<a name="cache-prices-for-citilink-merge"></a>
+## merge
+should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged.
 
 ```js
-var garuda = new Garuda(mockBody, mockDataGaruda);
-var routes = garuda.getAllRoutes();
-// console.log(routes);
-expect(routes.length).gt(0);
-next();
-```
-
-should get all routes cache.
-
-```js
-var garuda = new Garuda(mockBody, mockDataGaruda);
-var routes = garuda.getAllRoutes();
-garuda.getAllCaches(routes)
-	.then(function () {
-		// console.log(garuda.cache);
-		expect(garuda.cache).not.eq({});
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
-```
-
-should merge all cache.
-
-```js
-var garuda = new Garuda(mockBody, mockDataGaruda);
-var routes = garuda.getAllRoutes();
-garuda.getAllCaches(routes)
-	.then(garuda.mergeCache.bind(garuda))
+var json = JSON.parse(fs.readFileSync('./cicp.json', 'utf8'));
+var citilink = new Citilink(mockBody, mockDataCitilink);
+citilink.merge(json)
 	.then(function (res) {
-		// console.log(JSON.stringify(garuda._scrape, null, 2));
-		console.log(JSON.stringify(res, null, 2));
-		console.log(garuda.cache);
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
+		// debug(res);
+		fs.writeFileSync('./cicp2.json', JSON.stringify(res,null, 4));
+		done();
+	}, done);
 ```
 
-should compare with db and insert to db if cheaper, for all lowest price.
+<a name="cache-prices-for-garuda"></a>
+# Cache prices for Garuda
+<a name="cache-prices-for-garuda-merge"></a>
+## merge
+should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged.
 
 ```js
+var json = JSON.parse(fs.readFileSync('./gacp.json', 'utf8'));
 var garuda = new Garuda(mockBody, mockDataGaruda);
-var routes = garuda.getAllRoutes();
-garuda.getAllCaches(routes)
-	.then(garuda.mergeCache.bind(garuda))
-	.then(garuda.insertAllLowest.bind(garuda))
+garuda.merge(json)
 	.then(function (res) {
-		// console.log(res);
-		fs.writeFileSync('./ga2.html', JSON.stringify(res, null, 2));
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
+		// debug(res);
+		fs.writeFileSync('./gacp2.json', JSON.stringify(res,null, 4));
+		done();
+	}, done);
 ```
 
-<a name="price-generator-for-lion"></a>
-# Price Generator for Lion
-should extend base.
+<a name="cache-prices-for-lion"></a>
+# Cache prices for Lion
+<a name="cache-prices-for-lion-merge"></a>
+## merge
+should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged.
 
 ```js
+var json = JSON.parse(fs.readFileSync('./licp.json', 'utf8'));
 var lion = new Lion(mockBody, mockDataLion);
-expect(lion.name).to.equal('lion');
-next();
-```
-
-should return cache.
-
-```js
-var lion = new Lion(mockBody, mockDataLion);
-lion.getCache()
-	.then(function () {
-		expect(lion.cache[mockBody.ori.toLowerCase()+mockBody.dst.toLowerCase()]).to.exist;
-		console.log(lion.cache);
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
-```
-
-should loop get all routes.
-
-```js
-var lion = new Lion(mockBody, mockDataLion);
-var routes = lion.getAllRoutes();
-console.log(routes);
-expect(routes.length).gt(0);
-next();
-```
-
-should get all routes cache.
-
-```js
-var lion = new Lion(mockBody, mockDataLion);
-var routes = lion.getAllRoutes();
-lion.getAllCaches(routes)
-	.then(function () {
-		console.log(lion.cache);
-		expect(lion.cache).not.eq({});
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
-```
-
-should merge all cache.
-
-```js
-var lion = new Lion(mockBody, mockDataLion);
-var routes = lion.getAllRoutes();
-lion.getAllCaches(routes)
-	.then(lion.mergeCache.bind(lion))
+lion.merge(json)
 	.then(function (res) {
-		// console.log(JSON.stringify(lion._scrape, null, 2));
-		console.log(JSON.stringify(res, null, 2));
-		console.log(lion.cache);
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
-```
-
-should compare with db and insert to db if cheaper, for all lowest price.
-
-```js
-var lion = new Lion(mockBody, mockDataLion);
-var routes = lion.getAllRoutes();
-lion.getAllCaches(routes)
-	.then(lion.mergeCache.bind(lion))
-	.then(lion.insertAllLowest.bind(lion))
-	.then(function (res) {
-		fs.writeFileSync('./li2.html', lion._scrape);
-		next();
-	})
-	.catch(function (err) {
-		next(err);
-	});
+		// debug(res);
+		fs.writeFileSync('./licp2.json', JSON.stringify(res,null, 4));
+		done();
+	}, done);
 ```
 
 <a name="price-generator"></a>
@@ -294,5 +204,22 @@ garuda.run()
 	.catch(function (err) {
 		next(err);
 	});
+```
+
+<a name="cache-prices-for-sriwijaya"></a>
+# Cache prices for Sriwijaya
+<a name="cache-prices-for-sriwijaya-merge"></a>
+## merge
+should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged.
+
+```js
+var json = JSON.parse(fs.readFileSync('./srcp.json', 'utf8'));
+var sriwijaya = new Sriwijaya(mockBody, mockDataSriwijaya);
+sriwijaya.merge(json)
+	.then(function (res) {
+		// debug(res);
+		fs.writeFileSync('./srcp2.json', JSON.stringify(res,null, 4));
+		done();
+	}, done);
 ```
 

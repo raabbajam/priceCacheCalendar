@@ -187,6 +187,28 @@ Saving cached docs from db to global object cachePrices
 **Returns**: `Object`, Global object cachePrices
 
 
+### mergeCachePrices(json) 
+
+Merge json data with cheapest data from db
+
+**Parameters**
+
+**json**: `Object`, JSON formatted of scraped data
+
+**Returns**: `Object`, JSON formatted of scraped data already merged with cache data
+
+
+### prepareRows(json) 
+
+Preparing rows to be looped on process
+
+**Parameters**
+
+**json**: `Object`, JSON formatted data from scraping
+
+**Returns**: `Object`, Array of rows to be looped for getAkkCheaoest function
+
+
 
 * * *
 
