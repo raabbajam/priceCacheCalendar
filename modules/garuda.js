@@ -134,7 +134,8 @@ function generateData (id) {
 		flightCode  : _id[3],
 		classCode   : _id[4],
 		dep_radio   : _id[4] + '1',
-		dep_date    : moment().add(1, 'M').format('DD+MM+YYYY'),
+		// dep_date    : moment().add(1, 'M').format('DD+MM+YYYY'),
+		dep_date      : this._dt.dep_date,
 		action      : 'price',
 		user        : 'IANTONI.JKTGI229T',
 		priceScraper: false
@@ -180,6 +181,8 @@ function mergeCachePrices (json) {
 			var cheapestSeat = _.findLast(row.seats, function (seat) {
 				return seat.available !== "L" && seat.available > 0;
 			});
+			if (!cheapestSeat)
+				return row;
 			var cheapestClass = cheapestSeat.class.toLowerCase();
 			row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
 			if (row.cheapest){

@@ -198,6 +198,8 @@ function getAllCheapest (rows) {
 	_.each(rows, function (row) {
 		var cheapests = _this.getCheapestInRow(row);
 		cheapests.forEach(function (cheapest) {
+			if(!cheapest.class)
+				return true;
 			var _transit = '';
 			for (var i = 1; i <= 3; i++) {
 				if (cheapest['transit' + i])
@@ -205,7 +207,7 @@ function getAllCheapest (rows) {
 			};
 			var rute   = cheapest.ori + _transit + cheapest.dst;
 			var flight = cheapest.flight.toLowerCase();
-			var _class = cheapest.class.toLowerCase();
+			var _class = (cheapest.class || '').toLowerCase();
 			rute = rute.toLowerCase();
 			if (!flightClasses[rute])
 				flightClasses[rute] = {};
