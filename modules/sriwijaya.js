@@ -250,7 +250,7 @@ function prepareRows (json) {
 	var rows = [];
 	rows = rows.concat(_.values(_json.dep_table));
 	// debug('rows',_json.departure.flights);
-	if (!!_json.ret_table[0])
+	if (!!_json.ret_table && !!_json.ret_table[0])
 		rows = rows.concat(_.values(_json.ret_table));
 	return rows;
 }

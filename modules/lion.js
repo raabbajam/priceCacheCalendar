@@ -207,38 +207,37 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
-	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
-	// debug('_json.dep_table',_json)
+	debug('_this.cachePrices',JSON.stringify(_this.cachePrices));
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
-		// debug('rowAll',rowAll)
-		// return _.mapValues(rowAll, function (row) {
-			// debug('row',row)
-			var rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
-			var flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
-			rute = rute.toLowerCase();
-			flight = flight.toLowerCase();
-			var aClass = Object.keys(row).filter(function(b){return b.length === 1})
-			_.forEachRight(aClass, function (_class) {
-				var matchAvailable;
-				if (!!row[_class] && row[_class].indexOf('disabled') === -1 && (matchAvailable = row[_class].match(/(\d)+<\/label>/)).length > 1){
-					if (+matchAvailable[1] > 0) {
-						row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
-						if (!!row.cheapest) {
-							row.cheapest.class = _class.toLowerCase();
-							row.cheapest.available = +matchAvailable[1];
-						} else {
-							row.cheapest = {
-								class: 'Full',
-								available: 0
-							}
-						}
-						return false;
+		var rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
+		var flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
+		rute = rute.toLowerCase();
+		flight = flight.toLowerCase();
+		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
+		_.forEachRight(aClass, function (_class) {
+			var matchAvailable;
+			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && (matchAvailable = row[_class].match(/(\d)+<\/label>/)).length > 1){
+				if (+matchAvailable[1] > 0) {
+					try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
+					catch(e){
+						debug(e.message, rute, flight, _class);
+						_this.cachePrices[rute] = _this.cachePrices[rute] || {};
+						_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
 					}
+					if (!!row.cheapest) {
+						row.cheapest.class = _class.toLowerCase();
+						row.cheapest.available = +matchAvailable[1];
+					} else {
+						row.cheapest = {
+							class: 'Full',
+							available: 0
+						}
+					}
+					return false;
 				}
-			});
-			// debug('mergeCachePrices row', row)
-			return row;
-		// });
+			}
+		});
+		return row;
 	});
 	// debug(_json.dep_table);
 	// var ret = _json.return;

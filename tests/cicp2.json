@@ -13,7 +13,7 @@
                     "infant": 225002,
                     "basic": 1805002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             },
             "1": {
@@ -28,7 +28,7 @@
                     "infant": 225002,
                     "basic": 1805002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             },
             "2": {
@@ -43,7 +43,7 @@
                     "infant": 225002,
                     "basic": 1862002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             },
             "3": {
@@ -58,7 +58,7 @@
                     "infant": 225002,
                     "basic": 1862002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             },
             "4": {
@@ -73,7 +73,7 @@
                     "infant": 225002,
                     "basic": 1862002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             },
             "5": {
@@ -88,7 +88,7 @@
                     "infant": 225002,
                     "basic": 1655002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             },
             "6": {
@@ -103,7 +103,7 @@
                     "infant": 225002,
                     "basic": 1862002,
                     "class": "a",
-                    "available": null
+                    "available": 4
                 }
             }
         },

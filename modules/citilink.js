@@ -226,7 +226,7 @@ function mergeCachePrices (json) {
 					} catch (e){debug(e)}
 					if (!!row.cheapest) {
 						row.cheapest.class = _class.toLowerCase();
-						row.cheapest.available = +matchAvailable[1];
+						row.cheapest.available = +matchAvailable;
 					} else {
 						row.cheapest = {
 							class: 'Full',

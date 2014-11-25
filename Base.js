@@ -266,6 +266,7 @@ function getCachePrices (ids) {
 				return lost._id;
 			});
 			err.losts = losts;
+			err.docs = docs;
 			return reject(err);
 		});
 	})
@@ -357,6 +358,8 @@ function docsToCachePrices (docs) {
 	var _this        = this;
 	var _cachePrices = _this.cachePrices;
 	docs.forEach(function (doc) {
+		if(!doc.found)
+			return false;
 		var source = doc._source;
 		var flight = source.flight.toLowerCase();
 		var _class = source.class.toLowerCase();
@@ -405,7 +408,7 @@ function merge (json) {
 			debug('err.losts', err.losts);
 			return _this.scrapeAllLostData(err.losts)
 				.then(function (res) {
-					debug('getAllCachePrices', res);
+					// debug('getAllCachePrices', res);
 					return _this.getAllCachePrices(aoCheapest);
 				}, function (err) {
 					debug('_this.scrapeAllLostData', err);
@@ -413,12 +416,12 @@ function merge (json) {
 				});
 		})
 		.then(function (res) {
-			debug('BRO!!');
 			return _this.mergeCachePrices(json);
 		})
 		.catch(function (err) {
 			debug(err);
-			return json;
+			_this.docsToCachePrices(err.docs);
+			return _this.mergeCachePrices(json);
 		});
 }
 var BasePrototype = {
