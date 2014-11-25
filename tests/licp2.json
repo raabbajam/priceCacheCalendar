@@ -98,8 +98,12 @@
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C1_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C1_F0_S18&apos;);\"><label for=\"M0_C1_F0_S18\">0</label><span class=\"rp\">rplion331300rplion</span></span><span><input type=\"hidden\" name=\"M0_C1_F0_S18_na\" id=\"M0_C1_F0_S18_na\"><input type=\"hidden\" name=\"M0_C1_F0_S18_bc\" id=\"M0_C1_F0_S18_bc\" value=\"V/HL\"></span>",
                 "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C1_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C1_F0_S19&apos;);\"><label for=\"M0_C1_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C1_F0_S19_na\" id=\"M0_C1_F0_S19_na\"><input type=\"hidden\" name=\"M0_C1_F0_S19_bc\" id=\"M0_C1_F0_S19_bc\" value=\"X/HL\"></span>",
                 "cheapest": {
-                    "class": "Full",
-                    "available": 0
+                    "adult": 364304,
+                    "child": 364304,
+                    "infant": 104704,
+                    "basic": 301304,
+                    "class": "t",
+                    "available": 7
                 }
             },
             "3": {
@@ -366,8 +370,12 @@
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C5_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C5_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C5_F0_S18&apos;);\"><label for=\"M0_C5_F0_S18\">0</label><span class=\"rp\">rplion331300rplion</span></span><span><input type=\"hidden\" name=\"M0_C5_F0_S18_na\" id=\"M0_C5_F0_S18_na\"><input type=\"hidden\" name=\"M0_C5_F0_S18_bc\" id=\"M0_C5_F0_S18_bc\" value=\"V/HL\"></span>",
                 "x": "",
                 "cheapest": {
-                    "class": "Full",
-                    "available": 0
+                    "adult": 364304,
+                    "child": 364304,
+                    "infant": 104704,
+                    "basic": 301304,
+                    "class": "t",
+                    "available": 7
                 }
             },
             "11": {
@@ -432,8 +440,12 @@
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C6_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C6_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C6_F0_S18&apos;);\"><label for=\"M0_C6_F0_S18\">0</label><span class=\"rp\">rplion331300rplion</span></span><span><input type=\"hidden\" name=\"M0_C6_F0_S18_na\" id=\"M0_C6_F0_S18_na\"><input type=\"hidden\" name=\"M0_C6_F0_S18_bc\" id=\"M0_C6_F0_S18_bc\" value=\"V/HL\"></span>",
                 "x": "",
                 "cheapest": {
-                    "class": "Full",
-                    "available": 0
+                    "adult": 364304,
+                    "child": 364304,
+                    "infant": 104704,
+                    "basic": 301304,
+                    "class": "t",
+                    "available": 7
                 }
             },
             "13": {
