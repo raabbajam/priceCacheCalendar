@@ -101,7 +101,7 @@ function mergeCache (){
 				lowestPriceRows.push(lowestPrices[currentRoute]);
 			});
 			// if there is more than one flight in on one row
-			if (row.length > 1 && lowestPriceRows.length > 1) {
+			if (row.length > 1 && lowestPriceRows.length > 1 && _.every(lowestPriceRows)) {
 				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
 				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
 					lowestPrices[realRoute] = lowestPriceRow;
