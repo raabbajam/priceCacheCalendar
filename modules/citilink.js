@@ -125,6 +125,8 @@ function mergeCache (){
 function getCheapestInRow (row) {
 	// debug('rowAll',row );
 	var outs = [];
+	if (!row.normal_fare)
+		return outs;
 	var rutes = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
 	debug('rutes',rutes);
 	var flight = row.flight.substr(0,2) || '';
@@ -139,7 +141,10 @@ function getCheapestInRow (row) {
 	})
 	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 	_.forEachRight(aClass, function (_class) {
-		var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
+		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
+		if (!!matches)
+			return true;
+		var matchAvailable = +([1] || '0').trim();
 		if (matchAvailable > 0){
 			out.class = _class;
 			return false;
@@ -221,9 +226,12 @@ function mergeCachePrices (json) {
 			_.forEachRight(aClass, function (_class) {
 				var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
 				if (matchAvailable > 0){
-					try{
-						row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
-					} catch (e){debug(e)}
+					try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
+					catch (e){
+						debug(e.message, rute, flight, _class);
+						_this.cachePrices[rute] = _this.cachePrices[rute] || {};
+						_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
+					}
 					if (!!row.cheapest) {
 						row.cheapest.class = _class.toLowerCase();
 						row.cheapest.available = +matchAvailable;
