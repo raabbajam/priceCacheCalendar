@@ -144,7 +144,7 @@ function getCheapestInRow (row) {
 		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
 		if (!!matches)
 			return true;
-		var matchAvailable = +([1] || '0').trim();
+		var matchAvailable = +(matches[1] || '0').trim();
 		if (matchAvailable > 0){
 			out.class = _class;
 			return false;
