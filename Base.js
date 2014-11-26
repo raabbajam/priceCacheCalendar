@@ -107,6 +107,8 @@ function getAllCaches (routes) {
 	var _this    = this;
 	var promises = [];
 	routes.forEach(function (route) {
+		if (!route)
+			return true;
 		debug(route);
 		var aRoute = route.match(/.../g);
 		var ori = aRoute.shift();
