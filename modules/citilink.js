@@ -18,30 +18,23 @@ function getAllRoutes () {
 	var _this  = this;
 	var routes = [];
 	var $      = cheerio.load(_this._scrape);
-	var rms    = $('td[id^=RM]').html();
-	if (!rms)
-		return false;
 	function looper (dir) {
-		function getRow (i) {
-			return $('tr[id^=RM' + dir + '_C' + i +']');
-		};
-		var rowId = 0;
-		var row = getRow(rowId);
-		if (!row)
+		var trs = $('#availabilityTable' + dir + ' > tr.altRowItem, #availabilityTable' + dir + ' > tr:not([class])');
+		if (!trs || !!trs && trs.length === 0)
 			return false;
-		do {
-			row.each(function (i, tr) {
-				var rm = $('td[id^=RM]', tr).html();
-				if (!rm)
-					return true;
-				var currentRoute = rm.match(/[A-Z]{6}/)[0].toLowerCase();
-				if (routes.indexOf(currentRoute) === -1){
-					routes.push(currentRoute)
-				}
-			});
-			rowId++;
-			row = getRow(rowId);
-		} while (row.length);
+		// debug('trs.length',trs.length)
+		trs.splice(0, 1); // remove 1st element
+		trs.each(function(i, tr){
+			var fares = $('.fareCol2', tr).html();
+			if(!fares)
+				return true;
+			var currentRoute = _.map(_.uniq(fares.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
+			// debug('currentRoute',currentRoute)
+			currentRoute = currentRoute.toLowerCase();
+			if (routes.indexOf(currentRoute) === -1){
+				routes.push(currentRoute)
+			}
+		});
 	};
 	looper(0);
 	looper(1);
@@ -52,67 +45,71 @@ function mergeCache (){
 	var _cache       = _this.cache;
 	var lowestPrices = {};
 	var $            = cheerio.load(_this._scrape);
-	var rms          = $('td[id^=RM]').html();
-	if (!rms)
-		return false;
-	function looper (dir) {
-		function getRow (i) {
-			return $('tr[id^=RM' + dir + '_C' + i +']');
-		};
+	function looper (dir, save) {
 		var realRoute = _this._dt.ori.toLowerCase() + _this._dt.dst.toLowerCase();
-		var rowId     = 0;
-		var row       = getRow(rowId);
-		if (!row)
+		var trs = $('#availabilityTable' + dir + ' > tr.altRowItem, #availabilityTable' + dir + ' > tr:not([class])');
+		if (!trs || !!trs && trs.length === 0)
 			return false;
-		do {
-			var lowestPriceRows = [];
-			row.each(function (i, tr) {
-				var rm = $('td[id^=RM]', tr).html();
-				if (!rm)
-					return true;
-				var currentRoute = rm.match(/[A-Z]{6}/)[0].toLowerCase();
-				if (!_this.cache[currentRoute])
-					return true;
-				var flightCode = $(tr).find('td').eq(0).text().trim().substr(0,2).toLowerCase();
-				// get all radio
-				$('td[id] input[type=radio][id]', tr).each(function(i, radio){
-					var span       = $(radio).parent();
-					var available  = $('label', span).text();
-					var classCode  = span.attr('title').substr(0,1).toLowerCase();
-					var cachePrice = (_cache[currentRoute] &&
-								_cache[currentRoute][flightCode] &&
-								_cache[currentRoute][flightCode][classCode]) || 0;
-					cachePrice = Math.round(cachePrice / 10) * 10;
-					// update lowest price
-					// if seat still available
-					// and,
-					// 	either lowest price for this route still 0
-					//  	or
-					//  	seat price cheaper than lowest price
-					//  	but not zero
-					if(!!available //seat still available
-						&& (!lowestPrices[currentRoute] //lowest still 0
-						|| (lowestPrices[currentRoute] > cachePrice && !!cachePrice))) //seat price cheaper but not zero
-						lowestPrices[currentRoute] = cachePrice;
-					// if in 'span' there is no '.rp' class and cachePrice is not zero
-					if(!!cachePrice && !$('.rp', span).length)
-						span.append('<span class="rp">rpciti'+cachePrice+'rpciti</span>');
-				});
-				lowestPriceRows.push(lowestPrices[currentRoute]);
-			});
-			// if there is more than one flight in on one row
-			if (row.length > 1 && lowestPriceRows.length > 1) {
-				var lowestPriceRow = lowestPriceRows.reduce(function(price, num){return num + price}, 0)
-				if (!lowestPrices[realRoute] || lowestPriceRow < lowestPrices[realRoute]) {
-					lowestPrices[realRoute] = lowestPriceRow;
-					// console.log(lowestPrices[realRoute], lowestPriceRow);
-				}
+		// debug('trs.length',trs.length)
+		trs.splice(0, 1); // remove 1st element
+		var lowestPriceRows = [];
+		trs.each(function(i, tr){
+			var fares = $('.fareCol2', tr).html();
+			if(!fares)
+				return true;
+			try {
+				var fareMatch = fares.match(/\d+(Fare)\w+/g);
+				// debug('fareMatch',fareMatch)
+			} catch (e) {
+				var err = new Error('No flight fare found!');
+				throw err;
 			}
-			rowId++;
-			row = getRow(rowId);
-		} while (row.length);
+			debug('_this.cache',_this.cache)
+			var currentRoute = _.map(_.uniq(fares.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
+			currentRoute = [currentRoute.shift(), currentRoute.pop(), currentRoute.join('')].join('').toLowerCase();
+			debug('currentRoute',currentRoute)
+			if (!_this.cache[currentRoute])
+				return true;
+			var currentCache = _this.cache[currentRoute];
+			var flightCode = $('td:nth-child(3)', tr).text().trim().substr(0,2).toLowerCase();
+			var fareData2 = '';
+			fareMatch.forEach(function (fare, i) {
+				// debug('fare',fare)
+				var input = $('[id$='+ fare +']');
+				var p = input.parents('p');
+				var pText = p.text().trim();
+				var available = +(pText.match(/(\d) \)$/) || [])[1];
+				var classCache = (pText.match(/\( (\S)\/Cls/) || [])[1];
+				classCache = (classCache || '').toLowerCase();
+				var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
+				if (currentRoute === 'pdgsubcgk')
+					debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
+				// debug(save, available, lowestPrices[currentRoute], cachePrice)
+				if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
+					lowestPrices[currentRoute] = cachePrice;
+				cachePrice = Math.round(cachePrice / 100) * 100;
+				var fareTr = $('td:nth-child(5)', tr).find('p').eq(i);
+				var before = fareTr.html();
+				try {
+					if (before.match(/(Rp.)(\d+,\d+,\d+)/g)) {
+						after = before.replace(/(Rp.)(\d+,\d+,\d+)/g, 'Rp.'+cachePrice);
+					} else if (before.match(/(Rp.)(\d+,\d+)/g)) {
+						after = before.replace(/(Rp.)(\d+,\d+)/g, 'Rp.'+cachePrice);
+					}
+					fareData2 = fareData2 + '<p>'+after+'</p>';
+				} catch (e) {
+					debug(e.message)
+					// fareData2 = 0;
+					// do nothing
+				}
+				//after = before;
+				//fareTr.html(after);
+			});
+			lowestPriceRows.push(lowestPrices[currentRoute]);
+			$('td:nth-child(5)', tr).html(fareData2);
+		});
 	};
-	looper(0);
+	looper(0, 1);
 	looper(1);
 	this._scrape ='<body>' + $('body').html() + '</body>';
 	return lowestPrices;
@@ -128,7 +125,7 @@ function getCheapestInRow (row) {
 	if (!row.normal_fare)
 		return outs;
 	var rutes = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
-	debug('rutes',rutes);
+	// debug('rutes',rutes);
 	var flight = row.flight.substr(0,2) || '';
 	var out = {
 		ori: rutes.shift(),
@@ -212,42 +209,38 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
-	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
-		// debug('rowAll',rowAll)
-		// return _.mapValues(rowAll, function (row) {
-			// debug('row',row)
-			var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
-			var flight = row.flight.substr(0,2) || '';
-			rute = rute.toLowerCase();
-			flight = flight.toLowerCase();
-			var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
-			_.forEachRight(aClass, function (_class) {
-				var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
-				var matchAvailable = +(matches && matches[1] || '0').trim();
-				if (matchAvailable > 0){
-					try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
-					catch (e){
-						debug(e.message, rute, flight, _class);
-						_this.cachePrices[rute] = _this.cachePrices[rute] || {};
-						_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
-					}
-					if (!!row.cheapest) {
-						row.cheapest.class = _class.toLowerCase();
-						row.cheapest.available = +matchAvailable;
-					} else {
-						row.cheapest = {
-							class: 'Full',
-							available: 0
-						}
-					}
-					return false;
+		var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
+		var flight = row.flight.substr(0,2) || '';
+		rute = rute.toLowerCase();
+		flight = flight.toLowerCase();
+		var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
+		_.forEachRight(aClass, function (_class) {
+			var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
+			var matchAvailable = +(matches && matches[1] || '0').trim();
+			if (matchAvailable > 0){
+				try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
+				catch (e){
+					debug(e.message, rute, flight, _class);
+					_this.cachePrices[rute] = _this.cachePrices[rute] || {};
+					_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
 				}
-			});
-			// debug('mergeCachePrices row', row)
-			return row;
-		// });
+				if (!!row.cheapest) {
+					row.cheapest.class = _class.toLowerCase();
+					row.cheapest.available = +matchAvailable;
+				} else {
+					row.cheapest = {
+						class: 'Full',
+						available: 0
+					}
+				}
+				return false;
+			}
+		});
+		// debug('mergeCachePrices row', row)
+		return row;
 	});
 	// debug(_json.dep_table);
 	// var ret = _json.return;

@@ -2,13 +2,12 @@ var expect = require('chai').expect;
 var fs = require('fs');
 var Citilink = require('../index')('citilink');
 var mockBody = {dep_date: "30+12+2014", ori: 'PDG', dst: 'SUB'};
-// var mockDataCitilink = fs.readFileSync('./ci.html', 'utf8');
-var mockDataCitilink = '';
+var mockDataCitilink = fs.readFileSync('./ci.html', 'utf8');
+// var mockDataCitilink = '';
 var debug       = require('debug')('raabbajam:priceCacheCalendar:citilinkspec');
-// var mockDataCitilink = {departure: {flights: [[{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], ] } }
-/*describe('Price Generator for Citilink', function () {
-	this.timeout(10000);
-	it('should extend base', function (next) {
+describe('Price Generator for Citilink', function () {
+	this.timeout(20000);
+	/*it('should extend base', function (next) {
 		var citilink = new Citilink(mockBody, mockDataCitilink);
 		expect(citilink.name).to.equal('citilink');
 		next();
@@ -18,7 +17,7 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:citilinkspec');
 		citilink.getCache()
 			.then(function () {
 				expect(citilink.cache[mockBody.ori.toLowerCase()+mockBody.dst.toLowerCase()]).to.exist;
-				console.log(citilink.cache);
+				// debug(citilink.cache);
 				next();
 			})
 			.catch(function (err) {
@@ -28,7 +27,7 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:citilinkspec');
 	it('should loop get all routes', function (next) {
 		var citilink = new Citilink(mockBody, mockDataCitilink);
 		var routes = citilink.getAllRoutes();
-		console.log(routes);
+		debug('routes',routes);
 		expect(routes.length).gt(0);
 		next();
 	});
@@ -37,29 +36,29 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:citilinkspec');
 		var routes = citilink.getAllRoutes();
 		citilink.getAllCaches(routes)
 			.then(function () {
-				console.log(citilink.cache);
+				debug('citilink.cache',citilink.cache);
 				expect(citilink.cache).not.eq({});
 				next();
 			})
 			.catch(function (err) {
 				next(err);
 			});
-	});
-	it('should merge all cache', function (next) {
+	});*/
+	/*it('should merge all cache', function (next) {
 		var citilink = new Citilink(mockBody, mockDataCitilink);
 		var routes = citilink.getAllRoutes();
 		citilink.getAllCaches(routes)
 			.then(citilink.mergeCache.bind(citilink))
 			.then(function (res) {
-				// console.log(JSON.stringify(citilink._scrape, null, 2));
-				console.log(JSON.stringify(res, null, 2));
-				console.log(citilink.cache);
+				// debug(JSON.stringify(citilink._scrape, null, 2));
+				debug('lowestPrices', JSON.stringify(res, null, 2));
+				debug(citilink.cache);
 				next();
 			})
 			.catch(function (err) {
 				next(err);
 			});
-	});
+	});*/
 	it('should compare with db and insert to db if cheaper, for all lowest price', function (next) {
 		var citilink = new Citilink(mockBody, mockDataCitilink);
 		var routes = citilink.getAllRoutes();
@@ -67,14 +66,15 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:citilinkspec');
 			.then(citilink.mergeCache.bind(citilink))
 			.then(citilink.insertAllLowest.bind(citilink))
 			.then(function (res) {
-				fs.writeFileSync('./li2.html', citilink._scrape);
+				console.log('HELLO BRO!!');
+				fs.writeFileSync('./ci2.html', citilink._scrape);
 				next();
 			})
 			.catch(function (err) {
 				next(err);
 			});
 	});
-});*/
+});
 
 describe('Cache prices for Citilink', function() {
 	this.timeout(80000);

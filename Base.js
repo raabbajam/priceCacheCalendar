@@ -64,18 +64,26 @@ function getAllRoutes () {
  * @param  {String} dst Destination route
  * @return {Object}     Data cache price
  */
-function getCache (ori, dst) {
+function getCache (ori, dst, transit) {
 	var _this = this;
 	return new Promise(function (resolve, reject) {
 		var _ori  = ori && ori.toLowerCase() || _this._dt.ori;
 		var _dst  = dst && dst.toLowerCase() || _this._dt.dst;
 		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", }, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
-		debug(JSON.stringify(query, null, 2));
+		if (!!transit){
+			var aTransit = transit.match(/.../g);
+			var term = {}
+			aTransit.forEach(function (transit, i) {
+				term['transit' + (i + 1)] = transit.toLowerCase();
+			});
+			query.query.filtered.filter.and.push({term: term});
+		}
+		// debug(JSON.stringify(query, null, 2));
 		_this.db.search('pluto', 'price', query, function (err, res) {
 			if (err)
 				return reject(err);
 			res = JSON.parse(res);
-			debug(JSON.stringify(res, null, 2));
+			// debug(JSON.stringify(res, null, 2));
 			var flightList = {};
 			res.aggregations.groupFlight.buckets.forEach(function (flight) {
 				var classList = {};
@@ -84,7 +92,7 @@ function getCache (ori, dst) {
 				});
 				flightList[flight.key] = classList;
 			});
-			var currentRoute          = _ori + _dst;
+			var currentRoute          = _ori + _dst + (transit || '');
 			_this.cache[currentRoute] = flightList;
 			resolve();
 		});
@@ -100,7 +108,11 @@ function getAllCaches (routes) {
 	var promises = [];
 	routes.forEach(function (route) {
 		debug(route);
-		promises.push(_this.getCache(route.substr(0,3), route.substr(3,3)));
+		var aRoute = route.match(/.../g);
+		var ori = aRoute.shift();
+		var dst = aRoute.pop();
+		var transit = aRoute.join('');
+		promises.push(_this.getCache(ori, dst, transit));
 	});
 	return Promise.all(promises);
 }
