@@ -403,6 +403,10 @@ function merge (json) {
 	// debug('json',json);
 	var aoCheapest = _this.getAllCheapest(rows);
 	debug('aoCheapest', aoCheapest);
+	if (_.isEmpty(aoCheapest)){
+		debug('Can\'t find some data. Return without cachePrices..');
+		return json;
+	}
 	return _this.getAllCachePrices(aoCheapest)
 		.catch(function (err) {
 			debug('err.losts', err.losts);
@@ -420,7 +424,8 @@ function merge (json) {
 		})
 		.catch(function (err) {
 			debug(err);
-			_this.docsToCachePrices(err.docs);
+			if(!!err.docs)
+				_this.docsToCachePrices(err.docs);
 			return _this.mergeCachePrices(json);
 		});
 }
