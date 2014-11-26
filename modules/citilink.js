@@ -142,7 +142,7 @@ function getCheapestInRow (row) {
 	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 	_.forEachRight(aClass, function (_class) {
 		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
-		if (!!matches)
+		if (!matches)
 			return true;
 		var matchAvailable = +(matches[1] || '0').trim();
 		if (matchAvailable > 0){
