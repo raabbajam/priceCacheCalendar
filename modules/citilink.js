@@ -224,7 +224,8 @@ function mergeCachePrices (json) {
 			flight = flight.toLowerCase();
 			var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 			_.forEachRight(aClass, function (_class) {
-				var matchAvailable = +(row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))[1] || '0').trim();
+				var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
+				var matchAvailable = +(matches && matches[1] || '0').trim();
 				if (matchAvailable > 0){
 					try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
 					catch (e){
