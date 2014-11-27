@@ -78,25 +78,25 @@ function mergeCache (){
 				var input = $('[id$='+ fare +']');
 				var p = input.parents('p');
 				var pText = p.text().trim();
-				var available = +(pText.match(/(\d) \)$/) || [])[1];
+				var available = +(pText.match(/(\d+) \)$/) || [])[1];
 				var classCache = (pText.match(/\( (\S)\/Cls/) || [])[1];
 				classCache = (classCache || '').toLowerCase();
 				var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
-				if (currentRoute === 'pdgsubcgk')
-					debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
+				// debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
 				// debug(save, available, lowestPrices[currentRoute], cachePrice)
 				if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
 					lowestPrices[currentRoute] = cachePrice;
 				cachePrice = Math.round(cachePrice / 100) * 100;
 				var fareTr = $('td:nth-child(5)', tr).find('p').eq(i);
-				var before = fareTr.html();
+				var before = fareTr.text();
 				try {
+					var basic = +before.match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
 					if (before.match(/(Rp.)(\d+,\d+,\d+)/g)) {
 						after = before.replace(/(Rp.)(\d+,\d+,\d+)/g, 'Rp.'+cachePrice);
 					} else if (before.match(/(Rp.)(\d+,\d+)/g)) {
 						after = before.replace(/(Rp.)(\d+,\d+)/g, 'Rp.'+cachePrice);
 					}
-					fareData2 = fareData2 + '<p>'+after+'</p>';
+					fareData2 = fareData2 + '<p>'+after+'</p basic=' + basic + '>';
 				} catch (e) {
 					debug(e.message)
 					// fareData2 = 0;
@@ -138,12 +138,14 @@ function getCheapestInRow (row) {
 	})
 	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 	_.forEachRight(aClass, function (_class) {
-		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
+		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p basic=(\\d+)'))
+		debug(matches[1], matches[2]);
 		if (!matches)
 			return true;
 		var matchAvailable = +(matches[1] || '0').trim();
+		var nominal = +matches[2];
 		if (matchAvailable > 0){
-			out.class = _class;
+			out.class = _class + nominal;
 			return false;
 		}
 	})

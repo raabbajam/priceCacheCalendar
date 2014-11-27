@@ -184,6 +184,13 @@ function mergeCachePrices (json) {
 			if (!cheapestSeat)
 				return row;
 			var cheapestClass = cheapestSeat.class.toLowerCase();
+
+			try{row.cheapest = _this.cachePrices[rute].ga[_class.toLowerCase()]; }
+			catch(e){
+				debug(e.message, rute, _class);
+				_this.cachePrices[rute] = _this.cachePrices[rute] || {};
+				_this.cachePrices[rute].ga = _this.cachePrices[rute].ga || {};
+			}
 			row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
 			if (row.cheapest){
 				row.cheapest.class = cheapestSeat.class;
