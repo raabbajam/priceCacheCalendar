@@ -214,7 +214,7 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
-	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
 		var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
@@ -226,12 +226,12 @@ function mergeCachePrices (json) {
 			var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
 			if (!matches)
 				return true;
-			// debug(matches[1], matches[2]);
 			var matchAvailable = +(matches[1] || '0').trim();
 			var nominal = +matches[2] / 1000;
-			var _classNominal = _class + nominal;
+			debug(matchAvailable, nominal);
+			var _classNominal = _class.toLowerCase() + nominal;
 			if (matchAvailable > 0){
-				try{row.cheapest = _this.cachePrices[rute][flight][_classNominal.toLowerCase()]; }
+				try{row.cheapest = _this.cachePrices[rute][flight][_classNominal]; }
 				catch (e){
 					debug(e.message, rute, flight, _classNominal);
 					_this.cachePrices[rute] = _this.cachePrices[rute] || {};
