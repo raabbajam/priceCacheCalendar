@@ -223,12 +223,17 @@ function mergeCachePrices (json) {
 		flight = flight.toLowerCase();
 		var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 		_.forEach(aClass, function (_class) {
-			var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
-			var matchAvailable = +(matches && matches[1] || '0').trim();
+			var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
+			if (!matches)
+				return true;
+			// debug(matches[1], matches[2]);
+			var matchAvailable = +(matches[1] || '0').trim();
+			var nominal = +matches[2] / 1000;
+			var _classNominal = _class + nominal;
 			if (matchAvailable > 0){
-				try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
+				try{row.cheapest = _this.cachePrices[rute][flight][_classNominal.toLowerCase()]; }
 				catch (e){
-					debug(e.message, rute, flight, _class);
+					debug(e.message, rute, flight, _classNominal);
 					_this.cachePrices[rute] = _this.cachePrices[rute] || {};
 					_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
 				}
