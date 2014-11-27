@@ -79,7 +79,8 @@ function mergeCache (){
 					var input      = $('[id$='+ fare +']');
 					var fareTr     = $('td:nth-child(5)', tr).find('p').eq(i);
 					var before     = fareTr.html();
-					var nominal    = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '') / 1000;
+					var basic      = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
+					var nominal    = basic / 1000;
 					var p          = input.parents('p');
 					var pText      = p.text().trim();
 					var available  = +(pText.match(/(\d+) \)$/) || [])[1];
