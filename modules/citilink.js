@@ -91,12 +91,14 @@ function mergeCache (){
 				var before = fareTr.html();
 				try {
 					var basic = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
+					console.log(basic);
 					if (before.match(/(Rp.)(\d+,\d+,\d+)/g)) {
 						after = before.replace(/(Rp.)(\d+,\d+,\d+)/g, 'Rp.'+cachePrice);
 					} else if (before.match(/(Rp.)(\d+,\d+)/g)) {
 						after = before.replace(/(Rp.)(\d+,\d+)/g, 'Rp.'+cachePrice);
 					}
-					fareData2 = fareData2 + '<p>'+after+'</p basic=' + basic + '>';
+					// debug(fareData2)
+					fareData2 = fareData2 + '<p>'+after+'<script>' + basic + '</script></p>';
 				} catch (e) {
 					debug(e.message)
 					// fareData2 = 0;
@@ -137,8 +139,9 @@ function getCheapestInRow (row) {
 		out['transit' + (i + 1)] = rute;
 	})
 	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
-	_.forEachRight(aClass, function (_class) {
-		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p basic=(\\d+)'))
+	_.forEach(aClass, function (_class) {
+		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+<script>(\\d+)'))
+		// debug(matches)
 		if (!matches)
 			return true;
 		debug(matches[1], matches[2]);
@@ -219,7 +222,7 @@ function mergeCachePrices (json) {
 		rute = rute.toLowerCase();
 		flight = flight.toLowerCase();
 		var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
-		_.forEachRight(aClass, function (_class) {
+		_.forEach(aClass, function (_class) {
 			var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+)\\)'))
 			var matchAvailable = +(matches && matches[1] || '0').trim();
 			if (matchAvailable > 0){
