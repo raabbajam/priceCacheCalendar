@@ -75,22 +75,22 @@ function mergeCache (){
 			var fareData2 = '';
 			fareMatch.forEach(function (fare, i) {
 				// debug('fare',fare)
-				var input = $('[id$='+ fare +']');
-				var p = input.parents('p');
-				var pText = p.text().trim();
-				var available = +(pText.match(/(\d+) \)$/) || [])[1];
-				var classCache = (pText.match(/\( (\S)\/Cls/) || [])[1];
-				classCache = (classCache || '').toLowerCase();
-				var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
-				// debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
-				// debug(save, available, lowestPrices[currentRoute], cachePrice)
-				if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
-					lowestPrices[currentRoute] = cachePrice;
-				cachePrice = Math.round(cachePrice / 100) * 100;
-				var fareTr = $('td:nth-child(5)', tr).find('p').eq(i);
-				var before = fareTr.html();
 				try {
-					var basic = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
+					var input      = $('[id$='+ fare +']');
+					var fareTr     = $('td:nth-child(5)', tr).find('p').eq(i);
+					var before     = fareTr.html();
+					var nominal    = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '') / 1000;
+					var p          = input.parents('p');
+					var pText      = p.text().trim();
+					var available  = +(pText.match(/(\d+) \)$/) || [])[1];
+					var _class     = (pText.match(/\( (\S)\/Cls/) || [])[1];
+					var classCache = _class.toLowerCase() + nominal;
+					var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
+					// debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
+					// debug(save, available, lowestPrices[currentRoute], cachePrice)
+					if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
+						lowestPrices[currentRoute] = cachePrice;
+					cachePrice = Math.round(cachePrice / 100) * 100;
 					// console.log(basic);
 					if (before.match(/(Rp.)(\d+,\d+,\d+)/g)) {
 						after = before.replace(/(Rp.)(\d+,\d+,\d+)/g, 'Rp.'+cachePrice);
@@ -214,7 +214,7 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
-	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
 		var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
@@ -228,7 +228,7 @@ function mergeCachePrices (json) {
 				return true;
 			var matchAvailable = +(matches[1] || '0').trim();
 			var nominal = +matches[2] / 1000;
-			debug(matchAvailable, nominal);
+			// debug(matchAvailable, nominal);
 			var _classNominal = _class.toLowerCase() + nominal;
 			if (matchAvailable > 0){
 				try{row.cheapest = _this.cachePrices[rute][flight][_classNominal]; }
