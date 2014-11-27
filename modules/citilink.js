@@ -146,7 +146,7 @@ function getCheapestInRow (row) {
 			return true;
 		debug(matches[1], matches[2]);
 		var matchAvailable = +(matches[1] || '0').trim();
-		var nominal = +matches[2];
+		var nominal = +matches[2] / 1000;
 		if (matchAvailable > 0){
 			out.class = _class + nominal;
 			return false;
