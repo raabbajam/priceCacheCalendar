@@ -64,10 +64,10 @@ function mergeCache (){
 				var err = new Error('No flight fare found!');
 				throw err;
 			}
-			debug('_this.cache',_this.cache)
+			// debug('_this.cache',_this.cache)
 			var currentRoute = _.map(_.uniq(fares.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
 			currentRoute = [currentRoute.shift(), currentRoute.pop(), currentRoute.join('')].join('').toLowerCase();
-			debug('currentRoute',currentRoute)
+			// debug('currentRoute',currentRoute)
 			if (!_this.cache[currentRoute])
 				return true;
 			var currentCache = _this.cache[currentRoute];
@@ -88,9 +88,9 @@ function mergeCache (){
 					lowestPrices[currentRoute] = cachePrice;
 				cachePrice = Math.round(cachePrice / 100) * 100;
 				var fareTr = $('td:nth-child(5)', tr).find('p').eq(i);
-				var before = fareTr.text();
+				var before = fareTr.html();
 				try {
-					var basic = +before.match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
+					var basic = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
 					if (before.match(/(Rp.)(\d+,\d+,\d+)/g)) {
 						after = before.replace(/(Rp.)(\d+,\d+,\d+)/g, 'Rp.'+cachePrice);
 					} else if (before.match(/(Rp.)(\d+,\d+)/g)) {
