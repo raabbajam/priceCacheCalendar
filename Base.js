@@ -209,7 +209,8 @@ function getAllCheapest (rows) {
 	var _this = this;
 	var flightClasses = {};
 	// debug('rows', rows);
-	_.each(rows, function (row) {
+	_.each(rows, function (row, index) {
+		var rowNum = index + 1;
 		var cheapests = _this.getCheapestInRow(row);
 		cheapests.forEach(function (cheapest) {
 			if(!cheapest.class)
@@ -222,6 +223,7 @@ function getAllCheapest (rows) {
 			var rute   = cheapest.ori + _transit + cheapest.dst;
 			var flight = cheapest.flight.toLowerCase();
 			var _class = (cheapest.class || '').toLowerCase();
+			_class += rowNum;
 			rute = rute.toLowerCase();
 			if (!flightClasses[rute])
 				flightClasses[rute] = {};
@@ -259,7 +261,8 @@ function getCachePrices (ids) {
 		if (!(ids instanceof Array))
 			ids = [ids];
 		debug('ids',ids);
-		_this.db.multiget(_this.index, _this.type, ids, function (err, res) {
+		var _ids = !!_this.idsToSearch ? _this.idsToSearch(ids): ids;
+		_this.db.multiget(_this.index, _this.type, _ids, function (err, res) {
 			if (err)
 				return reject(err);
 			try {res = JSON.parse(res);} catch(error) { return reject(error);}
@@ -279,7 +282,7 @@ function getCachePrices (ids) {
 			losts = losts.map(function (lost) {
 				return lost._id;
 			});
-			err.losts = losts;
+			err.losts = !!_this.idsToScrape? _this.idsToScrape(losts, ids): losts;
 			err.docs = docs;
 			return reject(err);
 		});

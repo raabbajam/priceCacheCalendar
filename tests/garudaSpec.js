@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var fs = require('fs');
 var debug = require('debug')('raabbajam:priceCacheCalendar:garudaSpec');
 var Garuda = require('../index')('garuda');
-var mockBody = {dep_date: "04+11+2014", ori: 'PDG', dst: 'SUB'};
+var mockBody = {dep_date: "27+01+2015", ori: 'PDG', dst: 'SUB'};
 var mockDataGaruda = JSON.parse(fs.readFileSync('./ga.html', 'utf8'));
 // var mockDataGaruda = {departure: {flights: [[{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], ] } }
 /*describe('Price Generator for Garuda', function () {

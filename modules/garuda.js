@@ -100,11 +100,11 @@ function mergeCache (){
 function getCheapestInRow (rowAll) {
 	// debug('rowAll',rowAll );
 	var outs = [];
-	rowAll.forEach(function (row) {
+	rowAll.forEach(function (row, idx) {
+		var rowNum = idx + 1;
 		var out = {
-			ori: row.origin,
-			dst: row.destination,
-			// flight: row.flightCode
+			ori   : row.origin,
+			dst   : row.destination,
 			flight: 'ga'
 		};
 		var seats = row.seats;
@@ -119,23 +119,50 @@ function getCheapestInRow (rowAll) {
 	});
 	return outs;
 }
+function idsToSearch (ids) {
+	return _.uniq(ids.map(function (id) {
+			return id.replace(/\d/g, '');
+		}));
+}
+function idsToScrape (losts, ids) {
+	var _ids = _.remove(ids, function(id){
+		// _ids are subset of ids that losts, but it still might have duplicate in row
+		return _.contains(losts, id.replace(/\d/, ''))
+	});
+	try {
+		_ids = _.reduce(_ids, function(all, id){
+			// we reduce it to an object with the letter as key so as to make there is only unique route
+			all[id.replace(/\d/g, '')] = id.replace(/\D/g, '');
+			return all;
+		}, {});
+		// and then convert it to array again
+		_ids = _.reduce(_ids, function (all, num, letter) {
+			all.push(letter + num);
+			return all;
+		}, []);
+	} catch (e) {
+		debug('Error idsToScrape', e);
+	}
+	return _ids;
+}
 /**
  * Generate data to scrape from id
  * @param  {String} id String id from database
  * @return {Object}    Object data for scrape
  */
 function generateData (id) {
-	var _airline = this.airline;
-	var _id = id.split('_');
+	var _airline  = this.airline;
+	var _id       = id.split('_');
+	var classCode = _id[4].replace(/\d/g, '');
+	// var classRow = _id[4].replace(/\D/g, '');
 	var data = {
 		ori         : _id[0],
 		dst         : _id[1],
 		airline     : _id[2],
 		flightCode  : _id[3],
-		classCode   : _id[4],
-		dep_radio   : _id[4] + '1',
-		// dep_date    : moment().add(1, 'M').format('DD+MM+YYYY'),
-		dep_date      : this._dt.dep_date,
+		classCode   : classCode,
+		dep_radio   : _id[4],
+		dep_date    : this._dt.dep_date,
 		action      : 'price',
 		user        : 'IANTONI.JKTGI229T',
 		priceScraper: false
@@ -152,13 +179,13 @@ function generateData (id) {
  */
 function scrapeLostData (id) {
 	debug('scrapeLostData',id);
-	var dt = this.generateData(id);
-    var urlAirbinder = 'http://128.199.251.75:9098/price';
-    var urlPluto = 'http://pluto.dev/0/price/garuda';
-    var options = {
-      scrape: urlAirbinder,
-      dt: dt,
-      airline: this.airline,
+	var dt           = this.generateData(id);
+	var urlAirbinder = 'http://128.199.251.75:9098/price';
+	var urlPluto     = 'http://pluto.dev/0/price/garuda';
+	var options      = {
+		dt     : dt,
+		airline: this.airline,
+		scrape : urlAirbinder,
     };
     var garudaPriceScrapers = new GarudaPriceScrapers(options);
     return garudaPriceScrapers.run().catch(function (err) {debug('garudaPriceScrapers',err);});
@@ -169,9 +196,8 @@ function scrapeLostData (id) {
  * @return {Object}      JSON formatted of scraped data already merged with cache data
  */
 function mergeCachePrices (json) {
-	var _json = _.cloneDeep(json);
-	var depFlights = _json.departure.flights;
-	var _this = this;
+	var _json      = _.cloneDeep(json);
+	var _this      = this;
 	debug('_this.cachePrices',_this.cachePrices);
 	_json.departure.flights = _json.departure.flights.map(function (rowAll) {
 		return rowAll.map(function (row) {
@@ -215,8 +241,8 @@ function mergeCachePrices (json) {
  */
 function prepareRows (json) {
 	var _json = _.cloneDeep(json);
-	var rows = [];
-	rows = rows.concat(_json.departure.flights);
+	var rows  = [];
+	rows      = rows.concat(_json.departure.flights);
 	// debug('rows',_json.departure.flights);
 	if (!!_json.return)
 		rows = rows.concat(_json.return.flights);
@@ -227,10 +253,12 @@ var GarudaPrototype = {
 	getAllRoutes    : getAllRoutes,
 	mergeCache      : mergeCache,
 	getCheapestInRow: getCheapestInRow,
+	idsToSearch     : idsToSearch,
+	idsToScrape     : idsToScrape,
 	generateData    : generateData,
 	scrapeLostData  : scrapeLostData,
 	mergeCachePrices: mergeCachePrices,
 	prepareRows     : prepareRows,
 };
-var Garuda = Base.extend(GarudaPrototype);
+var Garuda     = Base.extend(GarudaPrototype);
 module.exports = Garuda;
