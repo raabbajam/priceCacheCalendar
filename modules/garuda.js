@@ -185,13 +185,13 @@ function mergeCachePrices (json) {
 				return row;
 			var cheapestClass = cheapestSeat.class.toLowerCase();
 
-			try{row.cheapest = _this.cachePrices[rute].ga[_class.toLowerCase()]; }
+			try{row.cheapest = _this.cachePrices[rute].ga[cheapestClass]; }
 			catch(e){
-				debug(e.message, rute, _class);
+				debug('Not found: ', e.message, rute, cheapestClass);
 				_this.cachePrices[rute] = _this.cachePrices[rute] || {};
 				_this.cachePrices[rute].ga = _this.cachePrices[rute].ga || {};
 			}
-			row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
+			// row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
 			if (row.cheapest){
 				row.cheapest.class = cheapestSeat.class;
 				row.cheapest.available = cheapestSeat.available;
