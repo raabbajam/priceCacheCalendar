@@ -135,16 +135,20 @@ function getCheapestInRow (row) {
 	rutes.forEach(function (rute, i) {
 		out['transit' + (i + 1)] = rute;
 	})
-	var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
-	_.forEach(aClass, function (_class) {
-		var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
-		// debug(matches)
+	// var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
+	var aClass = row.normal_fare.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)', 'g'))
+	// debug(aClass)
+	_.forEach(aClass, function (sClass) {
+		var matches = sClass.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
+		// debug(matches);
 		if (!matches)
 			return true;
 		// debug(matches[1], matches[2]);
-		var matchAvailable = +(matches[1] || '0').trim();
-		var nominal = +matches[2] / 1000;
+		var matchAvailable = +(matches[2] || '0').trim();
 		if (matchAvailable > 0){
+			var _class = (matches[1] || 'N/A').trim();
+			var nominal = +matches[3] / 1000;
+			// debug('matchAvailable', matchAvailable, '_class', _class, 'nominal', nominal)
 			out.class = _class + nominal;
 			return false;
 		}
