@@ -44,7 +44,7 @@ describe('Price Generator for Citilink', function () {
 				next(err);
 			});
 	});*/
-	/*it('should merge all cache', function (next) {
+	it('should merge all cache', function (next) {
 		var citilink = new Citilink(mockBody, mockDataCitilink);
 		var routes = citilink.getAllRoutes();
 		citilink.getAllCaches(routes)
@@ -58,7 +58,7 @@ describe('Price Generator for Citilink', function () {
 			.catch(function (err) {
 				next(err);
 			});
-	});*/
+	});
 	/*it('should compare with db and insert to db if cheaper, for all lowest price', function (next) {
 		var citilink = new Citilink(mockBody, mockDataCitilink);
 		var routes = citilink.getAllRoutes();
@@ -97,7 +97,7 @@ describe('Cache prices for Citilink', function() {
 			next();
 		});
 	});*/
-	describe('merge', function() {
+	/*describe('merge', function() {
 		it('should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged', function (done) {
 			var json = JSON.parse(fs.readFileSync('./cicp.json', 'utf8'));
 			var citilink = new Citilink(mockBody, mockDataCitilink);
@@ -108,5 +108,5 @@ describe('Cache prices for Citilink', function() {
 					done();
 				}, done);
 		});
-	});
+	});*/
 });
