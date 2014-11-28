@@ -53,6 +53,7 @@ function mergeCache (){
 		// debug('trs.length',trs.length)
 		trs.splice(0, 1); // remove 1st element
 		var lowestPriceRows = [];
+		debug('_this.cache',_this.cache)
 		trs.each(function(i, tr){
 			var fares = $('.fareCol2', tr).html();
 			if(!fares)
@@ -77,36 +78,31 @@ function mergeCache (){
 				// debug('fare',fare)
 				try {
 					var input      = $('[id$='+ fare +']');
-					var fareTr     = $('td:nth-child(5)', tr).find('p').eq(i);
-					var before     = fareTr.html();
-					var basic      = +fareTr.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
-					var nominal    = basic / 1000;
+					// var p     = $('td:nth-child(5)', tr).find('p').eq(i);
 					var p          = input.parents('p');
+					var pHtml     = p.html();
 					var pText      = p.text().trim();
+					var basic      = +p.text().match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
+					var nominal    = basic / 1000;
 					var available  = +(pText.match(/(\d+) \)$/) || [])[1];
 					var _class     = (pText.match(/\( (\S)\/Cls/) || [])[1];
 					var classCache = _class.toLowerCase() + nominal;
 					var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
+					debug('classCache', classCache, 'cachePrice', cachePrice);
 					// debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
 					// debug(save, available, lowestPrices[currentRoute], cachePrice)
 					if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
 						lowestPrices[currentRoute] = cachePrice;
 					cachePrice = Math.round(cachePrice / 100) * 100;
-					// console.log(basic);
-					if (before.match(/(Rp.)(\d+,\d+,\d+)/g)) {
-						after = before.replace(/(Rp.)(\d+,\d+,\d+)/g, 'Rp.'+cachePrice);
-					} else if (before.match(/(Rp.)(\d+,\d+)/g)) {
-						after = before.replace(/(Rp.)(\d+,\d+)/g, 'Rp.'+cachePrice);
-					}
-					// debug(fareData2)
+					var after = pHtml.replace(/Rp.[\d,]+/, 'Rp.' + cachePrice)
 					fareData2 = fareData2 + '<p>'+after+'</p><script>' + basic + '</script>';
 				} catch (e) {
 					debug(e.message)
 					// fareData2 = 0;
 					// do nothing
 				}
-				//after = before;
-				//fareTr.html(after);
+				//after = pHtml;
+				//p.html(after);
 			});
 			lowestPriceRows.push(lowestPrices[currentRoute]);
 			$('td:nth-child(5)', tr).html(fareData2);
