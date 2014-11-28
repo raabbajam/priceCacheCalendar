@@ -69,7 +69,7 @@ function getCache (ori, dst, transit) {
 	return new Promise(function (resolve, reject) {
 		var _ori  = ori && ori.toLowerCase() || _this._dt.ori;
 		var _dst  = dst && dst.toLowerCase() || _this._dt.dst;
-		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", }, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
+		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", "size": 0}, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
 		if (!!transit){
 			var aTransit = transit.match(/.../g);
 			var term = {}
@@ -223,7 +223,8 @@ function getAllCheapest (rows) {
 			var rute   = cheapest.ori + _transit + cheapest.dst;
 			var flight = cheapest.flight.toLowerCase();
 			var _class = (cheapest.class || '').toLowerCase();
-			_class += rowNum;
+			if (_this.airline === 'garuda')
+				_class += rowNum;
 			rute = rute.toLowerCase();
 			if (!flightClasses[rute])
 				flightClasses[rute] = {};
