@@ -9,7 +9,8 @@ var cheerio = require('cheerio');
 function init (dt, scrape, args) {
 	this._super('lion', args);
 	for(var prop in dt){
-		dt[prop] = dt[prop].toLowerCase()
+		if(typeof dt[prop] === 'string')
+			dt[prop] = dt[prop].toLowerCase()
 	}
 	this._dt = dt;
 	this._scrape = scrape;
