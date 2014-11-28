@@ -9,7 +9,8 @@ var cheerio = require('cheerio');
 function init (dt, scrape, args) {
 	this._super('citilink', args);
 	for(var prop in dt){
-		dt[prop] = dt[prop].toLowerCase()
+		if(typeof dt[prop] === 'string')
+			dt[prop] = dt[prop].toLowerCase()
 	}
 	this._dt = dt;
 	this._scrape = scrape;
@@ -88,7 +89,7 @@ function mergeCache (){
 					var _class     = (pText.match(/\( (\S)\/Cls/) || [])[1];
 					var classCache = _class.toLowerCase() + nominal;
 					var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
-					debug('currentRoute:classCache', currentRoute + ':' + classCache, 'cachePrice', cachePrice);
+					// debug('currentRoute:classCache', currentRoute + ':' + classCache, 'cachePrice', cachePrice);
 					// debug(fare, classCache, currentCache[flightCode], currentCache[flightCode][classCache]);
 					// debug(save, available, lowestPrices[currentRoute], cachePrice)
 					if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
