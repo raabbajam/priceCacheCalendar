@@ -196,7 +196,7 @@ function mergeCachePrices (json) {
 	var _json      = _.cloneDeep(json);
 	var _this      = this;
 	var seatRequest = this.paxNum || 1;
-	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	_json.departure.flights = _json.departure.flights.map(function (rowAll) {
 		return rowAll.map(function (row) {
 			var rute = row.origin + row.destination;

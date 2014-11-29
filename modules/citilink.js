@@ -212,7 +212,7 @@ function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
 	var seatRequest = this.paxNum || 1;
-	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
 		var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');

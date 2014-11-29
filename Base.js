@@ -26,10 +26,11 @@ function init (airline, dt, scrape, args) {
 		this._kode = airlines[airline];
 		this.paxNum = 1;
 		if(!!this._dt && !!this._dt.adult && !!this._dt.child)
-			paxNum = +this._dt.adult + +this._dt.child;
+			this.paxNum = +this._dt.adult + +this._dt.child;
+		debug('this.paxNum',this.paxNum)
 	}
-	if (!!args)
-		this.setOptions(args);
+	// if (!!args)
+	this.setOptions(args);
 }
 /**
  * setting options, using one arguments: an object with key-value pair,
@@ -38,7 +39,7 @@ function init (airline, dt, scrape, args) {
 function setOptions() {
 	var key, value;
 	if (arguments.length === 1) {
-		var args = arguments[0];
+		var args = arguments;
 		var defaults = {
 			index      : 'pluto',
 			type       : 'price',
@@ -277,8 +278,9 @@ function getCachePrices (ids) {
 	return new Promise(function (resolve, reject) {
 		if (!(ids instanceof Array))
 			ids = [ids];
-		debug('ids',ids);
+		// debug('ids',ids);
 		var _ids = !!_this.idsToSearch ? _this.idsToSearch(ids): ids;
+		// debug('_ids',_ids)
 		_this.db.multiget(_this.index, _this.type, _ids, function (err, res) {
 			if (err)
 				return reject(err);
@@ -363,7 +365,7 @@ function scrapeAllLostData (data) {
 	var _this   = this;
 	var results = [];
 	debug('scrapeAllLostData');
-	var steps = data.reduce(function (sequence, id) {
+	var steps = (data || []).reduce(function (sequence, id) {
 		debug('sequence',id);
 		return sequence.then(function () {
 			return _this.scrapeLostData(id)
@@ -443,7 +445,7 @@ function merge (json) {
 	}
 	return _this.getAllCachePrices(aoCheapest)
 		.catch(function (err) {
-			debug('err.losts', err.losts);
+			debug('err.losts', err.message, err.losts);
 			return _this.scrapeAllLostData(err.losts)
 				.then(function (res) {
 					// debug('getAllCachePrices', res);
