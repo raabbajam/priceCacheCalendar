@@ -626,5 +626,79 @@
                 }
             ]
         ]
+    },
+    "cachePrices": {
+        "subcgk": {
+            "ga": {
+                "t": {
+                    "adult": 1113803,
+                    "child": 1113803,
+                    "infant": 116103,
+                    "basic": 1008003,
+                    "class": "T",
+                    "available": "9"
+                },
+                "c": {
+                    "adult": 3967203,
+                    "child": 2977203,
+                    "infant": 402103,
+                    "basic": 3602003,
+                    "class": "C",
+                    "available": "5"
+                },
+                "m": {
+                    "adult": 1468003,
+                    "child": 1102803,
+                    "infant": 151303,
+                    "basic": 1330003,
+                    "class": "M",
+                    "available": "2"
+                },
+                "s": {
+                    "adult": 836603,
+                    "child": 836603,
+                    "infant": 88603,
+                    "basic": 756003,
+                    "class": "S",
+                    "available": "9"
+                },
+                "v": {
+                    "adult": 975203,
+                    "child": 975203,
+                    "infant": 102903,
+                    "basic": 882003,
+                    "class": "V",
+                    "available": "5"
+                }
+            }
+        },
+        "cgkpdg": {
+            "ga": {
+                "c": {
+                    "adult": 3825303,
+                    "child": 2870503,
+                    "infant": 5613003,
+                    "basic": 3473003,
+                    "class": "C",
+                    "available": "3"
+                },
+                "v": {
+                    "adult": 1061003,
+                    "child": 1061003,
+                    "infant": 110603,
+                    "basic": 960003,
+                    "class": "V",
+                    "available": "9"
+                },
+                "y": {
+                    "adult": 1842003,
+                    "child": 1383303,
+                    "infant": 188703,
+                    "basic": 1670003,
+                    "class": "Y",
+                    "available": "2"
+                }
+            }
+        }
     }
 }

@@ -6,11 +6,7 @@ var db = require('../libs/db');
 var priceScrapers = require('priceScraper');
 var GarudaPriceScrapers = priceScrapers.garuda;
 function init (dt, scrape, args) {
-	this._super('garuda', args);
-	this._dt = dt;
-	this._dt.ori = this._dt.ori.toLowerCase();
-	this._dt.dst = this._dt.dst.toLowerCase();
-	this._scrape = scrape;
+	this._super('garuda', dt, scrape, args);
 }
 function getAllRoutes () {
 	var _this = this;
@@ -100,6 +96,7 @@ function mergeCache (){
 function getCheapestInRow (rowAll) {
 	// debug('rowAll',rowAll );
 	var outs = [];
+	var seatRequest = this.paxNum || 1;
 	rowAll.forEach(function (row, idx) {
 		var rowNum = idx + 1;
 		var out = {
@@ -109,7 +106,7 @@ function getCheapestInRow (rowAll) {
 		};
 		var seats = row.seats;
 		for (var i = seats.length - 1; i >= 0; i--) {
-			if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available > 0) {
+			if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available >= seatRequest) {
 				out.class = seats[i].class;
 				break;
 			}
@@ -198,6 +195,7 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json      = _.cloneDeep(json);
 	var _this      = this;
+	var seatRequest = this.paxNum || 1;
 	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	_json.departure.flights = _json.departure.flights.map(function (rowAll) {
 		return rowAll.map(function (row) {
@@ -205,7 +203,7 @@ function mergeCachePrices (json) {
 			var flight = 'ga';
 			rute = rute.toLowerCase();
 			var cheapestSeat = _.findLast(row.seats, function (seat) {
-				return seat.available !== "L" && seat.available > 0;
+				return seat.available.toLowerCase !== "l" && seat.class.toLowerCase() !== "l" && +seat.available >= seatRequest
 			});
 			if (!cheapestSeat)
 				return row;

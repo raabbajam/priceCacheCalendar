@@ -80,12 +80,8 @@
                     "1": "Padang, Minangkabau, Departure 13:50LT\r\n\t\tJakarta, Soekarno Hatta International Airport,  Arrival 15:35LT\r\n\t\tAC Type : 734 Y & C Config\t\t\r\n\r\n\t\tJakarta, Soekarno Hatta International Airport, Departure 18:35LT\r\n\t\tSurabaya, Juanda,  Arrival 19:50LT\r\n\t\tAC Type : 734 Y & C Config"
                 },
                 "cheapest": {
-                    "adult": 1554705,
-                    "child": 1554705,
-                    "infant": 146405,
-                    "basic": 1240005,
-                    "class": "t",
-                    "available": 9
+                    "class": "Full",
+                    "available": 0
                 }
             },
             "1": {
@@ -168,12 +164,8 @@
                     "1": "Padang, Minangkabau, Departure 13:50LT\r\n\t\tJakarta, Soekarno Hatta International Airport,  Arrival 15:35LT\r\n\t\tAC Type : 734 Y & C Config\t\t\r\n\r\n\t\t\tJakarta, Soekarno Hatta International Airport, Departure 18:30LT\r\n\t\t\t\r\n\t\t\tYogyakarta, Adi Sucipto,  Arrival 19:40LT\t\t\t\t, Departure 20:10LT\t\t\t\r\n\t\t\t\r\n\t\t\tSurabaya, Juanda,  Arrival 21:00LT\t\t\t\r\n\t\tAC Type : 735 Y & C CONFIG"
                 },
                 "cheapest": {
-                    "adult": 1818705,
-                    "child": 1818705,
-                    "infant": 172805,
-                    "basic": 1480005,
-                    "class": "n",
-                    "available": 3
+                    "class": "Full",
+                    "available": 0
                 }
             }
         }

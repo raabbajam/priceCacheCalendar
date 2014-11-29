@@ -7,13 +7,7 @@ var priceScrapers = require('priceScraper');
 var CitilinkPriceScrapers = priceScrapers.citilink;
 var cheerio = require('cheerio');
 function init (dt, scrape, args) {
-	this._super('citilink', args);
-	for(var prop in dt){
-		if(typeof dt[prop] === 'string')
-			dt[prop] = dt[prop].toLowerCase()
-	}
-	this._dt = dt;
-	this._scrape = scrape;
+	this._super('citilink', dt, scrape, args);
 };
 function getAllRoutes () {
 	var _this  = this;
@@ -122,6 +116,7 @@ function mergeCache (){
 function getCheapestInRow (row) {
 	// debug('rowAll',row );
 	var outs = [];
+	var seatRequest = this.paxNum || 1;
 	if (!row.normal_fare)
 		return outs;
 	var rutes = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')});
@@ -146,7 +141,7 @@ function getCheapestInRow (row) {
 			return true;
 		// debug(matches[1], matches[2]);
 		var matchAvailable = +(matches[2] || '0').trim();
-		if (matchAvailable > 0){
+		if (matchAvailable >= seatRequest){
 			var _class = (matches[1] || 'N/A').trim();
 			var nominal = +matches[3] / 1000;
 			// debug('matchAvailable', matchAvailable, '_class', _class, 'nominal', nominal)
@@ -216,6 +211,7 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
+	var seatRequest = this.paxNum || 1;
 	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
@@ -232,7 +228,7 @@ function mergeCachePrices (json) {
 			var nominal = +matches[2] / 1000;
 			// debug(matchAvailable, nominal);
 			var _classNominal = _class.toLowerCase() + nominal;
-			if (matchAvailable > 0){
+			if (matchAvailable >= seatRequest){
 				try{row.cheapest = _this.cachePrices[rute][flight][_classNominal]; }
 				catch (e){
 					debug(e.message, rute, flight, _classNominal);

@@ -12,10 +12,24 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:base');
  * @param  {String} airline Airline's name
  * @param  {Object} _db     Database model
  */
-function init (airline, args) {
+function init (airline, dt, scrape, args) {
 	this.name  = this.airline = airline;
-	this._kode = airlines[airline];
-	this.setOptions(args);
+	for(var prop in dt){
+		if(typeof dt[prop] === 'string')
+			dt[prop] = dt[prop].toLowerCase()
+	}
+	if (!!dt && !!scrape){
+		this._dt = dt;
+		this._dt.ori = this._dt.ori.toLowerCase();
+		this._dt.dst = this._dt.dst.toLowerCase();
+		this._scrape = scrape;
+		this._kode = airlines[airline];
+		this.paxNum = 1;
+		if(!!this._dt && !!this._dt.adult && !!this._dt.child)
+			paxNum = +this._dt.adult + +this._dt.child;
+	}
+	if (!!args)
+		this.setOptions(args);
 }
 /**
  * setting options, using one arguments: an object with key-value pair,
@@ -28,6 +42,7 @@ function setOptions() {
 		var defaults = {
 			index      : 'pluto',
 			type       : 'price',
+			dt         : {},
 			db         : db,
 			cache      : {},
 			cachePrices: {},
