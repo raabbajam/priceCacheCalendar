@@ -48,7 +48,7 @@ function mergeCache (){
 		// debug('trs.length',trs.length)
 		trs.splice(0, 1); // remove 1st element
 		var lowestPriceRows = [];
-		debug('_this.cache',_this.cache)
+		// debug('_this.cache',_this.cache)
 		trs.each(function(i, tr){
 			var fares = $('.fareCol2', tr).html();
 			if(!fares)
@@ -171,7 +171,7 @@ function generateData (id) {
 		classCode     : _id[4],
 		cek_instant   : 1,
 		cek_instant_id: cek_instant_id,
-		dep_date      : this._dt.dep_date,
+		dep_date      : this._dt.dep_date.replace(/\s/g, '+'),
 		// dep_date      : moment().add(1, 'M').format('DD+MMM+YYYY'),
 		rute: 'OW',
 		dep_radio  : '1Fare6',

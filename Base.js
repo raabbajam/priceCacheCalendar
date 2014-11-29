@@ -125,7 +125,7 @@ function getAllCaches (routes) {
 	routes.forEach(function (route) {
 		if (!route)
 			return true;
-		debug(route);
+		// debug(route);
 		var aRoute = route.match(/.../g);
 		var ori = aRoute.shift();
 		var dst = aRoute.pop();
@@ -284,7 +284,7 @@ function getCachePrices (ids) {
 			if (err)
 				return reject(err);
 			try {res = JSON.parse(res);} catch(error) { return reject(error);}
-			debug(res);
+			// debug(res);
 			if (!res.docs)
 				return reject(new Error('No cache found'));
 			var docs  = res.docs;

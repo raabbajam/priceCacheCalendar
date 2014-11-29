@@ -159,7 +159,7 @@ function generateData (id) {
 		flightCode  : _id[3],
 		classCode   : classCode,
 		dep_radio   : _id[4],
-		dep_date    : this._dt.dep_date,
+		dep_date      : this._dt.dep_date.replace(/\s/g, '+'),
 		action      : 'price',
 		user        : 'IANTONI.JKTGI229T',
 		priceScraper: false
