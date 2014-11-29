@@ -38,7 +38,7 @@ function init (airline, dt, scrape, args) {
 function setOptions() {
 	var key, value;
 	if (arguments.length === 1) {
-		var args = arguments;
+		var args = arguments[0];
 		var defaults = {
 			index      : 'pluto',
 			type       : 'price',
