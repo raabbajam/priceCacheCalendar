@@ -29,7 +29,6 @@ function init (airline, dt, scrape, args) {
 			this.paxNum = +this._dt.adult + +this._dt.child;
 		debug('this.paxNum',this.paxNum)
 	}
-	// if (!!args)
 	this.setOptions(args);
 }
 /**
