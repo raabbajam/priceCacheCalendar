@@ -199,7 +199,7 @@ function scrapeLostData (id) {
 	var dt = this.generateData(id);
 	var urlAirbinder = 'http://128.199.251.75:4/price';
 	var urlPluto = 'http://pluto.dev/0/price/citilink';
-	debug('dt',dt)
+	// debug('dt',dt)
 	var options = {
 		scrape : this.scrape || urlAirbinder,
 		dt: dt,
@@ -216,7 +216,7 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
-	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
 		var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function (rute) { return rute.replace(/\W/g, '')}).join('');
@@ -256,6 +256,7 @@ function mergeCachePrices (json) {
 	});
 	// debug(_json.dep_table);
 	// var ret = _json.return;
+	_json.cachePrices = _this.cachePrices;
 	return _json;
 }
 /**

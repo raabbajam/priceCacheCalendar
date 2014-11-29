@@ -198,7 +198,7 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json      = _.cloneDeep(json);
 	var _this      = this;
-	debug('_this.cachePrices',_this.cachePrices);
+	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	_json.departure.flights = _json.departure.flights.map(function (rowAll) {
 		return rowAll.map(function (row) {
 			var rute = row.origin + row.destination;
@@ -232,6 +232,7 @@ function mergeCachePrices (json) {
 	});
 	// debug(_json.departure.flights);
 	// var ret = _json.return;
+	_json.cachePrices = _this.cachePrices;
 	return _json;
 }
 /**
