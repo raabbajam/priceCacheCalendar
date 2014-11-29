@@ -5,8 +5,8 @@ var _ = require('lodash');
 var db = require('../libs/db');
 var priceScrapers = require('priceScraper');
 var GarudaPriceScrapers = priceScrapers.garuda;
-function init (dt, scrape) {
-	this._super('garuda');
+function init (dt, scrape, args) {
+	this._super('garuda', args);
 	this._dt = dt;
 	this._dt.ori = this._dt.ori.toLowerCase();
 	this._dt.dst = this._dt.dst.toLowerCase();
@@ -185,7 +185,7 @@ function scrapeLostData (id) {
 	var options      = {
 		dt     : dt,
 		airline: this.airline,
-		scrape : urlAirbinder,
+		scrape : this.scrape || urlAirbinder,
     };
     var garudaPriceScrapers = new GarudaPriceScrapers(options);
     return garudaPriceScrapers.run().catch(function (err) {debug('garudaPriceScrapers',err);});

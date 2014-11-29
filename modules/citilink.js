@@ -201,7 +201,7 @@ function scrapeLostData (id) {
 	var urlPluto = 'http://pluto.dev/0/price/citilink';
 	debug('dt',dt)
 	var options = {
-		scrape: urlAirbinder,
+		scrape : this.scrape || urlAirbinder,
 		dt: dt,
 		airline: 'citilink'
 	};

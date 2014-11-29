@@ -31,6 +31,7 @@ function setOptions() {
 			db         : db,
 			cache      : {},
 			cachePrices: {},
+			scraper	   : '',
 		};
 		var options = _.merge({}, defaults, args);
 		for (key in defaults) {
