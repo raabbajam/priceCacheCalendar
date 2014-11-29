@@ -25,8 +25,8 @@ function init (airline, dt, scrape, args) {
 		this._scrape = scrape;
 		this._kode = airlines[airline];
 		this.paxNum = 1;
-		if(!!this._dt && !!this._dt.adult && !!this._dt.child)
-			this.paxNum = +this._dt.adult + +this._dt.child;
+		if(!!this._dt && !!this._dt.adult)
+			this.paxNum = +this._dt.adult + (+this._dt.child || 0);
 		debug('this.paxNum',this.paxNum)
 	}
 	this.setOptions(args);
