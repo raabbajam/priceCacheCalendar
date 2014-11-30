@@ -125,14 +125,19 @@ function idsToSearch (ids) {
 function idsToScrape (losts, ids) {
 	var _ids = _.remove(ids, function(id){
 		// _ids are subset of ids that losts, but it still might have duplicate in row
-		return _.contains(losts, id.replace(/\d/, ''))
+		debug('contaings', id.replace(/\d/, ''))
+		return _.contains(losts, id.replace(/\d/g, ''))
 	});
+
+	debug('losts', losts, 'ids', ids, '_ids', _ids)
 	try {
 		_ids = _.reduce(_ids, function(all, id){
 			// we reduce it to an object with the letter as key so as to make there is only unique route
+			debug('key: ' + id.replace(/\d/g, '') + '. Value: ' + id.replace(/\D/g, ''))
 			all[id.replace(/\d/g, '')] = id.replace(/\D/g, '');
 			return all;
 		}, {});
+		debug('obj _ids', _ids);
 		// and then convert it to array again
 		_ids = _.reduce(_ids, function (all, num, letter) {
 			all.push(letter + num);
@@ -152,18 +157,22 @@ function generateData (id) {
 	var _airline  = this.airline;
 	var _id       = id.split('_');
 	var classCode = _id[4].replace(/\d/g, '');
+	var cek_instant_id = _id[4];
 	// var classRow = _id[4].replace(/\D/g, '');
 	var data = {
-		ori         : _id[0],
-		dst         : _id[1],
-		airline     : _id[2],
-		flightCode  : _id[3],
-		classCode   : classCode,
-		dep_radio   : _id[4],
+		ori           : _id[0],
+		dst           : _id[1],
+		airline       : _id[2],
+		flightCode    : _id[3],
+		classCode     : classCode,
+		// dep_radio  : _id[4],
 		dep_date      : this._dt.dep_date.replace(/\s/g, '+'),
-		action      : 'price',
-		user        : 'IANTONI.JKTGI229T',
-		priceScraper: false
+		action        : 'price',
+		user          : 'IANTONI.JKTGI229T',
+		cek_instant   : 1,
+		cek_instant_id: cek_instant_id,
+		dep_radio     : cek_instant_id,
+		priceScraper  : false
 	};
 	for (var i = 5, j = 1, ln = _id.length; i < ln; i++, j++) {
 		data['transit' + j] = _id[i];
