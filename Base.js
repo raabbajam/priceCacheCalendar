@@ -13,6 +13,7 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:base');
  * @param  {Object} _db     Database model
  */
 function init (airline, dt, scrape, args) {
+	try{
 	this.name  = this.airline = airline;
 	for(var prop in dt){
 		if(typeof dt[prop] === 'string')
@@ -24,12 +25,14 @@ function init (airline, dt, scrape, args) {
 		this._dt.dst = this._dt.dst.toLowerCase();
 		this._scrape = scrape;
 		this._kode = airlines[airline];
+		debug('this._kode',this._kode)
 		this.paxNum = 1;
 		if(!!this._dt && !!this._dt.adult)
 			this.paxNum = +this._dt.adult + (+this._dt.child || 0);
 		debug('this.paxNum',this.paxNum)
 	}
 	this.setOptions(args);
+	}catch(e){debug(e)}
 }
 /**
  * setting options, using one arguments: an object with key-value pair,
@@ -144,10 +147,13 @@ function insertAllLowest (res) {
 	var _this    = this;
 	var _dt      = _this._dt;
 	var _date    = moment(_dt.dep_date, dateFormats).unix() * 1000;
+	debug('res', res)
 	Object.keys(res).forEach(function (prop, i) {
 		if (!res[prop])
 			return true;
+		debug('prop',res[prop])
 		var _price = parseInt(res[prop], 10) + _this._kode;
+		debug('insertAllLowest res',_price, _this._kode)
 		var data   = {
 			date       : _date,
 			origin     : prop.substr(0, 3),
@@ -156,6 +162,7 @@ function insertAllLowest (res) {
 			airline    : _this.airline
 		};
 		data.id = data.origin + data.destination + data.date / 1000;
+		debug('data insertAllLowest', data);
 		promises.push(_this.insertLowest(data));
 	});
 	return Promise.all(promises, function (res) {
@@ -203,7 +210,7 @@ function run () {
 			return _this._scrape;
 		})
 		.catch(function (err) {
-			debug('Error priceCacheCalendar: ' + err);
+			debug('Error priceCacheCalendar: ' + err.stack);
 			return _this._scrape;
 		});
 }
@@ -225,6 +232,9 @@ function getCheapestInRow (row) {
 function getAllCheapest (rows) {
 	var _this = this;
 	var flightClasses = {};
+	if (!rows)
+		return flightClasses;
+	rows = rows.filter(function (row) {return !!row })
 	// debug('rows', rows);
 	_.each(rows, function (row, index) {
 		var rowNum = index + 1;

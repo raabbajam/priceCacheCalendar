@@ -7,12 +7,7 @@ var priceScrapers = require('priceScraper');
 var SriwijayaPriceScrapers = priceScrapers.sriwijaya;
 var cheerio = require('cheerio');
 function init (dt, scrape, args) {
-	this._super('sriwijaya', args);
-	for(var prop in dt){
-		dt[prop] = dt[prop].toLowerCase()
-	}
-	this._dt = dt;
-	this._scrape = scrape;
+	this._super('sriwijaya', dt, scrape, args);
 };
 function getAllRoutes () {
 	var _this  = this;
@@ -47,7 +42,7 @@ function mergeCache (){
 	var trs = $('#table_go > tr, #table_back > tr');
 	if (!trs)
 		return false;
-	debug('_this.cache',_this.cache)
+	// debug('_this.cache',_this.cache)
 	function looper (dir) {
 		var realRoute = _this._dt.ori.toLowerCase() + _this._dt.dst.toLowerCase();
 		var lowestPriceRows = [];
@@ -65,7 +60,7 @@ function mergeCache (){
 			// if (!_this.cache[currentRoute] || !_this.cache[currentRoute][currentFCode])
 			// 	return true;
 			// get all radio
-			debug('_cache[currentRoute][currentFCode]', _cache[currentRoute][currentFCode])
+			// debug('_cache[currentRoute][currentFCode]', _cache[currentRoute][currentFCode])
 			$('.avcellTd, .avcellTd_even, .avcellTd_disable', tr).each(function (i, td) {
 				// debug(idx + ':' + i)
 				var classCode = ($('.classLetterCode', td).text() || '').toLowerCase();
@@ -110,7 +105,9 @@ function getCheapestInRow (row) {
 	rutes.push(_.values(row.arrive).pop());
 	rutes = rutes.map(function (rute) {return rute.substr(0,3); })
 	// debug('rutes',rutes);
-	var flight = _.values(row.code_flight)[0].replace(/\s/g , '+');
+	var flight = _.values(row.code_flight).reduce(function (all, codes) {
+		return all + codes.replace(/\d/g , '').length;
+	}, '');
 	var out = {
 		ori: rutes.shift(),
 		dst: rutes.pop(),
@@ -127,7 +124,7 @@ function getCheapestInRow (row) {
 			return false;
 		}
 	})
-	// debug(out);
+	// debug('out', out);
 	if (!!out.class)
 		outs.push(out);
 	return outs;
@@ -171,7 +168,7 @@ function scrapeLostData (id) {
 	debug('scrapeLostData',id);
 	var dt = this.generateData(id);
 	var urlAirbinder = 'http://128.199.251.75:9019/price';
-	var urlPluto = 'http://pluto.dev/0/price/sriwijaya';
+	var urlPluto = 'http://folbek.me:3000/0/price/sriwijaya';
 	var options = {
 		scrape: urlAirbinder,
 		dt: dt,
@@ -197,7 +194,9 @@ function mergeCachePrices (json) {
 		rutes = rutes.map(function (rute) {return rute.substr(0,3); });
 		var rute = rutes.join('').toLowerCase();
 		debug('rute',rute);
-		var flight = _.values(row.code_flight)[0].toLowerCase().replace(/\s/g , '+');;
+		var flight = _.values(row.code_flight).reduce(function (all, codes) {
+			return all + codes.replace(/\d/g , '').length;
+		}, '');
 		var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
 		_.forEach(aClass, function (_class) {
 			var matchAvailable;
@@ -233,6 +232,7 @@ function prepareRows (json) {
 	// debug('rows',_json.departure.flights);
 	if (!!_json.ret_table && !!_json.ret_table[0])
 		rows = rows.concat(_.values(_json.ret_table));
+	debug('prepareRows', rows.length)
 	return rows;
 }
 var SriwijayaPrototype = {
