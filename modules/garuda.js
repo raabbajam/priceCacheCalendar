@@ -104,10 +104,11 @@ function getCheapestInRow (rowAll) {
 			dst   : row.destination,
 			flight: 'ga'
 		};
+		var fligthCode = row.flightCode.replace(/\D/g, '');
 		var seats = row.seats;
 		for (var i = seats.length - 1; i >= 0; i--) {
 			if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available >= seatRequest) {
-				out.class = seats[i].class;
+				out.class = seats[i].class + fligthCode;
 				break;
 			}
 		}

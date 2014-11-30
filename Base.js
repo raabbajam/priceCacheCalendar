@@ -250,8 +250,8 @@ function getAllCheapest (rows) {
 			var rute   = cheapest.ori + _transit + cheapest.dst;
 			var flight = cheapest.flight.toLowerCase();
 			var _class = (cheapest.class || '').toLowerCase();
-			if (_this.airline === 'garuda')
-				_class += rowNum;
+			/*if (_this.airline === 'garuda')
+				_class += rowNum;*/
 			rute = rute.toLowerCase();
 			if (!flightClasses[rute])
 				flightClasses[rute] = {};
@@ -407,8 +407,8 @@ function docsToCachePrices (docs) {
 		if(!doc.found)
 			return false;
 		var source = doc._source;
-		var flight = source.flight.toLowerCase();
-		var _class = source.class.toLowerCase();
+		var flight = !!source.flight.toLowerCase && source.flight.toLowerCase() || source.flight;
+		var _class = !!source.class.toLowerCase && source.class.toLowerCase() || source.class;
 		var rute   = source.origin;
 		for (var i = 1; i <= 3; i++){
 			rute += source['transit' + i] || '';
