@@ -87,6 +87,7 @@ function getCache (ori, dst, transit) {
 		var _dst  = dst && dst.toLowerCase() || _this._dt.dst;
 		var query = {"size":0, "query": {"filtered": {"filter": {"and" : [{ "term": { "origin": _ori } }, { "term": { "destination": _dst} }, { "term": { "airline": _this.name} } ] } } }, "aggs": {"groupFlight": {"terms": {"field": "flight", }, "aggs": {"groupClass": {"terms": {"field": "class", "size": 0}, "aggs": {"minPrice": {"min": {"field":"price"} } } } } } } };
 		if (!!transit){
+			transit = transit.toLowerCase();
 			var aTransit = transit.match(/.../g);
 			var term = {}
 			aTransit.forEach(function (transit, i) {

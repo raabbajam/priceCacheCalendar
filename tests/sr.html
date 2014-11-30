@@ -1,3 +1,14 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="shortcut icon" href="/SJ-Eticket/assets/images/Base/fluteweb_favicon_0.png" type="image/x-icon" />
+<link href="/SJ-Eticket/assets/css/main.css" rel="stylesheet" type="text/css" />
+<title>Sriwijaya Agent Application</title>
+
+
+</head>
 <body><!-- onload="javascript:setEnableReturn();" onunload="closeApplication();" > -->
 
 <div id="pagewrapper">
@@ -76,7 +87,7 @@
 <div id="mainWrapper">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><script language="javascript" type="text/javascript">
+    <td><script language='javascript' type='text/javascript'>
 dari = new Array (1479);
 ke = new Array (1479);
 ke_ket = new Array (1479);
@@ -6522,81 +6533,81 @@ function ValidationSearchFlight(){
 <form id="searchFlight" name="searchFlight" method="post" action="/SJ-Eticket/application/menu_others.php?reffNo=WW05dmEybHVaenBpYjI5cmFXNW4=" onsubmit="return submitForm(this);">
 <div id="searchPanelTop">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr><td colspan="4"><strong>Search Flight</strong></td></tr>
+  <tr><td colspan="4" ><strong>Search Flight</strong></td></tr>
   <tr>
     <td align="left" valign="top"><div id="radioWrapper">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="50%" height="25"><div class="spRadioOW"><input name="return" type="radio" value="NO" checked="checked" onclick="return disabledDate1();"></div>One Way</td>
+            <td width="50%" height="25"><div class="spRadioOW"><input name="return" type="radio" value="NO"  checked="checked" onclick="return disabledDate1();"/></div>One Way</td>
           </tr>
           <tr>
-            <td width="50%" height="25"><div class="spRadioRT"><input name="return" type="radio" value="YES" onclick="return disabledDate2();"></div>Return</td>
+            <td width="50%" height="25"><div class="spRadioRT"><input name="return" type="radio" value="YES"  onclick="return disabledDate2();" /></div>Return</td>
           </tr>
         </table></div></td>
     <td align="left" valign="top"><div id="fromToWrapper">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="22%" height="25" align="right"><div class="labelPanel">From &#xA0;</div></td>
+            <td width="22%" height="25" align="right"><div class="labelPanel">From &nbsp;</div></td>
             <td width="78%" height="25"><label>
               <select name="ruteBerangkat" id="ruteBerangkat" onchange="return changeTo(); ">
                     <option value="From">Please Choose...</option>
-                                    <option value="AMQ">Ambon - AMQ</option>
-                                    <option value="BPN">BalikPapan - BPN</option>
-                                    <option value="BTJ">Banda Aceh - BTJ</option>
-                                    <option value="BDO">Bandung - BDO</option>
-                                    <option value="BDJ">Banjarmasin - BDJ</option>
-                                    <option value="BTH">Batam - BTH</option>
-                                    <option value="BKS">Bengkulu - BKS</option>
-                                    <option value="BEJ">Berau - BEJ</option>
-                                    <option value="BIK">Biak - BIK</option>
-                                    <option value="DVO">Davao - DVO</option>
-                                    <option value="DPS">Denpasar - DPS</option>
-                                    <option value="DAC">Dhaka - DAC</option>
-                                    <option value="DIL">Dili - DIL</option>
-                                    <option value="GTO">Gorontalo - GTO</option>
-                                    <option value="HLP">Halim Perdana K - HLP</option>
-                                    <option value="IPH">Ipoh - IPH</option>
-                                    <option value="CGK">Jakarta - CGK</option>
-                                    <option value="DJB">Jambi - DJB</option>
-                                    <option value="DJJ">Jayapura - DJJ</option>
-                                    <option value="KDI">Kendari - KDI</option>
-                                    <option value="TGG">Kuala Terengganu - TGG</option>
-                                    <option value="KOE">Kupang - KOE</option>
-                                    <option value="TKG">Lampung - TKG</option>
-                                    <option value="LUW">Luwuk - LUW</option>
-                                    <option value="MLG">Malang - MLG</option>
-                                    <option value="MDC">Manado - MDC</option>
-                                    <option value="MKW">Manokwari - MKW</option>
-                                    <option value="MOF">Maumere - MOF</option>
-                                    <option value="KNO">Medan - KNO</option>
-                                    <option value="MKQ">Merauke - MKQ</option>
-                                    <option value="NTX">Natuna - NTX</option>
-                                    <option value="PDG">Padang - PDG</option>
-                                    <option value="PKY">Palangkaraya - PKY</option>
-                                    <option value="PLM">Palembang - PLM</option>
-                                    <option value="PLW">Palu - PLW</option>
-                                    <option value="PGK">Pangkalpinang - PGK</option>
-                                    <option value="PKU">Pekanbaru - PKU</option>
-                                    <option value="PEN">Penang - PEN</option>
-                                    <option value="PNK">Pontianak - PNK</option>
-                                    <option value="SRI">Samarinda - SRI</option>
-                                    <option value="SRG">Semarang - SRG</option>
-                                    <option value="SOC">Solo - SOC</option>
-                                    <option value="SOQ">Sorong - SOQ</option>
-                                    <option value="SUB">Surabaya - SUB</option>
-                                    <option value="TJQ">Tanjung Pandan - TJQ</option>
-                                    <option value="TNJ">Tanjung Pinang - TNJ</option>
-                                    <option value="TRK">Tarakan - TRK</option>
-                                    <option value="TTE">Ternate - TTE</option>
-                                    <option value="TIM">Timika - TIM</option>
-                                    <option value="UPG">UjungPandang - UPG</option>
-                                    <option value="WGP">Waingapu - WGP</option>
-                                    <option value="JOG" selected="selected">Yogyakarta - JOG</option>
+                                    <option value="AMQ" >Ambon - AMQ</option>
+                                    <option value="BPN" >BalikPapan - BPN</option>
+                                    <option value="BTJ" >Banda Aceh - BTJ</option>
+                                    <option value="BDO" >Bandung - BDO</option>
+                                    <option value="BDJ" >Banjarmasin - BDJ</option>
+                                    <option value="BTH" >Batam - BTH</option>
+                                    <option value="BKS" >Bengkulu - BKS</option>
+                                    <option value="BEJ" >Berau - BEJ</option>
+                                    <option value="BIK" >Biak - BIK</option>
+                                    <option value="DVO" >Davao - DVO</option>
+                                    <option value="DPS" >Denpasar - DPS</option>
+                                    <option value="DAC" >Dhaka - DAC</option>
+                                    <option value="DIL" >Dili - DIL</option>
+                                    <option value="GTO" >Gorontalo - GTO</option>
+                                    <option value="HLP" >Halim Perdana K - HLP</option>
+                                    <option value="IPH" >Ipoh - IPH</option>
+                                    <option value="CGK" >Jakarta - CGK</option>
+                                    <option value="DJB" >Jambi - DJB</option>
+                                    <option value="DJJ" >Jayapura - DJJ</option>
+                                    <option value="KDI" >Kendari - KDI</option>
+                                    <option value="TGG" >Kuala Terengganu - TGG</option>
+                                    <option value="KOE" >Kupang - KOE</option>
+                                    <option value="TKG" >Lampung - TKG</option>
+                                    <option value="LUW" >Luwuk - LUW</option>
+                                    <option value="MLG" >Malang - MLG</option>
+                                    <option value="MDC" >Manado - MDC</option>
+                                    <option value="MKW" >Manokwari - MKW</option>
+                                    <option value="MOF" >Maumere - MOF</option>
+                                    <option value="KNO" >Medan - KNO</option>
+                                    <option value="MKQ" >Merauke - MKQ</option>
+                                    <option value="NTX" >Natuna - NTX</option>
+                                    <option value="PDG" >Padang - PDG</option>
+                                    <option value="PKY" >Palangkaraya - PKY</option>
+                                    <option value="PLM" >Palembang - PLM</option>
+                                    <option value="PLW" >Palu - PLW</option>
+                                    <option value="PGK" >Pangkalpinang - PGK</option>
+                                    <option value="PKU" >Pekanbaru - PKU</option>
+                                    <option value="PEN" >Penang - PEN</option>
+                                    <option value="PNK" >Pontianak - PNK</option>
+                                    <option value="SRI" >Samarinda - SRI</option>
+                                    <option value="SRG" >Semarang - SRG</option>
+                                    <option value="SOC" >Solo - SOC</option>
+                                    <option value="SOQ" >Sorong - SOQ</option>
+                                    <option value="SUB" >Surabaya - SUB</option>
+                                    <option value="TJQ" >Tanjung Pandan - TJQ</option>
+                                    <option value="TNJ" >Tanjung Pinang - TNJ</option>
+                                    <option value="TRK" >Tarakan - TRK</option>
+                                    <option value="TTE" >Ternate - TTE</option>
+                                    <option value="TIM" >Timika - TIM</option>
+                                    <option value="UPG" >UjungPandang - UPG</option>
+                                    <option value="WGP" >Waingapu - WGP</option>
+                                    <option value="JOG"  selected="selected">Yogyakarta - JOG</option>
                               </select>
             </label></td>
           </tr>
           <tr>
-            <td height="25" align="right"><div class="labelPanel">To &#xA0;</div></td>
+            <td height="25" align="right"><div class="labelPanel">To &nbsp;</div></td>
             <td height="25"><label>
               <select name="ruteTujuan" id="ruteTujuan">
                     <option value="Destination">Please Choose....</option>
@@ -6978,8 +6989,8 @@ function ValidationSearchFlight(){
                                                                             <option value="29-NOV-15" >29 Nov 2015</option>
                               </select>-->
                 <label>
-                <input name="tanggalBerangkat" type="text" id="tanggalBerangkat" size="12" onkeyup="this.value = this.value.toUpperCase();" maxlength="12" value="19-DEC-2014" readonly onchange="changeDateTuj();">
-                <img src="/SJ-Eticket/jscalendar/img.gif" id="newDateTL" style="cursor: pointer; border: 1px solid purple;" title="Date selector" onmouseover="this.style.background=&apos;purple&apos;;" onmouseout="this.style.background=&apos;&apos;">
+                <input name="tanggalBerangkat" type="text" id="tanggalBerangkat" size="12" onKeyUp="this.value = this.value.toUpperCase();" maxlength="12" value="19-DEC-2014" readonly="" onchange="changeDateTuj();" />
+                <img src="/SJ-Eticket/jscalendar/img.gif" id="newDateTL" style="cursor: pointer; border: 1px solid purple;" title="Date selector" onMouseOver="this.style.background='purple';" onMouseOut="this.style.background=''" />
                   <script type="text/javascript">
                   Calendar.setup(
                     {
@@ -7369,8 +7380,8 @@ function ValidationSearchFlight(){
 
           </select>-->
                 <label>
-                <input name="tanggalTujuan" type="text" id="tanggalTujuan" size="12" onkeyup="this.value = this.value.toUpperCase();" maxlength="12" value="19-DEC-2014" disabled="disabled">
-                <img src="/SJ-Eticket/jscalendar/img.gif" id="newDateTL" style="cursor: pointer; border: 1px solid purple;" title="Date selector" onmouseover="this.style.background=&apos;purple&apos;;" onmouseout="this.style.background=&apos;&apos;">
+                <input name="tanggalTujuan" type="text" id="tanggalTujuan" size="12" onKeyUp="this.value = this.value.toUpperCase();" maxlength="12" value="19-DEC-2014" disabled="disabled" />
+                <img src="/SJ-Eticket/jscalendar/img.gif" id="newDateTL" style="cursor: pointer; border: 1px solid purple;" title="Date selector" onMouseOver="this.style.background='purple';" onMouseOut="this.style.background=''" />
                   <script type="text/javascript">
                   Calendar.setup(
                     {
@@ -7399,53 +7410,53 @@ function ValidationSearchFlight(){
         </td>
       </tr>
             <tr>
-        <td>Adult<span class="agesLabelJSP">(&gt;12years)</span></td>
+        <td>Adult<span class="agesLabelJSP">(>12years)</span></td>
         <td><span class="spSelectAdult">
                   <select name="ADT" id="ADT" onchange="return revalidPaxAmount(this.value, this.name);">
-                        <option value="0">0</option>
-                        <option value="1" selected="selected">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="0" >0</option>
+                        <option value="1"  selected="selected">1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                        <option value="4" >4</option>
+                        <option value="5" >5</option>
+                        <option value="6" >6</option>
+                        <option value="7" >7</option>
+                        <option value="8" >8</option>
+                        <option value="9" >9</option>
                       </select>
                 </span></td>
-        <td>&#xA0;&#xA0;Children<span class="agesLabelJSP">(2-12years)</span></td>
+        <td>&nbsp;&nbsp;Children<span class="agesLabelJSP">(2-12years)</span></td>
         <td><span class="spSelectChild">
                   <select name="CHD" id="CHD" onchange="return revalidPaxAmount(this.value, this.name);">
-                        <option value="0" selected="selected">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
+                        <option value="0"  selected="selected">0</option>
+                        <option value="1" >1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                        <option value="4" >4</option>
+                        <option value="5" >5</option>
+                        <option value="6" >6</option>
+                        <option value="7" >7</option>
+                        <option value="8" >8</option>
                       </select>
                 </span></td>
-        <td>&#xA0;&#xA0;Infant<span class="agesLabelJSP">(3month-2years)</span></td>
+        <td>&nbsp;&nbsp;Infant<span class="agesLabelJSP">(3month-2years)</span></td>
         <td><span class="spSelectInfant">
                   <select name="INF" id="INF" onchange="return revalidPaxAmount(this.value, this.name);">
-                        <option value="0" selected="selected">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="0"  selected="selected">0</option>
+                        <option value="1" >1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
                       </select>
                 </span></td>
-        <td rowspan="2"><div class="spSubmitButton"><input type="submit" name="Submit" value="Search" class="searchPanelSubmitButton">
+        <td rowspan="2"><div class="spSubmitButton"><input type="submit" name="Submit" value="Search" class="searchPanelSubmitButton" />
         </div></td>
       </tr>
           </table></td>
     </tr>
 </table>
 </div>
-<input type="hidden" name="action" value="booking">
-<input type="hidden" name="2911140744" value="2911140744">
+<input type="hidden" name="action" value="booking" />
+<input type="hidden" name="2911140744"value="2911140744" />
 </form>
 <script language="javascript" type="text/javascript">
 changeTos();function changeTos(){
@@ -7467,7 +7478,7 @@ changeTos();function changeTos(){
 </script></td>
   </tr>
   <tr>
-    <td><img id="preloader" style="display:none" src="/SJ-Eticket/images/main/progress.gif" alt="">&#xA0;</td>
+    <td><img id="preloader" style="display:none" src="/SJ-Eticket/images/main/progress.gif" alt="" />&nbsp;</td>
   </tr>
   <tr>
     <td width="100%" align="left" valign="top">
@@ -7956,8 +7967,8 @@ function ValidationSearchFlight(){
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="25%"><span id="depIcon"></span><span id="departTableLabel" class="avTableLabel1">Departure</span> <span class="avTableLabel2">19-Dec-14</span></td>
-    <td><span class="avPrev"><a href="/SJ-Eticket/application/?action=booking&amp;step_S=prev&amp;type_S=dep">&lt; prev day</a> </span>
-        <span class="avNext"><a href="/SJ-Eticket/application/?action=booking&amp;step_S=next&amp;type_S=dep">next day &gt;</a> </span></td>
+    <td><span class="avPrev"><a href="/SJ-Eticket/application/?action=booking&step_S=prev&amp;type_S=dep">&lt; prev day</a> </span>
+        <span class="avNext"><a href="/SJ-Eticket/application/?action=booking&step_S=next&amp;type_S=dep">next day &gt;</a> </span></td>
     <td width="50%"><div class="avTableDiv2">Fare is shown in thousand IDR</div></td>
   </tr>
   <tr>
@@ -7970,7 +7981,7 @@ function ValidationSearchFlight(){
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="flightInfo">
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -7985,7 +7996,7 @@ function ValidationSearchFlight(){
                 </tr>
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8000,7 +8011,7 @@ function ValidationSearchFlight(){
                 </tr>
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8019,121 +8030,121 @@ function ValidationSearchFlight(){
                 <table class="classTable" cellspacing="0">
                 <tr>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">O</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511257,1149415,1475347:O:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">O</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511257,1149415,1475347:O:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 787</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">U</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511256,1149402,1475334:U:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">U</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511256,1149402,1475334:U:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 875</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">X</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511261,1149409,1475341:X:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">X</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511261,1149409,1475341:X:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 1,921</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">E</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511250,1149401,1475333:E:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">E</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511250,1149401,1475333:E:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,086</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">G</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511243,1149407,1475339:G:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">G</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511243,1149407,1475339:G:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,273</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">V</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511242,1149413,1475345:V:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">V</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511242,1149413,1475345:V:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,449</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">T</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511249,1149406,1475338:T:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">T</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511249,1149406,1475338:T:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,614</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">Q</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511241,1149412,1475344:Q:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">Q</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511241,1149412,1475344:Q:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,757</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">N</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511240,1149400,1475332:N:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">N</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511240,1149400,1475332:N:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,955</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">M</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511248,1149405,1475337:M:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">M</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511248,1149405,1475337:M:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 3,164</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">L</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511255,1149414,1475346:L:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">L</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511255,1149414,1475346:L:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,318</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">K</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511260,1149408,1475340:K:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">K</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511260,1149408,1475340:K:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,472</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">H</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511254,1149394,1475326:H:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">H</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511254,1149394,1475326:H:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,681</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">B</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511259,1149399,1475331:B:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">B</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511259,1149399,1475331:B:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,824</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">W</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511253,1149411,1475343:W:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">W</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511253,1149411,1475343:W:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,879</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">S</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511258,1149398,1475330:S:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">S</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511258,1149398,1475330:S:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 4,077</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">Y</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511246,1149404,1475336:Y:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">Y</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511246,1149404,1475336:Y:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 4,121</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">I</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511245,1149397,1475329:I:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">I</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511245,1149397,1475329:I:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 4,528</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">D</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511251,1149396,1475328:D:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">D</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511251,1149396,1475328:D:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 5,221</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">C (WL)</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511247,1149395,1475327:C:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">C (WL)</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511247,1149395,1475327:C:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 6,882</span></div>
@@ -8148,7 +8159,7 @@ function ValidationSearchFlight(){
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="flightInfo">
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8163,7 +8174,7 @@ function ValidationSearchFlight(){
                 </tr>
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8178,7 +8189,7 @@ function ValidationSearchFlight(){
                 </tr>
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8197,121 +8208,121 @@ function ValidationSearchFlight(){
                 <table class="classTable" cellspacing="0">
                 <tr>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">O</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511257,3575425,1475347:O:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">O</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511257,3575425,1475347:O:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 787</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">U</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511256,3575424,1475334:U:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">U</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511256,3575424,1475334:U:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 875</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">X</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511261,3575429,1475341:X:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">X</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511261,3575429,1475341:X:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 1,921</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">E</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511250,3575418,1475333:E:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">E</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511250,3575418,1475333:E:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,086</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">G</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511243,3575411,1475339:G:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">G</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511243,3575411,1475339:G:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,273</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">V</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511242,3575410,1475345:V:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">V</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511242,3575410,1475345:V:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,449</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">T</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511249,3575417,1475338:T:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">T</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511249,3575417,1475338:T:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,614</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">Q</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511241,3575409,1475344:Q:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">Q</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511241,3575409,1475344:Q:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,757</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">N</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511240,3575408,1475332:N:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">N</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511240,3575408,1475332:N:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,955</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">M</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511248,3575416,1475337:M:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">M</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511248,3575416,1475337:M:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(2)</span>
                 <span class="avcellFare">
                 3,164</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">L</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511255,3575423,1475346:L:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">L</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511255,3575423,1475346:L:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(8)</span>
                 <span class="avcellFare">
                 3,318</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">K</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511260,3575428,1475340:K:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">K</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511260,3575428,1475340:K:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,472</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">H</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511254,3575422,1475326:H:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">H</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511254,3575422,1475326:H:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,681</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">B</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511259,3575427,1475331:B:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">B</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511259,3575427,1475331:B:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,824</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">W</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511253,3575421,1475343:W:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">W</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511253,3575421,1475343:W:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,879</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">S</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511258,3575426,1475330:S:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">S</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511258,3575426,1475330:S:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 4,077</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">Y</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511246,3575414,1475336:Y:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">Y</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511246,3575414,1475336:Y:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 4,121</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">I</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511245,3575413,1475329:I:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">I</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511245,3575413,1475329:I:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 4,528</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">D</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511251,3575419,1475328:D:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">D</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511251,3575419,1475328:D:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 5,221</span></div>
                 </td>
 
-                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">C (WL)</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511247,3575415,1475327:C:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd">             <div class="avcell"><span class="classLetterCode">C (WL)</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511247,3575415,1475327:C:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 6,882</span></div>
@@ -8326,7 +8337,7 @@ function ValidationSearchFlight(){
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="flightInfo">
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8341,7 +8352,7 @@ function ValidationSearchFlight(){
                 </tr>
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8356,7 +8367,7 @@ function ValidationSearchFlight(){
                 </tr>
                                 <tr>
                   <td>
-                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg">
+                                  <input type="image" name="imageField" src="/SJ-Eticket/images/SJ_small.jpg" />
                   </td>
                   <td class="flightNum">
                     <script language="javascript" type="text/javascript">
@@ -8375,121 +8386,121 @@ function ValidationSearchFlight(){
                 <table class="classTable" cellspacing="0">
                 <tr>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">O</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511257,1149415,3575535:O:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">O</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511257,1149415,3575535:O:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 787</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">U</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511256,1149402,3575534:U:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">U</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511256,1149402,3575534:U:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 875</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">X</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511261,1149409,3575539:X:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">X</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511261,1149409,3575539:X:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 1,921</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">E</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511250,1149401,3575528:E:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">E</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511250,1149401,3575528:E:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,086</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">G</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511243,1149407,3575521:G:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">G</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511243,1149407,3575521:G:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,273</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">V</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511242,1149413,3575520:V:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">V</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511242,1149413,3575520:V:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,449</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">T</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511249,1149406,3575527:T:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">T</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511249,1149406,3575527:T:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,614</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">Q</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511241,1149412,3575519:Q:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">Q</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511241,1149412,3575519:Q:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,757</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">N</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511240,1149400,3575518:N:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">N</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511240,1149400,3575518:N:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 2,955</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">M</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511248,1149405,3575526:M:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">M</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511248,1149405,3575526:M:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 3,164</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">L</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511255,1149414,3575533:L:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">L</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511255,1149414,3575533:L:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(1)</span>
                 <span class="avcellFare">
                 3,318</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">K</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511260,1149408,3575538:K:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">K</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511260,1149408,3575538:K:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(3)</span>
                 <span class="avcellFare">
                 3,472</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">H</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511254,1149394,3575532:H:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">H</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511254,1149394,3575532:H:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(6)</span>
                 <span class="avcellFare">
                 3,681</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">B</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511259,1149399,3575537:B:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">B</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511259,1149399,3575537:B:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,824</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">W</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511253,1149411,3575531:W:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">W</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511253,1149411,3575531:W:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 3,879</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">S</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511258,1149398,3575536:S:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">S</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511258,1149398,3575536:S:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 4,077</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">Y</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511246,1149404,3575524:Y:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">Y</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511246,1149404,3575524:Y:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(9)</span>
                 <span class="avcellFare">
                 4,121</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">I</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511245,1149397,3575523:I:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">I</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511245,1149397,3575523:I:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 4,528</span></div>
                 </td>
 
-                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">D</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled="disabled" type="radio" value="2511251,1149396,3575529:D:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_disable">             <div class="avcell"><span class="classLetterCode">D</span><input class="avcellRadio" name="radioFrom" id="radioFrom" disabled='disabled' type="radio" value="2511251,1149396,3575529:D:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 5,221</span></div>
                 </td>
 
-                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">C (WL)</span><input class="avcellRadio" name="radioFrom" id="radioFrom" type="radio" value="2511247,1149395,3575525:C:C" onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, &apos;&apos;)">
+                                <td class="avcellTd_even">            <div class="avcell"><span class="classLetterCode">C (WL)</span><input class="avcellRadio" name="radioFrom" id="radioFrom"  type="radio" value="2511247,1149395,3575525:C:C"  onclick="getVote(this.value, this.name, document.cek_harga2.extracover.checked, '')">
                 <span class="availNumCode">(0)</span>
                 <span class="avcellFare">
                 6,882</span></div>
@@ -8514,7 +8525,7 @@ function ValidationSearchFlight(){
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
                         <tr>
-                <td>&#xA0;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
@@ -8533,12 +8544,12 @@ function ValidationSearchFlight(){
                                                               </select>
                             </label></td>
                             <td><label>
-                              <input name="adultFirst0" type="text" onkeyup="this.value = this.value.toUpperCase();" maxlength="100" placeholder="&lt;First Name.*&gt;">
+                              <input name="adultFirst0" type="text" onKeyUp="this.value = this.value.toUpperCase();" maxlength="100" placeholder="<First Name.*>"/>
                             </label></td>
                             <td><label>
-                              <input name="adultLast0" type="text" onkeyup="this.value = this.value.toUpperCase();" maxlength="100" placeholder="&lt;Last Name.&gt;">
+                              <input name="adultLast0" type="text" onKeyUp="this.value = this.value.toUpperCase();" maxlength="100" placeholder="<Last Name.>"/>
                             </label></td>
-                            <td><input name="adultId0" type="text" onkeyup="this.value = this.value.toUpperCase();" maxlength="20" placeholder="&lt;Identity No.&gt;"></td>
+                            <td><input name="adultId0" type="text" onKeyUp="this.value = this.value.toUpperCase();" maxlength="20" placeholder="<Identity No.>"/></td>
 
                             <td>
                                                           <select name="adultSSR0">
@@ -8560,7 +8571,7 @@ function ValidationSearchFlight(){
     <td colspan="3">
         <table width="100%" border="0" cellspacing="2" cellpadding="0" class="detailContact">
   <tr>
-    <td colspan="2">&#xA0;</td>
+    <td colspan="2">&nbsp;</td>
   </tr>
   <tr>
     <td class="mainTitle">Contact</td>
@@ -8568,28 +8579,28 @@ function ValidationSearchFlight(){
       <tr class="contactPax">
         <td class="contactInnerLabel">Customer</td>
         <td><label>
-          <input name="contactFName" type="text" id="contactFName" placeholder="&lt;First Name*&gt;">
+          <input name="contactFName" type="text" id="contactFName" placeholder="<First Name*>">
         </label></td>
         <td><label>
-          <input name="contactLName" type="text" id="contactLName" placeholder="&lt;Last Name&gt;">
+          <input name="contactLName" type="text" id="contactLName" placeholder="<Last Name>">
         </label></td>
         <td>+<label>
-          <input name="contactOriginPh" type="text" id="contactOriginPh" maxlength="20" placeholder="&lt;Origin Phone*&gt;">
+          <input name="contactOriginPh" type="text" id="contactOriginPh" maxlength="20" placeholder="<Origin Phone*>">
         </label></td>
         <td>+<label>
-          <input name="contactOtherPh" type="text" id="contactOtherPh" maxlength="20" placeholder="&lt;Other Phone&gt;">
+          <input name="contactOtherPh" type="text" id="contactOtherPh" maxlength="20" placeholder="<Other Phone>">
         </label></td>
       </tr>
       <tr>
         <td class="contactInnerLabel">Agent</td>
         <td><label>
-          <input name="contactAgenName" type="text" id="contactAgenName" placeholder="&lt;Agent Name*&gt;" value="PT ALAM PESONA WISATA">
+          <input name="contactAgenName" type="text" id="contactAgenName" placeholder="<Agent Name*>" value="PT ALAM PESONA WISATA">
         </label></td>
         <td><label>
-          <input name="contactAgenEmail" type="text" id="contactAgenEmail" placeholder="&lt;Agent Email&gt;" value="andre@pointer.co.id">
+          <input name="contactAgenEmail" type="text" id="contactAgenEmail" placeholder="<Agent Email>" value="andre@pointer.co.id">
         </label></td>
         <td colspan="2"><label>
-          <input name="contactAgenPh" type="text" id="contactAgenPh" placeholder="&lt;Agent Phone*&gt;" value="02180873068">
+          <input name="contactAgenPh" type="text" id="contactAgenPh" placeholder="<Agent Phone*>" value="02180873068">
         </label></td>
         </tr>
     </table></td>
@@ -8601,15 +8612,15 @@ function ValidationSearchFlight(){
     <td colspan="3">
         <div class="extraCoverAgg" align="right">
         <label>
-        <input name="extracover" type="checkbox" id="extracover" value="extracover" checked="checked" onclick="extraCoverJS();">
+        <input name="extracover" type="checkbox" id="extracover" value="extracover" checked="checked" onclick="extraCoverJS();" />
         </label>
-        I agree to use the extra cover insurance. <a href="https://www.sriwijayaair.co.id/download/INSURANCE_TERM/insurance_term_id.pdf">Term and Condition</a> </div>
+        I agree to use the extra cover insurance. <a href='https://www.sriwijayaair.co.id/download/INSURANCE_TERM/insurance_term_id.pdf'>Term and Condition</a> </div>
         </td>
 </tr>
 <tr>
     <td colspan="3">
     <div class="fareRuleAgg">
-        <input type="checkbox" name="setoejoe" value="setoejoe" onclick="return buttonSetoejoe();">I HAVE READ AND AGREED TO ALL <span style="color:#0066FF; cursor: pointer; text-decoration: underline" onclick="javascript:void window.open(&apos;menu_others.php?reffNo=TWpsT2IzWXhORHBVUlZKTmJrTlBUa1JKVkVsUFRnPT0=&apos;,&apos;29Nov14:TERMnCONDITION&apos;,&apos;width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0&apos;);return false;">TERMS AND CONDITIONS</span> TRANSPORTATION THAT ARE DETERMINED BY SRIWIJAYA AIR.   </div>
+        <input type="checkbox" name="setoejoe" value="setoejoe" onclick="return buttonSetoejoe();" />I HAVE READ AND AGREED TO ALL <span style="color:#0066FF; cursor: pointer; text-decoration: underline" onclick="javascript:void window.open('menu_others.php?reffNo=TWpsT2IzWXhORHBVUlZKTmJrTlBUa1JKVkVsUFRnPT0=','29Nov14:TERMnCONDITION','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">TERMS AND CONDITIONS</span> TRANSPORTATION THAT ARE DETERMINED BY SRIWIJAYA AIR.   </div>
     </td>
 </tr>
 <tr>
@@ -8617,7 +8628,7 @@ function ValidationSearchFlight(){
       </label>
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="80%" align="right"><div id="buttonBottomContainer"><div id="buttonBookContainer"><div class="buttonStyle"><input type="submit" name="Submit" value="Book" class="searchPanelSubmitButton"><span class="buttonRightSide"></span></div></div></div><!--<div id="buttonBottomContainer">
+          <td width="80%" align="right"><div id="buttonBottomContainer"><div id="buttonBookContainer"><div class="buttonStyle"><input type="submit" name="Submit" value="Book" class="searchPanelSubmitButton"  /><span class="buttonRightSide"></span></div></div></div><!--<div id="buttonBottomContainer">
 <div id="buttonIssueContainer"><div class="buttonStyle"><input type="submit" name="Submit" value="Book" disabled="disabled" />&nbsp;</div>
 </div></div>--></td>
           <td>
@@ -8634,7 +8645,7 @@ function confirmIssue(){
 }
 //-->
 </script>
-          <div id="buttonBookContainer"><div class="buttonStyle"><input type="submit" name="Submit2" value="Issue" class="searchPanelSubmitButton" onclick="return confirmIssue();"><span class="buttonRightSide"></span></div></div>
+          <div id="buttonBookContainer"><div class="buttonStyle"><input type="submit" name="Submit2" value="Issue" class="searchPanelSubmitButton" onclick="return confirmIssue();" /><span class="buttonRightSide"></span></div></div>
                   <!--<input type="submit" name="Submit2" value="Issue" disabled="disabled" />-->
           </td>
         </tr>
@@ -8642,7 +8653,7 @@ function confirmIssue(){
       <label></label></td>
 </tr>
 </table>
-<input type="hidden" name="action-TEMP" value="booking">
+<input type="hidden" name="action-TEMP" value="booking" />
 <input type="hidden" name="seatADT" value="">
 <input type="hidden" name="seatCHD" value="">
 <input type="hidden" name="seatINF" value="">
@@ -8657,8 +8668,8 @@ function confirmIssue(){
 <input type="hidden" name="INF" value="0">
 <input type="hidden" name="action" value="prosesBookingDirect">
 <input type="hidden" name="PromoCode" value="">
-<input type="hidden" name="features" value="RD:NO">
-<input type="hidden" name="2911140744" value="2911140744">
+<input type="hidden" name="features" value="RD:NO" />
+<input type="hidden" name="2911140744"value="2911140744" />
 </form>
 </div>
 <script language="javascript" type="text/javascript">
@@ -8980,18 +8991,19 @@ function radioSelectedValidation(){
 </table>
 </div>
 <!--</div>--><div id="footer">
-Copyright &#xA9; 2011 Sriwijaya Air. All Rights Reserved.
+Copyright &copy; 2011 Sriwijaya Air. All Rights Reserved.
 </div>
 </div>
-<div class="clear">
+<div class="clear" >
 </div>
     <div id="userInfo">
 
-    <div class="username">DEPAG0101<span class="logout">(<a href="/SJ-Eticket/login.php?action=out">logout</a>)</span></div>
+    <div class="username">DEPAG0101<span class="logout">(<a href="/SJ-Eticket/login.php?action=out" >logout</a>)</span></div>
     <div class="userNoID">Agent ID: 02121280</div>
 
         <div class="userDeposit">Credit Balance: 92,947,975 IDR</div>
 
     <div class="slogan">ONE STEP BOOKING</div>
-</div>
+</div></div>
 </body>
+</html>
