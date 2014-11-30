@@ -106,7 +106,7 @@ function getCheapestInRow (row) {
 	rutes = rutes.map(function (rute) {return rute.substr(0,3); })
 	// debug('rutes',rutes);
 	var flight = _.values(row.code_flight).reduce(function (all, codes) {
-		return all + codes.replace(/\d/g , '').length;
+		return all + codes.replace(/\D/g , '').length;
 	}, '');
 	var out = {
 		ori: rutes.shift(),
@@ -195,7 +195,7 @@ function mergeCachePrices (json) {
 		var rute = rutes.join('').toLowerCase();
 		debug('rute',rute);
 		var flight = _.values(row.code_flight).reduce(function (all, codes) {
-			return all + codes.replace(/\d/g , '').length;
+			return all + codes.replace(/\D/g , '').length;
 		}, '');
 		var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
 		_.forEach(aClass, function (_class) {
