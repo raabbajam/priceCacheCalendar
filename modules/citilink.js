@@ -219,15 +219,21 @@ function mergeCachePrices (json) {
 		var flight = row.flight.substr(0,2) || '';
 		rute = rute.toLowerCase();
 		flight = flight.toLowerCase();
-		var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
+		// var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
+		var aClass = row.normal_fare.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)', 'g'))
 		_.forEach(aClass, function (_class) {
-			var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
+			// var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
+			var matches = _class.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
+			// debug('matches',matches)
 			if (!matches)
 				return true;
-			var matchAvailable = +(matches[1] || '0').trim();
-			var nominal = +matches[2] / 1000;
+			var _class = (matches[1] || 'N/A').trim();
+			var nominal = +matches[3] / 1000;
+			var matchAvailable = +(matches[2] || '0').trim();
+			var nominal = +matches[3] / 1000;
 			// debug(matchAvailable, nominal);
 			var _classNominal = _class.toLowerCase() + nominal;
+			// debug('_classNominal',_classNominal)
 			if (matchAvailable >= seatRequest){
 				try{row.cheapest = _this.cachePrices[rute][flight][_classNominal]; }
 				catch (e){

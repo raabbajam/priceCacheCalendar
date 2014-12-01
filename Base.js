@@ -147,13 +147,13 @@ function insertAllLowest (res) {
 	var _this    = this;
 	var _dt      = _this._dt;
 	var _date    = moment(_dt.dep_date, dateFormats).unix() * 1000;
-	debug('res', res)
+	// debug('res', res)
 	Object.keys(res).forEach(function (prop, i) {
 		if (!res[prop])
 			return true;
-		debug('prop',res[prop])
+		// debug('prop',res[prop])
 		var _price = parseInt(res[prop], 10) + _this._kode;
-		debug('insertAllLowest res',_price, _this._kode)
+		// debug('insertAllLowest res',_price, _this._kode)
 		var data   = {
 			date       : _date,
 			origin     : prop.substr(0, 3),
@@ -162,7 +162,7 @@ function insertAllLowest (res) {
 			airline    : _this.airline
 		};
 		data.id = data.origin + data.destination + data.date / 1000;
-		debug('data insertAllLowest', data);
+		// debug('data insertAllLowest', data);
 		promises.push(_this.insertLowest(data));
 	});
 	return Promise.all(promises, function (res) {
@@ -180,7 +180,7 @@ function insertLowest (data) {
 		_this.db.get('pluto', 'calendar', data.id, function (err, res) {
 			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
-			debug(oldPrice, _price, data);
+			// debug(oldPrice, _price, data);
 			if ( oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this._airline)) {
 				resolve(false);
 			} else {
