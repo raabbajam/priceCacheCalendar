@@ -5,7 +5,7 @@ var mockBody = {dep_date: "30+Nov+2014", ori: 'PDG', dst: 'SUB'};
 var mockDataLion = fs.readFileSync('./li.html', 'utf8');
 var debug       = require('debug')('raabbajam:priceCacheCalendar:lionspec');
 // var mockDataLion = {departure: {flights: [[{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], ] } }
-/*describe('Price Generator for Lion', function () {
+describe('Price Generator for Lion', function () {
 	this.timeout(10000);
 	it('should extend base', function (next) {
 		var lion = new Lion(mockBody, mockDataLion);
@@ -73,7 +73,7 @@ var debug       = require('debug')('raabbajam:priceCacheCalendar:lionspec');
 				next(err);
 			});
 	});
-});*/
+});
 
 describe('Cache prices for Lion', function() {
 	this.timeout(80000);

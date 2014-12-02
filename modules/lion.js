@@ -1,19 +1,13 @@
-var Base    = require('../Base');
-var moment = require('moment');
-var debug       = require('debug')('raabbajam:priceCacheCalendar:lion');
-var _ = require('lodash');
-var db = require('../libs/db');
-var priceScrapers = require('priceScraper');
+var Base              = require('../Base');
+var moment            = require('moment');
+var debug             = require('debug')('raabbajam:priceCacheCalendar:lion');
+var _                 = require('lodash');
+var db                = require('../libs/db');
+var priceScrapers     = require('priceScraper');
 var LionPriceScrapers = priceScrapers.lion;
-var cheerio = require('cheerio');
+var cheerio           = require('cheerio');
 function init (dt, scrape, args) {
-	this._super('lion', args);
-	for(var prop in dt){
-		if(typeof dt[prop] === 'string')
-			dt[prop] = dt[prop].toLowerCase()
-	}
-	this._dt = dt;
-	this._scrape = scrape;
+	this._super('lion', dt, scrape, args);
 };
 function getAllRoutes () {
 	var _this  = this;
@@ -217,7 +211,7 @@ function mergeCachePrices (json) {
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
-			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && matchAvailable.length > 1){
+			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 1){
 				if (+matchAvailable[1] > 0) {
 					try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
 					catch(e){

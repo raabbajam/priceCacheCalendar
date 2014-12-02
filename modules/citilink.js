@@ -1,11 +1,11 @@
-var Base    = require('../Base');
-var moment = require('moment');
-var debug       = require('debug')('raabbajam:priceCacheCalendar:citilink');
-var _ = require('lodash');
-var db = require('../libs/db');
-var priceScrapers = require('priceScraper');
+var Base                  = require('../Base');
+var moment                = require('moment');
+var debug                 = require('debug')('raabbajam:priceCacheCalendar:citilink');
+var _                     = require('lodash');
+var db                    = require('../libs/db');
+var priceScrapers         = require('priceScraper');
 var CitilinkPriceScrapers = priceScrapers.citilink;
-var cheerio = require('cheerio');
+var cheerio               = require('cheerio');
 function init (dt, scrape, args) {
 	this._super('citilink', dt, scrape, args);
 };

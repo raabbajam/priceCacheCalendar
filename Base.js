@@ -166,7 +166,7 @@ function insertAllLowest (res) {
 		promises.push(_this.insertLowest(data));
 	});
 	return Promise.all(promises, function (res) {
-		debug(res);
+		debug('Inserting to calendar..', JSON.stringify(res));
 	});
 }
 /**
@@ -176,6 +176,8 @@ function insertAllLowest (res) {
 function insertLowest (data) {
 	var _this  = this;
 	var _price = data.price;
+	if (!(+_price > 0))
+		return false;
 	return new Promise(function (resolve, reject) {
 		_this.db.get('pluto', 'calendar', data.id, function (err, res) {
 			res = JSON.parse(res);
