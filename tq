@@ -1,0 +1,341 @@
+commit 20ecafbe19f9425ae888658c8968008fd5a7d5be
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Dec 4 07:49:05 2014 +0700
+
+    adding parallel
+
+commit 82c82194e336bb962890ebd38d8b4cfb96fa2ddc
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Dec 2 13:37:19 2014 +0700
+
+    lion nan fixed
+
+commit 35658dac1c00c897d1d23942195821f7fd523e71
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Mon Dec 1 10:46:02 2014 +0700
+
+    fixing citilink wrong lowest class on merge and find
+
+commit a3abdf57f0c65b825a37f7f3129e9ab7a03f4ea7
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Mon Dec 1 06:02:22 2014 +0700
+
+    edit garuda cek_instant
+
+commit 3ea8dc752e9d6990cb656d2d83afa79b2b4770e8
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sun Nov 30 14:10:59 2014 +0700
+
+    edit garuda using flight number instead unreliable row number
+
+commit 36a7c4b6f091adf4cd78551da62ad62d443c0c21
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sun Nov 30 12:40:25 2014 +0700
+
+    editing flight code for sr
+
+commit be202df5cd1a2280eb69a379a0ffc232381014ec
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sun Nov 30 12:25:36 2014 +0700
+
+    editing sriwijaya
+
+commit 6e15ba7a0c9505894bb9d8b1096b0fabacb838d6
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sun Nov 30 08:21:09 2014 +0700
+
+    testing sj
+
+commit 3101c7d780f89789264e6963541de1eb23969200
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 17:25:06 2014 +0700
+
+    edit bug
+
+commit 211abd53c2a4e80ee20b2793cd395d83d07d49fa
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 16:59:18 2014 +0700
+
+    edit debug message
+
+commit c12f010209225637e514398624c4bd6ad22baf23
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 15:28:26 2014 +0700
+
+    fixed argument[0]
+
+commit aa348553efdcb4de3763efebf66896e80343ddf7
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 14:43:06 2014 +0700
+
+    edit base
+
+commit 765e53d3a0e446d54528de7e4147cd0abe38f409
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 14:30:17 2014 +0700
+
+    fix bug
+
+commit 0c5e5a2eb5f9e259aefe8fdc8bed7ec8ede8eb9e
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 12:58:55 2014 +0700
+
+    adding paxnum detection on citilink and garuda
+
+commit 4297f61af161d53172c888d4c629d830cf6ed9d5
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 12:35:09 2014 +0700
+
+    adding cache to output
+
+commit 71a7c272a8ff09f14e30a23e328df2b36801277f
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Sat Nov 29 10:27:13 2014 +0700
+
+    adding options to change scrape url
+
+commit d1f3d8865da26a10a64b0f28df586c4be9367014
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 20:48:42 2014 +0700
+
+    adding lion check if string on toLowerCase
+
+commit 687969da3e9a2365b2de90bad7019485062defd2
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 20:21:52 2014 +0700
+
+    fixed prop toLowerCase citilink
+
+commit 8733b2d9c645125361813632de432c0705a5bd87
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 16:06:10 2014 +0700
+
+    edit adding rownum check only on garuda
+
+commit 9e81f493a9351f073613a3dba4ef214d9580f038
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 13:50:00 2014 +0700
+
+    garuda now scrape data has row number to make sure its available
+
+commit 1ff014f3855373baa6354b19d2c9ad549ebfb7c1
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 09:15:41 2014 +0700
+
+    fixed garuda not found variable _class
+
+commit 61f22698578dc5d0e0a946e4159b710ca77cc818
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 08:42:45 2014 +0700
+
+    test citilink class order reworked
+
+commit 91fff68b3094f183af1640397f5612db7f9d1858
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 07:20:13 2014 +0700
+
+    test citilink first radio not cached 2
+
+commit abdcbf9546ecadc7cf68abc31f7e2b845bc9e121
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 07:04:41 2014 +0700
+
+    test citilink first radio not cached
+
+commit 677fba8cf6c522c041dc7643d09b7a1697d6ebb0
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 28 06:43:52 2014 +0700
+
+    bismillahirrahmanirrahim. test citilink using nominal
+
+commit 1eb10dbadcb6a5d2bab880f81e52acd9218d1753
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 20:48:41 2014 +0700
+
+    editing class citilink using nominal
+
+commit 23fff9191fb977a356add664558c558f4f732b3d
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 20:41:22 2014 +0700
+
+    editing class citilink using nominal
+
+commit e5c7e5fb5c5f070988bc6da351a7a63fd2326b0f
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 20:37:19 2014 +0700
+
+    editing class citilink using nominal
+
+commit 62ddc14580e91e249a1a07269b6e5b892f289fe6
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 20:26:46 2014 +0700
+
+    editing class citilink using nominal
+
+commit 041298cc1aae8372a534cc7b709b7cb258d171db
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 20:22:30 2014 +0700
+
+    editing class citilink using nominal
+
+commit 02f9266f2d365a6b5a69a524d7c862be4e63b1f9
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 20:19:49 2014 +0700
+
+    editing class citilink using nominal
+
+commit e594b9480d001ec5eba68e662ec5db30555d43e4
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 19:52:24 2014 +0700
+
+    editing class citilink using nominal
+
+commit bf26cd85ceece299a2f98fcc2ee443afc9c3defe
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 19:41:19 2014 +0700
+
+    editing class citilink using nominal
+
+commit acdd7ddfdfaabbd3ba83c61a00fd2a738d6b29ef
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 27 19:37:27 2014 +0700
+
+    editing class citilink using nominal
+
+commit 69826abec5d7f36062c07b367d7629ece31dd30d
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 17:43:00 2014 +0700
+
+    edit lion calendar connecting added condition check if one of flight zero
+
+commit b30ba0993cf67ea2d2e04eee2288e0a6a74c2974
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 17:21:17 2014 +0700
+
+    edit garuda calendar connecting added condition check if one of flight zero
+
+commit eda45f493111d7d7a34a034620ee5634e8850843
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 14:25:36 2014 +0700
+
+    editing citilink
+
+commit d3f89ec8f068405c8967c75a00b0619d2bb7030e
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 10:04:30 2014 +0700
+
+    ok
+
+commit ff3f792cc335279245c6bd2a371b53e951c30d4e
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 09:57:20 2014 +0700
+
+    ok
+
+commit 8d91d93724308f87bf8e6a4d469e1201f5e092eb
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 09:55:57 2014 +0700
+
+    ok
+
+commit 429390a0ea4b2372784347e4bf81bf5a8e2ec42c
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 09:54:40 2014 +0700
+
+    ok
+
+commit 8d96223d314f9d8c73f320f62d21f692999182ef
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 26 07:23:16 2014 +0700
+
+    when data incomplete return json unchanged
+
+commit 1dabb9ac5b21c835be0bcad9544ad52e7ab20b2e
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Nov 25 14:16:35 2014 +0700
+
+    fix lion error on empty row
+
+commit d854ec585057626162af7b0a884284d18c77ba58
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Nov 25 13:08:14 2014 +0700
+
+    Edit to more robust to incomplete result
+
+commit c029495e82c1583edba83f1e1cfb58c83ddbf3f4
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Nov 25 08:00:28 2014 +0700
+
+    debugging
+
+commit 5dbc8fdd407c25e6b1606dc6d616b82defe44f78
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Nov 25 06:09:11 2014 +0700
+
+    adding docs and tests all passed
+
+commit 0a2d92a5ceac95e4aa943f7cc9db85c7e18b9537
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Nov 25 05:54:20 2014 +0700
+
+    sriwijaya pass
+
+commit 7dbcd377f305b63c5b0c82b4161aa529310751e2
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Mon Nov 24 16:05:59 2014 +0700
+
+    citilink passed
+
+commit 453dd25253fa2e70e22277a7d80cbe49b46434d8
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Fri Nov 21 09:05:34 2014 +0700
+
+    adding class check for L
+
+commit 4438f1402483dd4c458473b99f85fc8ce39640ee
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 20 21:31:58 2014 +0700
+
+    garuda test passed
+
+commit 7bf31979a3bbfbd7a0265b61cfd7554d975751e8
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 20 14:33:19 2014 +0700
+
+    adding cache prices
+
+commit 9b8253b2523b6085e38c8ac63606d754f862a524
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Thu Nov 20 08:20:52 2014 +0700
+
+    changing folder structure, adding error handler, docs, tests, and readme
+
+commit 5ddd97f8ccf58412019d829ed93d8b1bdc6a7cd5
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 5 09:57:19 2014 +0700
+
+    adding real route to cache
+
+commit 89d61465ccde906238d1fbf1f5117b10412936b8
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 5 09:38:55 2014 +0700
+
+    fix res object
+
+commit 0ce5b629b75fe314598d28f8fcd14d2a1a53d356
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 5 09:32:57 2014 +0700
+
+    update
+
+commit 43803c4faf1fab8dedca5800f46cf96760164272
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Wed Nov 5 08:20:08 2014 +0700
+
+    garuda dan lion
+
+commit 1fce2993195eff43fb89ba63c03a1b3a69f8574f
+Author: Muhammad Abdul Jabbaar <raabbajam@gmail.com>
+Date:   Tue Nov 4 06:25:10 2014 +0700
+
+    Initial commit

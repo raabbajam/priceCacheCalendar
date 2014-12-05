@@ -188,6 +188,8 @@ function mergeCachePrices (json) {
 	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
+		if (!row || !row.depart || !row.arrive)
+			return row;
 		// debug('row',row)
 		var rutes = _.values(row.depart);
 		rutes.push(_.values(row.arrive).pop());

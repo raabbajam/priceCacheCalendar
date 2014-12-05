@@ -8,6 +8,7 @@ var LionPriceScrapers = priceScrapers.lion;
 var cheerio           = require('cheerio');
 function init (dt, scrape, args) {
 	this._super('lion', dt, scrape, args);
+	// this.parallel = true;
 };
 function getAllRoutes () {
 	var _this  = this;

@@ -32,6 +32,7 @@ function init (airline, dt, scrape, args) {
 		debug('this.paxNum',this.paxNum)
 	}
 	this.setOptions(args);
+	// this.parallel = true;
 	}catch(e){debug(e)}
 }
 /**
@@ -376,17 +377,32 @@ function scrapeLostData (id) {
 function scrapeAllLostData (data) {
 	var _this   = this;
 	var results = [];
+	var steps;
 	debug('scrapeAllLostData');
-	var steps = (data || []).reduce(function (sequence, id) {
-		debug('sequence',id);
-		return sequence.then(function () {
-			return _this.scrapeLostData(id)
-				.then(function (res) {
-					results.push(res);
-				});
-		});
-	}, Promise.resolve());
+	if (!!_this.parallel) {
+		steps = [];
+		data.forEach(function (id) {
+			steps.push(function () {
+				return _this.scrapeLostData(id)
+					.then(function (res) {
+						results.push(res);
+					});
+			});
+		})
+	} else {
+		steps = (data || []).reduce(function (sequence, id) {
+			debug('sequence',id);
+			return sequence.then(function () {
+				return _this.scrapeLostData(id)
+					.then(function (res) {
+						results.push(res);
+					});
+			});
+		}, Promise.resolve());
+	}
 	return new Promise(function (resolve, reject) {
+
+		// return Promise.all(steps);
 		steps
 			.then(function () {
 				return resolve(results);

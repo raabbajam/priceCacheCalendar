@@ -8,6 +8,7 @@ var CitilinkPriceScrapers = priceScrapers.citilink;
 var cheerio               = require('cheerio');
 function init (dt, scrape, args) {
 	this._super('citilink', dt, scrape, args);
+	this.parallel = true;
 };
 function getAllRoutes () {
 	var _this  = this;
@@ -88,7 +89,7 @@ function mergeCache (){
 					// debug(save, available, lowestPrices[currentRoute], cachePrice)
 					if(!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
 						lowestPrices[currentRoute] = cachePrice;
-					cachePrice = Math.round(cachePrice / 100) * 100;
+					// cachePrice = Math.round(cachePrice / 100) * 100;
 					var after = pHtml.replace(/Rp.[\d,]+/, 'Rp.' + cachePrice)
 					fareData2 = fareData2 + '<p>'+after+'</p><script>' + basic + '</script>';
 				} catch (e) {

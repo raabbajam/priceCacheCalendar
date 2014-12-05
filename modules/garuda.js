@@ -7,6 +7,7 @@ var priceScrapers = require('priceScraper');
 var GarudaPriceScrapers = priceScrapers.garuda;
 function init (dt, scrape, args) {
 	this._super('garuda', dt, scrape, args);
+	this.parallel = true;
 }
 function getAllRoutes () {
 	var _this = this;
