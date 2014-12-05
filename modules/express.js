@@ -1,13 +1,13 @@
 var Base                  = require('../Base');
 var moment                = require('moment');
-var debug                 = require('debug')('raabbajam:priceCacheCalendar:airasia');
+var debug                 = require('debug')('raabbajam:priceCacheCalendar:express');
 var _                     = require('lodash');
 var db                    = require('../libs/db');
 var priceScrapers         = require('priceScraper');
-var AirasiaPriceScrapers = priceScrapers.airasia;
+var ExpressPriceScrapers = priceScrapers.express;
 var cheerio               = require('cheerio');
 function init (dt, scrape, args) {
-	this._super('airasia', dt, scrape, args);
+	this._super('express', dt, scrape, args);
 	// this.parallel = true;
 }
 function getAllRoutes () {
@@ -23,11 +23,11 @@ function getAllRoutes () {
 		var currentRoute = departCity + arriveCity;
 		currentRoute = currentRoute.toLowerCase();
 		if (routes.indexOf(currentRoute) === -1){
-			routes.push(currentRoute);
+			routes.push(currentRoute)
 		}
-	});
+	})
 	return routes;
-}
+};
 function mergeCache (){
 	var _this        = this;
 	var _cache       = _this.cache;
@@ -56,7 +56,8 @@ function mergeCache (){
 			var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
 			if(!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute]))
 				lowestPrices[currentRoute] = cachePrice;
-			row.lowFare = row.lowFare.replace(/price"><span>([\s\S]+)IDR/, 'price"><span>' + 100000 + ' IDR');
+			var nominal = (row.lowFare.match(/price"><span>([\s\S]+)IDR/) || [])[1];
+			row.lowFare = row.lowFare.replace(/price"><span>([\s\S]+)IDR/, 'price"><span>' + 100000 + ' IDR')
 			lowestPriceRows.push(lowestPrices[currentRoute]);
 		});
 		return rows;
@@ -66,7 +67,7 @@ function mergeCache (){
 		json.ret_table = looper('ret');
 	_this._scrape[0] = json;
 	return lowestPrices;
-}
+};
 /**
  * return an array of object with ori, dst, class and flight property
  * @param  {Object} row Row object
@@ -75,24 +76,22 @@ function mergeCache (){
 function getCheapestInRow (row) {
 	// debug('rowAll',row );
 	var outs = [];
-	var _class = 'lo';
 	var seatRequest = this.paxNum || 1;
-	if (!row.lowFare)
-		return outs;
-	var departCity = (row.dateDepart.match(/\(([A-Z]{3})\)/) || [])[1];
-	var arriveCity = (row.dateArrive.match(/\(([A-Z]{3})\)/) || [])[1];
+	var departCity = row.origin;
+	var arriveCity = row.destination;
 	if (!departCity && !arriveCity )
-		return true;
+		return outs;
 	var currentRoute = departCity + arriveCity;
-	var nominal = (row.lowFare.match(/price"><span>([\s\S]+)IDR/) || [])[1];
+	var _class = row.promo !== "Full" ? 'promo' : row.normal !== "Full" ? "normal" : 'flexi';
+	var nominal = row[_class].split(' ')[0];
 	nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
-	var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
+	var flightCode = row.flightNumber.replace(/\d|\s/g, '');
 	var classCode = _class.toLowerCase() + nominal;
 	var out = {
 		ori    : departCity,
 		dst    : arriveCity,
 		flight : flightCode,
-		class  : classCode
+		class  : classCode,
 	};
 	if (!!out.class)
 		outs.push(out);
@@ -118,10 +117,10 @@ function generateData (id) {
 		dep_date       : this._dt.dep_date.replace(/\s/g, '+'),
 		// dep_date    : moment().add(1, 'M').format('DD+MMM+YYYY'),
 		rute           : 'OW',
-		dep_radio      : '1_1',
+		dep_radio      : 'normal',
 		action         : 'price',
-		user          : 'apwqz',
-		priceScraper: false,
+		user           : '35054',
+		priceScraper   : false,
 	};
 	for (var i = 5, j = 1, ln = _id.length; i < ln; i++, j++) {
 		data['transit' + j] = _id[i];
@@ -136,16 +135,16 @@ function generateData (id) {
 function scrapeLostData (id) {
 	debug('scrapeLostData',id);
 	var dt = this.generateData(id);
-	var urlAirbinder = 'http://128.199.251.75:99/price';
-	var urlPluto = 'http://folbek.me:3000/0/price/airasia';
+	var urlAirbinder = 'http://128.199.251.75:8097/price';
+	var urlPluto = 'http://folbek.me:3000/0/price/express';
 	// debug('dt',dt)
 	var options = {
 		scrape  : this.scrape || urlAirbinder,
 		dt      : dt,
-		airline : 'airasia'
+		airline : 'express'
 	};
-    var airasiaPriceScrapers = new AirasiaPriceScrapers(options);
-    return airasiaPriceScrapers.run().catch(function (err) {debug('airasiaPriceScrapers',err);});
+    var expressPriceScrapers = new ExpressPriceScrapers(options);
+    return expressPriceScrapers.run().catch(function (err) {debug('expressPriceScrapers',err);});
 }
 /**
  * Merge json data with cheapest data from db
@@ -156,25 +155,22 @@ function mergeCachePrices (json) {
 	var _json       = _.cloneDeep(json);
 	var _this       = this;
 	var seatRequest = this.paxNum || 1;
-	var _class      = 'lo';
 	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
-	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
-		var departCity = (row.dateDepart.match(/\(([A-Z]{3})\)/) || [])[1];
-		var arriveCity = (row.dateArrive.match(/\(([A-Z]{3})\)/) || [])[1];
-		// debug('departCity', departCity, 'arriveCity', arriveCity );
+	_json.depparture = _.mapValues(_json.departure, function (row) {
+		var departCity = row.origin;
+		var arriveCity = row.destination;
 		if (!departCity && !arriveCity )
-			return row;
+			return true;
 		var currentRoute = departCity + arriveCity;
-		currentRoute = currentRoute.toLowerCase();
-		// debug('_this.cachePrices[currentRoute]', _this.cachePrices[currentRoute])
+		// debug('departCity', departCity, 'arriveCity', arriveCity );
 		if (!_this.cachePrices[currentRoute])
 			return row;
-		var nominal      = (row.lowFare.match(/price"><span>([\s\S]+)IDR/) || [])[1];
-		nominal          = Math.round(+nominal.replace(/\D/g, '') / 1000);
-		var flightCode   = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
-		flightCode       = flightCode.toLowerCase();
-		var classCode    = _class.toLowerCase() + nominal;
+		var _class = row.promo !== "Full" ? 'promo' : row.normal !== "Full" ? "normal" : 'flexi';
+		var nominal = row[_class].split(' ')[0];
+		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
+		var flightCode = row.flightNumber.replace(/\d/g, '');
+		var classCode = _class.toLowerCase() + nominal;
 		try{row.cheapest = _this.cachePrices[currentRoute][flightCode][classCode]; }
 		catch (e){
 			debug(e.message, currentRoute, flightCode, classCode);
@@ -182,12 +178,12 @@ function mergeCachePrices (json) {
 			_this.cachePrices[currentRoute][flightCode] = _this.cachePrices[currentRoute][flightCode] || {};
 		}
 		if (!!row.cheapest) {
-			row.cheapest.class     = classCode;
-			row.cheapest.available = 'N/A';
+			row.cheapest.class = classCode;
+			row.cheapest.available = _class;
 		} else {
 			row.cheapest = {
-				class     : 'Full',
-				available : 0
+				class: 'Full',
+				available: 0
 			}
 		}
 		// debug('mergeCachePrices row', row)
@@ -204,15 +200,15 @@ function mergeCachePrices (json) {
  * @return {Object}      Array of rows to be looped for getAkkCheaoest function
  */
 function prepareRows (json) {
-	var _json = _.cloneDeep(json[0]);
-	var rows  = [];
-	rows      = rows.concat(_.values(_json.dep_table));
+	var _json = _.cloneDeep(json);
+	var rows = [];
+	rows = rows.concat(_json.departure);
 	// debug('rows',_json.departure.flights);
-	if (!!_json.ret_table && !!_json.ret_table[0])
-		rows = rows.concat(_.values(_json.ret_table));
+	if (!!_json.return && !!_json.return[0])
+		rows = rows.concat(_json.return);
 	return rows;
 }
-var AirasiaPrototype = {
+var ExpressPrototype = {
 	init            : init,
 	getAllRoutes    : getAllRoutes,
 	mergeCache      : mergeCache,
@@ -222,5 +218,5 @@ var AirasiaPrototype = {
 	mergeCachePrices: mergeCachePrices,
 	prepareRows     : prepareRows,
 };
-var Airasia = Base.extend(AirasiaPrototype);
-module.exports = Airasia;
+var Express    = Base.extend(ExpressPrototype);
+module.exports = Express;

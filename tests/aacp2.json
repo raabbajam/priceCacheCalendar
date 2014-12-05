@@ -15,6 +15,7 @@
                     "child": 553901,
                     "infant": 150001,
                     "basic": 499001,
+                    "baggage": 40001,
                     "class": "lo620",
                     "available": "N/A"
                 }
@@ -30,6 +31,7 @@
                     "child": 553901,
                     "infant": 150001,
                     "basic": 499001,
+                    "baggage": 40001,
                     "class": "lo620",
                     "available": "N/A"
                 }
@@ -90,6 +92,7 @@
                     "child": 553901,
                     "infant": 150001,
                     "basic": 499001,
+                    "baggage": 40001,
                     "class": "lo620",
                     "available": "N/A"
                 }
