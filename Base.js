@@ -3,7 +3,7 @@ var Promise     = require('promise');
 var moment      = require('moment');
 var _           = require('lodash');
 var dateFormats = ['DD+MM+YYYY','DD+MMM+YYYY','DD MM YYYY','DD MMM YYYY'];
-var airlines    = {"airasia": 1, "citilink": 2, "garuda": 3, "lion": 4, "sriwijaya": 5, "xpress": 6};
+var airlines    = {"airasia": 1, "citilink": 2, "garuda": 3, "lion": 4, "sriwijaya": 5, "xpress": 6, "express": 6};
 var db          = require('./libs/db');
 var debug       = require('debug')('raabbajam:priceCacheCalendar:base');
 // _.mixin(require('underscore.deep'));
@@ -205,7 +205,14 @@ function insertLowest (data) {
  */
 function run () {
 	var _this  = this;
-	var routes = _this.getAllRoutes();
+	if (!!_this._scrape)
+		return _this._scrape;
+	try {
+		var routes = _this.getAllRoutes();
+	} catch (e) {
+		debug(e);
+		return _this._scrape;
+	}
 	return _this.getAllCaches(routes)
 		.then(_this.mergeCache.bind(_this))
 		.then(_this.insertAllLowest.bind(_this))
