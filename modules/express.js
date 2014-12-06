@@ -155,22 +155,25 @@ function mergeCachePrices (json) {
 	var _json       = _.cloneDeep(json);
 	var _this       = this;
 	var seatRequest = this.paxNum || 1;
-	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
-	_json.depparture = _.mapValues(_json.departure, function (row) {
+	_json.departure = _.mapValues(_json.departure, function (row) {
+		// debug('row', row)
 		var departCity = row.origin;
 		var arriveCity = row.destination;
 		if (!departCity && !arriveCity )
-			return true;
+			return row;
 		var currentRoute = departCity + arriveCity;
-		// debug('departCity', departCity, 'arriveCity', arriveCity );
+		currentRoute = currentRoute.toLowerCase();
+		debug('departCity', departCity, 'arriveCity', arriveCity );
 		if (!_this.cachePrices[currentRoute])
 			return row;
 		var _class = row.promo !== "Full" ? 'promo' : row.normal !== "Full" ? "normal" : 'flexi';
 		var nominal = row[_class].split(' ')[0];
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
-		var flightCode = row.flightNumber.replace(/\d/g, '');
+		var flightCode = row.flightNumber.replace(/\d|\s/g, '').toLowerCase();
 		var classCode = _class.toLowerCase() + nominal;
+		debug(currentRoute,flightCode,classCode)
 		try{row.cheapest = _this.cachePrices[currentRoute][flightCode][classCode]; }
 		catch (e){
 			debug(e.message, currentRoute, flightCode, classCode);

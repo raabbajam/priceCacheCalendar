@@ -1,32 +1,5 @@
 {
-    "departure": [
-        {
-            "origin": "JOG",
-            "destination": "PNK",
-            "flightNumber": "XN 832",
-            "via": "",
-            "date": "2015-01-14",
-            "depart": "1/14/2015 5:40:00 PM",
-            "arrival": "1/14/2015 7:20:00 PM",
-            "promo": "Full",
-            "normal": "1,240,000  (3)",
-            "flexi": "1,280,000  (5)"
-        },
-        {
-            "origin": "JOG",
-            "destination": "PNK",
-            "flightNumber": "XN 830",
-            "via": "",
-            "date": "2015-01-14",
-            "depart": "1/14/2015 9:10:00 AM",
-            "arrival": "1/14/2015 10:50:00 AM",
-            "promo": "Full",
-            "normal": "1,240,000  (3)",
-            "flexi": "1,280,000  (5)"
-        }
-    ],
-    "return": [],
-    "depparture": {
+    "departure": {
         "0": {
             "origin": "JOG",
             "destination": "PNK",
@@ -37,7 +10,15 @@
             "arrival": "1/14/2015 7:20:00 PM",
             "promo": "Full",
             "normal": "1,240,000  (3)",
-            "flexi": "1,280,000  (5)"
+            "flexi": "1,280,000  (5)",
+            "cheapest": {
+                "adult": 1240000,
+                "child": 1240000,
+                "infant": 135000,
+                "basic": 1122727,
+                "class": "normal1240",
+                "available": "normal"
+            }
         },
         "1": {
             "origin": "JOG",
@@ -49,9 +30,18 @@
             "arrival": "1/14/2015 10:50:00 AM",
             "promo": "Full",
             "normal": "1,240,000  (3)",
-            "flexi": "1,280,000  (5)"
+            "flexi": "1,280,000  (5)",
+            "cheapest": {
+                "adult": 1240000,
+                "child": 1240000,
+                "infant": 135000,
+                "basic": 1122727,
+                "class": "normal1240",
+                "available": "normal"
+            }
         }
     },
+    "return": [],
     "cachePrices": {
         "jogpnk": {
             "xn": {
@@ -59,7 +49,9 @@
                     "adult": 1240000,
                     "child": 1240000,
                     "infant": 135000,
-                    "basic": 1122727
+                    "basic": 1122727,
+                    "class": "normal1240",
+                    "available": "normal"
                 }
             }
         }
