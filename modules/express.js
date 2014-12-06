@@ -107,8 +107,8 @@ function generateData (id) {
 	var cek_instant_id = _id[3] + '_' + _id[4];
 	cek_instant_id = cek_instant_id.toUpperCase();
 	var data = {
-		ori           : _id[0],
-		dst           : _id[1],
+		ori           : _id[0].toUpperCase(),
+		dst           : _id[1].toUpperCase(),
 		airline       : _id[2],
 		flightCode    : _id[3],
 		classCode     : _id[4],

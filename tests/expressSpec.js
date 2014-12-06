@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var fs = require('fs');
 var Express = require('../index')('express');
-var mockBody = {dep_date: "30+12+2014", ori: 'JOG', dst: 'PNK'};
+var mockBody = {dep_date: "17+12+2014", ori: 'JOG', dst: 'PNK'};
 // var mockDataExpress = fs.readFileSync('./ex.html', 'utf8');
 var mockDataExpress = '';
 var debug       = require('debug')('raabbajam:priceCacheCalendar:expressspec');

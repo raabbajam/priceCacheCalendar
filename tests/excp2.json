@@ -52,5 +52,16 @@
             "flexi": "1,280,000  (5)"
         }
     },
-    "cachePrices": {}
+    "cachePrices": {
+        "jogpnk": {
+            "xn": {
+                "normal1240": {
+                    "adult": 1240000,
+                    "child": 1240000,
+                    "infant": 135000,
+                    "basic": 1122727
+                }
+            }
+        }
+    }
 }
