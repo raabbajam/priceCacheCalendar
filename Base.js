@@ -205,7 +205,7 @@ function insertLowest (data) {
  */
 function run () {
 	var _this  = this;
-	if (!!_this._scrape)
+	if (!_this._scrape)
 		return _this._scrape;
 	try {
 		var routes = _this.getAllRoutes();
