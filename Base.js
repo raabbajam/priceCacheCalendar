@@ -205,13 +205,11 @@ function insertLowest (data) {
  */
 function run () {
 	var _this  = this;
-	if (!_this._scrape)
-		return _this._scrape;
 	try {
 		var routes = _this.getAllRoutes();
 	} catch (e) {
 		debug(e);
-		return _this._scrape;
+		return Promise.resolve(_this._scrape);
 	}
 	return _this.getAllCaches(routes)
 		.then(_this.mergeCache.bind(_this))
