@@ -7,7 +7,7 @@ var priceScrapers = require('priceScraper');
 var GarudaPriceScrapers = priceScrapers.garuda;
 function init (dt, scrape, args) {
 	this._super('garuda', dt, scrape, args);
-	this.parallel = true;
+	// this.parallel = true;
 }
 function getAllRoutes () {
 	var _this = this;
@@ -96,27 +96,37 @@ function mergeCache (){
  */
 function getCheapestInRow (rowAll) {
 	// debug('rowAll',rowAll );
-	var outs = [];
 	var seatRequest = this.paxNum || 1;
+	var classes = '';
+	var out = {
+		ori   : rowAll[0].origin,
+		dst   : rowAll[rowAll.length - 1].destination,
+		flight: 'ga'
+	};
 	rowAll.forEach(function (row, idx) {
-		var rowNum = idx + 1;
-		var out = {
-			ori   : row.origin,
-			dst   : row.destination,
-			flight: 'ga'
-		};
-		var fligthCode = row.flightCode.replace(/\D/g, '');
+		// var rowNum = idx + 1;
+		// var out = {
+		// 	ori   : row.origin,
+		// 	dst   : row.destination,
+		// 	flight: 'ga'
+		// };
+		// var fligthCode = row.flightCode.replace(/\D/g, '');
 		var seats = row.seats;
 		for (var i = seats.length - 1; i >= 0; i--) {
 			if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available >= seatRequest) {
-				out.class = seats[i].class + fligthCode;
+				// out.class = seats[i].class + fligthCode;
+				classes += seats[i].class;
 				break;
 			}
 		}
+		if (idx > 0) {
+			out['transit' + idx] = row.origin;
+		}
 		// debug(out);
-		outs.push(out);
+		// outs.push(out);
 	});
-	return outs;
+	out.class = classes;
+	return [out];
 }
 function idsToSearch (ids) {
 	return _.uniq(ids.map(function (id) {
@@ -178,6 +188,7 @@ function generateData (id) {
 	for (var i = 5, j = 1, ln = _id.length; i < ln; i++, j++) {
 		data['transit' + j] = _id[i];
 	}
+	debug('data', data);
 	return data;
 }
 /**
@@ -189,11 +200,11 @@ function scrapeLostData (id) {
 	debug('scrapeLostData',id);
 	var dt           = this.generateData(id);
 	var urlAirbinder = 'http://128.199.251.75:9098/price';
-	var urlPluto     = 'http://pluto.dev/0/price/garuda';
+	var urlPluto     = 'http://folbek.me:3000/0/price/garuda';
 	var options      = {
 		dt     : dt,
 		airline: this.airline,
-		scrape : this.scrape || urlAirbinder,
+		scrape : this.scrape || urlPluto,
     };
     var garudaPriceScrapers = new GarudaPriceScrapers(options);
     return garudaPriceScrapers.run().catch(function (err) {debug('garudaPriceScrapers',err);});
@@ -207,41 +218,46 @@ function mergeCachePrices (json) {
 	var _json      = _.cloneDeep(json);
 	var _this      = this;
 	var seatRequest = this.paxNum || 1;
-	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
-	_json.departure.flights = _json.departure.flights.map(function (rowAll) {
-		return rowAll.map(function (row) {
-			var rute = row.origin + row.destination;
-			var flight = 'ga';
-			rute = rute.toLowerCase();
-			var cheapestSeat = _.findLast(row.seats, function (seat) {
-				return seat.available.toLowerCase !== "l" && seat.class.toLowerCase() !== "l" && +seat.available >= seatRequest
-			});
-			if (!cheapestSeat)
-				return row;
-			var cheapestClass = cheapestSeat.class.toLowerCase();
-
-			try{row.cheapest = _this.cachePrices[rute].ga[cheapestClass]; }
-			catch(e){
-				debug('Not found: ', e.message, rute, cheapestClass);
-				_this.cachePrices[rute] = _this.cachePrices[rute] || {};
-				_this.cachePrices[rute].ga = _this.cachePrices[rute].ga || {};
-			}
-			// row.cheapest = _this.cachePrices[rute].ga[cheapestClass];
-			if (row.cheapest){
-				row.cheapest.class = cheapestSeat.class;
-				row.cheapest.available = cheapestSeat.available;
-			} else {
-				row.cheapest = {
-					class: 'Full',
-					available: 0,
+	var departureCheapests = [];
+	debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
+	_json.departure.flights.forEach(function (rowAll, idx) {
+		var _cheapest = {};
+		var rute = rowAll[0].origin;
+		var classes = '';
+		var flight = 'ga';
+		rowAll.forEach(function (row) {
+			rute += row.destination;
+			var seats = row.seats;
+			for (var i = seats.length - 1; i >= 0; i--) {
+				if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available >= seatRequest) {
+					classes += seats[i].class;
+					break;
 				}
 			}
-			return row;
 		});
+		rute = rute.toLowerCase();
+		classes = classes.toLowerCase();
+		// debug('Finding: ', rute, classes);
+		try{_cheapest.prices = _this.cachePrices[rute].ga[classes]; }
+		catch(e){
+			debug('Not found: ', e.message, rute, classes);
+			_this.cachePrices[rute] = _this.cachePrices[rute] || {};
+			_this.cachePrices[rute].ga = _this.cachePrices[rute].ga || {};
+		}
+		if (!!_cheapest.prices){
+			_cheapest.class = classes;
+		} else {
+			_cheapest = {
+				class: 'Full'
+			}
+		}
+		departureCheapests[idx] = _cheapest;
 	});
 	// debug(_json.departure.flights);
 	// var ret = _json.return;
 	_json.cachePrices = _this.cachePrices;
+	_json.departure.cheapests = departureCheapests;
+	debug('cheapests', departureCheapests);
 	return _json;
 }
 /**
@@ -263,8 +279,8 @@ var GarudaPrototype = {
 	getAllRoutes    : getAllRoutes,
 	mergeCache      : mergeCache,
 	getCheapestInRow: getCheapestInRow,
-	idsToSearch     : idsToSearch,
-	idsToScrape     : idsToScrape,
+	// idsToSearch     : idsToSearch,
+	// idsToScrape     : idsToScrape,
 	generateData    : generateData,
 	scrapeLostData  : scrapeLostData,
 	mergeCachePrices: mergeCachePrices,

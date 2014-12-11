@@ -11,10 +11,10 @@
                 "hiFlyer": "                              <div id=\"fareRadio\" style=\"\"><input id=\"ControlGroupSelectView_AvailabilityInputSelectView_RadioButtonMkt1Fare14\" type=\"radio\" name=\"ControlGroupSelectView$AvailabilityInputSelectView$market1\" value=\"0~VF~~VF1F00H~AAB1~~2~X|QZ~7681~ ~~SUB~12/27/2014 05:45~CGK~12/27/2014 07:00~@12/26/2014 22:45:00\"></div>                              <div class=\"paxTypeDisplay\">Adult</div>                              <div class=\"price\"><span>949,900 IDR<div></div></span></div>                              <div class=\"clearAll\"></div>                            ",
                 "stop": "",
                 "cheapest": {
-                    "adult": 553901,
-                    "child": 553901,
+                    "adult": 619901,
+                    "child": 619901,
                     "infant": 150001,
-                    "basic": 499001,
+                    "basic": 559001,
                     "baggage": 40001,
                     "class": "lo620",
                     "available": "N/A"
@@ -27,10 +27,10 @@
                 "hiFlyer": "                              <div id=\"fareRadio\" style=\"\"><input id=\"ControlGroupSelectView_AvailabilityInputSelectView_RadioButtonMkt1Fare32\" type=\"radio\" name=\"ControlGroupSelectView$AvailabilityInputSelectView$market1\" value=\"0~VF~~VF1F00H~AAB1~~2~X|QZ~7697~ ~~SUB~12/27/2014 08:00~CGK~12/27/2014 09:20~@12/27/2014 01:00:00\"></div>                              <div class=\"paxTypeDisplay\">Adult</div>                              <div class=\"price\"><span>949,900 IDR<div></div></span></div>                              <div class=\"clearAll\"></div>                            ",
                 "stop": "",
                 "cheapest": {
-                    "adult": 553901,
-                    "child": 553901,
+                    "adult": 619901,
+                    "child": 619901,
                     "infant": 150001,
-                    "basic": 499001,
+                    "basic": 559001,
                     "baggage": 40001,
                     "class": "lo620",
                     "available": "N/A"
@@ -43,10 +43,11 @@
                 "hiFlyer": "                              <div id=\"fareRadio\" style=\"\"><input id=\"ControlGroupSelectView_AvailabilityInputSelectView_RadioButtonMkt1Fare50\" type=\"radio\" name=\"ControlGroupSelectView$AvailabilityInputSelectView$market1\" value=\"0~VF~~VF1F00H~AAB1~~2~X|QZ~7693~ ~~SUB~12/27/2014 09:20~CGK~12/27/2014 10:40~@12/27/2014 02:20:00\"></div>                              <div class=\"paxTypeDisplay\">Adult</div>                              <div class=\"price\"><span>949,900 IDR<div></div></span></div>                              <div class=\"clearAll\"></div>                            ",
                 "stop": "",
                 "cheapest": {
-                    "adult": 553901,
-                    "child": 553901,
+                    "adult": 685901,
+                    "child": 685901,
                     "infant": 150001,
-                    "basic": 499001,
+                    "basic": 619001,
+                    "baggage": 40001,
                     "class": "lo686",
                     "available": "N/A"
                 }
@@ -58,10 +59,11 @@
                 "hiFlyer": "                              <div id=\"fareRadio\" style=\"\"><input id=\"ControlGroupSelectView_AvailabilityInputSelectView_RadioButtonMkt1Fare66\" type=\"radio\" name=\"ControlGroupSelectView$AvailabilityInputSelectView$market1\" value=\"0~VF~~VF1F00H~AAB1~~2~X|QZ~7683~ ~~SUB~12/27/2014 12:45~CGK~12/27/2014 14:05~@12/27/2014 05:45:00\"></div>                              <div class=\"paxTypeDisplay\">Adult</div>                              <div class=\"price\"><span>949,900 IDR<div></div></span></div>                              <div class=\"clearAll\"></div>                            ",
                 "stop": "",
                 "cheapest": {
-                    "adult": 553901,
-                    "child": 553901,
+                    "adult": 685901,
+                    "child": 685901,
                     "infant": 150001,
-                    "basic": 499001,
+                    "basic": 619001,
+                    "baggage": 40001,
                     "class": "lo686",
                     "available": "N/A"
                 }
@@ -73,10 +75,11 @@
                 "hiFlyer": "                              <div id=\"fareRadio\" style=\"\"><input id=\"ControlGroupSelectView_AvailabilityInputSelectView_RadioButtonMkt1Fare84\" type=\"radio\" name=\"ControlGroupSelectView$AvailabilityInputSelectView$market1\" value=\"0~VF~~VF1F00H~AAB1~~2~X|QZ~7685~ ~~SUB~12/27/2014 17:25~CGK~12/27/2014 18:45~@12/27/2014 10:25:00\"></div>                              <div class=\"paxTypeDisplay\">Adult</div>                              <div class=\"price\"><span>949,900 IDR<div></div></span></div>                              <div class=\"clearAll\"></div>                            ",
                 "stop": "",
                 "cheapest": {
-                    "adult": 553901,
-                    "child": 553901,
+                    "adult": 685901,
+                    "child": 685901,
                     "infant": 150001,
-                    "basic": 499001,
+                    "basic": 619001,
+                    "baggage": 40001,
                     "class": "lo686",
                     "available": "N/A"
                 }
@@ -88,10 +91,10 @@
                 "hiFlyer": "                              <div id=\"fareRadio\" style=\"\"><input id=\"ControlGroupSelectView_AvailabilityInputSelectView_RadioButtonMkt1Fare102\" type=\"radio\" name=\"ControlGroupSelectView$AvailabilityInputSelectView$market1\" value=\"0~VF~~VF1F00H~AAB1~~2~X|QZ~7689~ ~~SUB~12/27/2014 20:50~CGK~12/27/2014 22:10~@12/27/2014 13:50:00\"></div>                              <div class=\"paxTypeDisplay\">Adult</div>                              <div class=\"price\"><span>949,900 IDR<div></div></span></div>                              <div class=\"clearAll\"></div>                            ",
                 "stop": "",
                 "cheapest": {
-                    "adult": 553901,
-                    "child": 553901,
+                    "adult": 619901,
+                    "child": 619901,
                     "infant": 150001,
-                    "basic": 499001,
+                    "basic": 559001,
                     "baggage": 40001,
                     "class": "lo620",
                     "available": "N/A"

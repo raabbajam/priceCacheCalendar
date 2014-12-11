@@ -1,8 +1,8 @@
 var expect = require('chai').expect;
 var fs = require('fs');
 var Airasia = require('../index')('airasia');
-var mockBody = {dep_date: "30+12+2014", ori: 'PDG', dst: 'SUB'};
-var mockDataAirasia = fs.readFileSync('./ci.html', 'utf8');
+var mockBody = {dep_date: "30+12+2014", ori: 'cgk', dst: 'sub'};
+var mockDataAirasia = JSON.parse(fs.readFileSync('./aa.json', 'utf8'));
 // var mockDataAirasia = '';
 var debug       = require('debug')('raabbajam:priceCacheCalendar:airasiaspec');
 describe('Price Generator for Airasia', function () {
@@ -59,7 +59,7 @@ describe('Price Generator for Airasia', function () {
 				next(err);
 			});
 	});*/
-	/*it('should compare with db and insert to db if cheaper, for all lowest price', function (next) {
+	it('should compare with db and insert to db if cheaper, for all lowest price', function (next) {
 		var airasia = new Airasia(mockBody, mockDataAirasia);
 		var routes = airasia.getAllRoutes();
 		airasia.getAllCaches(routes)
@@ -73,7 +73,7 @@ describe('Price Generator for Airasia', function () {
 			.catch(function (err) {
 				next(err);
 			});
-	});*/
+	});
 });
 
 describe('Cache prices for Airasia', function() {
@@ -95,7 +95,7 @@ describe('Cache prices for Airasia', function() {
 			next();
 		});
 	});*/
-	describe('merge', function() {
+	/*describe('merge', function() {
 		it('should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged', function (done) {
 			var json = JSON.parse(fs.readFileSync('./aacp.json', 'utf8'));
 			var airasia = new Airasia(mockBody, mockDataAirasia);
@@ -106,5 +106,5 @@ describe('Cache prices for Airasia', function() {
 					done();
 				}, done);
 		});
-	});
+	});*/
 });
