@@ -678,6 +678,53 @@
                     }
                 }
             ]
+        ],
+        "cheapests": [
+            {
+                "prices": {
+                    "adult": 2046103,
+                    "child": 2046103,
+                    "infant": 214603,
+                    "basic": 1851003
+                },
+                "class": "hv"
+            },
+            {
+                "prices": {
+                    "adult": 2444303,
+                    "child": 2444303,
+                    "infant": 254203,
+                    "basic": 2213003
+                },
+                "class": "qv"
+            },
+            {
+                "prices": {
+                    "adult": 2023003,
+                    "child": 2023003,
+                    "infant": 211303,
+                    "basic": 1830003
+                },
+                "class": "vv"
+            },
+            {
+                "prices": {
+                    "adult": 2046103,
+                    "child": 2046103,
+                    "infant": 214603,
+                    "basic": 1851003
+                },
+                "class": "hv"
+            },
+            {
+                "prices": {
+                    "adult": 2543303,
+                    "child": 2543303,
+                    "infant": 264103,
+                    "basic": 2303003
+                },
+                "class": "nv"
+            }
         ]
     },
     "cachePrices": {
@@ -709,52 +756,5 @@
                 }
             }
         }
-    },
-    "cheapests": [
-        {
-            "prices": {
-                "adult": 2046103,
-                "child": 2046103,
-                "infant": 214603,
-                "basic": 1851003
-            },
-            "class": "hv"
-        },
-        {
-            "prices": {
-                "adult": 2444303,
-                "child": 2444303,
-                "infant": 254203,
-                "basic": 2213003
-            },
-            "class": "qv"
-        },
-        {
-            "prices": {
-                "adult": 2023003,
-                "child": 2023003,
-                "infant": 211303,
-                "basic": 1830003
-            },
-            "class": "vv"
-        },
-        {
-            "prices": {
-                "adult": 2046103,
-                "child": 2046103,
-                "infant": 214603,
-                "basic": 1851003
-            },
-            "class": "hv"
-        },
-        {
-            "prices": {
-                "adult": 2543303,
-                "child": 2543303,
-                "infant": 264103,
-                "basic": 2303003
-            },
-            "class": "nv"
-        }
-    ]
+    }
 }

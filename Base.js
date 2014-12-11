@@ -239,7 +239,7 @@ function insertLowest(data) {
 				res = JSON.parse(res);
 				var oldPrice = (res._source && res._source.price) || 0;
 				debug(oldPrice, _price, data);
-				debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
+				// debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
 				if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
 					resolve(false);
 				} else {
