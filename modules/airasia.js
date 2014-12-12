@@ -117,7 +117,8 @@ function generateData(id) {
 		var _id = id.split('_');
 		var cek_instant_id = _id[3] + '_' + _id[4];
 		cek_instant_id = cek_instant_id.toUpperCase();
-		var passengersNum = this._dt.adult + this._dt.child;
+		var passengersNum = +this._dt.adult + +this._dt.child;
+		// debug('passengersNum',passengersNum);
 		var data = {
 			ori: _id[0],
 			dst: _id[1],
