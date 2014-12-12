@@ -85,7 +85,6 @@ function mergeCache() {
 function getCheapestInRow(row) {
 		// debug('rowAll',row );
 		var outs = [];
-		var _class = 'lo';
 		var seatRequest = this.paxNum || 1;
 		if (!row.lowFare)
 			return outs;
@@ -94,7 +93,9 @@ function getCheapestInRow(row) {
 		if (!departCity && !arriveCity)
 			return true;
 		var currentRoute = departCity + arriveCity;
-		var nominal = (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
+		var isLowAvailable = row.lowFare.indexOf('disabled') === -1;
+		var nominal = isLowAvailable ? (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1] : (row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
+		var _class = isLowAvailable ? 'lo' : 'hi';
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 		var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 		var classCode = _class.toLowerCase() + nominal;
@@ -171,7 +172,6 @@ function mergeCachePrices(json) {
 		var _json = _.cloneDeep(json);
 		var _this = this;
 		var seatRequest = this.paxNum || 1;
-		var _class = 'lo';
 		// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 		// debug('_json.dep_table',_json)
 		_json[0].dep_table = _.mapValues(_json[0].dep_table, function(row) {
@@ -185,7 +185,10 @@ function mergeCachePrices(json) {
 			// debug('_this.cachePrices[currentRoute]', _this.cachePrices[currentRoute])
 			if (!_this.cachePrices[currentRoute])
 				return row;
-			var nominal = (row.lowFare.match(/price"><span>([\s\S]+)IDR/) || [])[1];
+
+			var isLowAvailable = row.lowFare.indexOf('disabled') === -1;
+			var nominal = isLowAvailable ? (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1] : (row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
+			var _class = isLowAvailable ? 'lo' : 'hi';
 			nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 			var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 			flightCode = flightCode.toLowerCase();
