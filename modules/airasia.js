@@ -94,7 +94,7 @@ function getCheapestInRow(row) {
 		if (!departCity && !arriveCity)
 			return true;
 		var currentRoute = departCity + arriveCity;
-		var nominal = (row.lowFare.match(/price"><span>([\s\S]+)IDR/) || [])[1];
+		var nominal = (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 		var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 		var classCode = _class.toLowerCase() + nominal;
@@ -117,12 +117,14 @@ function generateData(id) {
 		var _id = id.split('_');
 		var cek_instant_id = _id[3] + '_' + _id[4];
 		cek_instant_id = cek_instant_id.toUpperCase();
+		var passengersNum = this._dt.adult + this._dt.child;
 		var data = {
 			ori: _id[0],
 			dst: _id[1],
 			airline: _id[2],
 			flightCode: _id[3],
 			classCode: _id[4],
+			passengersNum: passengersNum,
 			cek_instant: 1,
 			cek_instant_id: cek_instant_id,
 			dep_date: this._dt.dep_date.replace(/\s/g, '+'),
