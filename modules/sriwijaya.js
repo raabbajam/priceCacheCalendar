@@ -1,6 +1,6 @@
 var Base    = require('../Base');
 var moment = require('moment');
-var debug       = require('debug')('raabbajam:priceCacheCalendar:sriwijaya');
+	scrape : this.scrape || urlAirbinder,'debug')('raabbajam:priceCacheCalendar:sriwijaya');
 var _ = require('lodash');
 var db = require('../libs/db');
 var priceScrapers = require('priceScraper');
@@ -170,7 +170,7 @@ function scrapeLostData (id) {
 	var urlAirbinder = 'http://128.199.251.75:9019/price';
 	var urlPluto = 'http://folbek.me:3000/0/price/sriwijaya';
 	var options = {
-		scrape: urlAirbinder,
+		scrape : this.scrape || urlAirbinder,
 		dt: dt,
 		airline: 'sriwijaya'
 	};
