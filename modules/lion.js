@@ -118,33 +118,78 @@ function mergeCache (){
  * @param  {Object} row Row object
  * @return {Array}     An array of object with ori, dst, class and flight property
  */
-function getCheapestInRow (row) {
+function getCheapestInRow (rowAll) {
 	// debug('rowAll',row );
 	var outs = [];
-	// _.each(rowAll,function (row, key) {
+	var lastDst, classes, ori, dst, flight, flights, realOri, realDst ;
+	lastDst = classes = ori = dst = flight = flights = realOri = realDst = '';
+	var transitCounter = 0;
+	var transits = [];
+	// loop all row
+	// we don\'t know whether this is a new row or connecting from last row
+	// if ori equal last dst then it's a connecting row
+	_.each(rowAll,function (row, idx) {
+		// debug('idx', idx);
 		// debug('getCheapestInRow row', row)
 		var rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
-		var flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
-		var out = {
-			ori: rute.substr(0, 3),
-			dst: rute.substr(3, 3),
-			// flight: row.flightCode
-			flight: flight,
-		};
+		flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
+		ori = rute.substr(0, 3);
+		dst = rute.substr(3, 3);
+		// if not equal, then this is a new row, insert last out
+		if (idx === 0) {
+			realOri = ori;
+		} else if (ori !== lastDst){
+			out = {
+				ori: realOri,
+				dst: lastDst,
+				flight: flights,
+				class: classes,
+			};
+			var flightNum;
+			transits.forEach(function (transit, idx) {
+				out['transit' + (idx + 1)] = transit;
+				flightNum = idx;
+			})
+			// debug('out', out);
+			if (out.class.length === (flightNum + 2))
+				outs.push(out);
+			realOri = ori;
+			classes = flights = '';
+			transitCounter = 0;
+			transits = [];
+		} else {
+			// equal, this is a connecting
+			transits[transitCounter++] = lastDst;
+			// debug('transits', transits);
+		}
+		flights += flight;
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
 			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 1){
 				if (+matchAvailable[1] > 0) {
-					out.class = _class;
+					classes += _class;
 					return false;
 				}
 			}
 		})
+		lastDst = dst;
 		// debug(out);
-		if (!!out.class)
-			outs.push(out);
-	// });
+	});
+	out = {
+		ori: realOri,
+		dst: lastDst,
+		flight: flights,
+		class: classes,
+	};
+	var flightNum;
+	transits.forEach(function (transit, idx) {
+		out['transit' + (idx + 1)] = transit;
+		flightNum = idx;
+	})
+	// debug('out', out);
+	if (out.class.length === (flightNum + 2))
+		outs.push(out);
 	return outs;
 }
 /**
@@ -203,38 +248,73 @@ function scrapeLostData (id) {
 function mergeCachePrices (json) {
 	var _json = _.cloneDeep(json);
 	var _this = this;
-	debug('_this.cachePrices',JSON.stringify(_this.cachePrices));
-	_json[0].dep_table = _.mapValues(_json[0].dep_table, function (row) {
-		var rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
-		var flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
+	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices));
+	var departureCheapests = [];
+	var lastDst, classes, ori, dst, flight, flights, realOri, realDst, rute, _rute;
+	var _cheapest = {};
+	lastDst = classes = ori = dst = flight = flights = realOri = realDst = '';
+	var transitCounter = 0;
+	var transits = [];
+	var rowIdx = 0;
+	// loop all row
+	_.each(_json[0].dep_table, function (row, idx) {
+		// debug(idx);
+		rute = row.hidden.match(/[A-Z]{6}/)[0] || '';
+		flight = row.aircraft.match(/images\/Logos\/(\w+)/)[1] || '';
 		rute = rute.toLowerCase();
 		flight = flight.toLowerCase();
+		ori = rute.substr(0, 3);
+		dst = rute.substr(3, 3);
+		if (idx === 0) {
+			realOri = ori;
+		} else if (ori !== lastDst){
+			// if not equal, then this is a new row, insert last cheapest
+			_rute = realOri;
+			transits.forEach(function (transit){
+				_rute += transit;
+			});
+			_rute += lastDst;
+			try{_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()]; }
+			catch(e){
+				debug(e.message, _rute, flights, classes);
+				_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
+				_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
+			}
+			if (!!_cheapest.prices){
+				// debug(_rute, flights, classes, _cheapest.prices);
+				_cheapest.class = classes;
+			} else {
+				_cheapest = {
+					class: 'Full'
+				}
+			}
+			departureCheapests[rowIdx++] = _cheapest;
+			realOri = ori;
+			classes = flights = '';
+			transitCounter = 0;
+			transits = [];
+			_cheapest = {};
+		} else {
+			// equal, this is a connecting
+			transits[transitCounter++] = lastDst;
+			// debug('transits', transits);
+		}
+		flights += flight;
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
 			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 1){
 				if (+matchAvailable[1] > 0) {
-					try{row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()]; }
-					catch(e){
-						debug(e.message, rute, flight, _class);
-						_this.cachePrices[rute] = _this.cachePrices[rute] || {};
-						_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
-					}
-					if (!!row.cheapest) {
-						row.cheapest.class = _class.toLowerCase();
-						row.cheapest.available = +matchAvailable[1];
-					} else {
-						row.cheapest = {
-							class: 'Full',
-							available: 0
-						}
-					}
+					classes += _class;
 					return false;
 				}
 			}
 		});
-		return row;
+		lastDst = dst;
 	});
+	_json.cachePrices = _this.cachePrices;
+	_json[0].dep_cheapests = departureCheapests;
+	// debug('cheapests', departureCheapests);
 	// debug(_json.dep_table);
 	// var ret = _json.return;
 	return _json;
@@ -251,7 +331,7 @@ function prepareRows (json) {
 	// debug('rows',_json.departure.flights);
 	if (!!_json.ret_table[0])
 		rows = rows.concat(_.values(_json.ret_table));
-	return rows;
+	return [rows];
 }
 var LionPrototype = {
 	init            : init,

@@ -26,15 +26,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C0_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C0_F0_S16\" onclick=\"flightSelected(&apos;M0_C0_F0_S16&apos;);\"><label for=\"M0_C0_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F0_S16_bc\" id=\"M0_C0_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C0_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C0_F0_S17\" onclick=\"flightSelected(&apos;M0_C0_F0_S17&apos;);\"><label for=\"M0_C0_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F0_S17_bc\" id=\"M0_C0_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C0_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C0_F0_S18\" onclick=\"flightSelected(&apos;M0_C0_F0_S18&apos;);\"><label for=\"M0_C0_F0_S18\">7</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F0_S18_bc\" id=\"M0_C0_F0_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C0_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C0_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C0_F0_S19&apos;);\"><label for=\"M0_C0_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C0_F0_S19_na\" id=\"M0_C0_F0_S19_na\"><input type=\"hidden\" name=\"M0_C0_F0_S19_bc\" id=\"M0_C0_F0_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 583204,
-                    "child": 583204,
-                    "infant": 154204,
-                    "basic": 476204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C0_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C0_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C0_F0_S19&apos;);\"><label for=\"M0_C0_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C0_F0_S19_na\" id=\"M0_C0_F0_S19_na\"><input type=\"hidden\" name=\"M0_C0_F0_S19_bc\" id=\"M0_C0_F0_S19_bc\" value=\"X/HL\"></span>"
             },
             "1": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 588",
@@ -61,15 +53,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C0_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C0_F1_S16\" onclick=\"flightSelected(&apos;M0_C0_F1_S16&apos;);\"><label for=\"M0_C0_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F1_S16_bc\" id=\"M0_C0_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C0_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C0_F1_S17\" onclick=\"flightSelected(&apos;M0_C0_F1_S17&apos;);\"><label for=\"M0_C0_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F1_S17_bc\" id=\"M0_C0_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C0_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C0_F1_S18\" onclick=\"flightSelected(&apos;M0_C0_F1_S18&apos;);\"><label for=\"M0_C0_F1_S18\">7</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F1_S18_bc\" id=\"M0_C0_F1_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C0_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C0_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C0_F1_S19&apos;);\"><label for=\"M0_C0_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F1_S19_na\" id=\"M0_C0_F1_S19_na\"><input type=\"hidden\" name=\"M0_C0_F1_S19_bc\" id=\"M0_C0_F1_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 506204,
-                    "child": 506204,
-                    "infant": 133304,
-                    "basic": 419204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C0_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C0_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C0_F1_S19&apos;);\"><label for=\"M0_C0_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C0_F1_S19_na\" id=\"M0_C0_F1_S19_na\"><input type=\"hidden\" name=\"M0_C0_F1_S19_bc\" id=\"M0_C0_F1_S19_bc\" value=\"X/HL\"></span>"
             },
             "2": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 232",
@@ -96,15 +80,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C1_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S16\" onclick=\"flightSelected(&apos;M0_C1_F0_S16&apos;);\"><label for=\"M0_C1_F0_S16\">7</label></span><span><input type=\"hidden\" name=\"M0_C1_F0_S16_na\" id=\"M0_C1_F0_S16_na\"><input type=\"hidden\" name=\"M0_C1_F0_S16_bc\" id=\"M0_C1_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C1_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S17\" onclick=\"flightSelected(&apos;M0_C1_F0_S17&apos;);\"><label for=\"M0_C1_F0_S17\">7</label><span class=\"rp\">rplion364300rplion</span></span><span><input type=\"hidden\" name=\"M0_C1_F0_S17_na\" id=\"M0_C1_F0_S17_na\"><input type=\"hidden\" name=\"M0_C1_F0_S17_bc\" id=\"M0_C1_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C1_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C1_F0_S18&apos;);\"><label for=\"M0_C1_F0_S18\">0</label><span class=\"rp\">rplion331300rplion</span></span><span><input type=\"hidden\" name=\"M0_C1_F0_S18_na\" id=\"M0_C1_F0_S18_na\"><input type=\"hidden\" name=\"M0_C1_F0_S18_bc\" id=\"M0_C1_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C1_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C1_F0_S19&apos;);\"><label for=\"M0_C1_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C1_F0_S19_na\" id=\"M0_C1_F0_S19_na\"><input type=\"hidden\" name=\"M0_C1_F0_S19_bc\" id=\"M0_C1_F0_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 364304,
-                    "child": 364304,
-                    "infant": 104704,
-                    "basic": 301304,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C1_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C1_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C1_F0_S19&apos;);\"><label for=\"M0_C1_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C1_F0_S19_na\" id=\"M0_C1_F0_S19_na\"><input type=\"hidden\" name=\"M0_C1_F0_S19_bc\" id=\"M0_C1_F0_S19_bc\" value=\"X/HL\"></span>"
             },
             "3": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 976",
@@ -158,15 +134,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C2_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C2_F0_S16\" onclick=\"flightSelected(&apos;M0_C2_F0_S16&apos;);\"><label for=\"M0_C2_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C2_F0_S16_bc\" id=\"M0_C2_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C2_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C2_F0_S17\" onclick=\"flightSelected(&apos;M0_C2_F0_S17&apos;);\"><label for=\"M0_C2_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C2_F0_S17_bc\" id=\"M0_C2_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C2_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C2_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C2_F0_S18&apos;);\"><label for=\"M0_C2_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C2_F0_S18_na\" id=\"M0_C2_F0_S18_na\"><input type=\"hidden\" name=\"M0_C2_F0_S18_bc\" id=\"M0_C2_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 638204,
-                    "child": 638204,
-                    "infant": 154204,
-                    "basic": 531204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "5": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 582",
@@ -193,15 +161,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C2_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C2_F1_S16\" onclick=\"flightSelected(&apos;M0_C2_F1_S16&apoapos;);\"><label for=\"M0_C2_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C2_F1_S16_bc\" id=\"M0_C2_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C2_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C2_F1_S17\" onclick=\"flightSelected(&apos;M0_C2_F1_S17&apos;);\"><label for=\"M0_C2_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C2_F1_S17_bc\" id=\"M0_C2_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C2_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C2_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C2_F1_S18&apos;);\"><label for=\"M0_C2_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C2_F1_S18_na\" id=\"M0_C2_F1_S18_na\"><input type=\"hidden\" name=\"M0_C2_F1_S18_bc\" id=\"M0_C2_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "6": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 351",
@@ -228,15 +188,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C3_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C3_F0_S16\" onclick=\"flightSelected(&apos;M0_C3_F0_S16&apos;);\"><label for=\"M0_C3_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F0_S16_bc\" id=\"M0_C3_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C3_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C3_F0_S17\" onclick=\"flightSelected(&apos;M0_C3_F0_S17&apos;);\"><label for=\"M0_C3_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F0_S17_bc\" id=\"M0_C3_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C3_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C3_F0_S18\" onclick=\"flightSelected(&apos;M0_C3_F0_S18&apos;);\"><label for=\"M0_C3_F0_S18\">7</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F0_S18_bc\" id=\"M0_C3_F0_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C3_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C3_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C3_F0_S19&apos;);\"><label for=\"M0_C3_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C3_F0_S19_na\" id=\"M0_C3_F0_S19_na\"><input type=\"hidden\" name=\"M0_C3_F0_S19_bc\" id=\"M0_C3_F0_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 583204,
-                    "child": 583204,
-                    "infant": 154204,
-                    "basic": 476204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C3_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C3_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C3_F0_S19&apos;);\"><label for=\"M0_C3_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C3_F0_S19_na\" id=\"M0_C3_F0_S19_na\"><input type=\"hidden\" name=\"M0_C3_F0_S19_bc\" id=\"M0_C3_F0_S19_bc\" value=\"X/HL\"></span>"
             },
             "7": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 582",
@@ -263,15 +215,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C3_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C3_F1_S16\" onclick=\"flightSelected(&apos;M0_C3_F1_S16&apos;);\"><label for=\"M0_C3_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F1_S16_bc\" id=\"M0_C3_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C3_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C3_F1_S17\" onclick=\"flightSelected(&apos;M0_C3_F1_S17&apos;);\"><label for=\"M0_C3_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F1_S17_bc\" id=\"M0_C3_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C3_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C3_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C3_F1_S18&apos;);\"><label for=\"M0_C3_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F1_S18_na\" id=\"M0_C3_F1_S18_na\"><input type=\"hidden\" name=\"M0_C3_F1_S18_bc\" id=\"M0_C3_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C3_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C3_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C3_F1_S19&apos;);\"><label for=\"M0_C3_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F1_S19_na\" id=\"M0_C3_F1_S19_na\"><input type=\"hidden\" name=\"M0_C3_F1_S19_bc\" id=\"M0_C3_F1_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C3_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C3_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C3_F1_S19&apos;);\"><label for=\"M0_C3_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C3_F1_S19_na\" id=\"M0_C3_F1_S19_na\"><input type=\"hidden\" name=\"M0_C3_F1_S19_bc\" id=\"M0_C3_F1_S19_bc\" value=\"X/HL\"></span>"
             },
             "8": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 253",
@@ -298,15 +242,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C4_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C4_F0_S16\" onclick=\"flightSelected(&apos;M0_C4_F0_S16&apos;);\"><label for=\"M0_C4_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C4_F0_S16_bc\" id=\"M0_C4_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C4_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C4_F0_S17\" onclick=\"flightSelected(&apos;M0_C4_F0_S17&apos;);\"><label for=\"M0_C4_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C4_F0_S17_bc\" id=\"M0_C4_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C4_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C4_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C4_F0_S18&apos;);\"><label for=\"M0_C4_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C4_F0_S18_na\" id=\"M0_C4_F0_S18_na\"><input type=\"hidden\" name=\"M0_C4_F0_S18_bc\" id=\"M0_C4_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 638204,
-                    "child": 638204,
-                    "infant": 154204,
-                    "basic": 531204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "9": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 598",
@@ -333,15 +269,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C4_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C4_F1_S16\" onclick=\"flightSelected(&apos;M0_C4_F1_S16&apos;);\"><label for=\"M0_C4_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C4_F1_S16_bc\" id=\"M0_C4_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C4_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C4_F1_S17\" onclick=\"flightSelected(&apos;M0_C4_F1_S17&apos;);\"><label for=\"M0_C4_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C4_F1_S17_bc\" id=\"M0_C4_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C4_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C4_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C4_F1_S18&apos;);\"><label for=\"M0_C4_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C4_F1_S18_na\" id=\"M0_C4_F1_S18_na\"><input type=\"hidden\" name=\"M0_C4_F1_S18_bc\" id=\"M0_C4_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "10": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 232",
@@ -368,15 +296,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C5_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C5_F0_S16\" onclick=\"flightSelected(&apos;M0_C5_F0_S16&apos;);\"><label for=\"M0_C5_F0_S16\">7</label></span><span><input type=\"hidden\" name=\"M0_C5_F0_S16_bc\" id=\"M0_C5_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C5_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C5_F0_S17\" onclick=\"flightSelected(&apos;M0_C5_F0_S17&apos;);\"><label for=\"M0_C5_F0_S17\">7</label><span class=\"rp\">rplion364300rplion</span></span><span><input type=\"hidden\" name=\"M0_C5_F0_S17_bc\" id=\"M0_C5_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C5_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C5_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C5_F0_S18&apos;);\"><label for=\"M0_C5_F0_S18\">0</label><span class=\"rp\">rplion331300rplion</span></span><span><input type=\"hidden\" name=\"M0_C5_F0_S18_na\" id=\"M0_C5_F0_S18_na\"><input type=\"hidden\" name=\"M0_C5_F0_S18_bc\" id=\"M0_C5_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 364304,
-                    "child": 364304,
-                    "infant": 104704,
-                    "basic": 301304,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "11": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 972",
@@ -403,15 +323,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C5_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C5_F1_S16\" onclick=\"flightSelected(&apos;M0_C5_F1_S16&apos;);\"><label for=\"M0_C5_F1_S16\">7</label></span><span><input type=\"hidden\" name=\"M0_C5_F1_S16_bc\" id=\"M0_C5_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C5_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C5_F1_S17\" onclick=\"flightSelected(&apos;M0_C5_F1_S17&apos;);\"><label for=\"M0_C5_F1_S17\">7</label></span><span><input type=\"hidden\" name=\"M0_C5_F1_S17_bc\" id=\"M0_C5_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C5_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C5_F1_S18\" onclick=\"flightSelected(&apos;M0_C5_F1_S18&apos;);\"><label for=\"M0_C5_F1_S18\">7</label><span class=\"rp\">rplion785600rplion</span></span><span><input type=\"hidden\" name=\"M0_C5_F1_S18_bc\" id=\"M0_C5_F1_S18_bc\" value=\"V/SS\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 785604,
-                    "child": 785604,
-                    "infant": 192704,
-                    "basic": 654604,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": ""
             },
             "12": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 232",
@@ -438,15 +350,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C6_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C6_F0_S16\" onclick=\"flightSelected(&apos;M0_C6_F0_S16&apos;);\"><label for=\"M0_C6_F0_S16\">7</label></span><span><input type=\"hidden\" name=\"M0_C6_F0_S16_bc\" id=\"M0_C6_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C6_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C6_F0_S17\" onclick=\"flightSelected(&apos;M0_C6_F0_S17&apos;);\"><label for=\"M0_C6_F0_S17\">7</label><span class=\"rp\">rplion364300rplion</span></span><span><input type=\"hidden\" name=\"M0_C6_F0_S17_bc\" id=\"M0_C6_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C6_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C6_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C6_F0_S18&apos;);\"><label for=\"M0_C6_F0_S18\">0</label><span class=\"rp\">rplion331300rplion</span></span><span><input type=\"hidden\" name=\"M0_C6_F0_S18_na\" id=\"M0_C6_F0_S18_na\"><input type=\"hidden\" name=\"M0_C6_F0_S18_bc\" id=\"M0_C6_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 364304,
-                    "child": 364304,
-                    "infant": 104704,
-                    "basic": 301304,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "13": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 950",
@@ -473,15 +377,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C6_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C6_F1_S16\" onclick=\"flightSelected(&apos;M0_C6_F1_S16&apos;);\"><label for=\"M0_C6_F1_S16\">7</label></span><span><input type=\"hidden\" name=\"M0_C6_F1_S16_bc\" id=\"M0_C6_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C6_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C6_F1_S17\" onclick=\"flightSelected(&apos;M0_C6_F1_S17&apos;);\"><label for=\"M0_C6_F1_S17\">7</label></span><span><input type=\"hidden\" name=\"M0_C6_F1_S17_bc\" id=\"M0_C6_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C6_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C6_F1_S18\" onclick=\"flightSelected(&apos;M0_C6_F1_S18&apos;);\"><label for=\"M0_C6_F1_S18\">7</label><span class=\"rp\">rplion785600rplion</span></span><span><input type=\"hidden\" name=\"M0_C6_F1_S18_bc\" id=\"M0_C6_F1_S18_bc\" value=\"V/SS\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 785604,
-                    "child": 785604,
-                    "infant": 192704,
-                    "basic": 654604,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": ""
             },
             "14": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 353",
@@ -508,15 +404,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C7_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C7_F0_S16\" onclick=\"flightSelected(&apos;M0_C7_F0_S16&apos;);\"><label for=\"M0_C7_F0_S16\">5</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C7_F0_S16_bc\" id=\"M0_C7_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C7_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C7_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C7_F0_S17&apos;);\"><label for=\"M0_C7_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C7_F0_S17_na\" id=\"M0_C7_F0_S17_na\"><input type=\"hidden\" name=\"M0_C7_F0_S17_bc\" id=\"M0_C7_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C7_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C7_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C7_F0_S18&apos;);\"><label for=\"M0_C7_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C7_F0_S18_na\" id=\"M0_C7_F0_S18_na\"><input type=\"hidden\" name=\"M0_C7_F0_S18_bc\" id=\"M0_C7_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 676704,
-                    "child": 676704,
-                    "infant": 154204,
-                    "basic": 569704,
-                    "class": "q",
-                    "available": 5
-                }
+                "x": ""
             },
             "15": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 696",
@@ -543,15 +431,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C7_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C7_F1_S16\" onclick=\"flightSelected(&apos;M0_C7_F1_S16&apos;);\"><label for=\"M0_C7_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C7_F1_S16_bc\" id=\"M0_C7_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C7_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C7_F1_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C7_F1_S17&apos;);\"><label for=\"M0_C7_F1_S17\">0</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C7_F1_S17_na\" id=\"M0_C7_F1_S17_na\"><input type=\"hidden\" name=\"M0_C7_F1_S17_bc\" id=\"M0_C7_F1_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C7_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C7_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C7_F1_S18&apos;);\"><label for=\"M0_C7_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C7_F1_S18_na\" id=\"M0_C7_F1_S18_na\"><input type=\"hidden\" name=\"M0_C7_F1_S18_bc\" id=\"M0_C7_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 566704,
-                    "child": 566704,
-                    "infant": 133304,
-                    "basic": 479704,
-                    "class": "q",
-                    "available": 7
-                }
+                "x": ""
             },
             "16": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 359",
@@ -578,15 +458,7 @@
                 "q": "<span disabled=\"disabled\" title=\"QOW\t\"><input id=\"M0_C8_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C8_F0_S16\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C8_F0_S16&apos;);\"><label for=\"M0_C8_F0_S16\">0</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C8_F0_S16_na\" id=\"M0_C8_F0_S16_na\"><input type=\"hidden\" name=\"M0_C8_F0_S16_bc\" id=\"M0_C8_F0_S16_bc\" value=\"Q/HL\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C8_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C8_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C8_F0_S17&apos;);\"><label for=\"M0_C8_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C8_F0_S17_na\" id=\"M0_C8_F0_S17_na\"><input type=\"hidden\" name=\"M0_C8_F0_S17_bc\" id=\"M0_C8_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C8_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C8_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C8_F0_S18&apos;);\"><label for=\"M0_C8_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C8_F0_S18_na\" id=\"M0_C8_F0_S18_na\"><input type=\"hidden\" name=\"M0_C8_F0_S18_bc\" id=\"M0_C8_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 720704,
-                    "child": 720704,
-                    "infant": 154204,
-                    "basic": 613704,
-                    "class": "n",
-                    "available": 7
-                }
+                "x": ""
             },
             "17": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 696",
@@ -613,15 +485,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C8_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C8_F1_S16\" onclick=\"flightSelected(&apos;M0_C8_F1_S16&apos;);\"><label for=\"M0_C8_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C8_F1_S16_bc\" id=\"M0_C8_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C8_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C8_F1_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C8_F1_S17&apos;);\"><label for=\"M0_C8_F1_S17\">0</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C8_F1_S17_na\" id=\"M0_C8_F1_S17_na\"><input type=\"hidden\" name=\"M0_C8_F1_S17_bc\" id=\"M0_C8_F1_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C8_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C8_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C8_F1_S18&apos;);\"><label for=\"M0_C8_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C8_F1_S18_na\" id=\"M0_C8_F1_S18_na\"><input type=\"hidden\" name=\"M0_C8_F1_S18_bc\" id=\"M0_C8_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 566704,
-                    "child": 566704,
-                    "infant": 133304,
-                    "basic": 479704,
-                    "class": "q",
-                    "available": 7
-                }
+                "x": ""
             },
             "18": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 251",
@@ -648,15 +512,7 @@
                 "q": "<span disabled=\"disabled\" title=\"QOW\t\"><input id=\"M0_C9_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C9_F0_S16\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C9_F0_S16&apos;);\"><label for=\"M0_C9_F0_S16\">0</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C9_F0_S16_na\" id=\"M0_C9_F0_S16_na\"><input type=\"hidden\" name=\"M0_C9_F0_S16_bc\" id=\"M0_C9_F0_S16_bc\" value=\"Q/HL\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C9_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C9_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C9_F0_S17&apos;);\"><label for=\"M0_C9_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C9_F0_S17_na\" id=\"M0_C9_F0_S17_na\"><input type=\"hidden\" name=\"M0_C9_F0_S17_bc\" id=\"M0_C9_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C9_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C9_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C9_F0_S18&apos;);\"><label for=\"M0_C9_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C9_F0_S18_na\" id=\"M0_C9_F0_S18_na\"><input type=\"hidden\" name=\"M0_C9_F0_S18_bc\" id=\"M0_C9_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 720704,
-                    "child": 720704,
-                    "infant": 154204,
-                    "basic": 613704,
-                    "class": "n",
-                    "available": 7
-                }
+                "x": ""
             },
             "19": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 592",
@@ -683,15 +539,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C9_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C9_F1_S16\" onclick=\"flightSelected(&apos;M0_C9_F1_S16&apos;);\"><label for=\"M0_C9_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C9_F1_S16_bc\" id=\"M0_C9_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C9_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C9_F1_S17\" onclick=\"flightSelected(&apos;M0_C9_F1_S17&apos;);\"><label for=\"M0_C9_F1_S17\">1</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C9_F1_S17_bc\" id=\"M0_C9_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C9_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C9_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C9_F1_S18&apos;);\"><label for=\"M0_C9_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C9_F1_S18_na\" id=\"M0_C9_F1_S18_na\"><input type=\"hidden\" name=\"M0_C9_F1_S18_bc\" id=\"M0_C9_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "20": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 353",
@@ -718,15 +566,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C10_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C10_F0_S16\" onclick=\"flightSelected(&apos;M0_C10_F0_S16&apos;);\"><label for=\"M0_C10_F0_S16\">5</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C10_F0_S16_bc\" id=\"M0_C10_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C10_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C10_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C10_F0_S17&apos;);\"><label for=\"M0_C10_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C10_F0_S17_na\" id=\"M0_C10_F0_S17_na\"><input type=\"hidden\" name=\"M0_C10_F0_S17_bc\" id=\"M0_C10_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C10_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C10_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C10_F0_S18&apos;);\"><label for=\"M0_C10_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C10_F0_S18_na\" id=\"M0_C10_F0_S18_na\"><input type=\"hidden\" name=\"M0_C10_F0_S18_bc\" id=\"M0_C10_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 676704,
-                    "child": 676704,
-                    "infant": 154204,
-                    "basic": 569704,
-                    "class": "q",
-                    "available": 5
-                }
+                "x": ""
             },
             "21": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 592",
@@ -753,15 +593,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C10_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C10_F1_S16\" onclick=\"flightSelected(&apos;M0_C10_F1_S16&apos;);\"><label for=\"M0_C10_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C10_F1_S16_bc\" id=\"M0_C10_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C10_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C10_F1_S17\" onclick=\"flightSelected(&apos;M0_C10_F1_S17&apos;);\"><label for=\"M0_C10_F1_S17\">1</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C10_F1_S17_bc\" id=\"M0_C10_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C10_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C10_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C10_F1_S18&apos;);\"><label for=\"M0_C10_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C10_F1_S18_na\" id=\"M0_C10_F1_S18_na\"><input type=\"hidden\" name=\"M0_C10_F1_S18_bc\" id=\"M0_C10_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "22": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 359",
@@ -788,15 +620,7 @@
                 "q": "<span disabled=\"disabled\" title=\"QOW\t\"><input id=\"M0_C11_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C11_F0_S16\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C11_F0_S16&apos;);\"><label for=\"M0_C11_F0_S16\">0</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C11_F0_S16_na\" id=\"M0_C11_F0_S16_na\"><input type=\"hidden\" name=\"M0_C11_F0_S16_bc\" id=\"M0_C11_F0_S16_bc\" value=\"Q/HL\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C11_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C11_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C11_F0_S17&apos;);\"><label for=\"M0_C11_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C11_F0_S17_na\" id=\"M0_C11_F0_S17_na\"><input type=\"hidden\" name=\"M0_C11_F0_S17_bc\" id=\"M0_C11_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C11_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C11_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C11_F0_S18&apos;);\"><label for=\"M0_C11_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C11_F0_S18_na\" id=\"M0_C11_F0_S18_na\"><input type=\"hidden\" name=\"M0_C11_F0_S18_bc\" id=\"M0_C11_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 720704,
-                    "child": 720704,
-                    "infant": 154204,
-                    "basic": 613704,
-                    "class": "n",
-                    "available": 7
-                }
+                "x": ""
             },
             "23": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 592",
@@ -823,15 +647,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C11_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C11_F1_S16\" onclick=\"flightSelected(&apos;M0_C11_F1_S16&apos;);\"><label for=\"M0_C11_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C11_F1_S16_bc\" id=\"M0_C11_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C11_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C11_F1_S17\" onclick=\"flightSelected(&apos;M0_C11_F1_S17&apos;);\"><label for=\"M0_C11_F1_S17\">1</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C11_F1_S17_bc\" id=\"M0_C11_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C11_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C11_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C11_F1_S18&apos;);\"><label for=\"M0_C11_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C11_F1_S18_na\" id=\"M0_C11_F1_S18_na\"><input type=\"hidden\" name=\"M0_C11_F1_S18_bc\" id=\"M0_C11_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "24": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 251",
@@ -858,15 +674,7 @@
                 "q": "<span disabled=\"disabled\" title=\"QOW\t\"><input id=\"M0_C12_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C12_F0_S16\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C12_F0_S16&apos;);\"><label for=\"M0_C12_F0_S16\">0</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C12_F0_S16_na\" id=\"M0_C12_F0_S16_na\"><input type=\"hidden\" name=\"M0_C12_F0_S16_bc\" id=\"M0_C12_F0_S16_bc\" value=\"Q/HL\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C12_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C12_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C12_F0_S17&apos;);\"><label for=\"M0_C12_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C12_F0_S17_na\" id=\"M0_C12_F0_S17_na\"><input type=\"hidden\" name=\"M0_C12_F0_S17_bc\" id=\"M0_C12_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C12_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C12_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C12_F0_S18&apos;);\"><label for=\"M0_C12_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C12_F0_S18_na\" id=\"M0_C12_F0_S18_na\"><input type=\"hidden\" name=\"M0_C12_F0_S18_bc\" id=\"M0_C12_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 720704,
-                    "child": 720704,
-                    "infant": 154204,
-                    "basic": 613704,
-                    "class": "n",
-                    "available": 7
-                }
+                "x": ""
             },
             "25": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 590",
@@ -893,15 +701,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C12_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C12_F1_S16\" onclick=\"flightSelected(&apos;M0_C12_F1_S16&apos;);\"><label for=\"M0_C12_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C12_F1_S16_bc\" id=\"M0_C12_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C12_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C12_F1_S17\" onclick=\"flightSelected(&apos;M0_C12_F1_S17&apos;);\"><label for=\"M0_C12_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C12_F1_S17_bc\" id=\"M0_C12_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C12_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C12_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C12_F1_S18&apos;);\"><label for=\"M0_C12_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C12_F1_S18_na\" id=\"M0_C12_F1_S18_na\"><input type=\"hidden\" name=\"M0_C12_F1_S18_bc\" id=\"M0_C12_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "26": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 355",
@@ -928,15 +728,7 @@
                 "q": "<span disabled=\"disabled\" title=\"QOW\t\"><input id=\"M0_C13_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C13_F0_S16\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C13_F0_S16&apos;);\"><label for=\"M0_C13_F0_S16\">0</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C13_F0_S16_na\" id=\"M0_C13_F0_S16_na\"><input type=\"hidden\" name=\"M0_C13_F0_S16_bc\" id=\"M0_C13_F0_S16_bc\" value=\"Q/HL\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C13_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C13_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C13_F0_S17&apos;);\"><label for=\"M0_C13_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C13_F0_S17_na\" id=\"M0_C13_F0_S17_na\"><input type=\"hidden\" name=\"M0_C13_F0_S17_bc\" id=\"M0_C13_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C13_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C13_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C13_F0_S18&apos;);\"><label for=\"M0_C13_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C13_F0_S18_na\" id=\"M0_C13_F0_S18_na\"><input type=\"hidden\" name=\"M0_C13_F0_S18_bc\" id=\"M0_C13_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 720704,
-                    "child": 720704,
-                    "infant": 154204,
-                    "basic": 613704,
-                    "class": "n",
-                    "available": 7
-                }
+                "x": ""
             },
             "27": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 590",
@@ -963,15 +755,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C13_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C13_F1_S16\" onclick=\"flightSelected(&apos;M0_C13_F1_S16&apos;);\"><label for=\"M0_C13_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C13_F1_S16_bc\" id=\"M0_C13_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C13_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C13_F1_S17\" onclick=\"flightSelected(&apos;M0_C13_F1_S17&apos;);\"><label for=\"M0_C13_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C13_F1_S17_bc\" id=\"M0_C13_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C13_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C13_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C13_F1_S18&apos;);\"><label for=\"M0_C13_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C13_F1_S18_na\" id=\"M0_C13_F1_S18_na\"><input type=\"hidden\" name=\"M0_C13_F1_S18_bc\" id=\"M0_C13_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "28": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 359",
@@ -998,15 +782,7 @@
                 "q": "<span disabled=\"disabled\" title=\"QOW\t\"><input id=\"M0_C14_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C14_F0_S16\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C14_F0_S16&apos;);\"><label for=\"M0_C14_F0_S16\">0</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C14_F0_S16_na\" id=\"M0_C14_F0_S16_na\"><input type=\"hidden\" name=\"M0_C14_F0_S16_bc\" id=\"M0_C14_F0_S16_bc\" value=\"Q/HL\"></span>",
                 "t": "<span disabled=\"disabled\" title=\"TOW\t\"><input id=\"M0_C14_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C14_F0_S17\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C14_F0_S17&apos;);\"><label for=\"M0_C14_F0_S17\">0</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C14_F0_S17_na\" id=\"M0_C14_F0_S17_na\"><input type=\"hidden\" name=\"M0_C14_F0_S17_bc\" id=\"M0_C14_F0_S17_bc\" value=\"T/HL\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C14_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C14_F0_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C14_F0_S18&apos;);\"><label for=\"M0_C14_F0_S18\">0</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C14_F0_S18_na\" id=\"M0_C14_F0_S18_na\"><input type=\"hidden\" name=\"M0_C14_F0_S18_bc\" id=\"M0_C14_F0_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 720704,
-                    "child": 720704,
-                    "infant": 154204,
-                    "basic": 613704,
-                    "class": "n",
-                    "available": 7
-                }
+                "x": ""
             },
             "29": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 590",
@@ -1033,15 +809,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C14_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C14_F1_S16\" onclick=\"flightSelected(&apos;M0_C14_F1_S16&apos;);\"><label for=\"M0_C14_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C14_F1_S16_bc\" id=\"M0_C14_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C14_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C14_F1_S17\" onclick=\"flightSelected(&apos;M0_C14_F1_S17&apos;);\"><label for=\"M0_C14_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C14_F1_S17_bc\" id=\"M0_C14_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span disabled=\"disabled\" title=\"VOW\t\"><input id=\"M0_C14_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C14_F1_S18\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C14_F1_S18&apos;);\"><label for=\"M0_C14_F1_S18\">0</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C14_F1_S18_na\" id=\"M0_C14_F1_S18_na\"><input type=\"hidden\" name=\"M0_C14_F1_S18_bc\" id=\"M0_C14_F1_S18_bc\" value=\"V/HL\"></span>",
-                "x": "",
-                "cheapest": {
-                    "adult": 539204,
-                    "child": 539204,
-                    "infant": 133304,
-                    "basic": 452204,
-                    "class": "t",
-                    "available": 7
-                }
+                "x": ""
             },
             "30": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 257",
@@ -1068,15 +836,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C15_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C15_F0_S16\" onclick=\"flightSelected(&apos;M0_C15_F0_S16&apos;);\"><label for=\"M0_C15_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F0_S16_bc\" id=\"M0_C15_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C15_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C15_F0_S17\" onclick=\"flightSelected(&apos;M0_C15_F0_S17&apos;);\"><label for=\"M0_C15_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F0_S17_bc\" id=\"M0_C15_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C15_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C15_F0_S18\" onclick=\"flightSelected(&apos;M0_C15_F0_S18&apos;);\"><label for=\"M0_C15_F0_S18\">7</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F0_S18_bc\" id=\"M0_C15_F0_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C15_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C15_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C15_F0_S19&apos;);\"><label for=\"M0_C15_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C15_F0_S19_na\" id=\"M0_C15_F0_S19_na\"><input type=\"hidden\" name=\"M0_C15_F0_S19_bc\" id=\"M0_C15_F0_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 583204,
-                    "child": 583204,
-                    "infant": 154204,
-                    "basic": 476204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C15_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C15_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C15_F0_S19&apos;);\"><label for=\"M0_C15_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C15_F0_S19_na\" id=\"M0_C15_F0_S19_na\"><input type=\"hidden\" name=\"M0_C15_F0_S19_bc\" id=\"M0_C15_F0_S19_bc\" value=\"X/HL\"></span>"
             },
             "31": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 596",
@@ -1103,15 +863,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C15_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C15_F1_S16\" onclick=\"flightSelected(&apos;M0_C15_F1_S16&apos;);\"><label for=\"M0_C15_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F1_S16_bc\" id=\"M0_C15_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C15_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C15_F1_S17\" onclick=\"flightSelected(&apos;M0_C15_F1_S17&apos;);\"><label for=\"M0_C15_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F1_S17_bc\" id=\"M0_C15_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C15_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C15_F1_S18\" onclick=\"flightSelected(&apos;M0_C15_F1_S18&apos;);\"><label for=\"M0_C15_F1_S18\">7</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F1_S18_bc\" id=\"M0_C15_F1_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C15_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C15_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C15_F1_S19&apos;);\"><label for=\"M0_C15_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F1_S19_na\" id=\"M0_C15_F1_S19_na\"><input type=\"hidden\" name=\"M0_C15_F1_S19_bc\" id=\"M0_C15_F1_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 506204,
-                    "child": 506204,
-                    "infant": 133304,
-                    "basic": 419204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C15_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C15_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C15_F1_S19&apos;);\"><label for=\"M0_C15_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C15_F1_S19_na\" id=\"M0_C15_F1_S19_na\"><input type=\"hidden\" name=\"M0_C15_F1_S19_bc\" id=\"M0_C15_F1_S19_bc\" value=\"X/HL\"></span>"
             },
             "32": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 257",
@@ -1138,15 +890,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C16_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C16_F0_S16\" onclick=\"flightSelected(&apos;M0_C16_F0_S16&apos;);\"><label for=\"M0_C16_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F0_S16_bc\" id=\"M0_C16_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C16_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C16_F0_S17\" onclick=\"flightSelected(&apos;M0_C16_F0_S17&apos;);\"><label for=\"M0_C16_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F0_S17_bc\" id=\"M0_C16_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C16_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C16_F0_S18\" onclick=\"flightSelected(&apos;M0_C16_F0_S18&apos;);\"><label for=\"M0_C16_F0_S18\">7</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F0_S18_bc\" id=\"M0_C16_F0_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C16_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C16_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C16_F0_S19&apos;);\"><label for=\"M0_C16_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C16_F0_S19_na\" id=\"M0_C16_F0_S19_na\"><input type=\"hidden\" name=\"M0_C16_F0_S19_bc\" id=\"M0_C16_F0_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 583204,
-                    "child": 583204,
-                    "infant": 154204,
-                    "basic": 476204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C16_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C16_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C16_F0_S19&apos;);\"><label for=\"M0_C16_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C16_F0_S19_na\" id=\"M0_C16_F0_S19_na\"><input type=\"hidden\" name=\"M0_C16_F0_S19_bc\" id=\"M0_C16_F0_S19_bc\" value=\"X/HL\"></span>"
             },
             "33": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 690",
@@ -1173,15 +917,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C16_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C16_F1_S16\" onclick=\"flightSelected(&apos;M0_C16_F1_S16&apos;);\"><label for=\"M0_C16_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F1_S16_bc\" id=\"M0_C16_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C16_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C16_F1_S17\" onclick=\"flightSelected(&apos;M0_C16_F1_S17&apos;);\"><label for=\"M0_C16_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F1_S17_bc\" id=\"M0_C16_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C16_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C16_F1_S18\" onclick=\"flightSelected(&apos;M0_C16_F1_S18&apos;);\"><label for=\"M0_C16_F1_S18\">7</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F1_S18_bc\" id=\"M0_C16_F1_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C16_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C16_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C16_F1_S19&apos;);\"><label for=\"M0_C16_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F1_S19_na\" id=\"M0_C16_F1_S19_na\"><input type=\"hidden\" name=\"M0_C16_F1_S19_bc\" id=\"M0_C16_F1_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 506204,
-                    "child": 506204,
-                    "infant": 133304,
-                    "basic": 419204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C16_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C16_F1_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C16_F1_S19&apos;);\"><label for=\"M0_C16_F1_S19\">0</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C16_F1_S19_na\" id=\"M0_C16_F1_S19_na\"><input type=\"hidden\" name=\"M0_C16_F1_S19_bc\" id=\"M0_C16_F1_S19_bc\" value=\"X/HL\"></span>"
             },
             "34": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 257",
@@ -1208,15 +944,7 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C17_F0_S16\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C17_F0_S16\" onclick=\"flightSelected(&apos;M0_C17_F0_S16&apos;);\"><label for=\"M0_C17_F0_S16\">7</label><span class=\"rp\">rplion676700rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F0_S16_bc\" id=\"M0_C17_F0_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C17_F0_S17\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C17_F0_S17\" onclick=\"flightSelected(&apos;M0_C17_F0_S17&apos;);\"><label for=\"M0_C17_F0_S17\">7</label><span class=\"rp\">rplion638200rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F0_S17_bc\" id=\"M0_C17_F0_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C17_F0_S18\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C17_F0_S18\" onclick=\"flightSelected(&apos;M0_C17_F0_S18&apos;);\"><label for=\"M0_C17_F0_S18\">7</label><span class=\"rp\">rplion583200rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F0_S18_bc\" id=\"M0_C17_F0_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C17_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C17_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C17_F0_S19&apos;);\"><label for=\"M0_C17_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C17_F0_S19_na\" id=\"M0_C17_F0_S19_na\"><input type=\"hidden\" name=\"M0_C17_F0_S19_bc\" id=\"M0_C17_F0_S19_bc\" value=\"X/HL\"></span>",
-                "cheapest": {
-                    "adult": 583204,
-                    "child": 583204,
-                    "infant": 154204,
-                    "basic": 476204,
-                    "class": "v",
-                    "available": 7
-                }
+                "x": "<span disabled=\"disabled\" title=\"XOW\t\"><input id=\"M0_C17_F0_S19\" type=\"radio\" name=\"RGM0_0\" value=\"M0_C17_F0_S19\" disabled=\"disabled\" onclick=\"flightSelected(&apos;M0_C17_F0_S19&apos;);\"><label for=\"M0_C17_F0_S19\">0</label></span><span><input type=\"hidden\" name=\"M0_C17_F0_S19_na\" id=\"M0_C17_F0_S19_na\"><input type=\"hidden\" name=\"M0_C17_F0_S19_bc\" id=\"M0_C17_F0_S19_bc\" value=\"X/HL\"></span>"
             },
             "35": {
                 "aircraft": "<div class=\"carrierLogo\"><img src=\"images/Logos/JT.gif\" alt=\" Lion Air\" class=\"carrierImage\" title=\" Lion Air\"></div>JT 886",
@@ -1243,17 +971,161 @@
                 "q": "<span title=\"QOW\t\"><input id=\"M0_C17_F1_S16\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C17_F1_S16\" onclick=\"flightSelected(&apos;M0_C17_F1_S16&apos;);\"><label for=\"M0_C17_F1_S16\">7</label><span class=\"rp\">rplion566700rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F1_S16_bc\" id=\"M0_C17_F1_S16_bc\" value=\"Q/SS\"></span>",
                 "t": "<span title=\"TOW\t\"><input id=\"M0_C17_F1_S17\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C17_F1_S17\" onclick=\"flightSelected(&apos;M0_C17_F1_S17&apos;);\"><label for=\"M0_C17_F1_S17\">7</label><span class=\"rp\">rplion539200rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F1_S17_bc\" id=\"M0_C17_F1_S17_bc\" value=\"T/SS\"></span>",
                 "v": "<span title=\"VOW\t\"><input id=\"M0_C17_F1_S18\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C17_F1_S18\" onclick=\"flightSelected(&apos;M0_C17_F1_S18&apos;);\"><label for=\"M0_C17_F1_S18\">7</label><span class=\"rp\">rplion506200rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F1_S18_bc\" id=\"M0_C17_F1_S18_bc\" value=\"V/SS\"></span>",
-                "x": "<span title=\"XOW\t\"><input id=\"M0_C17_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C17_F1_S19\" onclick=\"flightSelected(&apos;M0_C17_F1_S19&apos;);\"><label for=\"M0_C17_F1_S19\">7</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F1_S19_bc\" id=\"M0_C17_F1_S19_bc\" value=\"X/SS\"></span>",
-                "cheapest": {
-                    "adult": 445704,
-                    "child": 445704,
-                    "infant": 133304,
-                    "basic": 358704,
-                    "class": "x",
-                    "available": 7
-                }
+                "x": "<span title=\"XOW\t\"><input id=\"M0_C17_F1_S19\" type=\"radio\" name=\"RGM0_1\" value=\"M0_C17_F1_S19\" onclick=\"flightSelected(&apos;M0_C17_F1_S19&apos;);\"><label for=\"M0_C17_F1_S19\">7</label><span class=\"rp\">rplion445700rplion</span></span><span><input type=\"hidden\" name=\"M0_C17_F1_S19_bc\" id=\"M0_C17_F1_S19_bc\" value=\"X/SS\"></span>"
             }
         },
-        "ret_table": {}
+        "ret_table": {},
+        "dep_cheapests": [
+            {
+                "class": "Full"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "vv"
+            },
+            {
+                "class": "Full"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "tt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "vt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "tt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "tv"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "tv"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "qq"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "nq"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "nt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "qt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "nt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "nt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "nt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "nt"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "vv"
+            },
+            {
+                "prices": {
+                    "adult": 557204,
+                    "child": 557204,
+                    "infant": 118304,
+                    "basic": 425204
+                },
+                "class": "vv"
+            }
+        ]
     }
 ]
