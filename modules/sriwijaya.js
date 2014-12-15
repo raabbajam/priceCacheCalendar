@@ -1,6 +1,6 @@
 var Base    = require('../Base');
 var moment = require('moment');
-	scrape : this.scrape || urlAirbinder,'debug')('raabbajam:priceCacheCalendar:sriwijaya');
+var debug       = require('debug')('raabbajam:priceCacheCalendar:sriwijaya');
 var _ = require('lodash');
 var db = require('../libs/db');
 var priceScrapers = require('priceScraper');
@@ -8,7 +8,7 @@ var SriwijayaPriceScrapers = priceScrapers.sriwijaya;
 var cheerio = require('cheerio');
 function init (dt, scrape, args) {
 	this._super('sriwijaya', dt, scrape, args);
-};
+}
 function getAllRoutes () {
 	var _this  = this;
 	var routes = [];
@@ -26,14 +26,14 @@ function getAllRoutes () {
 			})).join('');
 			// debug('currentRoute',currentRoute)
 			if (routes.indexOf(currentRoute) === -1){
-				routes.push(currentRoute)
+				routes.push(currentRoute);
 			}
-		})
-	};
+		});
+	}
 	looper('go');
 	looper('back');
 	return routes;
-};
+}
 function mergeCache (){
 	var _this        = this;
 	var _cache       = _this.cache;
@@ -72,11 +72,9 @@ function mergeCache (){
 				// debug(currentRoute + ':' + currentFCode + ':' + classCode + ' = ' + available + '. cachePrice: ' + cachePrice)
 				// debug('cachePrice',cachePrice)
 				$('.avcellFare', td).text('' + cachePrice);
-				if(!!available //seat still available
-					&& (!lowestPrices[currentRoute] //lowest still 0
-					|| (lowestPrices[currentRoute] > cachePrice && !!cachePrice))) //seat price cheaper but not zero
+				if(!!available && (!lowestPrices[currentRoute] || (lowestPrices[currentRoute] > cachePrice && !!cachePrice)))
 					lowestPrices[currentRoute] = cachePrice;
-			})
+			});
 			lowestPriceRows.push(lowestPrices[currentRoute]);
 		});
 		// if there is more than one flight in on one row
@@ -92,7 +90,7 @@ function mergeCache (){
 	looper('back');
 	this._scrape ='<body>' + $('body').html() + '</body>';
 	return lowestPrices;
-};
+}
 /**
  * return an array of object with ori, dst, class and flight property
  * @param  {Object} row Row object
@@ -103,7 +101,7 @@ function getCheapestInRow (row) {
 	var outs = [];
 	var rutes = _.values(row.depart);
 	rutes.push(_.values(row.arrive).pop());
-	rutes = rutes.map(function (rute) {return rute.substr(0,3); })
+	rutes = rutes.map(function (rute) {return rute.substr(0,3); });
 	// debug('rutes',rutes);
 	var flight = _.values(row.code_flight).reduce(function (all, codes) {
 		return all + codes.replace(/\D/g , '').length;
