@@ -151,7 +151,7 @@ function getCheapestInRow (rowAll) {
 				flightNum = idx;
 			})
 			// debug('out', out);
-			if (out.class.length === (flightNum + 2))
+			if (out.class.length * 2 === out.flight.length)
 				outs.push(out);
 			realOri = ori;
 			classes = flights = '';
@@ -188,7 +188,7 @@ function getCheapestInRow (rowAll) {
 		flightNum = idx;
 	})
 	// debug('out', out);
-	if (out.class.length === (flightNum + 2))
+	if (out.class.length* 2 === out.flight.length)
 		outs.push(out);
 	return outs;
 }
