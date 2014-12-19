@@ -138,7 +138,7 @@ function mergeCache() {
 function getCheapestInRow(row) {
 		// debug('rowAll',row );
 		var outs = [];
-		var seatRequest = this.paxNum || 1;
+		var seatRequest = 1; //this.paxNum || 1;
 		if (!row.normal_fare)
 			return outs;
 		var rutes = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function(rute) {
@@ -243,7 +243,7 @@ function scrapeLostData(id) {
 function mergeCachePrices(json) {
 		var _json = _.cloneDeep(json);
 		var _this = this;
-		var seatRequest = this.paxNum || 1;
+		var seatRequest = 1; //this.paxNum || 1;
 		// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 		// debug('_json.dep_table',_json)
 		_json[0].dep_table = _.mapValues(_json[0].dep_table, function(row) {

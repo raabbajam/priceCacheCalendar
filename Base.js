@@ -449,17 +449,17 @@ function scrapeAllLostData(data) {
 		var results = [];
 		var steps;
 		debug('scrapeAllLostData');
-		if (!!_this.parallel) {
-			steps = [];
-			data.forEach(function(id) {
-				steps.push(function() {
-					return _this.scrapeLostData(id)
-						.then(function(res) {
-							results.push(res);
-						});
-				});
-			})
-		} else {
+		// if (!!_this.parallel) {
+		// 	steps = [];
+		// 	data.forEach(function(id) {
+		// 		steps.push(function() {
+		// 			return _this.scrapeLostData(id)
+		// 				.then(function(res) {
+		// 					results.push(res);
+		// 				});
+		// 		});
+		// 	})
+		// } else {
 			steps = (data || []).reduce(function(sequence, id) {
 				debug('sequence', id);
 				return sequence.then(function() {
@@ -469,7 +469,7 @@ function scrapeAllLostData(data) {
 						});
 				});
 			}, Promise.resolve());
-		}
+		// }
 		return new Promise(function(resolve, reject) {
 
 			// return Promise.all(steps);
