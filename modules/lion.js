@@ -167,8 +167,8 @@ function getCheapestInRow (rowAll) {
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
-			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > seatRequest){
-				if (+matchAvailable[1] > 0) {
+			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 0){
+				if (+matchAvailable[1] >= seatRequest) {
 					classes += _class;
 					return false;
 				}
@@ -305,8 +305,8 @@ var seatRequest = this.paxNum || 1;
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
-			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > seatRequest){
-				if (+matchAvailable[1] > 0) {
+			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 0){
+				if (+matchAvailable[1] >= seatRequest) {
 					classes += _class;
 					return false;
 				}
