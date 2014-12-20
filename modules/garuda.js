@@ -125,6 +125,8 @@ function getCheapestInRow (rowAll) {
 		// debug(out);
 		// outs.push(out);
 	});
+	if (rowAll.length !== classes.length)
+		return [];
 	out.class = classes;
 	return [out];
 }

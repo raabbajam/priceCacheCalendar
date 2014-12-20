@@ -471,7 +471,6 @@ function scrapeAllLostData(data) {
 			}, Promise.resolve());
 		// }
 		return new Promise(function(resolve, reject) {
-
 			// return Promise.all(steps);
 			steps
 				.then(function() {

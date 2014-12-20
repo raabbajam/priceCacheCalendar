@@ -120,6 +120,7 @@ function mergeCache (){
  */
 function getCheapestInRow (rowAll) {
 	// debug('rowAll',row );
+	var seatRequest = this.paxNum || 1;
 	var outs = [];
 	var lastDst, classes, ori, dst, flight, flights, realOri, realDst ;
 	lastDst = classes = ori = dst = flight = flights = realOri = realDst = '';
@@ -166,7 +167,7 @@ function getCheapestInRow (rowAll) {
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
-			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 1){
+			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > seatRequest){
 				if (+matchAvailable[1] > 0) {
 					classes += _class;
 					return false;
@@ -188,7 +189,7 @@ function getCheapestInRow (rowAll) {
 		flightNum = idx;
 	})
 	// debug('out', out);
-	if (out.class.length* 2 === out.flight.length)
+	if (out.class.length * 2 === out.flight.length)
 		outs.push(out);
 	return outs;
 }
@@ -246,6 +247,7 @@ function scrapeLostData (id) {
  * @return {Object}      JSON formatted of scraped data already merged with cache data
  */
 function mergeCachePrices (json) {
+var seatRequest = this.paxNum || 1;
 	var _json = _.cloneDeep(json);
 	var _this = this;
 	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices));
@@ -303,7 +305,7 @@ function mergeCachePrices (json) {
 		var aClass = Object.keys(row).filter(function(b){return b.length === 1})
 		_.forEachRight(aClass, function (_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
-			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 1){
+			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > seatRequest){
 				if (+matchAvailable[1] > 0) {
 					classes += _class;
 					return false;
