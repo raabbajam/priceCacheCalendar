@@ -539,7 +539,7 @@ function merge(json) {
 	debug('aoCheapest', aoCheapest);
 	if (_.isEmpty(aoCheapest)) {
 		debug('Can\'t find some data. Return without cachePrices..');
-		return _this.mergeCachePrices(json);
+		return Promise.resolve(_this.mergeCachePrices(json));
 	}
 	return _this.getAllCachePrices(aoCheapest)
 		.catch(function(err) {
