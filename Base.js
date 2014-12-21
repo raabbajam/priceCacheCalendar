@@ -451,19 +451,17 @@ function scrapeAllLostData(data) {
 		var _this = this;
 		var results = [];
 		var steps;
-		debug('scrapeAllLostData');
+		debug('scrapeAllLostData parallel', _this.parallel);
 		if (!!_this.parallel) {
 			steps = [];
 			data.forEach(function(id) {
 				steps.push(_this.scrapeLostData(id));
 			});
-			return new Promise(function(resolve, reject) {
-				return Promise.all(steps)
-					.catch(function(err) {
-						debug('scrapeAllLostData', err.stack);
-						reject(err);
-					});
-			});
+			return Promise.all(steps)
+				.catch(function(err) {
+					debug('scrapeAllLostData', err.stack);
+					reject(err);
+				});
 		} else {
 			steps = (data || [])
 				.reduce(function(sequence, id) {
