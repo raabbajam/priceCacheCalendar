@@ -9,7 +9,7 @@ var cheerio = require('cheerio');
 
 function init(dt, scrape, args) {
 	this._super('express', dt, scrape, args);
-	// this.parallel = true;
+	this.parallel = true;
 }
 
 function getAllRoutes() {

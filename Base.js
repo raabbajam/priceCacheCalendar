@@ -201,25 +201,27 @@ function insertAllLowest(res) {
 		var promises = [];
 		var _this = this;
 		var _dt = _this._dt;
-		var _date = moment(_dt.dep_date, dateFormats).unix() * 1000;
+		var _date = moment(_dt.dep_date, dateFormats)
+			.unix() * 1000;
 		debug('res', res)
-		Object.keys(res).forEach(function(prop, i) {
-			if (!res[prop])
-				return true;
-			// debug('prop',res[prop])
-			var _price = parseInt(res[prop], 10) + _this._kode;
-			// debug('insertAllLowest res',_price, _this._kode)
-			var data = {
-				date: _date,
-				origin: prop.substr(0, 3),
-				destination: prop.substr(3, 3),
-				price: _price,
-				airline: _this.airline
-			};
-			data.id = data.origin + data.destination + data.date / 1000;
-			debug('data insertAllLowest', data);
-			promises.push(_this.insertLowest(data));
-		});
+		Object.keys(res)
+			.forEach(function(prop, i) {
+				if (!res[prop])
+					return true;
+				// debug('prop',res[prop])
+				var _price = parseInt(res[prop], 10) + _this._kode;
+				// debug('insertAllLowest res',_price, _this._kode)
+				var data = {
+					date: _date,
+					origin: prop.substr(0, 3),
+					destination: prop.substr(3, 3),
+					price: _price,
+					airline: _this.airline
+				};
+				data.id = data.origin + data.destination + data.date / 1000;
+				debug('data insertAllLowest', data);
+				promises.push(_this.insertLowest(data));
+			});
 		return Promise.all(promises, function(res) {
 			debug('Inserting to calendar..', JSON.stringify(res));
 		});
@@ -318,7 +320,8 @@ function getAllCheapest(rows) {
 				};
 				var rute = cheapest.ori + _transit + cheapest.dst;
 				var flight = cheapest.flight.toLowerCase();
-				var _class = (cheapest.class || '').toLowerCase();
+				var _class = (cheapest.class || '')
+					.toLowerCase();
 				/*if (_this.airline === 'garuda')
 				_class += rowNum;*/
 				rute = rute.toLowerCase();
@@ -449,38 +452,41 @@ function scrapeAllLostData(data) {
 		var results = [];
 		var steps;
 		debug('scrapeAllLostData');
-		// if (!!_this.parallel) {
-		// 	steps = [];
-		// 	data.forEach(function(id) {
-		// 		steps.push(function() {
-		// 			return _this.scrapeLostData(id)
-		// 				.then(function(res) {
-		// 					results.push(res);
-		// 				});
-		// 		});
-		// 	})
-		// } else {
-			steps = (data || []).reduce(function(sequence, id) {
-				debug('sequence', id);
-				return sequence.then(function() {
-					return _this.scrapeLostData(id)
-						.then(function(res) {
-							results.push(res);
-						});
-				});
-			}, Promise.resolve());
-		// }
-		return new Promise(function(resolve, reject) {
-			// return Promise.all(steps);
-			steps
-				.then(function() {
-					return resolve(results);
-				})
-				.catch(function(err) {
-					debug('scrapeAllLostData', err.stack);
-					reject(err);
-				});
-		});
+		if (!!_this.parallel) {
+			steps = [];
+			data.forEach(function(id) {
+				steps.push(_this.scrapeLostData(id));
+			});
+			return new Promise(function(resolve, reject) {
+				return Promise.all(steps)
+					.catch(function(err) {
+						debug('scrapeAllLostData', err.stack);
+						reject(err);
+					});
+			});
+		} else {
+			steps = (data || [])
+				.reduce(function(sequence, id) {
+					debug('sequence', id);
+					return sequence.then(function() {
+						return _this.scrapeLostData(id)
+							.then(function(res) {
+								results.push(res);
+							});
+					});
+				}, Promise.resolve());
+			return new Promise(function(resolve, reject) {
+				// return Promise.all(steps);
+				steps
+					.then(function() {
+						return resolve(results);
+					})
+					.catch(function(err) {
+						debug('scrapeAllLostData', err.stack);
+						reject(err);
+					});
+			});
+		}
 	}
 	/**
 	 * Saving cached docs from db to global object cachePrices
