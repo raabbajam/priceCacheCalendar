@@ -123,6 +123,7 @@ function mergeCache() {
 	 */
 function getCheapestInRow(row) {
 		// debug('rowAll',row );
+		var seatRequest = this.paxNum || 1;
 		var outs = [];
 		var rutes = _.values(row.depart);
 		rutes.push(_.values(row.arrive)
@@ -147,19 +148,38 @@ function getCheapestInRow(row) {
 		});
 		var _classes = '';
 		var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
-		for (var i = 0; i < numTrips; i++) {
+
+		if(numTrips != row['O'].length){
 			_.forEach(aClass, function(_class) {
 				var matchAvailable;
-				if (row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
-					_classes += _class;
-					return false;
+				if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+					if (+matchAvailable >= seatRequest) {
+						_classes += _class;
+						return false;
+					}
 				}
 			});
+			out.class = _classes;
+			debug('this flight one radio: out', out);
+			if (!!out.class)
+				outs.push(out);
+		}else{
+			for (var i = 0; i < numTrips; i++) {
+				_.forEach(aClass, function(_class) {
+					var matchAvailable;
+					if (row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
+						if (+matchAvailable >= seatRequest) {
+							_classes += _class;
+							return false;
+						}
+					}
+				});
+			}
+			out.class = _classes;
+			debug('out.class', out.class, numTrips);
+			if (!!out.class && out.class.length === numTrips)
+				outs.push(out);
 		}
-		out.class = _classes;
-		debug('out.class', out.class, numTrips);
-		if (!!out.class && out.class.length === numTrips)
-			outs.push(out);
 		return outs;
 	}
 	/**
@@ -219,6 +239,7 @@ function scrapeLostData(id) {
 	 * @return {Object}      JSON formatted of scraped data already merged with cache data
 	 */
 function mergeCachePrices(json) {
+		var seatRequest = this.paxNum || 1;
 		var _json = _.cloneDeep(json);
 		var _this = this;
 		debug('_this.cachePrices', JSON.stringify(_this.cachePrices, null, 2));
@@ -241,32 +262,67 @@ function mergeCachePrices(json) {
 					return all + codes.replace(/\D/g, '')
 						.length;
 				}, '');
+			var numTrips = flight.length;
+
 			var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
-			_.forEach(aClass, function(_class) {
-				var matchAvailable;
-				if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
-					try {
-						row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
-					} catch (e) {
-						debug(e.message);
+			if(numTrips != row['O'].length){
+				_.forEach(aClass, function(_class) {
+					var matchAvailable;
+					if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+						if (+matchAvailable >= seatRequest) {
+							try {
+								row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
+							} catch (e) {
+								debug(e.message);
+							}
+							if (!!row.cheapest) {
+								row.cheapest.class = _class.toLowerCase();
+								row.cheapest.available = matchAvailable;
+							} else {
+								row.cheapest = {
+									class: 'Full',
+									available: 0
+								};
+							}
+							// debug('this flight one radio: row.cheapest',row.cheapest, rute, flight, _class);
+							return false;
+						}
 					}
-					if (!!row.cheapest) {
-						row.cheapest.class = _class.toLowerCase();
-						row.cheapest.available = matchAvailable;
-					} else {
-						row.cheapest = {
-							class: 'Full',
-							available: 0
-						};
-					}
-					return false;
+				});
+			}else{
+				var __class = '';
+				var available = [];
+				for (var i = 0; i < numTrips; i++) {
+					_.forEach(aClass, function(_class) {
+						var matchAvailable;
+						if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+							if (+matchAvailable >= seatRequest) {
+								__class += _class;
+								available.push(matchAvailable);
+								return false;
+							}
+						}
+					});
 				}
-			});
+				try {
+					row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
+				} catch (e) {
+					debug(e.stack, rute, flight, __class);
+				}
+				if (!!row.cheapest) {
+					row.cheapest.class = __class.toLowerCase();
+					row.cheapest.available = available.join('_');
+				} else {
+					row.cheapest = {
+						class: 'Full',
+						available: 0
+					};
+				}
+				// debug('row.cheapest',row.cheapest, rute, flight, __class, numTrips);
+			}
 			// debug('mergeCachePrices row', row)
 			return row;
 		});
-		// debug(_json.dep_table);
-		// var ret = _json.return;
 		return _json;
 	}
 	/**
