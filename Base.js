@@ -243,12 +243,12 @@ function insertLowest(data) {
 				debug(oldPrice, _price, data);
 				// debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
 				if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
-					resolve(false);
+					return resolve(false);
 				} else {
 					data.price = _price;
 					debug('found lower price, inserting to calendar...', res);
 					_this.db.index('pluto', 'calendar', data, function(err, res) {
-						resolve(res);
+						return resolve(res);
 					});
 				}
 			});
@@ -577,13 +577,13 @@ function merge(json) {
 				if (!!cheapest) {
 					var rute = _this._dt.ori + _this._dt.dst;
 					var res = {};
-					res[rute] = cheapest;
+					res[rute] = Math.floor(cheapest / 10) * 10;
 					debug('Insert calendar', res);
 					_this.insertAllLowest(res).then(debug, debug);
 				} else {
 					debug('Cheapest not Found');
 				}
-				resolve(json);
+				resolve(_json);
 			});
 		})
 		.catch(function(err) {
