@@ -159,9 +159,10 @@ function scrapeLostData(id) {
 			airline: 'airasia'
 		};
 		var airasiaPriceScrapers = new AirasiaPriceScrapers(options);
-		return airasiaPriceScrapers.run().catch(function(err) {
-			debug('airasiaPriceScrapers', err);
-		});
+		return airasiaPriceScrapers.run()
+			.catch(function(err) {
+				debug('airasiaPriceScrapers', err);
+			});
 	}
 	/**
 	 * Merge json data with cheapest data from db
@@ -231,6 +232,10 @@ function prepareRows(json) {
 		rows = rows.concat(_.values(_json.ret_table));
 	return rows;
 }
+
+function calendarPrice(_class) {
+	return _class.adult + _class.baggage;
+}
 var AirasiaPrototype = {
 	init: init,
 	getAllRoutes: getAllRoutes,
@@ -240,6 +245,7 @@ var AirasiaPrototype = {
 	scrapeLostData: scrapeLostData,
 	mergeCachePrices: mergeCachePrices,
 	prepareRows: prepareRows,
+	calendarPrice: calendarPrice,
 };
 var Airasia = Base.extend(AirasiaPrototype);
 module.exports = Airasia;

@@ -558,19 +558,25 @@ function merge(json) {
 				});
 		})
 		.then(function() {
-			return new Promise(function (resolve, reject) {
+			return new Promise(function(resolve, reject) {
 				var _json = _this.mergeCachePrices(json);
 				if (typeof _json !== 'object')
 					return reject(new Error('Result is nalformed'));
 				// resolve(_json);
 				var cheapest = 0;
-				_.each(_this.cachePrices, function (rutes) {
+				_.each(_this.cachePrices, function(rutes) {
 					debug('rutes', rutes);
-					_.each(rutes, function (flights) {
+					_.each(rutes, function(flights) {
 						debug('flights', flights);
-						_.each(flights, function (_class) {
-							if ((!!_class.adult && _class.adult < cheapest) || (!cheapest && !!_class.adult))
-								cheapest = _class.adult;
+						_.each(flights, function(_class) {
+							if ((!!_class.adult && _class.adult < cheapest) || (!cheapest && !!_class.adult)) {
+								if (!!_this.calendarPrice) {
+									cheapest = _this.calendarPrice(_class);
+								} else {
+									cheapest = _class.adult;
+								}
+
+							}
 						});
 					});
 				});
@@ -579,7 +585,8 @@ function merge(json) {
 					var res = {};
 					res[rute] = Math.floor(cheapest / 10) * 10;
 					debug('Insert calendar', res);
-					_this.insertAllLowest(res).then(debug, debug);
+					_this.insertAllLowest(res)
+						.then(debug, debug);
 				} else {
 					debug('Cheapest not Found');
 				}
