@@ -218,7 +218,8 @@ function insertAllLowest(res) {
 					price: _price,
 					airline: _this.airline
 				};
-				data.id = data.origin + data.destination + data.date / 1000;
+				data.id = data.origin + data.destination + Math.round(data.date/1000);
+				data.id = data.id.toLowerCase();
 				debug('data insertAllLowest', data);
 				promises.push(_this.insertLowest(data));
 			});
