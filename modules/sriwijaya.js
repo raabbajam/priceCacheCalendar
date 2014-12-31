@@ -297,7 +297,7 @@ function mergeCachePrices(json) {
 				for (var i = 0; i < numTrips; i++) {
 					_.forEach(aClass, function(_class) {
 						var matchAvailable;
-						if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+						if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
 							if (+matchAvailable >= seatRequest) {
 								__class += _class;
 								available.push(matchAvailable);
