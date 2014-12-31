@@ -149,7 +149,8 @@ function getCheapestInRow(row) {
 		var _classes = '';
 		var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
 
-		if(numTrips != row['O'].length){
+		// if(numTrips != row['O'].length){
+		if(row['O'].length == 1){
 			_.forEach(aClass, function(_class) {
 				var matchAvailable;
 				if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
@@ -265,7 +266,8 @@ function mergeCachePrices(json) {
 			var numTrips = flight.length;
 
 			var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
-			if(numTrips != row['O'].length){
+			// if(numTrips != row['O'].length){
+			if(row['O'].length == 1){
 				_.forEach(aClass, function(_class) {
 					var matchAvailable;
 					if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
