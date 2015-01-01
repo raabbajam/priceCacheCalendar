@@ -9,7 +9,7 @@ var cheerio = require('cheerio');
 
 function init(dt, scrape, args) {
 	this._super('sriwijaya', dt, scrape, args);
-	this.parallel = true;
+	this.parallel = false;
 }
 
 function getAllRoutes() {
@@ -297,7 +297,7 @@ function mergeCachePrices(json) {
 				for (var i = 0; i < numTrips; i++) {
 					_.forEach(aClass, function(_class) {
 						var matchAvailable;
-						if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
+						if (row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
 							if (+matchAvailable >= seatRequest) {
 								__class += _class;
 								available.push(matchAvailable);
@@ -320,7 +320,7 @@ function mergeCachePrices(json) {
 						available: 0
 					};
 				}
-				// debug('row.cheapest',row.cheapest, rute, flight, __class, numTrips);
+				debug('row.cheapest',row.cheapest, rute, flight, __class, numTrips);
 			}
 			// debug('mergeCachePrices row', row)
 			return row;
