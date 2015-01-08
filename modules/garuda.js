@@ -20,6 +20,8 @@ function getAllRoutes () {
 		var rows = route.flights;
 		rows.forEach(function (row) {
 			row.forEach(function (flight) {
+				if (!flight.origin || !flight.destination)
+					return true;
 				var ori = flight.origin.toLowerCase();
 				var dst = flight.destination.toLowerCase();
 				var currentRoute = ori + dst;
@@ -45,7 +47,8 @@ function mergeCache (){
 		route.flights = rows.map(function (row) {
 			var lowestPriceRows = [];
 			var _row = row.map(function (flight) {
-				var lowestPriceFlight = 0;
+				if (!flight.origin || !flight.destination)
+					return flight;
 				var ori = flight.origin.toLowerCase();
 				var dst = flight.destination.toLowerCase();
 				var currentRoute = ori + dst;
@@ -112,6 +115,8 @@ function getCheapestInRow (rowAll) {
 		// };
 		// var fligthCode = row.flightCode.replace(/\D/g, '');
 		var seats = row.seats;
+		if (!row.seats)
+			return true;
 		for (var i = seats.length - 1; i >= 0; i--) {
 			if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available >= seatRequest) {
 				// out.class = seats[i].class + fligthCode;
@@ -225,11 +230,20 @@ function mergeCachePrices (json) {
 	_json.departure.flights.forEach(function (rowAll, idx) {
 		var _cheapest = {};
 		var rute = rowAll[0].origin;
+		if (!rute) {
+			departureCheapests[idx] = {
+				class: 'Full'
+			};
+			return true;
+		}
 		var classes = '';
-		var flight = 'ga';
+		// var flight = 'ga';
 		rowAll.forEach(function (row) {
 			rute += row.destination;
 			var seats = row.seats;
+			if (!seats) {
+				return true;
+			}
 			for (var i = seats.length - 1; i >= 0; i--) {
 				if (seats[i].available.toLowerCase !== "l" && seats[i].class.toLowerCase() !== "l" && +seats[i].available >= seatRequest) {
 					classes += seats[i].class;
