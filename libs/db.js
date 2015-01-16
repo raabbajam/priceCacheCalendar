@@ -1,6 +1,10 @@
 var ElasticSearchClient = require('elasticsearchclient');
-var db = new ElasticSearchClient({
+var config = {
     host: 'folbek.me',
     port: 9200
-});
+};
+if (process.env.CONFIG === 'local')
+    config.host = 'localhost';
+var db = new ElasticSearchClient(config);
+// console.log('process.env.CONFIG %s', process.env.CONFIG);
 module.exports = db;

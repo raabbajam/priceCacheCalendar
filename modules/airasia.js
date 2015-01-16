@@ -10,6 +10,7 @@ var cheerio = require('cheerio');
 function init(dt, scrape, args) {
 	this._super('airasia', dt, scrape, args);
 	this.parallel = true;
+	this.expiry = 24;
 }
 
 function getAllRoutes() {
