@@ -600,6 +600,11 @@ function merge(json) {
 					throw err;
 				});
 		})
+		.catch(function(err) {
+			debug('Error second time', err.stack);
+			if (!!err.docs)
+				_this.docsToCachePrices(err.docs);
+		})
 		.then(function() {
 			return new Promise(function(resolve, reject) {
 				var _json = _this.mergeCachePrices(json);
@@ -608,7 +613,9 @@ function merge(json) {
 				_this.getCalendarPrice(_json)
 					.then(function(cheapest) {
 						debug('getCalendarPrice cheapest: %j', cheapest);
-						var _price = !!_this.calendarPrice ? _this.calendarPrice(cheapest) : cheapest.adult;
+						var _price = !!_this.calendarPrice ? _this.calendarPrice(cheapest) : !!cheapest && cheapest.adult;
+						if (!_price)
+							return _price;
 						var _dt = _this._dt;
 						var _date = moment(_dt.dep_date, dateFormats).unix() * 1000;
 						var data = {
@@ -633,7 +640,7 @@ function merge(json) {
 			});
 		})
 		.catch(function(err) {
-			debug(err);
+			debug('error on end', err.stack);
 			if (!!err.docs)
 				_this.docsToCachePrices(err.docs);
 			return _this.mergeCachePrices(json);

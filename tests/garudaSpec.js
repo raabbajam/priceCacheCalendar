@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var fs = require('fs');
 var debug = require('debug')('raabbajam:priceCacheCalendar:garudaSpec');
 var Garuda = require('../index')('garuda');
-var mockBody = {dep_date: "27+01+2015", ori: 'PDG', dst: 'SUB'};
+var mockBody = {dep_date: "20+01+2015", ori: 'cgk', dst: 'dps'};
 var mockDataGaruda = JSON.parse(fs.readFileSync('./ga.html', 'utf8'));
 // var mockDataGaruda = {departure: {flights: [[{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], ] } }
 /*describe('Price Generator for Garuda', function () {
@@ -79,7 +79,10 @@ describe('Cache prices for Garuda', function() {
 	describe('merge', function() {
 		it('should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged', function (done) {
 			var json = JSON.parse(fs.readFileSync('./gacp.json', 'utf8'));
-			var garuda = new Garuda(mockBody, mockDataGaruda);
+			var options = {
+				scrape: 'http://localhost:3000/0/price/garuda'
+			};
+			var garuda = new Garuda(mockBody, mockDataGaruda, options);
 			garuda.merge(json)
 				.then(function (res) {
 					// debug(res);

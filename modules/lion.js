@@ -412,8 +412,7 @@ function getCalendarPrice(json) {
 		var cheapests = [];
 		_.each(json[0].dep_table, function(flight, i) {
 			hiddens = flight.hidden.split('|');
-			var depart = moment(hiddens[3] + hiddens[8], format2)
-				.local();
+			var depart = moment(hiddens[3] + hiddens[8], format2);
 			if (_this.isBookable(depart))
 				cheapests.push(json[0].dep_cheapests[i]);
 		});
