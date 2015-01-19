@@ -570,10 +570,9 @@ function isBookable(hour) {
 	var expired = this.expired || 4;
 	var noBookLimit = moment().add(expired, 'h');
 	var bookHour = hour;
-	debug('\nnoBookLimit: %s\nbookHour: %s\nisSame: %s\nisAfter: %s',
+	debug('\nnoBookLimit: %s\nbookHour: %s\nisAfter: %s',
 		noBookLimit.format('LLL'),
 		bookHour.format('LLL'),
-		bookHour.isSame(noBookLimit, 'hour'),
 		bookHour.isAfter(noBookLimit, 'hour'));
 	return bookHour.isAfter(noBookLimit, 'hour');
 }
