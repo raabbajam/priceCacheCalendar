@@ -21,25 +21,29 @@ var debug = require('debug')('raabbajam:priceCacheCalendar:base');
  * @param  {Object} _db     Database model
  */
 function init(airline, dt, scrape, args) {
-	this.name = this.airline = airline;
-	for (var prop in dt) {
-		if (typeof dt[prop] === 'string')
-			dt[prop] = dt[prop].toLowerCase();
+	try {
+		this.name = this.airline = airline;
+		for (var prop in dt) {
+			if (typeof dt[prop] === 'string')
+				dt[prop] = dt[prop].toLowerCase();
+		}
+		if (!!dt && !!scrape) {
+			this._dt = dt;
+			this._dt.ori = this._dt.ori.toLowerCase();
+			this._dt.dst = this._dt.dst.toLowerCase();
+			this._scrape = scrape;
+			this._kode = airlines[airline];
+			debug('this._kode', this._kode);
+			this.paxNum = 1;
+			if (!!this._dt && !!this._dt.adult)
+				this.paxNum = +this._dt.adult + (+this._dt.child || 0);
+			debug('this.paxNum', this.paxNum);
+		}
+		this.setOptions(args);
+		// this.parallel = true;
+	} catch (e) {
+		debug(e);
 	}
-	if (!!dt && !!scrape) {
-		this._dt = dt;
-		this._dt.ori = this._dt.ori.toLowerCase();
-		this._dt.dst = this._dt.dst.toLowerCase();
-		this._scrape = scrape;
-		this._kode = airlines[airline];
-		// debug('this._kode', this._kode)
-		this.paxNum = 1;
-		if (!!this._dt && !!this._dt.adult)
-			this.paxNum = +this._dt.adult + (+this._dt.child || 0);
-		// debug('this.paxNum', this.paxNum)
-	}
-	this.setOptions(args);
-	// this.parallel = true;
 }
 
 /**
@@ -200,28 +204,33 @@ function getAllCaches(routes) {
  * @param  {Object} res Array of object containing data of lowest price available
  */
 function insertAllLowest(res) {
-	var _this = this;
 	var promises = [];
+	var _this = this;
 	var _dt = _this._dt;
-	var _date = moment(_dt.dep_date, dateFormats).utc()
+	var _date = moment(_dt.dep_date, dateFormats)
 		.unix() * 1000;
-	var _keys = Object.keys(res);
-	_keys.forEach(function(prop) {
-		var _price = parseInt(res[prop], 10) + _this._kode;
-		var data = {
-			date: _date,
-			origin: prop.substr(0, 3),
-			destination: prop.substr(3, 3),
-			price: _price,
-			airline: _this.airline
-		};
-		data.id = data.origin + data.destination + Math.round(data.date / 1000);
-		data.id = data.id.toLowerCase();
-		debug('data insertAllLowest', data);
-		promises.push(_this.insertLowest(data));
-	});
+	debug('res', res);
+	Object.keys(res)
+		.forEach(function(prop, i) {
+			if (!res[prop])
+				return true;
+			// debug('prop',res[prop])
+			var _price = parseInt(res[prop], 10) + _this._kode;
+			// debug('insertAllLowest res',_price, _this._kode)
+			var data = {
+				date: _date,
+				origin: prop.substr(0, 3),
+				destination: prop.substr(3, 3),
+				price: _price,
+				airline: _this.airline
+			};
+			data.id = data.origin + data.destination + Math.round(data.date / 1000);
+			data.id = data.id.toLowerCase();
+			debug('data insertAllLowest', data);
+			promises.push(_this.insertLowest(data));
+		});
 	return Promise.all(promises, function(res) {
-		debug('Inserting to calendar..', res);
+		debug('Inserting to calendar..', JSON.stringify(res));
 	});
 }
 
@@ -230,87 +239,29 @@ function insertAllLowest(res) {
  * @param  {Object} data Cache price data from scrape
  */
 function insertLowest(data) {
+	debug('insertLowest');
 	var _this = this;
 	var _price = data.price;
 	return new Promise(function(resolve, reject) {
-		// @TODO use calendar model
+		if (+_price <= 0)
+			return false;
+		debug('cek old price', data.id);
 		_this.db.get('pluto', 'calendar', data.id, function(err, res) {
-			if (err) {
-				debug('Can\'t find calendar.', err);
-				return resolve(1);
-			}
 			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
-			debug('\noldprice: %d\n_price: %j\ndata: %j\nres._source: %j', oldPrice, _price, data, res._source);
-			// debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
-			var isSame = 'different';
-			if (oldPrice === _price) {
-				debug('oldPrice %d === _price %d', oldPrice, _price);
-				return resolve(2);
-			}
-			// if old price is equal, we dont need to update it
-			if (oldPrice !== 0 && !!res._source) {
-				//@TODO cek expired, if yes delete it.
-				_this.isExpired(res._source)
-					.then(function() {
-						// if old price still cheaper than new price, generally we dont want to update it, unless..
-						// if old and new price both are in same airline, new price is updated, this means the old price is sold out
-						// well, if their airline differ, dont update it
-						if (_price >= oldPrice && res._source.airline !== _this.airline) {
-							debug('res._source.airline %s, !== _this.airline %s', res._source.airline,_this.airline);
-							return resolve(3);
-						}
-						// if new price is zero, it means all sold out, check if the cheapest is same airline, if yes update it
-						if (_price === 0) {
-							// if they differ, dont update
-							if (res._source.airline !== _this.airline)
-								return resolve(4);
-						}
-						if (_price < 100) {
-							if (res._source.airline === _this.airline) {
-								return _this.db.deleteDocument('pluto', 'calendar', data.id, function (err, res) {
-									debug('Delete id %s', data.id);
-								});
-							} else {
-								return resolve(5);
-							}
-						}
-						isSame = res._source.airline === _this.airline ? 'same' : 'different';
-						data.price = _price;
-						_this.db.index('pluto', 'calendar', data, function(err, res) {
-							debug('Found price: "' + _price + '", lower than old price: "' + oldPrice + '". Both airlines are ' + isSame);
-							return resolve(res);
-						});
-					})
-					.catch(function (err) {
-						return reject(err);
-					});
+			debug(oldPrice, _price, data);
+			debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
+			// if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
+			if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
+				return resolve(false);
 			} else {
 				data.price = _price;
+				debug('found lower price, inserting to calendar...', res);
 				_this.db.index('pluto', 'calendar', data, function(err, res) {
-					debug('Found price: "' + _price + '", lower than old price: "' + oldPrice + '". Both airlines are ' + isSame);
 					return resolve(res);
 				});
 			}
 		});
-	});
-}
-
-function isExpired(source) {
-	var _this = this;
-	return new Promise(function(resolve, reject) {
-		var expiry = _this.expiry || 4; // default to 4 hours
-		var expiredDate = moment()
-			.add(expiry, 'h');
-		var sourceDate = moment(source.date, 'x');
-		// if date in db is
-		if (sourceDate.isBefore(expiredDate)) {
-			_this.db.delete('pluto', 'calendar', source.id, function(err, res) {
-				return resolve();
-			});
-		} else {
-			return resolve();
-		}
 	});
 }
 
@@ -323,9 +274,9 @@ function isExpired(source) {
  */
 function run() {
 	var _this = this;
-	var routes;
 	if (!_this._scrape)
 		return _this._scrape;
+	var routes;
 	try {
 		routes = _this.getAllRoutes();
 	} catch (e) {
@@ -335,7 +286,7 @@ function run() {
 	debug('running step2');
 	return _this.getAllCaches(routes)
 		.then(_this.mergeCache.bind(_this))
-		.then(_this.insertAllLowest.bind(_this))
+		// .then(_this.insertAllLowest.bind(_this))
 		.then(function(res) {
 			return _this._scrape;
 		})
@@ -371,7 +322,7 @@ function getAllCheapest(rows) {
 	});
 	// debug('rows', rows);
 	_.each(rows, function(row, index) {
-		// var rowNum = index + 1;
+		var rowNum = index + 1;
 		var cheapests = _this.getCheapestInRow(row);
 		cheapests.forEach(function(cheapest) {
 			if (!cheapest.class)
@@ -607,6 +558,12 @@ function prepareRows(json) {
 	throw new Error(message);
 }
 
+function getCalendarPrice(json) {
+	var message = arguments.callee.name + ': ' + "You should implement this on your child";
+	debug(message);
+	throw new Error(message);
+}
+
 function merge(json) {
 	var _this = this;
 	var rows = _this.prepareRows(json);
@@ -634,30 +591,31 @@ function merge(json) {
 				var _json = _this.mergeCachePrices(json);
 				if (typeof _json !== 'object')
 					return reject(new Error('Result is nalformed'));
-				// resolve(_json);
-				var cheapest = 0;
-				_.each(_this.cachePrices, function(rutes) {
-					debug('rutes', rutes);
-					_.each(rutes, function(flights) {
-						debug('flights', flights);
-						_.each(flights, function(_class) {
-							if ((!!_class.adult && _class.adult < cheapest) || (!cheapest && !!_class.adult)) {
-								if (!!_this.calendarPrice) {
-									cheapest = _this.calendarPrice(_class);
-								} else {
-									cheapest = _class.adult;
-								}
-							}
-						});
+				_this.getCalendarPrice(_json)
+					.then(function(cheapest) {
+						debug('getCalendarPrice cheapest: %j', cheapest);
+						var _price = !!_this.calendarPrice ? _this.calendarPrice(cheapest) : cheapest.adult;
+						var _dt = _this._dt;
+						var _date = moment(_dt.dep_date, dateFormats).unix() * 1000;
+						var data = {
+							date: _date,
+							origin: _dt.ori.toLowerCase(),
+							destination: _dt.dst.toLowerCase(),
+							price: _price,
+							airline: _this.airline
+						};
+						data.id = data.origin + data.destination + Math.round(data.date / 1000);
+						data.id = data.id.toLowerCase();
+						debug('data %j', data);
+						return _this.insertLowest(data);
+					})
+					.then(function (res) {
+						debug(res);
+						return resolve(_json);
+					})
+					.catch(function (err) {
+						return reject(err);
 					});
-				});
-				var rute = _this._dt.ori + _this._dt.dst;
-				var res = {};
-				res[rute] = Math.floor(cheapest / 10) * 10;
-				debug('Insert calendar', res);
-				_this.insertAllLowest(res)
-					.then(debug, debug);
-				resolve(_json);
 			});
 		})
 		.catch(function(err) {
@@ -676,7 +634,6 @@ var BasePrototype = {
 	getAllCaches: getAllCaches,
 	insertLowest: insertLowest,
 	insertAllLowest: insertAllLowest,
-	isExpired: isExpired,
 	run: run,
 	getCheapestInRow: getCheapestInRow,
 	getAllCheapest: getAllCheapest,
@@ -685,6 +642,7 @@ var BasePrototype = {
 	scrapeAllLostData: scrapeAllLostData,
 	docsToCachePrices: docsToCachePrices,
 	prepareRows: prepareRows,
+	getCalendarPrice: getCalendarPrice,
 	merge: merge,
 };
 var Base = Class.extend(BasePrototype);
