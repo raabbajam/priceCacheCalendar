@@ -31,7 +31,7 @@ function getAllRoutes() {
 			routes.push(currentRoute);
 		}
 	});
-	debug('routes', routes)
+	debug('routes', routes);
 	return routes;
 }
 
@@ -272,18 +272,6 @@ function getCalendarPrice(json) {
 	});
 }
 
-function isBookable(hour) {
-	if (!this.isSameDay)
-		return true;
-	var noBookLimit = moment().add(this.expired, 'h');
-	var bookHour = hour;
-	// debug('\nnoBookLimit: %s\nbookHour: %s\nisSame: %s\nisAfter: %s',
-	// 	noBookLimit.format('LLL'),
-	// 	bookHour.format('LLL'),
-	// 	bookHour.isSame(noBookLimit, 'hour'),
-	// 	bookHour.isAfter(noBookLimit, 'hour'));
-	return bookHour.isAfter(noBookLimit, 'hour');
-}
 var AirasiaPrototype = {
 	init: init,
 	getAllRoutes: getAllRoutes,
@@ -295,7 +283,6 @@ var AirasiaPrototype = {
 	prepareRows: prepareRows,
 	calendarPrice: calendarPrice,
 	getCalendarPrice: getCalendarPrice,
-	isBookable: isBookable,
 };
 var Airasia = Base.extend(AirasiaPrototype);
 module.exports = Airasia;

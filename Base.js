@@ -250,7 +250,7 @@ function insertLowest(data) {
 			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
 			debug(oldPrice, _price, data);
-			debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
+			// debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
 			// if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
 			if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
 				return resolve(false);
@@ -564,6 +564,20 @@ function getCalendarPrice(json) {
 	throw new Error(message);
 }
 
+function isBookable(hour) {
+	if (!this.isSameDay)
+		return true;
+	var expired = this.expired || 4;
+	var noBookLimit = moment().add(expired, 'h');
+	var bookHour = hour;
+	debug('\nnoBookLimit: %s\nbookHour: %s\nisSame: %s\nisAfter: %s',
+		noBookLimit.format('LLL'),
+		bookHour.format('LLL'),
+		bookHour.isSame(noBookLimit, 'hour'),
+		bookHour.isAfter(noBookLimit, 'hour'));
+	return bookHour.isAfter(noBookLimit, 'hour');
+}
+
 function merge(json) {
 	var _this = this;
 	var rows = _this.prepareRows(json);
@@ -643,6 +657,7 @@ var BasePrototype = {
 	docsToCachePrices: docsToCachePrices,
 	prepareRows: prepareRows,
 	getCalendarPrice: getCalendarPrice,
+	isBookable: isBookable,
 	merge: merge,
 };
 var Base = Class.extend(BasePrototype);
