@@ -345,10 +345,10 @@ function getCalendarPrice(json) {
 		debug('before filter %d', _.size(json[0].dep_table));
 		debug('after filter %d', cheapests.length);
 		var cheapestFlight = _.min(cheapests, function(cheapest, i) {
-			debug('cheapests: %j', cheapest.prices.adult);
-			return cheapest.prices.adult;
+			debug('cheapests: %j', cheapest.adult);
+			return cheapest.adult;
 		});
-		return resolve(cheapestFlight.prices);
+		return resolve(cheapestFlight);
 	});
 }
 
