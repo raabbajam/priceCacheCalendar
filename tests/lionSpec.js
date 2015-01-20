@@ -1,9 +1,14 @@
-var expect = require('chai').expect;
+var expect = require('chai')
+	.expect;
 var fs = require('fs');
 var Lion = require('../index')('lion');
-var mockBody = {dep_date: "30+Nov+2014", ori: 'PDG', dst: 'SUB'};
+var mockBody = {
+	dep_date: "19+Jan+2014",
+	ori: 'cgk',
+	dst: 'dps'
+};
 var mockDataLion = fs.readFileSync('./li.html', 'utf8');
-var debug       = require('debug')('raabbajam:priceCacheCalendar:lionspec');
+var debug = require('debug')('raabbajam:priceCacheCalendar:lionspec');
 // var mockDataLion = {departure: {flights: [[{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], [{seats: [{class: "c", available: 1}, {class: "y", available: 1}, {class: "L", available: 1} ] } ], ] } }
 /*
 describe('Price Generator for Lion', function () {
@@ -102,13 +107,13 @@ describe('Cache prices for Lion', function() {
 		});
 	});*/
 	describe('merge', function() {
-		it('should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged', function (done) {
+		it('should get all cheapest seat per row, get prices data from db or scrape if necessary and return it after merged', function(done) {
 			var json = JSON.parse(fs.readFileSync('./licp.json', 'utf8'));
 			var lion = new Lion(mockBody, mockDataLion);
 			lion.merge(json)
-				.then(function (res) {
+				.then(function(res) {
 					// debug(res);
-					fs.writeFileSync('./licp2.json', JSON.stringify(res,null, 4));
+					fs.writeFileSync('./licp2.json', JSON.stringify(res, null, 4));
 					done();
 				}, done);
 		});

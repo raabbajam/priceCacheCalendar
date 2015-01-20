@@ -1,8 +1,8 @@
 var expect = require('chai').expect;
 var fs = require('fs');
 var Airasia = require('../index')('airasia');
-var mockBody = {dep_date: "30+12+2014", ori: 'cgk', dst: 'sub'};
-var mockDataAirasia = JSON.parse(fs.readFileSync('./aa.json', 'utf8'));
+var mockBody = {dep_date: "20+01+2015", ori: 'cgk', dst: 'dps'};
+var mockDataAirasia = JSON.parse(fs.readFileSync('./aacp.json', 'utf8'));
 // var mockDataAirasia = '';
 var debug       = require('debug')('raabbajam:priceCacheCalendar:airasiaspec');
 describe('Price Generator for Airasia', function () {
@@ -58,7 +58,7 @@ describe('Price Generator for Airasia', function () {
 			.catch(function (err) {
 				next(err);
 			});
-	});*/
+	});
 	it('should compare with db and insert to db if cheaper, for all lowest price', function (next) {
 		var airasia = new Airasia(mockBody, mockDataAirasia);
 		var routes = airasia.getAllRoutes();
@@ -68,6 +68,21 @@ describe('Price Generator for Airasia', function () {
 			.then(function (res) {
 				console.log('HELLO BRO!!');
 				fs.writeFileSync('./ci2.html', airasia._scrape);
+				next();
+			})
+			.catch(function (err) {
+				next(err);
+			});
+	});*/
+	it('should compare with db and insert to db if cheaper, for all lowest price', function (next) {
+		var options = {
+			// scrape: 'http://localhost:3000/0/price/airasia';
+		};
+		var airasia = new Airasia(mockBody, mockDataAirasia, options);
+		return airasia.merge(mockDataAirasia)
+			.then(function (res) {
+				console.log('HELLO BRO!!');
+				fs.writeFileSync('./aacp2.json', JSON.stringify(airasia._scrape));
 				next();
 			})
 			.catch(function (err) {
