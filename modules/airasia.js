@@ -241,6 +241,7 @@ function prepareRows(json) {
 }
 
 function calendarPrice(_class) {
+	debug('_class.adult + _class.baggage = %d + %d = %d', _class.adult, _class.baggage, _class.adult + _class.baggage);
 	return _class.adult + _class.baggage;
 }
 
