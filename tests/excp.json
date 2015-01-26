@@ -1,26 +1,40 @@
 {
-  "departure": [{
-    "origin": "JOG",
-    "destination": "PNK",
-    "flightNumber": "XN 832",
-    "via": "",
-    "date": "2015-01-14",
-    "depart": "1/14/2015 5:40:00 PM",
-    "arrival": "1/14/2015 7:20:00 PM",
-    "promo": "Full",
-    "normal": "1,240,000  (3)",
-    "flexi": "1,280,000  (5)"
-  }, {
-    "origin": "JOG",
-    "destination": "PNK",
-    "flightNumber": "XN 830",
-    "via": "",
-    "date": "2015-01-14",
-    "depart": "1/14/2015 9:10:00 AM",
-    "arrival": "1/14/2015 10:50:00 AM",
-    "promo": "Full",
-    "normal": "1,240,000  (3)",
-    "flexi": "1,280,000  (5)"
-  }],
-  "return": []
+	"departure": {
+		"0": {
+			"origin": "PNK",
+			"destination": "JOG",
+			"fN": "57289",
+			"flightNumber": "XN 831",
+			"via": "",
+			"date": "2015-01-20",
+			"depart": "1/20/2015 7:00:00 AM",
+			"arrival": "1/20/2015 8:40:00 AM",
+			"promo": "Full",
+			"normal": "790,000  (4)",
+			"flexi": "1,550,000  (2)",
+			"cheapest": {
+				"adult": 790000,
+				"child": 790000,
+				"infant": 135000,
+				"basic": 713636.5,
+				"class": "normal790",
+				"available": "normal"
+			}
+		}
+	},
+	"return": [],
+	"cachePrices": {
+		"pnkjog": {
+			"xn": {
+				"normal790": {
+					"adult": 790000,
+					"child": 790000,
+					"infant": 135000,
+					"basic": 713636.5,
+					"class": "normal790",
+					"available": "normal"
+				}
+			}
+		}
+	}
 }
