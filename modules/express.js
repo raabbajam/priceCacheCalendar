@@ -81,6 +81,7 @@ function mergeCache() {
 function getCheapestInRow(_row) {
 	debug('rowAll',_row );
 	var outs = [];
+	_row = _row instanceof Array ? _row : [_row];
 	_.each(_row, function (row) {
 		var seatRequest = this.paxNum || 1;
 		var departCity = row.origin;
