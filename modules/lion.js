@@ -259,7 +259,10 @@ function generateData(id) {
 function scrapeLostData(id) {
 	debug('scrapeLostData', id);
 	var dt = this.generateData(id);
-	var urlAirbinder = 'http://pluto.live:2/price';
+	var host = 'localhost';
+	if (!!process.env.SCRAPE_HOST)
+	    host = process.env.SCRAPE_HOST;
+	var urlAirbinder = 'http://'+host+':2/price';
 	var urlPluto = 'http://pluto.dev/0/price/lion';
 	var options = {
 		scrape: urlAirbinder,
@@ -269,7 +272,7 @@ function scrapeLostData(id) {
 	var lionPriceScrapers = new LionPriceScrapers(options);
 	return lionPriceScrapers.run()
 		.catch(function(err) {
-			debug('lionPriceScrapers 1234', err);
+			debug('lionPriceScrapers', err);
 		});
 }
 
