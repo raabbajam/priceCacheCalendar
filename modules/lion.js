@@ -416,8 +416,13 @@ function getCalendarPrice(json) {
 		_.each(json[0].dep_table, function(flight, i) {
 			hiddens = flight.hidden.split('|');
 			var depart = moment(hiddens[3] + hiddens[8], format2);
-			if (_this.isBookable(depart) && json[0].dep_cheapests[i].class!='Full')
-				cheapests.push(json[0].dep_cheapests[i]);
+			try{
+				if (json[0].dep_cheapests[i].prices){
+					cheapests.push(json[0].dep_cheapests[i]);
+				}
+			}catch(e){
+				debug('getCalendarPrice',json[0].dep_cheapests[i]);
+			}
 		});
 		debug('before filter %d', _.size(json[0].dep_table));
 		debug('after filter %d', cheapests.length);
