@@ -378,7 +378,9 @@ function getCachePrices(ids) {
 				ids = [ids];
 			// debug('ids',ids);
 			var _ids = !!_this.idsToSearch ? _this.idsToSearch(ids) : ids;
-			// debug('_ids',_ids)
+			debug('_ids',_ids)
+			debug('db 123',db.host,db.port);
+			debug('db',db);
 			_this.db.multiget(_this.index, _this.type, _ids, function(err, res) {
 				if (err)
 					return reject(err);
@@ -387,7 +389,7 @@ function getCachePrices(ids) {
 				} catch (error) {
 					return reject(error);
 				}
-				// debug(res);
+				debug('res db es',res);
 				if (!res.docs)
 					return reject(new Error('No cache found'));
 				var docs = res.docs;

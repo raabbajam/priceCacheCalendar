@@ -259,7 +259,7 @@ function generateData(id) {
 function scrapeLostData(id) {
 	debug('scrapeLostData', id);
 	var dt = this.generateData(id);
-	var urlAirbinder = 'http://128.199.251.75:2/price';
+	var urlAirbinder = 'http://pluto.live:2/price';
 	var urlPluto = 'http://pluto.dev/0/price/lion';
 	var options = {
 		scrape: urlAirbinder,
@@ -269,7 +269,7 @@ function scrapeLostData(id) {
 	var lionPriceScrapers = new LionPriceScrapers(options);
 	return lionPriceScrapers.run()
 		.catch(function(err) {
-			debug('lionPriceScrapers', err);
+			debug('lionPriceScrapers 1234', err);
 		});
 }
 
@@ -311,7 +311,7 @@ function mergeCachePrices(json) {
 			try {
 				_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()];
 			} catch (e) {
-				debug(e.message, _rute, flights, classes);
+				debug(e.stack, _rute, flights, classes);
 				_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
 				_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
 			}
@@ -358,7 +358,7 @@ function mergeCachePrices(json) {
 	try {
 		_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()];
 	} catch (e) {
-		debug(e.message, _rute, flights, classes);
+		debug(e.stack, _rute, flights, classes);
 		_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
 		_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
 	}
@@ -413,7 +413,7 @@ function getCalendarPrice(json) {
 		_.each(json[0].dep_table, function(flight, i) {
 			hiddens = flight.hidden.split('|');
 			var depart = moment(hiddens[3] + hiddens[8], format2);
-			if (_this.isBookable(depart))
+			if (_this.isBookable(depart) && json[0].dep_cheapests[i].class!='Full')
 				cheapests.push(json[0].dep_cheapests[i]);
 		});
 		debug('before filter %d', _.size(json[0].dep_table));
