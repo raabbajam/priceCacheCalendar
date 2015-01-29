@@ -155,7 +155,10 @@ function generateData(id) {
 function scrapeLostData(id) {
 	debug('scrapeLostData', id);
 	var dt = this.generateData(id);
-	var urlAirbinder = 'http://128.199.251.75:99/price';
+	var host = 'localhost';
+	if (!!process.env.SCRAPE_HOST)
+	    host = process.env.SCRAPE_HOST;
+	var urlAirbinder = 'http://'+host+':99/price';
 	var urlPluto = 'http://folbek.me:3000/0/price/airasia';
 	// debug('dt',dt)
 	var options = {
