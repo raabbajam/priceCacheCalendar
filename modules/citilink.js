@@ -262,6 +262,14 @@ function mergeCachePrices(json) {
 		flight = flight.toLowerCase();
 		// var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 		var aClass = row.normal_fare.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)', 'g'));
+		// debug('aClass',aClass,'row.normal_fare',row.normal_fare,'regex','\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)');
+		
+		if(!aClass){
+			row.cheapest = {
+				class: 'Full',
+				available: 0
+			};
+		}
 		_.forEach(aClass, function(_class) {
 			// var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
 			var matches = _class.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'));
@@ -339,8 +347,15 @@ function getCalendarPrice(json) {
 		_.each(json[0].dep_table, function(flight) {
 			// debug('depart %s', dep_date + ' ' + flight.times);
 			var depart = moment(dep_date + ' ' + flight.times, format2);
-			if (_this.isBookable(depart))
-				cheapests.push(flight.cheapest);
+			if (_this.isBookable(depart)){
+				try{
+					if (flight.cheapest){
+						cheapests.push(flight.cheapest);
+					}
+				}catch(e){
+					debug('flight.cheapest',flight.cheapest);
+				}
+			}
 		});
 		debug('before filter %d', _.size(json[0].dep_table));
 		debug('after filter %d', cheapests.length);
