@@ -378,7 +378,7 @@ function getCachePrices(ids) {
 				ids = [ids];
 			// debug('ids',ids);
 			var _ids = !!_this.idsToSearch ? _this.idsToSearch(ids) : ids;
-			// debug('_ids',_ids)
+			debug('db',db)
 			_this.db.multiget(_this.index, _this.type, _ids, function(err, res) {
 				if (err)
 					return reject(err);

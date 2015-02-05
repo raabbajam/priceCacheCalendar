@@ -313,15 +313,11 @@ function mergeCachePrices(json) {
 			_rute += lastDst;
 			try {
 				_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()];
+				_cheapest.class = classes;
 			} catch (e) {
 				debug(e.stack, _rute, flights, classes);
 				_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
 				_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
-			}
-			if (!!_cheapest.prices) {
-				// debug(_rute, flights, classes, _cheapest.prices);
-				_cheapest.class = classes;
-			} else {
 				_cheapest = {
 					class: 'Full'
 				};
@@ -360,15 +356,11 @@ function mergeCachePrices(json) {
 	_rute += lastDst;
 	try {
 		_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()];
+		_cheapest.class = classes;
 	} catch (e) {
 		debug(e.stack, _rute, flights, classes);
 		_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
 		_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
-	}
-	if (!!_cheapest.prices) {
-		// debug(_rute, flights, classes, _cheapest.prices);
-		_cheapest.class = classes;
-	} else {
 		_cheapest = {
 			class: 'Full'
 		};
@@ -416,12 +408,14 @@ function getCalendarPrice(json) {
 		_.each(json[0].dep_table, function(flight, i) {
 			hiddens = flight.hidden.split('|');
 			var depart = moment(hiddens[3] + hiddens[8], format2);
-			try{
-				if (json[0].dep_cheapests[i].prices){
-					cheapests.push(json[0].dep_cheapests[i]);
+			if (_this.isBookable(depart)){
+				try{
+					if (json[0].dep_cheapests[i].prices){
+						cheapests.push(json[0].dep_cheapests[i]);
+					}
+				}catch(e){
+					debug('getCalendarPrice',json[0].dep_cheapests[i]);
 				}
-			}catch(e){
-				debug('getCalendarPrice',json[0].dep_cheapests[i]);
 			}
 		});
 		debug('before filter %d', _.size(json[0].dep_table));

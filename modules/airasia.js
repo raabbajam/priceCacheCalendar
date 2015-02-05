@@ -186,6 +186,10 @@ function mergeCachePrices(json) {
 	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function(row) {
+		row.cheapest = {
+			class: 'Full',
+			available: 0
+		};
 		var departCity = (row.dateDepart.match(/\(([A-Z]{3})\)/) || [])[1];
 		var arriveCity = (row.dateArrive.match(/\(([A-Z]{3})\)/) || [])[1];
 		// debug('departCity', departCity, 'arriveCity', arriveCity );
@@ -206,19 +210,12 @@ function mergeCachePrices(json) {
 		var classCode = _class.toLowerCase() + nominal;
 		try {
 			row.cheapest = _this.cachePrices[currentRoute][flightCode][classCode];
+			row.cheapest.class = classCode;
+			row.cheapest.available = 'N/A';
 		} catch (e) {
 			debug(e.message, currentRoute, flightCode, classCode);
 			_this.cachePrices[currentRoute] = _this.cachePrices[currentRoute] || {};
 			_this.cachePrices[currentRoute][flightCode] = _this.cachePrices[currentRoute][flightCode] || {};
-		}
-		if (!!row.cheapest) {
-			row.cheapest.class = classCode;
-			row.cheapest.available = 'N/A';
-		} else {
-			row.cheapest = {
-				class: 'Full',
-				available: 0
-			};
 		}
 		// debug('mergeCachePrices row', row)
 		return row;
@@ -267,7 +264,13 @@ function getCalendarPrice(json) {
 			var $ = cheerio.load(flight.dateDepart);
 			var hour = +$('#UTCTIME').text().substr(0, 2);
 			var depart = moment.utc($('#UTCDATE').text() + ' ' + $('#UTCTIME').text(), format2).local();
-			return _this.isBookable(depart);
+			if (_this.isBookable(depart)){
+				try{
+					debug('flight.cheapest.adult OK', flight.cheapest.adult);
+				}catch(e){
+					debug('flight.cheapest', flight.cheapest);
+				}
+			}
 		});
 		debug('after filter %d', flights.length);
 		var cheapestFlight = _.min(flights, function (flight) {
