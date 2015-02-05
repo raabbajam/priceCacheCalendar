@@ -251,6 +251,10 @@ function mergeCachePrices(json) {
 	debug('_this.cachePrices', JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function(row) {
+		row.cheapest = {
+			class: 'Full',
+			available: 0
+		};
 		if (!row || !row.depart || !row.arrive)
 			return row;
 		// debug('row',row)
@@ -279,17 +283,10 @@ function mergeCachePrices(json) {
 					if (+matchAvailable >= seatRequest) {
 						try {
 							row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
-						} catch (e) {
-							debug(e.message);
-						}
-						if (!!row.cheapest) {
 							row.cheapest.class = _class.toLowerCase();
 							row.cheapest.available = matchAvailable;
-						} else {
-							row.cheapest = {
-								class: 'Full',
-								available: 0
-							};
+						} catch (e) {
+							debug(e.message);
 						}
 						// debug('this flight one radio: row.cheapest',row.cheapest, rute, flight, _class);
 						return false;
@@ -313,17 +310,10 @@ function mergeCachePrices(json) {
 			}
 			try {
 				row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
-			} catch (e) {
-				debug(e.stack, rute, flight, __class);
-			}
-			if (!!row.cheapest) {
 				row.cheapest.class = __class.toLowerCase();
 				row.cheapest.available = available.join('_');
-			} else {
-				row.cheapest = {
-					class: 'Full',
-					available: 0
-				};
+			} catch (e) {
+				debug(e.stack, rute, flight, __class);
 			}
 			debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		}
