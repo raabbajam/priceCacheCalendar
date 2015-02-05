@@ -9,8 +9,9 @@ var AirasiaPriceScrapers = priceScrapers.airasia;
 var cheerio = require('cheerio');
 
 function init(dt, scrape, args) {
+	// debug('dt', dt);
 	this._super('airasia', dt, scrape, args);
-	this.parallel = true;
+	this.parallel = false;
 	this.expired = 24;
 }
 
