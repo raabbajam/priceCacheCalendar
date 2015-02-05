@@ -257,19 +257,17 @@ function mergeCachePrices(json) {
 				return rute.replace(/\W/g, '');
 			})
 			.join('');
+		
+		row.cheapest = {
+			class: 'Full',
+			available: 0
+		};
 		var flight = row.flight.substr(0, 2) || '';
 		rute = rute.toLowerCase();
 		flight = flight.toLowerCase();
 		// var aClass = ['Q', 'P', 'O', 'N', 'M', 'L', 'K', 'H', 'G', 'F', 'E', 'D', 'B', 'A'];
 		var aClass = row.normal_fare.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)', 'g'));
 		// debug('aClass',aClass,'row.normal_fare',row.normal_fare,'regex','\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)');
-		
-		if(!aClass){
-			row.cheapest = {
-				class: 'Full',
-				available: 0
-			};
-		}
 		_.forEach(aClass, function(_class) {
 			// var matches = row.normal_fare.match(new RegExp('\\( ' + _class + '/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'))
 			var matches = _class.match(new RegExp('\\( ([A-Za-z]+)/Cls;\r\n([\\s\\S]+?)\\)\r\n\\s+</p><script>(\\d+)'));
@@ -287,19 +285,12 @@ function mergeCachePrices(json) {
 			if (matchAvailable >= seatRequest) {
 				try {
 					row.cheapest = _this.cachePrices[rute][flight][_classNominal];
+					row.cheapest.class = _class.toLowerCase();
+					row.cheapest.available = +matchAvailable;
 				} catch (e) {
 					debug(e.message, rute, flight, _classNominal);
 					_this.cachePrices[rute] = _this.cachePrices[rute] || {};
 					_this.cachePrices[rute][flight] = _this.cachePrices[rute][flight] || {};
-				}
-				if (!!row.cheapest) {
-					row.cheapest.class = _class.toLowerCase();
-					row.cheapest.available = +matchAvailable;
-				} else {
-					row.cheapest = {
-						class: 'Full',
-						available: 0
-					};
 				}
 				return false;
 			}

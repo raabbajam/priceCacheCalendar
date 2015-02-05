@@ -313,15 +313,11 @@ function mergeCachePrices(json) {
 			_rute += lastDst;
 			try {
 				_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()];
+				_cheapest.class = classes;
 			} catch (e) {
 				debug(e.stack, _rute, flights, classes);
 				_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
 				_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
-			}
-			if (!!_cheapest.prices) {
-				// debug(_rute, flights, classes, _cheapest.prices);
-				_cheapest.class = classes;
-			} else {
 				_cheapest = {
 					class: 'Full'
 				};
@@ -360,15 +356,11 @@ function mergeCachePrices(json) {
 	_rute += lastDst;
 	try {
 		_cheapest.prices = _this.cachePrices[_rute][flights.toLowerCase()][classes.toLowerCase()];
+		_cheapest.class = classes;
 	} catch (e) {
 		debug(e.stack, _rute, flights, classes);
 		_this.cachePrices[_rute] = _this.cachePrices[_rute] || {};
 		_this.cachePrices[_rute][flights] = _this.cachePrices[_rute][flights] || {};
-	}
-	if (!!_cheapest.prices) {
-		// debug(_rute, flights, classes, _cheapest.prices);
-		_cheapest.class = classes;
-	} else {
 		_cheapest = {
 			class: 'Full'
 		};
