@@ -90,7 +90,7 @@ function getCheapestInRow(_row) {
 		if (!departCity && !arriveCity)
 			return outs;
 		var currentRoute = departCity + arriveCity;
-		var _class = row.promo !== "Full" ? 'promo' : row.normal !== "Full" ? "normal" : 'flexi';
+		var _class = !isFull(row.promo) ? 'promo' : !isFull(row.normal) ? "normal" : 'flexi';
 		var nominal = row[_class].split(' ')[0];
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 		var flightCode = row.flightNumber.replace(/\d|\s/g, '');
@@ -191,7 +191,7 @@ function mergeCachePrices(json) {
 		debug('departCity', departCity, 'arriveCity', arriveCity);
 		if (!_this.cachePrices[currentRoute])
 			return row;
-		var _class = row.promo !== "Full" ? 'promo' : row.normal !== "Full" ? "normal" : 'flexi';
+		var _class = !isFull(row.promo) ? 'promo' : !isFull(row.normal) ? "normal" : 'flexi';
 		var nominal = row[_class].split(' ')[0];
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 		var flightCode = row.flightNumber.replace(/\d|\s/g, '')
@@ -286,3 +286,10 @@ var ExpressPrototype = {
 };
 var Express = Base.extend(ExpressPrototype);
 module.exports = Express;
+
+// utils
+function isFull(seat) {
+	var fulls = ['full', 'penuh'];
+	var _seat = seat.toLowerCase();
+	return !!~fulls.indexOf(_seat);
+}
