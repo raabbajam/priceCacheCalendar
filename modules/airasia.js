@@ -267,6 +267,7 @@ function getCalendarPrice(json) {
 			if (_this.isBookable(depart)){
 				try{
 					debug('flight.cheapest.adult OK', flight.cheapest.adult);
+					return flight;
 				}catch(e){
 					debug('flight.cheapest', flight.cheapest);
 				}
