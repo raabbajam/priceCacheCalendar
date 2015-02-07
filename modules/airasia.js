@@ -12,7 +12,7 @@ function init(dt, scrape, args) {
 	// debug('dt', dt);
 	this._super('airasia', dt, scrape, args);
 	this.parallel = false;
-	this.expired = 24;
+	this.expired = 12;
 }
 
 function getAllRoutes() {
