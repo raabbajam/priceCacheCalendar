@@ -9,9 +9,10 @@ var AirasiaPriceScrapers = priceScrapers.airasia;
 var cheerio = require('cheerio');
 
 function init(dt, scrape, args) {
+	// debug('dt', dt);
 	this._super('airasia', dt, scrape, args);
 	this.parallel = false;
-	this.expired = 24;
+	this.expired = 12;
 }
 
 function getAllRoutes() {
@@ -266,6 +267,7 @@ function getCalendarPrice(json) {
 			if (_this.isBookable(depart)){
 				try{
 					debug('flight.cheapest.adult OK', flight.cheapest.adult);
+					return flight;
 				}catch(e){
 					debug('flight.cheapest', flight.cheapest);
 				}

@@ -134,12 +134,16 @@ function getCheapestInRow(row) {
 		return rute.substr(0, 3);
 	});
 	// debug('rutes',rutes);
-	var flight = _.values(row.code_flight)
-		.reduce(function(all, codes) {
-			return all + codes.replace(/\D/g, '')
-				.length;
-		}, '');
-	var numTrips = flight.length;
+	// var flight = _.values(row.code_flight)
+	// 	.reduce(function(all, codes) {
+	// 		return all + codes.replace(/\D/g, '').length;
+	// 	}, '');
+	var c_flight = [];
+	for(var j in row.code_flight){
+		c_flight.push(row.code_flight[j].replace(/ /g, ''));
+	}
+	var flight = c_flight.join('|');
+	var numTrips = c_flight.length;
 	var out = {
 		ori: rutes.shift(),
 		dst: rutes.pop(),
@@ -267,12 +271,19 @@ function mergeCachePrices(json) {
 		var rute = rutes.join('')
 			.toLowerCase();
 		debug('rute', rute);
-		var flight = _.values(row.code_flight)
-			.reduce(function(all, codes) {
-				return all + codes.replace(/\D/g, '')
-					.length;
-			}, '');
-		var numTrips = flight.length;
+		// var flight = _.values(row.code_flight)
+		// 	.reduce(function(all, codes) {
+		// 		return all + codes.replace(/\D/g, '')
+		// 			.length;
+		// 	}, '');
+		// var numTrips = flight.length;
+
+		var c_flight = [];
+		for(var j in row.code_flight){
+			c_flight.push(row.code_flight[j].replace(/ /g, ''));
+		}
+		var flight = c_flight.join('|').toLowerCase();
+		var numTrips = c_flight.length;
 
 		var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
 		// if(numTrips != row['O'].length){
