@@ -133,11 +133,6 @@ function getCheapestInRow(row) {
 	rutes = rutes.map(function(rute) {
 		return rute.substr(0, 3);
 	});
-	// debug('rutes',rutes);
-	// var flight = _.values(row.code_flight)
-	// 	.reduce(function(all, codes) {
-	// 		return all + codes.replace(/\D/g, '').length;
-	// 	}, '');
 	var c_flight = [];
 	for(var j in row.code_flight){
 		c_flight.push(row.code_flight[j].replace(/ /g, ''));
@@ -155,11 +150,10 @@ function getCheapestInRow(row) {
 	var _classes = '';
 	var aClass = ['O', 'U', 'X', 'E', 'G', 'V', 'T', 'Q', 'N', 'M', 'L', 'K', 'H', 'B', 'W', 'S', 'Y', 'I', 'D', 'C'];
 
-	// if(numTrips != row['O'].length){
 	if (row.O.length == 1) {
 		_.forEach(aClass, function(_class) {
 			var matchAvailable;
-			if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+			if (row[_class][0] && row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
 				if (+matchAvailable >= seatRequest) {
 					_classes += _class;
 					return false;
@@ -174,7 +168,7 @@ function getCheapestInRow(row) {
 		for (var i = 0; i < numTrips; i++) {
 			_.forEach(aClass, function(_class) {
 				var matchAvailable;
-				if (row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
+				if (row[_class][i] && row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
 					if (+matchAvailable >= seatRequest) {
 						_classes += _class;
 						return false;
@@ -290,7 +284,7 @@ function mergeCachePrices(json) {
 		if (row.O.length == 1) {
 			_.forEach(aClass, function(_class) {
 				var matchAvailable;
-				if (row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
+				if (row[_class][0] && row[_class][0].indexOf('disabled') === -1 && (matchAvailable = +row[_class][0].match(/>\((\d)\)</)[1]) > 0) {
 					if (+matchAvailable >= seatRequest) {
 						try {
 							row.cheapest = _this.cachePrices[rute][flight][_class.toLowerCase()];
@@ -310,7 +304,7 @@ function mergeCachePrices(json) {
 			for (var i = 0; i < numTrips; i++) {
 				_.forEach(aClass, function(_class) {
 					var matchAvailable;
-					if (row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
+					if (row[_class][i] && row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
 						if (+matchAvailable >= seatRequest) {
 							__class += _class;
 							available.push(matchAvailable);
@@ -324,7 +318,7 @@ function mergeCachePrices(json) {
 				row.cheapest.class = __class.toLowerCase();
 				row.cheapest.available = available.join('_');
 			} catch (e) {
-				debug(e.stack, rute, flight, __class);
+				debug('rute, flight, __class, e.stack', rute, flight, __class, e.stack);
 			}
 			debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		}
