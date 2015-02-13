@@ -280,15 +280,15 @@ function mergeCachePrices(json) {
 					}
 				}
 			});
-			try {
-				row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
-				row.cheapest.class = __class.toLowerCase();
-				row.cheapest.available = available.join('_');
-			} catch (e) {
-				debug('rute, flight, __class, e.stack', rute, flight, __class, e.stack);
-			}
-			debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		}
+		try {
+			row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
+			row.cheapest.class = __class.toLowerCase();
+			row.cheapest.available = available.join('_');
+		} catch (e) {
+			debug('rute, flight, __class, e.stack', rute, flight, __class, e.stack);
+		}
+		debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		return row;
 	});
 	return _json;
