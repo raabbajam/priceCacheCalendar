@@ -249,8 +249,9 @@ function insertLowest(data) {
 		_this.db.get('pluto', 'calendar', data.id, function(err, res) {
 			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
-			debug(oldPrice, _price, data);
-			if(oldPrice==0 || _price<oldPrice || (res._source && res._source.airline === _this.airline)){
+			var oldAirline = (res._source && res._source.airline) || '';
+			debug('oldPrice', oldPrice, 'oldAirline', oldAirline, 'New data', data);
+			if(oldPrice==0 || _price<oldPrice || oldAirline===_this.airline){
 				data.price = _price;
 				debug('found lower price, inserting to calendar...', res);
 				_this.db.index('pluto', 'calendar', data, function(err, res) {
