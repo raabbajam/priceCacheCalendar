@@ -250,16 +250,14 @@ function insertLowest(data) {
 			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
 			debug(oldPrice, _price, data);
-			// debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
-			// if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
-			if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
-				return resolve(false);
-			} else {
+			if(oldPrice==0 || (res._source && res._source.airline === _this.airline)){
 				data.price = _price;
 				debug('found lower price, inserting to calendar...', res);
 				_this.db.index('pluto', 'calendar', data, function(err, res) {
 					return resolve(res);
 				});
+			}else{
+				return resolve(false);
 			}
 		});
 	});
