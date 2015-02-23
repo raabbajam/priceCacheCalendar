@@ -251,7 +251,7 @@ function insertLowest(data) {
 			var oldPrice = (res._source && res._source.price) || 0;
 			var oldAirline = (res._source && res._source.airline) || '';
 			debug('oldPrice', oldPrice, 'oldAirline', oldAirline, 'New data', data);
-			if(oldPrice==0 || _price<oldPrice || oldAirline===_this.airline){
+			if(oldPrice==0 || (+_price)<(+oldPrice) || oldAirline===_this.airline){
 				if(oldPrice == 0){ debug('oldPrice==0') }
 				if(_price < oldPrice){ debug('_price<oldPrice') }
 				if(oldAirline === _this.airline){ debug('oldAirline===_this.airline') }
