@@ -138,12 +138,19 @@ function getCheapestInRow(row) {
 		c_flight.push(row.code_flight[j].replace(/ /g, ''));
 	}
 	var flight = c_flight.join('|');
-	var numTrips = c_flight.length;
 	var out = {
 		ori: rutes.shift(),
 		dst: rutes.pop(),
 		flight: flight,
 	};
+	var radio = '';
+	_.forEach(row, function(idx,_class) {
+		if(_class && _class.length == 1){
+			radio = _class;
+			return false;
+		}
+	})
+	var numTrips = row[radio].length;
 	rutes.forEach(function(rute, i) {
 		out['transit' + (i + 1)] = rute;
 	});
@@ -263,7 +270,15 @@ function mergeCachePrices(json) {
 			c_flight.push(row.code_flight[j].replace(/ /g, ''));
 		}
 		var flight = c_flight.join('|').toLowerCase();
-		var numTrips = c_flight.length;
+		
+		var radio = '';
+		_.forEach(row, function(idx,_class) {
+			if(_class && _class.length == 1){
+				radio = _class;
+				return false;
+			}
+		})
+		var numTrips = row[radio].length;
 
 		var __class = '';
 		var available = [];
@@ -280,15 +295,15 @@ function mergeCachePrices(json) {
 					}
 				}
 			});
-			try {
-				row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
-				row.cheapest.class = __class.toLowerCase();
-				row.cheapest.available = available.join('_');
-			} catch (e) {
-				debug('rute, flight, __class, e.stack', rute, flight, __class, e.stack);
-			}
-			debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		}
+		try {
+			row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
+			row.cheapest.class = __class.toLowerCase();
+			row.cheapest.available = available.join('_');
+		} catch (e) {
+			debug('rute, flight, __class, e.stack', rute, flight, __class, e.stack);
+		}
+		debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		return row;
 	});
 	return _json;

@@ -249,17 +249,19 @@ function insertLowest(data) {
 		_this.db.get('pluto', 'calendar', data.id, function(err, res) {
 			res = JSON.parse(res);
 			var oldPrice = (res._source && res._source.price) || 0;
-			debug(oldPrice, _price, data);
-			// debug('res._source.airline !== _this.airline', res._source.airline, '!==', _this.airline);
-			// if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
-			if (oldPrice === _price || (oldPrice !== 0 && _price >= oldPrice && res._source.airline !== _this.airline)) {
-				return resolve(false);
-			} else {
+			var oldAirline = (res._source && res._source.airline) || '';
+			debug('Cek calendar!!!', '\n', 'Old data', '\n', res, '\n', 'New data', '\n', data);
+			if(oldPrice==0 || (+_price)<(+oldPrice) || oldAirline===_this.airline){
+				if(oldPrice == 0){ debug('oldPrice==0') }
+				if(_price < oldPrice){ debug('_price<oldPrice') }
+				if(oldAirline === _this.airline){ debug('oldAirline===_this.airline') }
 				data.price = _price;
-				debug('found lower price, inserting to calendar...', res);
 				_this.db.index('pluto', 'calendar', data, function(err, res) {
+					debug('found lower price, inserting to calendar...');
 					return resolve(res);
 				});
+			}else{
+				return resolve(false);
 			}
 		});
 	});
