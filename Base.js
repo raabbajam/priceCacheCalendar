@@ -210,8 +210,7 @@ function insertAllLowest(res) {
 	var promises = [];
 	var _this = this;
 	var _dt = _this._dt;
-	var _date = moment(_dt.dep_date, dateFormats)
-		.unix() * 1000;
+	var _date = moment(_dt.dep_date, dateFormats).format('x');
 	debug('res', res);
 	Object.keys(res)
 		.forEach(function(prop, i) {
