@@ -607,7 +607,6 @@ function merge(json) {
 					return _this.getAllCachePrices(aoCheapest);
 				}, function(err) {
 					debug('_this.scrapeAllLostData', err);
-					Calendar.editCalendar(data);
 					throw err;
 				});
 		})
@@ -652,7 +651,6 @@ function merge(json) {
 		})
 		.catch(function(err) {
 			debug('error on end', err.stack);
-			Calendar.editCalendar(data);
 			if (!!err.docs)
 				_this.docsToCachePrices(err.docs);
 			return _this.mergeCachePrices(json);
