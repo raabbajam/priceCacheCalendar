@@ -2,6 +2,7 @@ var Class = require('./libs/Class');
 var Promise = require('promise');
 var moment = require('moment');
 var _ = require('lodash');
+var Calendar = new require('../../libs/editCalendar');
 var dateFormats = ['DD+MM+YYYY', 'DD+MMM+YYYY', 'DD MM YYYY', 'DD MMM YYYY'];
 var airlines = {
 	"airasia": 1,
@@ -35,6 +36,8 @@ function init(airline, dt, scrape, args) {
 			this._kode = airlines[airline];
 			debug('this._kode', this._kode);
 			this.paxNum = 1;
+			this.airline = airline;
+			this.action = 'flight';
 			if (!!this._dt && !!this._dt.adult)
 				this.paxNum = +this._dt.adult + (+this._dt.child || 0);
 			debug('this.paxNum', this.paxNum);
@@ -585,8 +588,14 @@ function merge(json) {
 	// debug('json',json);
 	var aoCheapest = _this.getAllCheapest(rows);
 	debug('aoCheapest', aoCheapest);
+	var data = {
+		airline : _this.airline,
+		action : _this.action,
+		query : _this._dt
+	}
 	if (_.isEmpty(aoCheapest)) {
 		debug('Can\'t find some data. Return without cachePrices..');
+		Calendar.editCalendar(data);
 		return Promise.resolve(_this.mergeCachePrices(json));
 	}
 	return _this.getAllCachePrices(aoCheapest)
