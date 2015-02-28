@@ -652,6 +652,7 @@ function merge(json) {
 		})
 		.catch(function(err) {
 			debug('error on end', err.stack);
+			Calendar.editCalendar(dataCalendar);
 			if (!!err.docs)
 				_this.docsToCachePrices(err.docs);
 			return _this.mergeCachePrices(json);
