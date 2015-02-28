@@ -622,6 +622,10 @@ function merge(json) {
 				_this.getCalendarPrice(_json)
 					.then(function(cheapest) {
 						debug('getCalendarPrice cheapest: %j', cheapest);
+						if(typeof cheapest=='undefined'){
+							Calendar.editCalendar(dataCalendar);
+							return cheapest;
+						}
 						var _price = !!_this.calendarPrice ? _this.calendarPrice(cheapest) : !!cheapest && cheapest.adult;
 						if (!_price){
 							Calendar.editCalendar(dataCalendar);
