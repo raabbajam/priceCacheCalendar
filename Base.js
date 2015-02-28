@@ -587,14 +587,14 @@ function merge(json) {
 	// debug('json',json);
 	var aoCheapest = _this.getAllCheapest(rows);
 	debug('aoCheapest', aoCheapest);
-	var data = {
+	var dataCalendar = {
 		airline : _this.airline,
 		action : _this.action,
 		query : _this._dt
 	}
 	if (_.isEmpty(aoCheapest)) {
 		debug('Can\'t find some data. Return without cachePrices..');
-		Calendar.editCalendar(data);
+		Calendar.editCalendar(dataCalendar);
 		return Promise.resolve(_this.mergeCachePrices(json));
 	}
 	return _this.getAllCachePrices(aoCheapest)
@@ -623,8 +623,10 @@ function merge(json) {
 					.then(function(cheapest) {
 						debug('getCalendarPrice cheapest: %j', cheapest);
 						var _price = !!_this.calendarPrice ? _this.calendarPrice(cheapest) : !!cheapest && cheapest.adult;
-						if (!_price)
+						if (!_price){
+							Calendar.editCalendar(dataCalendar);
 							return _price;
+						}
 						var _dt = _this._dt;
 						var _date = moment(_dt.dep_date, dateFormats).unix() * 1000;
 						var data = {
