@@ -338,11 +338,25 @@ function mergeCachePrices(json) {
 			.filter(function(b) {
 				return b.length === 1;
 			});
+		
+		var format = ['DDMMM', 'DMMM'];
+		var format2 = ['DDMMMHHmm', 'DMMMHHmm'];
+		var hiddens = row.hidden.split('|');
+		var date = moment(hiddens[3], format);
+		var dayRangeForExpiredCheck = 2;
+		var checkDate = moment()
+			.add(dayRangeForExpiredCheck, 'day');
+		_this.isSameDay = false;
+		if (date.isBefore(checkDate, 'day'))
+			_this.isSameDay = true;
+		var depart = moment(hiddens[3] + hiddens[8], format2);
 		_.forEachRight(aClass, function(_class) {
 			var matchAvailable = row[_class].match(/(\d)+<\/label>/);
 			if (!!row[_class] && row[_class].indexOf('disabled') === -1 && !!matchAvailable && matchAvailable.length > 0) {
 				if (+matchAvailable[1] >= seatRequest) {
-					classes += _class;
+					if (_this.isBookable(depart)){
+						classes += _class;
+					}
 					return false;
 				}
 			}
