@@ -252,6 +252,15 @@ function mergeCachePrices(json) {
 	var seatRequest = 1; //this.paxNum || 1;
 	// debug('_this.cachePrices',JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
+	var format = ['DD MM YYYY', 'DD+MM+YYYY'];
+	var format2 = ['DD MM YYYY HH:mm', 'DD+MM+YYYY HH:mm'];var dep_date = _this._dt.dep_date;
+	var date = moment(dep_date, format);
+	var dayRangeForExpiredCheck = 2;
+	var checkDate = moment()
+		.add(dayRangeForExpiredCheck, 'day');
+	_this.isSameDay = false;
+	if (date.isBefore(checkDate, 'day'))
+		_this.isSameDay = true;
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function(row) {
 		var rute = _.map(_.uniq(row.normal_fare.match(/~([A-Z]){3}~/g)), function(rute) {
 				return rute.replace(/\W/g, '');
@@ -284,9 +293,12 @@ function mergeCachePrices(json) {
 			// debug('_classNominal',_classNominal)
 			if (matchAvailable >= seatRequest) {
 				try {
-					row.cheapest = _this.cachePrices[rute][flight][_classNominal];
-					row.cheapest.class = _class.toLowerCase();
-					row.cheapest.available = +matchAvailable;
+					var depart = moment(dep_date + ' ' + row.times, format2);
+					if (_this.isBookable(depart)){
+						row.cheapest = _this.cachePrices[rute][flight][_classNominal];
+						row.cheapest.class = _class.toLowerCase();
+						row.cheapest.available = +matchAvailable;
+					}
 				} catch (e) {
 					debug(e.message, rute, flight, _classNominal);
 					_this.cachePrices[rute] = _this.cachePrices[rute] || {};
