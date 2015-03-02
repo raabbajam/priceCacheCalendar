@@ -239,8 +239,18 @@ function mergeCachePrices(json) {
 	var seatRequest = this.paxNum || 1;
 	var _json = _.cloneDeep(json);
 	var _this = this;
+	var format = ['DD MM YYYY', 'DD+MM+YYYY'];
+	var format2 = ['DD MM YYYY HH:mm', 'DD+MM+YYYY HH:mm'];
 	debug('_this.cachePrices', JSON.stringify(_this.cachePrices, null, 2));
 	// debug('_json.dep_table',_json)
+	var dep_date = _this._dt.dep_date;
+	var date = moment(dep_date, format);
+	var dayRangeForExpiredCheck = 2;
+	var checkDate = moment()
+		.add(dayRangeForExpiredCheck, 'day');
+	_this.isSameDay = false;
+	if (date.isBefore(checkDate, 'day'))
+		_this.isSameDay = true;
 	_json[0].dep_table = _.mapValues(_json[0].dep_table, function(row) {
 		row.cheapest = {
 			class: 'Full',
@@ -258,12 +268,6 @@ function mergeCachePrices(json) {
 		var rute = rutes.join('')
 			.toLowerCase();
 		debug('rute', rute);
-		// var flight = _.values(row.code_flight)
-		// 	.reduce(function(all, codes) {
-		// 		return all + codes.replace(/\D/g, '')
-		// 			.length;
-		// 	}, '');
-		// var numTrips = flight.length;
 
 		var c_flight = [];
 		for(var j in row.code_flight){
@@ -288,8 +292,13 @@ function mergeCachePrices(json) {
 					var matchAvailable;
 					if (row[_class][i] && row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
 						if (+matchAvailable >= seatRequest) {
-							__class += _class;
-							available.push(matchAvailable);
+							var times = row.depart[1].substr(-5);
+							debug('depart %s', dep_date + ' ' + times);
+							var depart = moment(dep_date + ' ' + times, format2);
+							if (_this.isBookable(depart)){
+								__class += _class;
+								available.push(matchAvailable);
+							}
 							return false;
 						}
 					}

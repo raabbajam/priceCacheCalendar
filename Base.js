@@ -2,6 +2,7 @@ var Class = require('./libs/Class');
 var Promise = require('promise');
 var moment = require('moment');
 var _ = require('lodash');
+var Calendar = new require('../../libs/editCalendar');
 var dateFormats = ['DD+MM+YYYY', 'DD+MMM+YYYY', 'DD MM YYYY', 'DD MMM YYYY'];
 var airlines = {
 	"airasia": 1,
@@ -35,6 +36,8 @@ function init(airline, dt, scrape, args) {
 			this._kode = airlines[airline];
 			debug('this._kode', this._kode);
 			this.paxNum = 1;
+			this.airline = airline;
+			this.action = 'flight';
 			if (!!this._dt && !!this._dt.adult)
 				this.paxNum = +this._dt.adult + (+this._dt.child || 0);
 			debug('this.paxNum', this.paxNum);
@@ -207,8 +210,7 @@ function insertAllLowest(res) {
 	var promises = [];
 	var _this = this;
 	var _dt = _this._dt;
-	var _date = moment(_dt.dep_date, dateFormats)
-		.unix() * 1000;
+	var _date = moment(_dt.dep_date, dateFormats).format('x');
 	debug('res', res);
 	Object.keys(res)
 		.forEach(function(prop, i) {
@@ -585,8 +587,14 @@ function merge(json) {
 	// debug('json',json);
 	var aoCheapest = _this.getAllCheapest(rows);
 	debug('aoCheapest', aoCheapest);
+	var dataCalendar = {
+		airline : _this.airline,
+		action : _this.action,
+		query : _this._dt
+	}
 	if (_.isEmpty(aoCheapest)) {
 		debug('Can\'t find some data. Return without cachePrices..');
+		Calendar.editCalendar(dataCalendar);
 		return Promise.resolve(_this.mergeCachePrices(json));
 	}
 	return _this.getAllCachePrices(aoCheapest)
@@ -614,9 +622,15 @@ function merge(json) {
 				_this.getCalendarPrice(_json)
 					.then(function(cheapest) {
 						debug('getCalendarPrice cheapest: %j', cheapest);
+						if(typeof cheapest=='undefined'){
+							Calendar.editCalendar(dataCalendar);
+							return cheapest;
+						}
 						var _price = !!_this.calendarPrice ? _this.calendarPrice(cheapest) : !!cheapest && cheapest.adult;
-						if (!_price)
+						if (!_price){
+							Calendar.editCalendar(dataCalendar);
 							return _price;
+						}
 						var _dt = _this._dt;
 						var _date = moment(_dt.dep_date, dateFormats).unix() * 1000;
 						var data = {
@@ -642,6 +656,7 @@ function merge(json) {
 		})
 		.catch(function(err) {
 			debug('error on end', err.stack);
+			Calendar.editCalendar(dataCalendar);
 			if (!!err.docs)
 				_this.docsToCachePrices(err.docs);
 			return _this.mergeCachePrices(json);
