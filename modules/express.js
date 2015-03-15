@@ -174,18 +174,7 @@ function mergeCachePrices(json) {
 	var _this = this;
 	var seatRequest = this.paxNum || 1;
 	debug('_this.cachePrices', JSON.stringify(_this.cachePrices, null, 2));
-	var format = ['YYYY-MM-DD', 'DD MM YYYY', 'DD+MM+YYYY'];
-	var format2 = ['M/DD/YYYY H:mm', 'DD MM YYYY HH:mm', 'DD+MM+YYYY HH:mm'];
 	// debug('_json.dep_table',_json)
-	var dep_date = !json.departure[0].date;
-	var date = moment(dep_date, format);
-	var dayRangeForExpiredCheck = 2;
-	var checkDate = moment()
-		.add(dayRangeForExpiredCheck, 'day');
-	_this.isSameDay = false;
-	if (date.isBefore(checkDate, 'day'))
-		_this.isSameDay = true;
-	debug('_this.isSameDay %s', _this.isSameDay);
 	_json.departure = _.mapValues(_json.departure, function(row) {
 		// debug('row', row)
 		var departCity = row.origin;
@@ -210,13 +199,9 @@ function mergeCachePrices(json) {
 		var classCode = _class.toLowerCase() + nominal;
 		debug(currentRoute, flightCode, classCode);
 		try {
-			debug('depart %s', row.depart);
-			var depart = moment(row.depart, format2);
-			if (_this.isBookable(depart)){
-				row.cheapest = _this.cachePrices[currentRoute][flightCode][classCode];
-				row.cheapest.class = classCode;
-				row.cheapest.available = _class;
-			}
+			row.cheapest = _this.cachePrices[currentRoute][flightCode][classCode];
+			row.cheapest.class = classCode;
+			row.cheapest.available = _class;
 		} catch (e) {
 			debug(e.message, currentRoute, flightCode, classCode);
 			_this.cachePrices[currentRoute] = _this.cachePrices[currentRoute] || {};
@@ -249,7 +234,7 @@ function prepareRows(json) {
 function getCalendarPrice(json) {
 	var _this = this;
 	var format = ['YYYY-MM-DD', 'DD MM YYYY', 'DD+MM+YYYY'];
-	var format2 = ['M/DD/YYYY H:mm', 'DD MM YYYY HH:mm', 'DD+MM+YYYY HH:mm'];
+	var format2 = ['D/MM/YYYY H:mm', 'DD MM YYYY HH:mm', 'DD+MM+YYYY HH:mm'];
 	return new Promise(function(resolve, reject) {
 		if (!json.departure && !json.departure[0] && !json.departure[0].depart)
 			return resolve();
