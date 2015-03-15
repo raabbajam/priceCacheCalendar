@@ -315,6 +315,70 @@ function mergeCachePrices(json) {
 		debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
 		return row;
 	});
+	_json[0].ret_table = _.mapValues(_json[0].ret_table, function(row) {
+		row.cheapest = {
+			class: 'Full',
+			available: 0
+		};
+		if (!row || !row.depart || !row.arrive)
+			return row;
+		// debug('row',row)
+		var rutes = _.values(row.depart);
+		rutes.push(_.values(row.arrive)
+			.pop());
+		rutes = rutes.map(function(rute) {
+			return rute.substr(0, 3);
+		});
+		var rute = rutes.join('')
+			.toLowerCase();
+		debug('rute', rute);
+
+		var c_flight = [];
+		for(var j in row.code_flight){
+			c_flight.push(row.code_flight[j].replace(/ /g, ''));
+		}
+		var flight = c_flight.join('|').toLowerCase();
+		
+		var radio = '';
+		_.forEach(row, function(idx,_class) {
+			if(_class && _class.length == 1){
+				radio = _class;
+				return false;
+			}
+		})
+		var numTrips = row[radio].length;
+
+		var __class = '';
+		var available = [];
+		for (var i = 0; i < numTrips; i++) {
+			_.forEach(row, function(idx,_class) {
+				if(_class && _class.length == 1){
+					var matchAvailable;
+					if (row[_class][i] && row[_class][i].indexOf('disabled') === -1 && (matchAvailable = +row[_class][i].match(/>\((\d)\)</)[1]) > 0) {
+						if (+matchAvailable >= seatRequest) {
+							var times = row.depart[1].substr(-5);
+							debug('depart %s', dep_date + ' ' + times);
+							var depart = moment(dep_date + ' ' + times, format2);
+							if (_this.isBookable(depart)){
+								__class += _class;
+								available.push(matchAvailable);
+							}
+							return false;
+						}
+					}
+				}
+			});
+		}
+		try {
+			row.cheapest = _this.cachePrices[rute][flight][__class.toLowerCase()];
+			row.cheapest.class = __class.toLowerCase();
+			row.cheapest.available = available.join('_');
+		} catch (e) {
+			debug('rute, flight, __class, e.stack', rute, flight, __class, e.stack);
+		}
+		debug('row.cheapest', row.cheapest, rute, flight, __class, numTrips);
+		return row;
+	});
 	return _json;
 }
 
