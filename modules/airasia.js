@@ -61,7 +61,12 @@ function mergeCache() {
 			var matchNominal = row.lowFare.match(/price"><span>([\s\S]+?)IDR/);
 			// debug('matchNominal',matchNominal)
 			var nominal = (matchNominal || [])[1];
-			nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
+			try{
+				nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
+			}catch(e){
+				debug("row.lowFare kosong");
+				nominal = 0;
+			}
 			lowestPrices[currentRoute] = nominal * 1000;
 			/*var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 			var classCode = _class.toLowerCase() + nominal;
