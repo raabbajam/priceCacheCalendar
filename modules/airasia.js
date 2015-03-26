@@ -116,7 +116,7 @@ function getCheapestInRow(row) {
 		var matchNominal = row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/);
 		var flightCode = (row.hiFlyer.match(/\|([A-Z]{2})/) || [])[1];
 	}else{
-		var _class = 'hi2';
+		var _class = 'pr';
 		var matchNominal = row.hi2Flyer.match(/price"><span>([\s\S]+?)IDR/);
 		var flightCode = (row.hi2Flyer.match(/\|([A-Z]{2})/) || [])[1];
 	}
