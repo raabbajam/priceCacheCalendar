@@ -61,12 +61,11 @@ function mergeCache() {
 			var matchNominal = row.lowFare.match(/price"><span>([\s\S]+?)IDR/);
 			// debug('matchNominal',matchNominal)
 			var nominal = (matchNominal || [])[1];
-			try{
-				nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
-			}catch(e){
-				debug("row.lowFare kosong");
-				nominal = 0;
+			if(!nominal){
+				debug("mergeCache row.lowFare kosong");
+				return true;
 			}
+			nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 			lowestPrices[currentRoute] = nominal * 1000;
 			/*var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 			var classCode = _class.toLowerCase() + nominal;
@@ -104,6 +103,10 @@ function getCheapestInRow(row) {
 	var currentRoute = departCity + arriveCity;
 	var isLowAvailable = row.lowFare.indexOf('disabled') === -1;
 	var nominal = isLowAvailable ? (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1] : (row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
+	if(!nominal){
+		debug("getCheapestInRow row.lowFare kosong");
+		return true;
+	}
 	var _class = isLowAvailable ? 'lo' : 'hi';
 	nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 	var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
@@ -217,6 +220,10 @@ function mergeCachePrices(json) {
 
 		var isLowAvailable = row.lowFare.indexOf('disabled') === -1;
 		var nominal = isLowAvailable ? (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1] : (row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
+		if(!nominal){
+			debug("mergeCachePrices row.lowFare kosong");
+			return row;
+		}
 		var _class = isLowAvailable ? 'lo' : 'hi';
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 		var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];

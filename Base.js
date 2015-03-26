@@ -11,6 +11,7 @@ var airlines = {
 	"lion": 4,
 	"sriwijaya": 5,
 	"xpress": 6,
+	"kalstar": 7,
 	"express": 6
 };
 var db = require('./libs/db');
