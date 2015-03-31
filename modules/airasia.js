@@ -123,7 +123,10 @@ function getCheapestInRow(row) {
 		return outs;
 	}
 	var matchNominal = row[harga].match(/price"><span>([\s\S]+?)IDR/);
-	var flightCode = row[harga].match(/[A-Z]{2}\~[0-9]{3,4}/g).join('|').replace(/\~/g, '-');
+	var flightCode = row[harga].match(/[A-Z]{2}\~\ ?[0-9]{3,4}/g)
+		.join('|')
+		.replace(/\~/g, '-')
+		.replace(/\ /g, '');
 	// debug('matchNominal',matchNominal)
 	var nominal = (matchNominal || [])[1];
 	if(!nominal){
@@ -251,7 +254,10 @@ function mergeCachePrices(json) {
 			return row;
 		}
 		var matchNominal = row[harga].match(/price"><span>([\s\S]+?)IDR/);
-		var flightCode = row[harga].match(/[A-Z]{2}\~[0-9]{3,4}/g).join('|').replace(/\~/g, '-');
+		var flightCode = row[harga].match(/[A-Z]{2}\~\ ?[0-9]{3,4}/g)
+			.join('|')
+			.replace(/\~/g, '-')
+			.replace(/\ /g, '');
 		// debug('matchNominal',matchNominal)
 		var nominal = (matchNominal || [])[1];
 		if(!nominal){
