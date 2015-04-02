@@ -90,19 +90,20 @@ function mergeCache() {
 				.toLowerCase();
 			var fareData2 = '';
 			fareMatch.forEach(function(fare, i) {
-				// debug('fare',fare)
+				debug('fare',fare)
 				try {
 					var input = $('[id$=' + fare + ']');
 					// var p     = $('td:nth-child(5)', tr).find('p').eq(i);
-					var p = input.parents('p');
-					var pHtml = p.html();
-					var pText = p.text()
-						.trim();
-					var basic = +p.text()
-						.match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
+					// var p = input.parents('td').eq(0);
+					var pHtml = $.html(input);
+					// console.log(pHtml);
+					var bNode = input.next();
+					var pText = bNode.text().trim();
+					var basic = +pText.match(/(Rp.)([\d,]+)/g)[0].replace(/\D/g, '');
 					var nominal = basic / 1000;
-					var available = +(pText.match(/(\d+) \)$/) || [])[1];
-					var _class = (pText.match(/\( (\S)\/Cls/) || [])[1];
+					var textNode = bNode[0].next.data;
+					var available = +(textNode.match(/(\d+) \)$/) || [])[1];
+					var _class = (textNode.match(/\( (\S)\/Cls/) || [])[1];
 					var classCache = _class.toLowerCase() + nominal;
 					var cachePrice = (currentCache[flightCode] && currentCache[flightCode][classCache]) || 0;
 					// debug('currentRoute:classCache', currentRoute + ':' + classCache, 'cachePrice', cachePrice);
@@ -111,8 +112,8 @@ function mergeCache() {
 					if (!!save && !!available && available > 0 && (!lowestPrices[currentRoute] || (!!cachePrice && cachePrice < lowestPrices[currentRoute])))
 						lowestPrices[currentRoute] = cachePrice;
 					// cachePrice = Math.round(cachePrice / 100) * 100;
-					var after = pHtml.replace(/Rp.[\d,]+/, 'Rp.' + cachePrice);
-					fareData2 = fareData2 + '<p>' + after + '</p><script>' + basic + '</script>';
+					var after = pText.replace(/Rp.[\d,]+/, 'Rp.' + cachePrice);
+					fareData2 = fareData2 + '<p>' + pHtml + after + textNode + '</p><script>' + basic + '</script>';
 				} catch (e) {
 					debug(e.message);
 						// fareData2 = 0;
@@ -266,7 +267,7 @@ function mergeCachePrices(json) {
 				return rute.replace(/\W/g, '');
 			})
 			.join('');
-		
+
 		row.cheapest = {
 			class: 'Full',
 			available: 0
