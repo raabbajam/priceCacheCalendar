@@ -58,9 +58,22 @@ function mergeCache() {
 			if (!_this.cache[currentRoute])
 				return true;
 			var currentCache = _this.cache[currentRoute];
-			var matchNominal = row.lowFare.match(/price"><span>([\s\S]+?)IDR/);
+			if(row.lowFare.trim()!='-'){
+				var harga = 'lowFare';
+			}else if(row.hiFlyer.trim()!='-'){
+				var harga = 'hiFlyer';
+			}else if(row.hi2Flyer.trim()!='-'){
+				var harga = 'hi2Flyer';
+			}else{
+				return true;
+			}
+			var matchNominal = row[harga].match(/price"><span>([\s\S]+?)IDR/);
 			// debug('matchNominal',matchNominal)
 			var nominal = (matchNominal || [])[1];
+			if(!nominal){
+				debug("mergeCache row.lowFare & row.hiFlyer kosong");
+				return true;
+			}
 			nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
 			lowestPrices[currentRoute] = nominal * 1000;
 			/*var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
@@ -95,13 +108,32 @@ function getCheapestInRow(row) {
 	var departCity = (row.dateDepart.match(/\(([A-Z]{3})\)/) || [])[1];
 	var arriveCity = (row.dateArrive.match(/\(([A-Z]{3})\)/) || [])[1];
 	if (!departCity && !arriveCity)
-		return true;
+		return outs;
 	var currentRoute = departCity + arriveCity;
-	var isLowAvailable = row.lowFare.indexOf('disabled') === -1;
-	var nominal = isLowAvailable ? (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1] : (row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
-	var _class = isLowAvailable ? 'lo' : 'hi';
+	if(row.lowFare.trim()!='-'){
+		var _class = 'lo';
+		var harga = 'lowFare';
+	}else if(row.hiFlyer.trim()!='-'){
+		var _class = 'hi';
+		var harga = 'hiFlyer';
+	}else if(row.hi2Flyer.trim()!='-'){
+		var _class = 'pr';
+		var harga = 'hi2Flyer';
+	}else{
+		return outs;
+	}
+	var matchNominal = row[harga].match(/price"><span>([\s\S]+?)IDR/);
+	var flightCode = row[harga].match(/[A-Z]{2}\~\ ?[0-9]{3,4}/g)
+		.join('|')
+		.replace(/\~/g, '-')
+		.replace(/\ /g, '');
+	// debug('matchNominal',matchNominal)
+	var nominal = (matchNominal || [])[1];
+	if(!nominal){
+		debug("mergeCache row.lowFare & row.hiFlyer kosong");
+		return outs;
+	}
 	nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
-	var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 	var classCode = _class.toLowerCase() + nominal;
 	var out = {
 		ori: departCity,
@@ -137,7 +169,7 @@ function generateData(id) {
 		dep_date: this._dt.dep_date.replace(/\s/g, '+'),
 		// dep_date    : moment().add(1, 'M').format('DD+MMM+YYYY'),
 		rute: 'OW',
-		dep_radio: '1_1',
+		dep_radio: cek_instant_id,
 		action: 'price',
 		user: 'apwqz',
 		priceScraper: false,
@@ -209,12 +241,30 @@ function mergeCachePrices(json) {
 		// debug('_this.cachePrices[currentRoute]', _this.cachePrices[currentRoute])
 		if (!_this.cachePrices[currentRoute])
 			return row;
-
-		var isLowAvailable = row.lowFare.indexOf('disabled') === -1;
-		var nominal = isLowAvailable ? (row.lowFare.match(/price"><span>([\s\S]+?)IDR/) || [])[1] : (row.hiFlyer.match(/price"><span>([\s\S]+?)IDR/) || [])[1];
-		var _class = isLowAvailable ? 'lo' : 'hi';
+		if(row.lowFare.trim()!='-'){
+			var _class = 'lo';
+			var harga = 'lowFare';
+		}else if(row.hiFlyer.trim()!='-'){
+			var _class = 'hi';
+			var harga = 'hiFlyer';
+		}else if(row.hi2Flyer.trim()!='-'){
+			var _class = 'pr';
+			var harga = 'hi2Flyer';
+		}else{
+			return row;
+		}
+		var matchNominal = row[harga].match(/price"><span>([\s\S]+?)IDR/);
+		var flightCode = row[harga].match(/[A-Z]{2}\~\ ?[0-9]{3,4}/g)
+			.join('|')
+			.replace(/\~/g, '-')
+			.replace(/\ /g, '');
+		// debug('matchNominal',matchNominal)
+		var nominal = (matchNominal || [])[1];
+		if(!nominal){
+			debug("mergeCache row.lowFare & row.hiFlyer kosong");
+			return outs;
+		}
 		nominal = Math.round(+nominal.replace(/\D/g, '') / 1000);
-		var flightCode = (row.lowFare.match(/\|([A-Z]{2})/) || [])[1];
 		flightCode = flightCode.toLowerCase();
 		var classCode = _class.toLowerCase() + nominal;
 		var $ = cheerio.load(row.dateDepart);
